@@ -1,0 +1,15 @@
+gtk-enable-animations=1
+
+gtk-cursor-theme-name="McMojave-cursors"
+
+gtk-primary-button-warps-slider=1
+gtk-cursor-theme-neme="breeze_cursors"
+gtk-font-name="SF Pro Display,  10"
+gtk-theme-name="WhiteSur-dark"
+gtk-icon-theme-name="Mkos-Big-Sur-Night"
+gtk-fallback-icon-theme="Adwaita"
+gtk-toolbar-style=3
+gtk-menu-images=1
+gtk-button-images=1
+
+gtk-modules=appmenu-gtk-module

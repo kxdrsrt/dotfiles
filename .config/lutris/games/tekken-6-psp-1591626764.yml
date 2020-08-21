@@ -1,0 +1,5 @@
+game:
+  core: ppsspp
+  main_file: /home/k/Games/tekken-6/2040 - Tekken 6 (USA) (En,Fr,De,Es,It,Ru).iso
+libretro: {}
+system: {}

@@ -1,0 +1,23 @@
+[$Version]
+update_info=gwenview.upd:SideBar_StatusBar_Rename,gwenview.upd:ImageView_AlphaBackgroundMode_Update,gwenview.upd:DeleteThumbnailSetting_Rename
+
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/Pictures/macOS Big Sur Icons/Cyberduck.png,file:$HOME/Pictures/macOS Big Sur Icons/Cyberduck.png
+Recent URLs[$e]=file:$HOME/Pictures/macOS Big Sur Icons/
+detailViewIconSize=0
+
+[MainWindow]
+Height 768=706
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAAA1AAAAKVAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1366=848
+
+[Recent Files]
+File1[$e]=$HOME/Pictures/macOS Big Sur Icons/Custom Big Sur Icons/Cyberduck.icns
+File2[$e]=$HOME/Pictures/macOS Big Sur Icons/Cyberduck.png
+Name1[$e]=Cyberduck.icns
+Name2[$e]=Cyberduck.png
+
+[SideBar]
+SideBarSplitterSizes=242,597

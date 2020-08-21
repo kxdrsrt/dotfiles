@@ -1,0 +1,10 @@
+[$Version]
+update_info=spectacle_newConfig.upd:spectacle-new-config
+
+[GuiConfig]
+window-position=168,114
+
+[KFileDialog Settings]
+Recent Files[$e]=file:$HOME/Pictures/Setup Linux.png,file:$HOME/Pictures/Setup Linux.png
+Recent URLs[$e]=file:$HOME/Pictures/
+detailViewIconSize=0

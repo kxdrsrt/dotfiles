@@ -1,0 +1,3 @@
+[2020-05-09 16:58:43.231] [sharedprocess] [info] main {"machineId":"0cf773edc23d92523be7e6dd9a39d9b31085255d2dc641b55e4a9a01de323a32","windowId":2}
+[2020-05-09 16:58:43.312] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/k/.config/Code - OSS/User/snippets'
+[2020-05-09 16:59:23.293] [sharedprocess] [info] Starting to clean up unused language packs.

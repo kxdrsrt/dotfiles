@@ -1,0 +1,7 @@
+[General]
+Index=root
+
+[root]
+Port=22
+Type=Fish
+URL=sftp://root@45.9.62.2:22/

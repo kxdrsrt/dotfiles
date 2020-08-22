@@ -3,6 +3,7 @@
 /autom4te.cache/traces.0
 #Global
 .Apple*
+.bash_history
 .DS_Store
 .clang_complete
 .local.vimrc
@@ -11,6 +12,7 @@ Thumbs.db
 .Xauthority
 .Xclients
 .xinitrc
+.zhistory
 
 # /
 /Apps

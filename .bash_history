@@ -1,106 +1,3 @@
-re
-re
-sudo pacman -Syyu
-x
-x
-pacman -Syu retroarch
-sudo pacman -Syu retroarch
-re
-re
-sudo pacman -Syu
-x
-re
-re
-sudo pacman -Syyu
-re
-sudo pacman -Syyu
-re
-sudo checkra1n
-sudo pacman -Syyu
-sudo pacman -Syyu
-x
- cd /home/k
- clear
-sudo rm-rf odyssey-tmp/
-sudo rm -rf odyssey-tmp/
- cd /
- cd /home/k
-ls
-ll
-ls a-
-ls -a
-clear
- cd /
-re
- cd /home/k/Downloads
- clear
-7z
-7z x Notion-2.0.7.dmg 
- cd '/home/k/Downloads/Notion Installer'
- cd /
- cd /home/k/Downloads/iCatalinaOS/Library/Themes/iCatalinaOS.theme/IconBundles
-dpkt
-dpkg
- cd /
- cd /home/k/Downloads/iCatalinaOS/Library/Themes/iCatalinaOS.theme/IconBundles
- cd /home/k/Downloads
-dpkg
-dpkg -b iCatalinaOS/
-sudo dpkg -b iCatalinaOS/
- cd /
-cd ..
-cd ..
-ls
-unmak
-unmask
-x
- cd /
- clear
- cd /home/k/Downloads
-chmod -R 0775 iCatalinaOS/
- cd /
-chmod  cd /
- clear
- cd /home/k/Downloads
-chmod 777 iCatalinaOS/
-chmod 000 iCatalinaOS/
-chmod ugo+rwx iCatalinaOS/
-sudo chmod ugo+rwx iCatalinaOS/
-sudo chmod u+rw,g+rw,o+r iCatalinaOS/
-sudo chmod u+rw,g+rw,o+r /iCatalinaOS
-sudo chmod u+rw,g+rw,o+r iCatalinaOS
-sudo chmod u+rw,g+rw,o+r iCatalinaOS
- cd /
-ssh root@192.168.178.25
-ssh root@192.168.178.25
-wget https://cdn.cmacapps.com/wp-content/uploads/2018/06/2HmCu.png
-ls
-ssh root@192.168.178.25
-s
-sudo cheackra1n
-jb
-sudo checkra1n
-a
-s
-ssh root@192.168.178.25
-ssh root@192.168.178.25
-ssh root@192.168.178.25
-ssh root@192.168.178.25
- cd /home/k/Downloads
- clear
-7z x Authy\ Desktop-1.8.1.dmg 
- cd '/home/k/Downloads/Authy Desktop 1.8.1/Authy Desktop.app'
- cd '/home/k/Downloads/Authy Desktop 1.8.1/Authy Desktop.app/Contents'
- cd '/home/k/Downloads/Authy Desktop 1.8.1/Authy Desktop.app/Contents/Resources'
- cd '/home/k/Downloads/iCatalinaOS/Library/Themes/iCatalinaOS Apple.theme/IconBundles'
- cd '/home/k/Downloads/iCatalinaOS/Library/Themes/iCatalinaOS Apple.theme'
- cd /home/k/Downloads/iCatalinaOS/Library/Themes
- cd /home/k/Downloads/iCatalinaOS/Library/Themes/iCatalinaOS.theme
- cd /home/k/Downloads/iCatalinaOS/Library/Themes/iCatalinaOS.theme/IconBundles
- cd /home/k/Downloads/iCatalinaOS/Library/Themes/iCatalinaOS.theme
- cd /home/k/Downloads/iCatalinaOS/Library/Themes
- cd /home/k/Downloads/iCatalinaOS/Library/Themes/iCons
- cd /home/k/Documents
  cd /home/k/Downloads
  cd /home/k/Downloads/iCatalinaOS
  cd /home/k/Downloads/iCatalinaOS/Library
@@ -498,3 +395,106 @@ git status
 git init
  cd /home/k
  cd /
+ cd /home/k
+ clear
+ cd /
+cd ..
+git status
+git init --bare $HOME/.dotfiles
+ls -a
+dotfiles config --local status.showUntrackedFiles no
+dotfiles status
+dotfiles add .
+dotfiles status
+dotfiles add .bash
+dotfiles add .bashrc 
+dotfiles status
+dotfiles commit -m "Initialized bashrc"
+dotfiles status
+dotfiles push
+dotfiles config
+dotfiles config --global
+dotfiles push
+dotfiles push
+dotfiles status
+dotfiles status
+dotfiles commit -m "Initialized bashrc"
+dotfiles add .bashrc 
+dotfiles status
+dotfiles add .bashrc ckear
+clear
+git init --bare $HOME/.dotfiles
+dotfiles config --local status.showUntrackedFiles no
+dotfiles status
+dotfiles add .vimrc
+dotfiles add .bashrc 
+dotfiles status
+dotfiles commit -m "Add bashrc"
+dotfiles status
+git remote add origin git@github.com:Peek-a-Chuu/dotfiles.git
+dotfiles remote add origin git@github.com:Peek-a-Chuu/dotfiles.git
+dotfiles status
+git remote add origin git@github.com:Peek-a-Chuu/dotfiles.git
+dotfiles config --local status.showUntrackedFiles no
+dotfiles status
+dotfiles remote add origin git@github.com:Peek-a-Chuu/dotfiles.git
+dotfiles push
+dotfiles push --set-upstream origin master
+ssh-keygen -t rsa -b 4096 -C "oh.dont@pm.me"
+dotfiles push --set-upstream origin master
+dotfiles status
+dotfiles push
+dotfiles push --set-upstream origin master
+dotfiles remote add origin git@github.com:Peek-a-Chuu/dotfiles.git
+dotfiles push --set-upstream origin master
+dotfiles push --set-upstream origin master
+cd ..
+ls
+cd k
+git clone git@github.com:Peek-a-Chuu/dotfiles.git
+git status
+git status
+git status
+git status
+git status
+git status
+git status
+git status
+git status
+git add .
+git commit -m "Initialize dots"
+git status
+git revert
+git revert HEAD
+git status
+git revert HEAD
+git clone git@github.com:Peek-a-Chuu/dotfiles.git
+git status
+git add .
+git clone git@github.com:Peek-a-Chuu/dotfiles.git
+git status
+git add .
+git commit -m "Initialize dots"
+git status
+git status
+git push
+s
+pacman -Qqen > pkglist.txt
+git status
+sudo pacman -S vscode
+sode
+code
+vscode
+ls
+cd ~
+ls
+cd Apps
+ls
+cd ~
+ls
+ls
+zsh
+bash
+fis
+fish
+zsh

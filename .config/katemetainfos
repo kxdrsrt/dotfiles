@@ -1,3 +1,14 @@
+Bookmarks=
+Checksum=26b2b61e8cd1053658fea64801f298b7e7c873be
+Encoding=UTF-8
+Highlighting=None
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Bash
+Mode Set By User=false
+Time=2020,8,22,8,16,58
+URL=
+
 [file:///home/k/.Xauthority]
 Bookmarks=
 Checksum=1203f6fa90bf26b562384f3b66e3243d7bf26bec
@@ -48,14 +59,14 @@ URL=file:///home/k/.gitconfig
 
 [file:///home/k/.gitignore]
 Bookmarks=
-Checksum=8e773cc32a12bd49452b21a3e8f45f470296c5a3
+Checksum=ec3a736309d9db1d125ade54ce5b98dc08ed5ff9
 Encoding=UTF-8
 Highlighting=Git Ignore
 Highlighting Set By User=false
 Indentation Mode=normal
 Mode=Git Ignore
 Mode Set By User=false
-Time=2020,8,21,15,0,38
+Time=2020,8,22,8,16,53
 URL=file:///home/k/.gitignore
 
 [file:///home/k/.gtkrc-2.0]
@@ -81,6 +92,18 @@ Mode=Normal
 Mode Set By User=false
 Time=2020,8,21,14,5,31
 URL=file:///home/k/.kde4/share/config/kdeglobals
+
+[file:///home/k/.pacinstall.sh]
+Bookmarks=
+Checksum=2fd8aa2855b11609b57daf3b2022f32c61d73d5b
+Encoding=UTF-8
+Highlighting=Bash
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Bash
+Mode Set By User=false
+Time=2020,8,22,8,16,51
+URL=file:///home/k/.pacinstall.sh
 
 [file:///home/k/.ssh/id_rsa]
 Bookmarks=
@@ -153,6 +176,30 @@ Mode=Normal
 Mode Set By User=false
 Time=2020,8,21,15,0,14
 URL=file:///home/k/.zcompdump
+
+[file:///home/k/pacinstall]
+Bookmarks=
+Checksum=3706ca039709b72990b76a365b9f9471be618a26
+Encoding=UTF-8
+Highlighting=Bash
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Bash
+Mode Set By User=false
+Time=2020,8,22,7,49,1
+URL=file:///home/k/pacinstall
+
+[file:///home/k/pacinstall.sh]
+Bookmarks=
+Checksum=772008cc5c7c4db044dd57f8e5bb04b41a9738a5
+Encoding=UTF-8
+Highlighting=Bash
+Highlighting Set By User=false
+Indentation Mode=normal
+Mode=Bash
+Mode Set By User=false
+Time=2020,8,22,7,49,39
+URL=file:///home/k/pacinstall.sh
 
 [sftp://root@45.9.62.2:22/home/notroot/rathena-ps/.gitignore]
 Bookmarks=

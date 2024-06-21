@@ -3,12 +3,20 @@
 .AppleDB/
 .AppleDesktop/
 .CFUserTextEncoding
+.DS_Store
 .DocumentRevisions-V100
-.lesshst
+.Icon?
 .LSOverride
 .Spotlight-V100/
+.TemporaryItems/
+.Trashes/
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.lesshst
 .ssh/
+.ssh/known_hosts
 .viminfo
+.zcompdump
 .zprofile
 .zsh_history
 Applications/
@@ -16,30 +24,23 @@ Developer/
 Library/
 Movies/
 Public
-.TemporaryItems/
-.Trashes/
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.DS_Store
-.Icon?
-
 
 # macOS Patch
 *.icloud
 
 # Windows
 $RECYCLE.BIN/
+*Dd]esktop.ini
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
 *.cab
 *.lnk
 *.msi
 *.msix
 *.msp
 *.stackdump
-*Dd]esktop.ini
-Thumbs.db
-Thumbs.db:encryptable
-ehthumbs.db
-ehthumbs_vista.db
 
 # Linux
 .Trash-*/
@@ -51,8 +52,8 @@ ehthumbs_vista.db
 .local/
 .nfs*
 .ocompletion/
-.ssr
 .pki/
+.ssr
 .themes/
 .wine/
 .zoom/
@@ -69,16 +70,8 @@ ehthumbs_vista.db
 /Videos/
 /iCloud Drive/
 /autom4te.cache/
+/lib/
 /log/
-.lib/
-/autom4te.cache/output.0
-/autom4te.cache/requests
-/autom4te.cache/traces.0
-/autom4te.cache/output.0
-/autom4te.cache/requests
-/autom4te.cache/traces.0
-
-# Additional specific files or directories
-/autom4te.cache/output.0
-/autom4te.cache/requests
-/autom4te.cache/traces.0
+.autom4te.cache/output.0
+.autom4te.cache/requests
+.autom4te.cache/traces.0

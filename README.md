@@ -29,8 +29,10 @@ To incorporate these dotfiles into your environment, please follow the steps out
 3. **Symlink the Dotfiles**:
    Create symbolic links from the repository's files to their corresponding locations in your home directory. For example:
    ```bash
-   ln -s $(pwd)/.vimrc ~/.vimrc
+   ln -s $(pwd)/.zshrc ~/.zshrc
    ln -s $(pwd)/.bashrc ~/.bashrc
+   ln -s $(pwd)/.vimrc ~/.vimrc
+
    ```
    Repeat this process for each dotfile as necessary.
 
@@ -41,7 +43,7 @@ Contributions to this repository are highly encouraged. If you have suggestions 
 This repository is licensed under the MIT License. For more information, please refer to the LICENSE file.
 
 ## Contact
-For any inquiries or support, please contact [kadir.ser@pm.me](mailto:kadir.ser@pm.me).
+For any inquiries or support, please contact [kadir.sert@pm.me](mailto:kadir.sert@pm.me).
 
 ---
 

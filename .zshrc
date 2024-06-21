@@ -8,14 +8,11 @@ SAVEHIST=1000                                  # Limits the size of saved histor
 HISTFILE=~/.zsh_history                        # Specifies the location of the command history file
 
 # Options
-setopt appendhistory     # Append new history entries to the history file instead of overwriting it
 setopt autocd            # Allow switching to a directory by typing its name without cd command
 setopt extendedglob      # Enable extended pattern matching features (e.g., using *(...) for complex patterns)
-setopt histignorealldups # Ignore duplicate commands in history
 setopt nocaseglob        # Perform case-insensitive pattern matching
 setopt numericglobsort   # Sort filenames numerically when possible (e.g., file1.txt, file2.txt)
 setopt rcexpandparam     # Perform parameter expansion on words resulting from filename generation
-setopt SHARE_HISTORY     # Share command history among all sessions of the shell
 
 # Aliases - Directory Navigation
 alias ..='cd ..'                               # Navigate up one directory level
@@ -30,7 +27,7 @@ alias dow="cd ~/Downloads/"                    # Navigate to Downloads directory
 alias home="cd $HOME/"                         # Navigate to Home directory
 alias iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs' # Navigate to iCloud directory
 alias k="cd $HOME/"                            # Navigate to K's Home directory
-alias wd="cd '/Users/k/Documents/Work\ \&\ Career/Work/SIEMENS\ AG/Werkstudent\ Programmierung\ ID-411626/0\ Working\ Directory'"          # Navigate to SAG Working Directory
+alias wd='cd /Users/k/Documents/Work\ \&\ Career/Work/SIEMENS\ AG/Werkstudent\ Programmierung\ ID-411626/0\ Working\ Directory'          # Navigate to SAG Working Directory
 
 
 # Aliases - Common Commands
@@ -54,13 +51,13 @@ alias x="exit"                                 # Exit terminal
 # Aliases - Git Commands
 alias g="git"                                  # Shortcut for git
 alias ga="git add"                             # Shortcut for git add
-alias gaa="git add"                            # Shortcut for git add (alternative)
+alias ga.="git add ."                            # Shortcut for git add (alternative)
 alias gc="git clone"                           # Shortcut for git clone
 alias gcm="git commit -m"                      # Shortcut for git commit with message
 alias gco="git checkout"                       # Shortcut for git checkout
-alias gpl="git pull"                           # Shortcut for git pull
-alias gps="git push"                           # Shortcut for git push
-alias gst="git status"                         # Shortcut for git status
+alias gp="git pull"                           # Shortcut for git pull
+alias gup="git push"                           # Shortcut for git push
+alias gs="git status"                         # Shortcut for git status
 
 # Aliases - Homebrew Commands
 alias bar="brew autoremove"                    # Remove unused dependencies

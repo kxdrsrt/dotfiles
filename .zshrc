@@ -30,7 +30,8 @@ alias dow="cd ~/Downloads/"                    # Navigate to Downloads directory
 alias home="cd $HOME/"                         # Navigate to Home directory
 alias iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs' # Navigate to iCloud directory
 alias k="cd $HOME/"                            # Navigate to K's Home directory
-alias wd="cd '/Users/k/Desktop/S AG'"          # Navigate to S AG directory on Desktop
+alias wd="cd '/Users/k/Documents/Work\ \&\ Career/Work/SIEMENS\ AG/Werkstudent\ Programmierung\ ID-411626/0\ Working\ Directory'"          # Navigate to SAG Working Directory
+
 
 # Aliases - Common Commands
 alias c="clear"                                # Clear terminal

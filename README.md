@@ -41,7 +41,7 @@ Contributions to this repository are highly encouraged. If you have suggestions 
 This repository is licensed under the MIT License. For more information, please refer to the LICENSE file.
 
 ## Contact
-For any inquiries or support, please contact [yourname@example.com](mailto:yourname@example.com).
+For any inquiries or support, please contact [kadir.ser@pm.me](mailto:kadir.ser@pm.me).
 
 ---
 

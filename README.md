@@ -47,4 +47,4 @@ For any inquiries or support, please contact [kadir.sert@pm.me](mailto:kadir.ser
 
 ---
 
-By following these guidelines, we strive to create a more manageable and productive environment for developers, ultimately contributing to a better world through efficient technology use.
+By following these guidelines, I aim to create a more manageable and productive environment for myself, developers and enthusiasts, and ultimately contribute to a better world through efficient use of technology.

@@ -1,196 +1,135 @@
-## Options section
-setopt correct                                                  # Auto correct mistakes
-setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
-setopt nocaseglob                                               # Case insensitive globbing
-setopt rcexpandparam                                            # Array expension with parameters
-setopt nocheckjobs                                              # Don't warn about running processes when exiting
-setopt numericglobsort                                          # Sort filenames numerically when it makes sense
-setopt nobeep                                                   # No beep
-setopt appendhistory                                            # Immediately append history instead of overwriting
-setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
-setopt autocd                                                   # if only directory path is entered, cd there.
+# Environment Variables
+export PROMPT='%F{green}🅺 @%m%f:%F{blue}%~%f '  # Customizes the terminal prompt format
+export PATH=$HOME/bin:/usr/local/bin:$PATH     # Adds custom directories to the PATH environment variable
+export EDITOR=nano                             # Sets nano as the default text editor
+export BROWSER=arc                             # Sets arc as the default web browser
+HISTSIZE=1000                                  # Limits the size of command history to 1000 entries
+SAVEHIST=1000                                  # Limits the size of saved history to 1000 entries
+HISTFILE=~/.zsh_history                        # Specifies the location of the command history file
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
-zstyle ':completion:*' rehash true                              # automatically find new executables in path 
-# Speed up completions
-zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path ~/.zsh/cache
-HISTFILE=~/.zhistory
-HISTSIZE=1000
-SAVEHIST=500
-#export EDITOR=/usr/bin/nano
-#export VISUAL=/usr/bin/nano
-WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+# Options
+setopt appendhistory     # Append new history entries to the history file instead of overwriting it
+setopt autocd            # Allow switching to a directory by typing its name without cd command
+setopt extendedglob      # Enable extended pattern matching features (e.g., using *(...) for complex patterns)
+setopt histignorealldups # Ignore duplicate commands in history
+setopt nocaseglob        # Perform case-insensitive pattern matching
+setopt numericglobsort   # Sort filenames numerically when possible (e.g., file1.txt, file2.txt)
+setopt rcexpandparam     # Perform parameter expansion on words resulting from filename generation
+setopt SHARE_HISTORY     # Share command history among all sessions of the shell
 
+# Aliases - Directory Navigation
+alias ..='cd ..'                               # Navigate up one directory level
+alias ...='cd ../..'                           # Navigate up two directory levels
+alias ....='cd ../../..'                       # Navigate up three directory levels
+alias ~='cd ~'                                 # Navigate to home directory
+alias ahk="cd '/Users/k/Developer/AHK-SAP-SAG'" # Navigate to AHK-SAP-SAG directory
+alias desk="cd ~/Desktop/"                     # Navigate to Desktop directory
+alias dev="cd ~/Developer/"                    # Navigate to Developer directory
+alias doc="cd ~/Documents/"                    # Navigate to Documents directory
+alias dow="cd ~/Downloads/"                    # Navigate to Downloads directory
+alias home="cd $HOME/"                         # Navigate to Home directory
+alias iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs' # Navigate to iCloud directory
+alias k="cd $HOME/"                            # Navigate to K's Home directory
+alias wd="cd '/Users/k/Desktop/S AG'"          # Navigate to S AG directory on Desktop
 
-## Keybindings section
-bindkey -e
-bindkey '^[[7~' beginning-of-line                               # Home key
-bindkey '^[[H' beginning-of-line                                # Home key
-if [[ "${terminfo[khome]}" != "" ]]; then
-  bindkey "${terminfo[khome]}" beginning-of-line                # [Home] - Go to beginning of line
-fi
-bindkey '^[[8~' end-of-line                                     # End key
-bindkey '^[[F' end-of-line                                     # End key
-if [[ "${terminfo[kend]}" != "" ]]; then
-  bindkey "${terminfo[kend]}" end-of-line                       # [End] - Go to end of line
-fi
-bindkey '^[[2~' overwrite-mode                                  # Insert key
-bindkey '^[[3~' delete-char                                     # Delete key
-bindkey '^[[C'  forward-char                                    # Right key
-bindkey '^[[D'  backward-char                                   # Left key
-bindkey '^[[5~' history-beginning-search-backward               # Page up key
-bindkey '^[[6~' history-beginning-search-forward                # Page down key
+# Aliases - Common Commands
+alias c="clear"                                # Clear terminal
+alias cp='cp -I'                               # Confirm before overwriting files with cp
+alias df='df -h'                               # Display human-readable disk space usage
+alias grep='grep --color=auto'                 # Colorful grep
+alias h="history -10"                          # Show last 10 history commands
+alias hc="rm ~/.zsh_history"                   # Clear history
+alias l='ls -CF'                               # List files in columns
+alias la='ls -A'                               # List all files excluding . and ..
+alias ll="ls -alF"                             # List all files with detailed view
+alias ls="ls --color -h"                       # List with color and human-readable sizes
+alias more=less                                # Use less instead of more
+alias mv='mv -I'                               # Confirm before overwriting files with mv
+alias rm='rm -rf'                              # Remove files and directories without confirmation
+alias rs='source ~/.zshrc'                     # Refresh .zshrc
+alias shutdown="shutdown -h now"               # Shutdown the system
+alias x="exit"                                 # Exit terminal
 
-# Navigate words with ctrl+arrow keys
-bindkey '^[Oc' forward-word                                     #
-bindkey '^[Od' backward-word                                    #
-bindkey '^[[1;5D' backward-word                                 #
-bindkey '^[[1;5C' forward-word                                  #
-bindkey '^H' backward-kill-word                                 # delete previous word with ctrl+backspace
-bindkey '^[[Z' undo                                             # Shift+tab undo last action
+# Aliases - Git Commands
+alias g="git"                                  # Shortcut for git
+alias ga="git add"                             # Shortcut for git add
+alias gaa="git add"                            # Shortcut for git add (alternative)
+alias gc="git clone"                           # Shortcut for git clone
+alias gcm="git commit -m"                      # Shortcut for git commit with message
+alias gco="git checkout"                       # Shortcut for git checkout
+alias gpl="git pull"                           # Shortcut for git pull
+alias gps="git push"                           # Shortcut for git push
+alias gst="git status"                         # Shortcut for git status
 
-## Alias section 
-alias cp="cp -i"                                                # Confirm before overwriting something
-alias df='df -h'                                                # Human-readable sizes
-alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
+# Aliases - Homebrew Commands
+alias bar="brew autoremove"                    # Remove unused dependencies
+alias bc="brew cleanup"                        # Remove outdated versions
+alias bin="brew install"                       # Install a Homebrew package
+alias bug="brew upgrade"                       # Upgrade all Homebrew packages
+alias bu="brew update"                         # Update Homebrew
+alias bun="brew uninstall"                     # Uninstall a Homebrew package
 
-# Theming section  
-autoload -U compinit colors zcalc
-compinit -d
-colors
+# Aliases - Miscellaneous Commands
+alias dark='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"' # Toggle Dark Mode
+alias myip='echo "Public IP: $(curl -4 -s http://ipecho.net/plain)"; echo "Local IP: $(ipconfig getifaddr en0)"' # Get public IPv4 and local IP addresses
+alias python="/usr/bin/python3"                # Use Python 3 by default
+alias resetkeyboard="sudo sh ~/Documents/Others/macOS/keys-swapped.sh" # Reset keyboard plist
+alias spotx="bash <(curl -sSL https://raw.githubusercontent.com/Nuzair46/BlockTheSpot-Mac/main/install.sh)" # Install SpotX
 
-# enable substitution for prompt
-setopt prompt_subst
+# Aliases - Scripts
+alias icns2png="sh $HOME/Documents/Others/macOS/Scripts/icns2png.sh" # Convert icns to png
+alias mac-deploy="sh $HOME/Documents/Others/macOS/Scripts/mac-deploy.sh" # Mac deployment script
+alias png2icns="sh $HOME/Documents/Others/macOS/Scripts/png2icns.sh" # Convert png to icns
 
-# Prompt (on left side) similar to default bash prompt, or redhat zsh prompt with colors
- #PROMPT="%(!.%{$fg[red]%}[%n@%m %1~]%{$reset_color%}# .%{$fg[green]%}[%n@%m %1~]%{$reset_color%}$ "
-# Maia prompt
-PROMPT="%B%{$fg[cyan]%}%(4~|%-1~/.../%2~|%~)%u%b >%{$fg[cyan]%}>%B%(?.%{$fg[cyan]%}.%{$fg[red]%})>%{$reset_color%}%b " # Print some system information when the shell is first started
-# Print a greeting message when shell is started
-echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
-## Prompt on right side:
-#  - shows status of git when in git repository (code adapted from https://techanic.net/2012/12/30/my_git_prompt_for_zsh.html)
-#  - shows exit status of previous command (if previous command finished with an error)
-#  - is invisible, if neither is the case
-
-# Modify the colors and symbols in these variables as desired.
-GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"                              # plus/minus     - clean repo
-GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
-GIT_PROMPT_SUFFIX="%{$fg[green]%}]%{$reset_color%}"
-GIT_PROMPT_AHEAD="%{$fg[red]%}ANUM%{$reset_color%}"             # A"NUM"         - ahead by "NUM" commits
-GIT_PROMPT_BEHIND="%{$fg[cyan]%}BNUM%{$reset_color%}"           # B"NUM"         - behind by "NUM" commits
-GIT_PROMPT_MERGING="%{$fg_bold[magenta]%}⚡︎%{$reset_color%}"     # lightning bolt - merge conflict
-GIT_PROMPT_UNTRACKED="%{$fg_bold[red]%}●%{$reset_color%}"       # red circle     - untracked files
-GIT_PROMPT_MODIFIED="%{$fg_bold[yellow]%}●%{$reset_color%}"     # yellow circle  - tracked files modified
-GIT_PROMPT_STAGED="%{$fg_bold[green]%}●%{$reset_color%}"        # green circle   - staged changes present = ready for "git push"
-
-parse_git_branch() {
-  # Show Git branch/tag, or name-rev if on detached head
-  ( git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD ) 2> /dev/null
+# Functions
+function - {
+    cd -
 }
 
-parse_git_state() {
-  # Show different symbols as appropriate for various Git repository states
-  # Compose this value via multiple conditional appends.
-  local GIT_STATE=""
-  local NUM_AHEAD="$(git log --oneline @{u}.. 2> /dev/null | wc -l | tr -d ' ')"
-  if [ "$NUM_AHEAD" -gt 0 ]; then
-    GIT_STATE=$GIT_STATE${GIT_PROMPT_AHEAD//NUM/$NUM_AHEAD}
-  fi
-  local NUM_BEHIND="$(git log --oneline ..@{u} 2> /dev/null | wc -l | tr -d ' ')"
-  if [ "$NUM_BEHIND" -gt 0 ]; then
-    GIT_STATE=$GIT_STATE${GIT_PROMPT_BEHIND//NUM/$NUM_BEHIND}
-  fi
-  local GIT_DIR="$(git rev-parse --git-dir 2> /dev/null)"
-  if [ -n $GIT_DIR ] && test -r $GIT_DIR/MERGE_HEAD; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MERGING
-  fi
-  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_UNTRACKED
-  fi
-  if ! git diff --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_MODIFIED
-  fi
-  if ! git diff --cached --quiet 2> /dev/null; then
-    GIT_STATE=$GIT_STATE$GIT_PROMPT_STAGED
-  fi
-  if [[ -n $GIT_STATE ]]; then
-    echo "$GIT_PROMPT_PREFIX$GIT_STATE$GIT_PROMPT_SUFFIX"
-  fi
+# Function to mimic `cd -`
+mkcd() {
+    mkdir -p "$1" && cd "$1"
 }
 
-git_prompt_string() {
-  local git_where="$(parse_git_branch)"
-  
-  # If inside a Git repository, print its branch and state
-  [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
-  
-  # If not inside the Git repo, print exit codes of last command (only if it failed)
-  [ ! -n "$git_where" ] && echo "%{$fg[red]%} %(?..[%?])"
+# Remove existing aliases that might conflict with function names
+unalias extract 2>/dev/null
+unalias create_zip 2>/dev/null
+
+# Function to extract various types of archives
+extract() {
+    if [ -f "$1" ]; then
+        case "$1" in
+            *.tar.bz2)   tar xjf "$1"   ;;
+            *.tar.gz)    tar xzf "$1"   ;;
+            *.bz2)       bunzip2 "$1"   ;;
+            *.rar)       unrar x "$1"   ;;
+            *.gz)        gunzip "$1"    ;;
+            *.tar)       tar xvf "$1"   ;;
+            *.tbz2)      tar xjf "$1"   ;;
+            *.tgz)       tar xzf "$1"   ;;
+            *.zip)       unzip "$1"     ;;
+            *.Z)         uncompress "$1";;
+            *.7z)        7z x "$1"      ;;
+            *)           echo "'$1' cannot be extracted via extract()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
 }
 
-# Right prompt with exit status of previous command if not successful
- #RPROMPT="%{$fg[red]%} %(?..[%?])" 
-# Right prompt with exit status of previous command marked with ✓ or ✗
- #RPROMPT="%(?.%{$fg[green]%}✓ %{$reset_color%}.%{$fg[red]%}✗ %{$reset_color%})"
+# Function to create a zip archive from a file or directory
+create_zip() {
+    if [ -d "$1" ]; then
+        zip -r "${1%/}.zip" "$1"
+    elif [ -f "$1" ]; then
+        zip "${1}.zip" "$1"
+    else
+        echo "'$1' is not a valid file or directory"
+    fi
+}
 
+# Alias to extract archives
+alias extract='extract'
 
-# Color man pages
-export LESS_TERMCAP_mb=$'\E[01;32m'
-export LESS_TERMCAP_md=$'\E[01;32m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;47;34m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;36m'
-export LESS=-r
-
-
-## Plugins section: Enable fish style features
-# Use syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Use history substring search
-source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-# bind UP and DOWN arrow keys to history substring search
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[A' history-substring-search-up			
-bindkey '^[[B' history-substring-search-down
-
-# Apply different settigns for different terminals
-case $(basename "$(cat "/proc/$PPID/comm")") in
-  login)
-    	RPROMPT="%{$fg[red]%} %(?..[%?])" 
-    	alias x='startx ~/.xinitrc'      # Type name of desired desktop after x, xinitrc is configured for it
-    ;;
-#  'tmux: server')
-#        RPROMPT='$(git_prompt_string)'
-#		## Base16 Shell color themes.
-#		#possible themes: 3024, apathy, ashes, atelierdune, atelierforest, atelierhearth,
-#		#atelierseaside, bespin, brewer, chalk, codeschool, colors, default, eighties, 
-#		#embers, flat, google, grayscale, greenscreen, harmonic16, isotope, londontube,
-#		#marrakesh, mocha, monokai, ocean, paraiso, pop (dark only), railscasts, shapesifter,
-#		#solarized, summerfruit, tomorrow, twilight
-#		#theme="eighties"
-#		#Possible variants: dark and light
-#		#shade="dark"
-#		#BASE16_SHELL="/usr/share/zsh/scripts/base16-shell/base16-$theme.$shade.sh"
-#		#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-#		# Use autosuggestion
-#		source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-#		ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-#  		ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-#     ;;
-  *)
-        RPROMPT='$(git_prompt_string)'
-		# Use autosuggestion
-		source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-		ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-  		ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-    ;;
-esac
+# Alias to create zip archives
+alias zip='create_zip'

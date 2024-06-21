@@ -1,9 +1,0 @@
-[Added Associations]
-audio/mp4=vlc.desktop;
-
-[Default Applications]
-audio/mp4=vlc.desktop;
-text/html=iridium-browser.desktop
-x-scheme-handler/http=iridium-browser.desktop
-x-scheme-handler/https=iridium-browser.desktop
-x-scheme-handler/msteams=teams.desktop

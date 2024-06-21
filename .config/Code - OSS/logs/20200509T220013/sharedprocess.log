@@ -1,2 +1,0 @@
-[2020-05-09 22:00:18.622] [sharedprocess] [info] main {"machineId":"0cf773edc23d92523be7e6dd9a39d9b31085255d2dc641b55e4a9a01de323a32","windowId":2}
-[2020-05-09 22:00:18.708] [sharedprocess] [error] [File Watcher (node.js)] Error: ENOENT: no such file or directory, stat '/home/k/.config/Code - OSS/User/snippets'

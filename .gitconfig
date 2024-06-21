@@ -1,3 +1,29 @@
 [user]
-	email = oh.dont@pm.me
-	name = Peek-a-Chuu
+    name = 🅺
+    email = kadir.sert@pm.me
+
+[core]
+    editor = nano
+    autocrlf = input
+
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    lg = log --oneline --graph --decorate --all
+
+[color]
+    ui = auto
+
+[push]
+    default = simple
+
+[merge]
+    tool = vimdiff
+
+[diff]
+    tool = vimdiff
+
+[credential]
+    helper = store

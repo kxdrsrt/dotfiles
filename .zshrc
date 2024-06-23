@@ -29,7 +29,6 @@ alias iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs' # Navigate to 
 alias k="cd $HOME/"                            # Navigate to K's Home directory
 alias wd='cd /Users/k/Documents/Work\ \&\ Career/Work/SIEMENS\ AG/Werkstudent\ Programmierung\ ID-411626/0\ Working\ Directory'          # Navigate to SAG Working Directory
 
-
 # Aliases - Common Commands
 alias c="clear"                                # Clear terminal
 alias cp='cp -I'                               # Confirm before overwriting files with cp
@@ -52,12 +51,14 @@ alias x="exit"                                 # Exit terminal
 alias g="git"                                  # Shortcut for git
 alias ga="git add"                             # Shortcut for git add
 alias ga.="git add ."                            # Shortcut for git add (alternative)
+alias gap="git add . && git commit -m 'Updated .gitignore' && git push" # Add, commit and push at once.
 alias gc="git clone"                           # Shortcut for git clone
 alias gcm="git commit -m"                      # Shortcut for git commit with message
 alias gco="git checkout"                       # Shortcut for git checkout
 alias gp="git pull"                           # Shortcut for git pull
 alias gup="git push"                           # Shortcut for git push
 alias gs="git status"                         # Shortcut for git status
+
 
 # Aliases - Homebrew Commands
 alias bar="brew autoremove"                    # Remove unused dependencies

@@ -18,7 +18,7 @@ To incorporate these dotfiles into your environment, please follow the steps out
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/dotfiles.git
+   git clone https://github.com/kxdrsrt/dotfiles.git
    ```
 
 2. **Navigate to the Repository**:

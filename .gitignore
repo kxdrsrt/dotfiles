@@ -3,10 +3,12 @@
 .AppleDB/
 .AppleDesktop/
 .CFUserTextEncoding
+.cache/
 .DS_Store
 .DocumentRevisions-V100
 .Icon?
 .LSOverride
+.pdfbox.cache
 .Spotlight-V100/
 .TemporaryItems/
 .Trashes/

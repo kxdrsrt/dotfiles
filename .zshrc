@@ -64,6 +64,7 @@ alias gs="git status"                         # Shortcut for git status
 alias bar="brew autoremove"                    # Remove unused dependencies
 alias bc="brew cleanup"                        # Remove outdated versions
 alias bin="brew install"                       # Install a Homebrew package
+alias bre="brew reinstall"                       # Reinstall a Homebrew package
 alias bug="brew upgrade"                       # Upgrade all Homebrew packages
 alias bu="brew update"                         # Update Homebrew
 alias bun="brew uninstall"                     # Uninstall a Homebrew package

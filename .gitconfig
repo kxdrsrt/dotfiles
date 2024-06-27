@@ -1,6 +1,7 @@
 [user]
 	name = kadir.sert
 	email = kadir.sert@siemens.com
+	signingkey = /Users/k/.ssh/id_ed25519
 
 [core]
     editor = nano
@@ -27,3 +28,7 @@
 
 [credential]
     helper = store
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true

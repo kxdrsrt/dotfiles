@@ -41,6 +41,7 @@ alias la='ls -A'                               # List all files excluding . and 
 alias ll="ls -alF"                             # List all files with detailed view
 alias ls="ls --color -h"                       # List with color and human-readable sizes
 alias more=less                                # Use less instead of more
+alias o="open ."                               # Open the current directory in Finder
 alias mv='mv -I'                               # Confirm before overwriting files with mv
 alias rm='rm -rf'                              # Remove files and directories without confirmation
 alias rs='source ~/.zshrc'                     # Refresh .zshrc
@@ -50,21 +51,21 @@ alias x="exit"                                 # Exit terminal
 # Aliases - Git Commands
 alias g="git"                                  # Shortcut for git
 alias ga="git add"                             # Shortcut for git add
-alias ga.="git add ."                            # Shortcut for git add (alternative)
+alias ga.="git add ."                          # Shortcut for git add (alternative)
 alias gap="git add . && git commit -m 'Updated .gitignore' && git push" # Add, commit and push at once.
 alias gc="git clone"                           # Shortcut for git clone
 alias gcm="git commit -m"                      # Shortcut for git commit with message
 alias gco="git checkout"                       # Shortcut for git checkout
-alias gp="git pull"                           # Shortcut for git pull
+alias gp="git pull"                            # Shortcut for git pull
 alias gup="git push"                           # Shortcut for git push
-alias gs="git status"                         # Shortcut for git status
+alias gs="git status"                          # Shortcut for git status
 
 
 # Aliases - Homebrew Commands
 alias bar="brew autoremove"                    # Remove unused dependencies
 alias bc="brew cleanup"                        # Remove outdated versions
 alias bin="brew install"                       # Install a Homebrew package
-alias bre="brew reinstall"                       # Reinstall a Homebrew package
+alias bre="brew reinstall"                     # Reinstall a Homebrew package
 alias bug="brew upgrade"                       # Upgrade all Homebrew packages
 alias bu="brew update"                         # Update Homebrew
 alias bun="brew uninstall"                     # Uninstall a Homebrew package

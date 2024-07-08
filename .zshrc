@@ -79,6 +79,7 @@ alias spotx="bash <(curl -sSL https://raw.githubusercontent.com/Nuzair46/BlockTh
 
 # Aliases - Scripts
 alias icns2png="sh $HOME/Documents/Others/macOS/Scripts/icns2png.sh" # Convert icns to png
+alias lpm='/Users/k/Documents/Others/macOS/Scripts/toggle-lpm.sh'
 alias mac-deploy="sh $HOME/Documents/Others/macOS/Scripts/mac-deploy.sh" # Mac deployment script
 alias png2icns="sh $HOME/Documents/Others/macOS/Scripts/png2icns.sh" # Convert png to icns
 

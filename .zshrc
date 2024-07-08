@@ -71,6 +71,7 @@ alias bu="brew update"                         # Update Homebrew
 alias bun="brew uninstall"                     # Uninstall a Homebrew package
 
 # Aliases - Miscellaneous Commands
+alias battery="system_profiler SPPowerDataType | grep -A 2 'Cycle Count'"
 alias dark='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"' # Toggle Dark Mode
 alias myip='echo "Public IP: $(curl -4 -s http://ipecho.net/plain)"; echo "Local IP: $(ipconfig getifaddr en0)"' # Get public IPv4 and local IP addresses
 alias python="/usr/bin/python3"                # Use Python 3 by default

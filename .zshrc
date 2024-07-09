@@ -76,7 +76,7 @@ alias dark='osascript -e "tell app \"System Events\" to tell appearance preferen
 alias myip='echo "Public IP: $(curl -4 -s http://ipecho.net/plain)"; echo "Local IP: $(ipconfig getifaddr en0)"' # Get public IPv4 and local IP addresses
 alias python="/usr/bin/python3"                # Use Python 3 by default
 alias resetkeyboard="sudo sh ~/Documents/Others/macOS/keys-swapped.sh" # Reset keyboard plist
-alias spotx="bash <(curl -sSL https://raw.githubusercontent.com/Nuzair46/BlockTheSpot-Mac/main/install.sh)" # Install SpotX
+alias spotx="bash <(curl -sSL https://spotx-official.github.io/run.sh) -B -c -f -h" # Install SpotX
 
 # Aliases - Scripts
 alias icns2png="sh $HOME/Documents/Others/macOS/Scripts/icns2png.sh" # Convert icns to png

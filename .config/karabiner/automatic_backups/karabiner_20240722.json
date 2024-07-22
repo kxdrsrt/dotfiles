@@ -1,0 +1,20 @@
+{
+    "profiles": [
+        {
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_game_pad": false,
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 0,
+                        "vendor_id": 0
+                    },
+                    "ignore": true
+                }
+            ],
+            "name": "Default profile",
+            "selected": true
+        }
+    ]
+}

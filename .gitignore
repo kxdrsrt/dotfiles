@@ -1,21 +1,24 @@
 # macOS
-.AppleDouble
 .AppleDB/
 .AppleDesktop/
+.AppleDouble
 .CFUserTextEncoding
-.cache/
 .DS_Store
 .DocumentRevisions-V100
 .Icon?
 .LSOverride
-.pdfbox.cache
 .Spotlight-V100/
 .TemporaryItems/
 .Trashes/
 .Trash/
 .VolumeIcon.icns
+.cache/
+.chromium-browser-snapshots/
 .com.apple.timemachine.donotpresent
 .lesshst
+.pcr-stats.json
+.pdfbox.cache
+.rest-client/
 .ssh/
 .viminfo
 .zcompdump

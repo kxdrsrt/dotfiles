@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    "cweijan.vscode-autohotkey-plus", // AutoHotkey Extension Pack für v1
+    "DavidAnson.vscode-markdownlint", // Erweiterung für Markdown-Linting
+    "esbenp.prettier-vscode", // Prettier-Code-Formatter
+    "formulahendry.code-runner", // Erweiterung zum Ausführen von Code
+    "mark-wiemer.ahk-v1-formatter", // AutoHotkey Formatter für v1
+    "ms-vsliveshare.vsliveshare", // Erweiterung für Live Share, um in Echtzeit zusammenzuarbeiten
+    "shd101wyy.markdown-preview-enhanced", // Erweiterung für erweiterte Markdown-Vorschau
+    "yzane.markdown-pdf", // Erweiterung zum Exportieren von Markdown als PDF
+    "yzhang.markdown-all-in-one" // Erweiterung für erweiterte Markdown-Funktionen
+  ],
+  "unwantedRecommendations": [
+    "cweijan.vscode-autohotkey-plus", // Ignoriert cweijan.vscode-autohotkey-plus
+    "donjayamanne.githistory", // Ignoriert Git History
+    "ms-azuretools.vscode-docker", // Ignoriert Docker
+    "github.copilot", // Ignoriert GitHub Copilot
+    "firefox-devtools.vscode-firefox-debug", // Ignoriert Debugger for Firefox
+    "ms-edgedevtools.vscode-edge-devtools", // Ignoriert Microsoft Edge Tools for VS Code
+    "dbaeumer.vscode-eslint", // Ignoriert ESLint
+    "golang.go", // Ignoriert Go
+    "reditorsupport.r", // Ignoriert R
+    "vscodevim.vim", // Ignoriert Vim
+    "eamodio.gitlens", // Ignoriert GitLens
+    "tomoki1207.pdf" // Ignoriert PDF
+  ]
+}

@@ -1,4 +1,5 @@
 {
+  "global": { "show_in_menu_bar": false },
   "profiles": [
     {
       "complex_modifications": {
@@ -42,6 +43,49 @@
             ]
           },
           {
+            "description": "Activate Launchpad with cmd + < or cmd + § in US English",
+            "manipulators": [
+              {
+                "conditions": [
+                  {
+                    "input_sources": [
+                      {
+                        "input_source_id": "com.apple.keylayout.US",
+                        "language": "en"
+                      }
+                    ],
+                    "type": "input_source_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "non_us_backslash",
+                  "modifiers": { "mandatory": ["left_command"] }
+                },
+                "to": [{ "key_code": "launchpad" }],
+                "type": "basic"
+              },
+              {
+                "conditions": [
+                  {
+                    "input_sources": [
+                      {
+                        "input_source_id": "com.apple.keylayout.US",
+                        "language": "en"
+                      }
+                    ],
+                    "type": "input_source_if"
+                  }
+                ],
+                "from": {
+                  "key_code": "grave_accent_and_tilde",
+                  "modifiers": { "mandatory": ["left_command"] }
+                },
+                "to": [{ "key_code": "launchpad" }],
+                "type": "basic"
+              }
+            ]
+          },
+          {
             "description": "Swap Y and Z keys when in US English",
             "manipulators": [
               {
@@ -74,50 +118,6 @@
                 ],
                 "from": { "key_code": "z" },
                 "to": { "key_code": "y" },
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "input_sources": [
-                      {
-                        "input_source_id": "com.apple.keylayout.US",
-                        "language": "en"
-                      }
-                    ],
-                    "type": "input_source_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "y",
-                  "modifiers": { "optional": ["any"] }
-                },
-                "to": {
-                  "key_code": "z",
-                  "modifiers": ["optional"]
-                },
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "input_sources": [
-                      {
-                        "input_source_id": "com.apple.keylayout.US",
-                        "language": "en"
-                      }
-                    ],
-                    "type": "input_source_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "z",
-                  "modifiers": { "optional": ["any"] }
-                },
-                "to": {
-                  "key_code": "y",
-                  "modifiers": ["optional"]
-                },
                 "type": "basic"
               }
             ]

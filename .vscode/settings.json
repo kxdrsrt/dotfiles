@@ -1,0 +1,32 @@
+{
+  "autohotkey.version": "v1",
+  "editor.bracketPairColorization.enabled": true, // Aktiviert die Farbzuweisung für zusammengehörige Klammern
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Legt Prettier als Standard-Formatter fest
+  "editor.formatOnPaste": true, // Formatiert den Code beim Einfügen
+  "editor.formatOnSave": true, // Formatiert den Code beim Speichern
+  "editor.tabCompletion": "on", // Aktiviert die Tab-Vervollständigung
+  "emmet.includeLanguages": {
+    "markdown": "html" // Aktiviert Emmet-Abkürzungen in Markdown-Dateien
+  },
+  "files.autoSave": "afterDelay", // Aktiviert das automatische Speichern nach einer Verzögerung
+  "files.autoSaveDelay": 1000, // Setzt die Verzögerung für das automatische Speichern auf 1000 Millisekunden
+  "markdown-preview-enhanced.enableExtendedTableSyntax": true, // Aktiviert erweiterte Tabellensyntax in Markdown
+  "markdown-preview-enhanced.previewTheme": "github-light.css", // Setzt das Vorschau-Theme für Markdown auf "github-light"
+  "markdown.extension.bold.indicator": "**", // Verwendet '**' für Fettschrift in Markdown
+  "markdown.extension.italic.indicator": "*", // Verwendet '*' für Kursivschrift in Markdown
+  "markdown.extension.print.absoluteImgPath": true, // Verwendet absolute Bildpfade beim Drucken von Markdown-Dateien
+  "markdown.extension.tableFormatter.enabled": true, // Aktiviert den Tabellen-Formatter in Markdown
+  "markdown.extension.toc.updateOnSave": true, // Aktualisiert das Inhaltsverzeichnis (TOC) beim Speichern einer Markdown-Datei
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode" // Legt Prettier als Standard-Formatter für Markdown-Dateien fest
+  },
+  "[markdown][autohotkey]": {
+    "editor.defaultFormatter": "mark-wiemer.ahk-v1-formatter" // Legt mark-wiemer.ahk-v1-formatter als Standard-Formatter für eingebettete AHK-Codeblöcke in Markdown fest
+  },
+  "[ahk]": {
+    "editor.defaultFormatter": "mark-wiemer.ahk-v1-formatter" // Legt mark-wiemer.ahk-v1-formatter als Standard-Formatter AHK-Code fest
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
+}

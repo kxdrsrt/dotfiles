@@ -188,7 +188,6 @@ widgets:
 dock_items:
   apps:
     - /Applications/Arc.app
-    - /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app
     - /Applications/ChatGPT.app
     - /Applications/DeepL.app
     - /System/Applications/Reminders.app

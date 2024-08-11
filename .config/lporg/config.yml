@@ -2,187 +2,187 @@ apps:
   pages:
     - number: 1
       items:
-        - App Store
-        - System Settings
+        - folder:  Apps
+          pages:
+            - number: 1
+              items:
+                - App Store
+                - Books
+                - Calculator
+                - Calendar
+                - Clock
+                - Contacts
+                - Dictionary
+                - FaceTime
+                - Find My
+                - Freeform
+                - Home
+                - Mail
+                - Maps
+                - Messages
+                - Music
+                - Notes
+                - Numbers
+                - Pages
+                - Passwords
+                - Photo Booth
+                - Photos
+                - Podcasts
+                - Preview
+                - Reminders
+                - Shazam
+                - Siri
+                - Stocks
+                - System Settings
+                - Tips
+                - TV
+                - Voice Memos
+                - Weather
+        - folder: System Tools
+          pages:
+            - number: 1
+              items:
+                - Activity Monitor
+                - AirPort Utility
+                - Audio MIDI Setup
+                - Automator
+                - Bluetooth File Exchange
+                - ColorSync Utility
+                - Console
+                - Digital Colour Meter
+                - Disk Utility
+                - Feedback Assistant
+                - Font Book
+                - Grapher
+                - Image Capture
+                - Migration Assistant
+                - Mission Control
+                - Print Centre
+                - Screen Sharing
+                - Screenshot
+                - Script Editor
+                - Shortcuts
+                - Stickies
+                - System Information
+                - TextEdit
+                - Time Machine
+                - VoiceOver Utility
         - folder: Other
           pages:
             - number: 1
               items:
-                - Shortcuts
-                - QuickTime Player
-                - TextEdit
-                - Font Book
-                - Screen Sharing
-                - Mission Control
-                - Time Machine
-                - Screenshot
-                - Image Capture
-                - Digital Colour Meter
-                - ColorSync Utility
-                - Stickies
-                - Grapher
-                - VoiceOver Utility
-                - Print Centre
-                - Automator
-                - Script Editor
-                - Audio MIDI Setup
-                - Bluetooth File Exchange
-                - Disk Utility
-                - System Information
-                - Activity Monitor
-                - Console
-                - Terminal
-                - AirPort Utility
-                - Migration Assistant
-                - Feedback Assistant
-        - folder: 
-          pages:
-            - number: 1
-              items:
-                - Safari
-                - Mail
-                - Contacts
-                - Calendar
-                - Reminders
-                - Notes
-                - FaceTime
-                - Messages
-                - Maps
-                - Find My
-                - Photo Booth
-                - Photos
-                - Preview
-                - Music
-                - Podcasts
-                - TV
-                - Voice Memos
-                - Weather
-                - Stocks
-                - Books
-                - Dictionary
-                - Calculator
-                - Freeform
-                - Home
-                - Clock
-                - Siri
-                - Passwords
-                - Tips
-                - Numbers
-                - Pages
-                - Shazam
-                - TempBox
-        - folder: Utilities
-          pages:
-            - number: 1
-              items:
+                - Amphetamine
                 - AppCleaner
-                - Pure Paste
+                - BetterDisplay
                 - coconutBattery
-                - Mos
+                - Cork
+                - DisplayLink Manager
                 - Equinox
-                - Rectangle
-                - QLMarkdown
                 - Hush
                 - iPhone Mirroring
-                - Keka
-                - ProtonVPN
-                - NotchNook
-                - Cork
-                - Amphetamine
-                - DisplayLink Manager
-                - Karabiner-EventViewer
                 - Karabiner-Elements
-                - Shottr
+                - Karabiner-EventViewer
+                - Keka
+                - Mos
+                - NotchNook
                 - Pearcleaner
-                - BetterDisplay
+                - ProtonVPN
+                - Pure Paste
+                - QLMarkdown
                 - Raycast
-        - folder: Developer Tools
-          pages:
-            - number: 1
-              items:
-                - Visual Studio Code
-                - Warp
-                - RustDesk
-                - Cursor
-                - Parallels Desktop
-                - Parallels Desktop Activation Tool SIP ON
-                - PowerShell
-        - folder: Games
-          pages:
-            - number: 1
-              items:
-                - Chess
-                - Discord
-                - NVIDIA GeForce NOW
-        - ChatGPT
-        - folder: Productivity
-          pages:
-            - number: 1
-              items:
-                - Anki
-                - Flow
-                - Mathpix Snipping Tool
-                - zoom.us
-                - DeepL
-                - Notion
-                - Wondershare PDFelement
-                - PDF Expert
-                - Obsidian
-                - Logseq
-                - ProNotes
-                - Typora
-                - Ulysses
-                - Afirstsoft PDF
+                - Rectangle
+                - Shottr
+                - TempBox
         - folder: Photo & Video
           pages:
             - number: 1
               items:
                 - Figma
-                - ImageOptim
-                - Pixelmator Pro
-                - Sketch
-                - Freepik
                 - Foldor
+                - Freepik
                 - IINA
-                - Photomator
-                - TouchRetouch
+                - ImageOptim
                 - OBS
+                - Photomator
+                - Pixelmator Pro
+                - QuickTime Player
+                - Sketch
                 - Subler
-        - folder: Web
+                - TouchRetouch
+        - folder: Developer
           pages:
             - number: 1
               items:
-                - Spotify
-                - Google Chrome
-                - NetNewsWire
-                - WhatsApp
+                - Cursor
+                - Parallels Desktop
+                - Parallels Desktop Activation Tool SIP ON
+                - PowerShell
+                - RustDesk
+                - Terminal
+                - Visual Studio Code
+                - Warp
+        - folder: Web & Communication
+          pages:
+            - number: 1
+              items:
                 - Arc
+                - Discord
+                - Google Chrome
                 - Kleinanzeigen
+                - Microsoft Edge
+                - NetNewsWire
+                - Safari
+                - Spotify
+                - WhatsApp
+        - folder: Games
+          pages:
+            - number: 1
+              items:
+                - Chess
+                - NVIDIA GeForce NOW
+        - folder: Productivity & Documents
+          pages:
+            - number: 1
+              items:
+                - Afirstsoft PDF
+                - Anki
+                - ChatGPT
+                - DeepL
+                - Flow
+                - Logseq
+                - Mathpix Snipping Tool
+                - Notion
+                - Obsidian
+                - PDF Expert
+                - ProNotes
+                - Typora
+                - Ulysses
+                - Wondershare PDFelement
+                - zoom.us
         - folder: Microsoft
           pages:
             - number: 1
               items:
-                - Microsoft Remote Desktop
-                - Microsoft Word
+                - Microsoft Defender
+                - Microsoft Excel
+                - Microsoft OneNote
                 - Microsoft Outlook
                 - Microsoft PowerPoint
-                - Microsoft Excel
-                - OneDrive
-                - Microsoft OneNote
-                - Microsoft Defender
+                - Microsoft Remote Desktop
                 - Microsoft Teams
-                - Microsoft Edge
+                - Microsoft Word
+                - OneDrive
         - folder: Siemens AG
           pages:
             - number: 1
               items:
-                - Outlook Siemens
-                - Teams Siemens
-                - Viva Engage
-                - Office 365 Siemens
-                - Planner Siemens
                 - Copilot
+                - Office 365 Siemens
+                - Outlook Siemens
+                - Planner Siemens
+                - Teams Siemens
                 - To Do Siemens
+                - Viva Engage
 widgets:
   pages: []
 dock_items:
@@ -194,7 +194,6 @@ dock_items:
     - /System/Applications/Reminders.app
     - /System/Applications/Calendar.app
     - /System/Applications/Photos.app
-    - /Applications/Microsoft OneNote.app
     - /Applications/Cursor.app
     - /Applications/Warp.app
     - /Applications/Spotify.app
@@ -203,8 +202,8 @@ dock_items:
       sort: 2
   settings:
     autohide: true
-    largesize: 47
-    magnification: true
+    largesize: 16
+    magnification: false
     minimize-to-application: true
     mru-spaces: false
     show-recents: true

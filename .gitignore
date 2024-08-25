@@ -78,6 +78,7 @@ ehthumbs_vista.db
 /Pictures/
 /Videos/
 /iCloud Drive/
+/OneDrive/
 /autom4te.cache/
 /lib/
 /log/
@@ -87,3 +88,6 @@ ehthumbs_vista.db
 .cursor/extensions/
 .vscode/extensions/
 .zsh_sessions/
+
+# Ignore any folder or file containing 'OneDrive' (case-insensitive)
+*[oO][nN][eE][dD][rR][iI][vV][eE]*

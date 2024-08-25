@@ -49,7 +49,7 @@ apps:
                 - Bluetooth File Exchange
                 - ColorSync Utility
                 - Console
-                - Digital Colour Meter
+                - Digital Color Meter
                 - Disk Utility
                 - Feedback Assistant
                 - Font Book
@@ -57,7 +57,7 @@ apps:
                 - Image Capture
                 - Migration Assistant
                 - Mission Control
-                - Print Centre
+                - Print Center
                 - Screen Sharing
                 - Screenshot
                 - Script Editor
@@ -71,21 +71,13 @@ apps:
           pages:
             - number: 1
               items:
-                - Amphetamine
                 - AppCleaner
                 - BetterDisplay
                 - coconutBattery
-                - Cork
-                - DisplayLink Manager
                 - Equinox
                 - Hush
                 - iPhone Mirroring
-                - Karabiner-Elements
-                - Karabiner-EventViewer
-                - Keka
                 - Mos
-                - NotchNook
-                - Pearcleaner
                 - ProtonVPN
                 - Pure Paste
                 - QLMarkdown
@@ -98,26 +90,15 @@ apps:
             - number: 1
               items:
                 - Figma
-                - Foldor
-                - Freepik
                 - IINA
                 - ImageOptim
-                - OBS
-                - Photomator
                 - Pixelmator Pro
                 - QuickTime Player
-                - Sketch
-                - Subler
-                - TouchRetouch
         - folder: Developer
           pages:
             - number: 1
               items:
                 - Cursor
-                - Parallels Desktop
-                - Parallels Desktop Activation Tool SIP ON
-                - PowerShell
-                - RustDesk
                 - Terminal
                 - Visual Studio Code
                 - Warp
@@ -126,9 +107,7 @@ apps:
             - number: 1
               items:
                 - Arc
-                - Discord
                 - Google Chrome
-                - Kleinanzeigen
                 - Microsoft Edge
                 - NetNewsWire
                 - Safari
@@ -140,24 +119,17 @@ apps:
               items:
                 - Chess
                 - NVIDIA GeForce NOW
+                - GFN Fix
         - folder: Productivity & Documents
           pages:
             - number: 1
               items:
-                - Afirstsoft PDF
                 - Anki
                 - ChatGPT
                 - DeepL
                 - Flow
-                - Logseq
                 - Mathpix Snipping Tool
                 - Notion
-                - Obsidian
-                - PDF Expert
-                - ProNotes
-                - Typora
-                - Ulysses
-                - Wondershare PDFelement
                 - zoom.us
         - folder: Microsoft
           pages:
@@ -176,18 +148,15 @@ apps:
           pages:
             - number: 1
               items:
-                - Copilot
-                - Office 365 Siemens
                 - Outlook Siemens
                 - Planner Siemens
                 - Teams Siemens
-                - To Do Siemens
-                - Viva Engage
 widgets:
   pages: []
 dock_items:
   apps:
     - /Applications/Arc.app
+    - /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app
     - /Applications/ChatGPT.app
     - /Applications/DeepL.app
     - /System/Applications/Reminders.app
@@ -201,10 +170,10 @@ dock_items:
       sort: 2
   settings:
     autohide: true
-    largesize: 16
+    largesize: null
     magnification: false
     minimize-to-application: true
     mru-spaces: false
     show-recents: true
-    tilesize: 52
+    tilesize: 46
 desktop: {}

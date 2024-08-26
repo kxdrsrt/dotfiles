@@ -151,6 +151,7 @@ apps:
                 - Outlook Siemens
                 - Planner Siemens
                 - Teams Siemens
+                - Viva Engage Siemens
 widgets:
   pages: []
 dock_items:

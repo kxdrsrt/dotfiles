@@ -1,325 +1,263 @@
 {
-  "global": { "show_in_menu_bar": false },
-  "profiles": [
-    {
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "Map INS to CMD+V",
-            "manipulators": [
-              {
-                "from": { "key_code": "pause" },
-                "to": [
-                  {
-                    "key_code": "v",
-                    "modifiers": ["left_command"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Map left ctrl + right Option to Emoji Picker and Fn + right Option to right Option",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "right_option",
-                  "modifiers": {
-                    "mandatory": ["left_control"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "spacebar",
-                    "modifiers": ["left_command", "left_control"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "right_option",
-                  "modifiers": { "optional": ["fn"] }
-                },
-                "to": [{ "key_code": "right_option" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Activate Launchpad with cmd + § or cmd + ` in US English Mode",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "input_sources": [
-                      {
-                        "input_source_id": "com.apple.keylayout.US",
-                        "language": "en"
-                      }
-                    ],
-                    "type": "input_source_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "non_us_backslash",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "key_code": "launchpad" }],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "input_sources": [
-                      {
-                        "input_source_id": "com.apple.keylayout.US",
-                        "language": "en"
-                      }
-                    ],
-                    "type": "input_source_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "grave_accent_and_tilde",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "key_code": "launchpad" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Activate Launchpad with cmd + < in German Mode",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "input_sources": [
-                      {
-                        "input_source_id": "com.apple.keylayout.German",
-                        "language": "de"
-                      }
-                    ],
-                    "type": "input_source_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "grave_accent_and_tilde",
-                  "modifiers": { "mandatory": ["left_command"] }
-                },
-                "to": [{ "key_code": "launchpad" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Swap Y and Z keys when in US English",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "input_sources": [
-                      {
-                        "input_source_id": "com.apple.keylayout.US",
-                        "language": "en"
-                      }
-                    ],
-                    "type": "input_source_if"
-                  }
-                ],
-                "from": { "key_code": "y" },
-                "to": { "key_code": "z" },
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "input_sources": [
-                      {
-                        "input_source_id": "com.apple.keylayout.US",
-                        "language": "en"
-                      }
-                    ],
-                    "type": "input_source_if"
-                  }
-                ],
-                "from": { "key_code": "z" },
-                "to": { "key_code": "y" },
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Toggle Do Not Disturb with F6",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "f6"
-                },
-                "to": [
-                  {
-                    "shell_command": "osascript -e 'set current_state to do shell script \"defaults -currentHost read ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb\"' -e 'if current_state is \"1\" then' -e '    do shell script \"defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb -boolean false && killall NotificationCenter\"' -e 'else' -e '    do shell script \"defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb -boolean true && killall NotificationCenter\"' -e 'end if'"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Cmd+X to cut files in Finder",
-            "manipulators": [
-              {
-                "type": "basic",
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": ["^com.apple.finder"]
-                  }
-                ],
-                "from": {
-                  "key_code": "x",
-                  "modifiers": {
-                    "mandatory": ["command"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "osascript -e 'tell application \"Finder\" to set the clipboard to (POSIX path of (the selection as alias))' -e 'tell application \"Finder\" to set itemsToCut to the selection' -e 'tell application \"Finder\" to set the clipboard to (get the clipboard) & \"cut\"'"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Cmd+V to paste cut or copied files in Finder",
-            "manipulators": [
-              {
-                "type": "basic",
-                "conditions": [
-                  {
-                    "type": "frontmost_application_if",
-                    "bundle_identifiers": ["^com.apple.finder"]
-                  }
-                ],
-                "from": {
-                  "key_code": "v",
-                  "modifiers": {
-                    "mandatory": ["command"],
-                    "optional": ["caps_lock"]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "osascript -e 'set clipboardContents to the clipboard' -e 'if clipboardContents ends with \"cut\" then' -e 'set sourceFolder to (text 1 thru -4 of clipboardContents)' -e 'tell application \"Finder\" to move (POSIX file sourceFolder as alias) to (get insertion location)' -e 'tell application \"Finder\" to delete itemsToCut' -e 'else' -e 'tell application \"Finder\" to paste' -e 'end if'"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "description": "Open Warp Terminal in current Finder location with Cmd+Option+T",
-            "manipulators": [
-              {
-                "type": "basic",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": { "mandatory": ["command", "option"] }
-                },
-                "to": [
-                  {
-                    "shell_command": "osascript -e 'tell application \"Finder\" to set dir to (POSIX path of (insertion location as alias))' -e 'tell application \"Warp\" to activate' -e 'tell application \"System Events\" to tell process \"Warp\" to keystroke \"t\" using command down' -e 'delay 0.5' -e 'tell application \"System Events\" to tell process \"Warp\" to keystroke \"cd \" & quoted form of dir & \"\n\"'"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      "devices": [
+    "global": { "show_in_menu_bar": false },
+    "profiles": [
         {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 0,
-            "vendor_id": 0
-          },
-          "ignore": true
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 50504,
-            "vendor_id": 1133
-          },
-          "ignore": true
-        },
-        {
-          "fn_function_keys": [
-            {
-              "from": { "key_code": "f1" },
-              "to": [{ "key_code": "display_brightness_decrement" }]
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Map INS to CMD+V",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "pause" },
+                                "to": [
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map left ctrl + right Option to Emoji Picker and Fn + right Option to right Option",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "right_option",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_command", "left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_option",
+                                    "modifiers": { "optional": ["fn"] }
+                                },
+                                "to": [{ "key_code": "right_option" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Activate Launchpad with cmd + § or cmd + ` in US English Mode",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.US",
+                                                "language": "en"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "key_code": "launchpad" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.US",
+                                                "language": "en"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "grave_accent_and_tilde",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "key_code": "launchpad" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Activate Launchpad with cmd + < in German Mode",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.German",
+                                                "language": "de"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "grave_accent_and_tilde",
+                                    "modifiers": { "mandatory": ["left_command"] }
+                                },
+                                "to": [{ "key_code": "launchpad" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Swap Y and Z keys when in US English",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.US",
+                                                "language": "en"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": { "key_code": "y" },
+                                "to": { "key_code": "z" },
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.US",
+                                                "language": "en"
+                                            }
+                                        ],
+                                        "type": "input_source_if"
+                                    }
+                                ],
+                                "from": { "key_code": "z" },
+                                "to": { "key_code": "y" },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Toggle Do Not Disturb with F6",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f6" },
+                                "to": [{ "shell_command": "osascript -e 'set current_state to do shell script \"defaults -currentHost read ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb\"' -e 'if current_state is \"1\" then' -e '    do shell script \"defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb -boolean false && killall NotificationCenter\"' -e 'else' -e '    do shell script \"defaults -currentHost write ~/Library/Preferences/ByHost/com.apple.notificationcenterui doNotDisturb -boolean true && killall NotificationCenter\"' -e 'end if'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Open Warp Terminal in current Finder location with Cmd+Option+T",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": { "mandatory": ["command", "option"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Finder\" to set dir to (POSIX path of (insertion location as alias))' -e 'tell application \"Warp\" to activate' -e 'tell application \"System Events\" to tell process \"Warp\" to keystroke \"t\" using command down' -e 'delay 0.5' -e 'tell application \"System Events\" to tell process \"Warp\" to keystroke \"cd \" & quoted form of dir & \"\n\"'" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
             },
-            {
-              "from": { "key_code": "f2" },
-              "to": [{ "key_code": "display_brightness_increment" }]
-            },
-            {
-              "from": { "key_code": "f3" },
-              "to": [{ "key_code": "mission_control" }]
-            },
-            { "from": { "key_code": "f7" }, "to": [{ "key_code": "rewind" }] },
-            {
-              "from": { "key_code": "f8" },
-              "to": [{ "key_code": "play_or_pause" }]
-            },
-            {
-              "from": { "key_code": "f9" },
-              "to": [{ "key_code": "fast_forward" }]
-            },
-            { "from": { "key_code": "f10" }, "to": [{ "key_code": "mute" }] },
-            {
-              "from": { "key_code": "f11" },
-              "to": [{ "key_code": "volume_decrement" }]
-            },
-            {
-              "from": { "key_code": "f12" },
-              "to": [{ "key_code": "volume_increment" }]
-            }
-          ],
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 64112,
-            "vendor_id": 9639
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "end" },
-              "to": [{ "consumer_key_code": "al_local_machine_browser" }]
-            },
-            {
-              "from": { "key_code": "home" },
-              "to": [{ "key_code": "dashboard" }]
-            },
-            {
-              "from": { "key_code": "page_down" },
-              "to": [{ "mouse_key": { "vertical_wheel": 69 } }]
-            },
-            {
-              "from": { "key_code": "page_up" },
-              "to": [{ "mouse_key": { "vertical_wheel": -69 } }]
-            },
-            {
-              "from": { "key_code": "print_screen" },
-              "to": [{ "key_code": "vk_none" }]
-            }
-          ],
-          "treat_as_built_in_keyboard": true
+            "devices": [
+                {
+                    "identifiers": { "is_keyboard": true },
+                    "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 50504,
+                        "vendor_id": 1133
+                    },
+                    "ignore": true
+                },
+                {
+                    "fn_function_keys": [
+                        {
+                            "from": { "key_code": "f1" },
+                            "to": [{ "key_code": "display_brightness_decrement" }]
+                        },
+                        {
+                            "from": { "key_code": "f2" },
+                            "to": [{ "key_code": "display_brightness_increment" }]
+                        },
+                        {
+                            "from": { "key_code": "f3" },
+                            "to": [{ "key_code": "mission_control" }]
+                        },
+                        {
+                            "from": { "key_code": "f7" },
+                            "to": [{ "key_code": "rewind" }]
+                        },
+                        {
+                            "from": { "key_code": "f8" },
+                            "to": [{ "key_code": "play_or_pause" }]
+                        },
+                        {
+                            "from": { "key_code": "f9" },
+                            "to": [{ "key_code": "fast_forward" }]
+                        },
+                        {
+                            "from": { "key_code": "f10" },
+                            "to": [{ "key_code": "mute" }]
+                        },
+                        {
+                            "from": { "key_code": "f11" },
+                            "to": [{ "key_code": "volume_decrement" }]
+                        },
+                        {
+                            "from": { "key_code": "f12" },
+                            "to": [{ "key_code": "volume_increment" }]
+                        }
+                    ],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 64112,
+                        "vendor_id": 9639
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "end" },
+                            "to": [{ "consumer_key_code": "al_local_machine_browser" }]
+                        },
+                        {
+                            "from": { "key_code": "home" },
+                            "to": [{ "key_code": "dashboard" }]
+                        },
+                        {
+                            "from": { "key_code": "page_down" },
+                            "to": [{ "mouse_key": { "vertical_wheel": 69 } }]
+                        },
+                        {
+                            "from": { "key_code": "page_up" },
+                            "to": [{ "mouse_key": { "vertical_wheel": -69 } }]
+                        },
+                        {
+                            "from": { "key_code": "print_screen" },
+                            "to": [{ "key_code": "vk_none" }]
+                        }
+                    ],
+                    "treat_as_built_in_keyboard": true
+                }
+            ],
+            "name": "Default profile",
+            "selected": true
         }
-      ],
-      "name": "Default profile",
-      "selected": true
-    }
-  ]
+    ]
 }

@@ -77,6 +77,8 @@ apps:
                 - Equinox
                 - Hush
                 - iPhone Mirroring
+                - Karabiner-Elements
+                - Karabiner-EventViewer
                 - Mos
                 - ProtonVPN
                 - Pure Paste
@@ -148,7 +150,7 @@ apps:
           pages:
             - number: 1
               items:
-                - Outlook Siemens
+                - Outlook (PWA)
                 - Planner Siemens
                 - Teams Siemens
                 - Viva Engage Siemens
@@ -168,7 +170,7 @@ dock_items:
     - /Applications/Spotify.app
   others:
     - path: ~/Downloads
-      sort: 2
+      sort: 1
   settings:
     autohide: true
     largesize: null

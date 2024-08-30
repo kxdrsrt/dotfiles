@@ -86,6 +86,7 @@ ehthumbs_vista.db
 .autom4te.cache/requests
 .autom4te.cache/traces.0
 .cursor/extensions/
+.cursor/shouldUpdate
 .vscode/extensions/
 .zsh_sessions/
 

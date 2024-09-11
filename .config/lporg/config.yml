@@ -44,6 +44,7 @@ apps:
               items:
                 - Activity Monitor
                 - AirPort Utility
+                - Apple Configurator
                 - Audio MIDI Setup
                 - Automator
                 - Bluetooth File Exchange
@@ -79,14 +80,17 @@ apps:
                 - iPhone Mirroring
                 - Karabiner-Elements
                 - Karabiner-EventViewer
+                - Keka
                 - Mos
                 - ProtonVPN
                 - Pure Paste
                 - QLMarkdown
                 - Raycast
                 - Rectangle
+                - Shortcat
                 - Shottr
                 - TempBox
+                - DisplayLink Manager
         - folder: Photo & Video
           pages:
             - number: 1
@@ -102,6 +106,8 @@ apps:
               items:
                 - Cursor
                 - Terminal
+                - Parallels Desktop
+                - Parallels Desktop Activation Tool (SIP ON)
                 - Visual Studio Code
                 - Warp
         - folder: Web & Communication
@@ -132,6 +138,7 @@ apps:
                 - Flow
                 - Mathpix Snipping Tool
                 - Notion
+                - PDF Expert
                 - zoom.us
         - folder: Microsoft
           pages:
@@ -146,6 +153,7 @@ apps:
                 - Microsoft Teams
                 - Microsoft Word
                 - OneDrive
+                - Windows App Preview
         - folder: Siemens AG
           pages:
             - number: 1
@@ -178,5 +186,5 @@ dock_items:
     minimize-to-application: true
     mru-spaces: false
     show-recents: true
-    tilesize: 46
+    tilesize: 50
 desktop: {}

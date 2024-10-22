@@ -25,7 +25,7 @@ alias ..='cd ..'                                                                
 alias ...='cd ../..'                                                                                                     # Navigate up two directory levels
 alias ....='cd ../../..'                                                                                                 # Navigate up three directory levels
 alias ~='cd ~'                                                                                                           # Navigate to home directory
-alias ahk='cd ~/Library/CloudStorage/OneDrive-SiemensAG/Dokumente/Coding/sag-ahk-sap'                                                                                  # Navigate to AHK-SAP-SAG directory
+alias ahk='cd ~/Library/CloudStorage/OneDrive-SiemensAG/Dokumente/Coding/sag-ahk-sap'                                    # Navigate to AHK-SAP-SAG directory
 alias desk='cd ~/Desktop/'                                                                                               # Navigate to Desktop directory
 alias dev='cd ~/Developer/'                                                                                              # Navigate to Developer directory
 alias doc='cd ~/Documents/'                                                                                              # Navigate to Documents directory
@@ -91,6 +91,13 @@ alias lpm='$HOME/Documents/Others/macOS/Scripts/toggle-lpm.sh'           # Toggl
 alias mac-deploy='sh $HOME/Documents/Others/macOS/Scripts/mac-deploy.sh' # Mac deployment script
 alias md2pdf='sh $HOME/Documents/Others/macOS/Scripts/md2pdf.sh'         # Convert Markdown to PDF
 alias png2icns='sh $HOME/Documents/Others/macOS/Scripts/png2icns.sh'     # Convert png to icns
+
+# Aliases - SSH Servers
+# Alias for connecting to RO VPS as user k
+alias ro='ssh k@ro-server'
+
+# Alias for connecting to RO VPS as root
+alias roo='ssh root@ro-server'
 
 # Functions
 function - {

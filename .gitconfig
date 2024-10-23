@@ -1,7 +1,7 @@
 [user]
-	name = kadir.sert
-	email = kadir.sert@siemens.com
-	signingkey = /Users/k/.ssh/id_ed25519
+    name = kadir.sert
+    email = kadir.sert@siemens.com
+    signingkey = /Users/k/.ssh/id_ed25519
 
 [core]
     editor = nano
@@ -28,7 +28,15 @@
 
 [credential]
     helper = store
+
 [gpg]
-	format = ssh
+    format = ssh
+
 [commit]
-	gpgsign = true
+    gpgsign = true
+
+[includeIf "gitdir:~/Users/k/Developer/xathena/"]
+    path = ~/.gitconfig-gitlab
+
+[includeIf "gitdir:~/Users/k/Developer/xathena/"]
+    path = ~/.gitconfig-github

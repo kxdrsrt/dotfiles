@@ -35,6 +35,3 @@
 
 [includeIf "gitdir:~/Users/k/Developer/xathena/"]
     path = ~/.gitconfig-gitlab
-
-[includeIf "gitdir:~/Users/k/"]
-    path = ~/.gitconfig-github

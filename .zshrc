@@ -34,7 +34,7 @@ alias home='cd ~/'                                                              
 alias iCloud='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'                                                        # Navigate to iCloud directory
 alias k='cd ~/'                                                                                                          # Navigate to K's Home directory
 alias wd='cd ~/Documents/Work\ \&\ Career/Work/SIEMENS\ AG/Werkstudent\ Programmierung\ ID-411626/0\ Working\ Directory' # Navigate to SAG Working Directory
-alias xa='cd ~/Developer/xathena'                                                                                     # Navigate to xathena directory
+alias xa='cd ~/Developer/xathena'                                                                                        # Navigate to xathena directory
 
 # Aliases - Common Commands
 alias c='clear'                  # Clear terminal

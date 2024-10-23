@@ -1,6 +1,4 @@
 [user]
-#    name = kadir.sert
-#   email = kadir.sert@siemens.com
     signingkey = /Users/k/.ssh/id_ed25519
 
 [core]
@@ -38,5 +36,5 @@
 [includeIf "gitdir:~/Users/k/Developer/xathena/"]
     path = ~/.gitconfig-gitlab
 
-[includeIf "gitdir:~/Users/k/Developer/xathena/"]
+[includeIf "gitdir:~/Users/k/"]
     path = ~/.gitconfig-github

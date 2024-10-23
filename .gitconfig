@@ -32,6 +32,3 @@
 
 [commit]
     gpgsign = true
-
-[includeIf "gitdir:~/Users/k/Developer/xathena/"]
-    path = ~/.gitconfig-gitlab

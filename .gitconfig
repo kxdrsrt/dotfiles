@@ -1,6 +1,6 @@
 [user]
-    name = kadir.sert
-    email = kadir.sert@siemens.com
+#    name = kadir.sert
+#   email = kadir.sert@siemens.com
     signingkey = /Users/k/.ssh/id_ed25519
 
 [core]

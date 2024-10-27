@@ -78,7 +78,7 @@ alias bu='brew update'             # Update Homebrew
 alias bun='brew uninstall'         # Uninstall a Homebrew package
 
 # Aliases - Miscellaneous Commands
-alias battery='system_profiler SPPowerDataType | grep -A 2 "Cycle Count"'
+alias battery="system_profiler SPPowerDataType | grep 'Cycle Count\|Condition\|State of Charge\|Power Source State\|Maximum Capacity' | grep -v 'Health Information' | sed $'s/Cycle Count:/\x1b[1;31mCycle Count:\x1b[0m/g'"
 alias betterdisplay="rm -rf /Users/k/Library/Preferences/pro.betterdisplay.BetterDisplay.plist"
 alias cork="rm -rf /Users/k/Library/Preferences/com.davidbures.Cork.plist"
 alias dark='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"' # Toggle Dark Mode

@@ -26,6 +26,7 @@
 .zsh_history
 Applications/
 Applications (Parallels)/
+CascadeProjects
 Developer/
 Library/
 Movies/
@@ -88,6 +89,7 @@ ehthumbs_vista.db
 .cursor/extensions/
 .cursor/shouldUpdate
 .vscode/extensions/
+.windsurf/extensions/
 .zsh_sessions/
 
 # Ignore any folder or file containing 'OneDrive' (case-insensitive)

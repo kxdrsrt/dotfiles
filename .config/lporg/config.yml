@@ -2,189 +2,200 @@ apps:
   pages:
     - number: 1
       items:
-        - folder:  Apps
+        - folder: Utilities
           pages:
             - number: 1
               items:
-                - App Store
-                - Books
-                - Calculator
-                - Calendar
-                - Clock
-                - Contacts
-                - Dictionary
-                - FaceTime
-                - Find My
-                - Freeform
-                - Home
-                - Mail
-                - Maps
-                - Messages
-                - Music
-                - Notes
-                - Numbers
-                - Pages
-                - Passwords
-                - Photo Booth
-                - Photos
-                - Podcasts
-                - Preview
-                - Reminders
-                - Shazam
                 - Siri
-                - Stocks
-                - System Settings
-                - Tips
-                - TV
-                - Voice Memos
-                - Weather
-        - folder: System Tools
-          pages:
-            - number: 1
-              items:
-                - Activity Monitor
-                - AirPort Utility
-                - Apple Configurator
-                - Audio MIDI Setup
-                - Automator
-                - Bluetooth File Exchange
-                - ColorSync Utility
-                - Console
-                - Digital Color Meter
-                - Disk Utility
-                - Feedback Assistant
-                - Font Book
-                - Grapher
-                - Image Capture
-                - Migration Assistant
-                - Mission Control
-                - Print Center
-                - Screen Sharing
-                - Screenshot
-                - Script Editor
-                - Shortcuts
-                - Stickies
-                - System Information
-                - TextEdit
-                - Time Machine
-                - VoiceOver Utility
-        - folder: Other
-          pages:
-            - number: 1
-              items:
-                - AppCleaner
-                - BetterDisplay
-                - coconutBattery
                 - Equinox
-                - Hush
-                - iPhone Mirroring
-                - Karabiner-Elements
-                - Karabiner-EventViewer
-                - Keka
+                - BetterDisplay
+                - System Settings
+                - Video Speed Controller
+                - AppCleaner
                 - Mos
-                - ProtonVPN
-                - Pure Paste
-                - QLMarkdown
+                - Shottr
+                - Voice Memos
+                - App Store
+        - folder: Productivity
+          pages:
+            - number: 1
+              items:
+                - Safari
                 - Raycast
                 - Rectangle
-                - Shortcat
-                - Shottr
-                - TempBox
-                - DisplayLink Manager
-        - folder: Photo & Video
+                - Notion
+                - OneDrive
+                - Notes
+                - Freeform
+                - Preview
+                - Microsoft Word
+                - TextEdit
+                - 1Blocker
+                - Arc
+                - Microsoft Excel
+                - ChatGPT
+                - Mail
+                - Microsoft Outlook
+                - Contacts
+                - Flow
+                - Microsoft OneNote
+                - Microsoft PowerPoint
+                - ColorSync Utility
+                - Digital Color Meter
+                - Stickies
+                - Reminders
+                - Calendar
+        - folder: Developer Tools
+          pages:
+            - number: 1
+              items:
+                - Visual Studio Code
+                - Warp
+                - Cursor
+        - folder: Music
+          pages:
+            - number: 1
+              items:
+                - Music
+                - Spotify
+        - folder: Graphics Design
           pages:
             - number: 1
               items:
                 - Figma
-                - IINA
-                - ImageOptim
-                - Pixelmator Pro
+        - folder: Reference
+          pages:
+            - number: 1
+              items:
+                - DeepL
+                - Dictionary
+        - folder: Video
+          pages:
+            - number: 1
+              items:
                 - QuickTime Player
-        - folder: Developer
-          pages:
-            - number: 1
-              items:
-                - Cursor
-                - Terminal
-                - Parallels Desktop
-                - Parallels Desktop Activation Tool (SIP ON)
-                - Visual Studio Code
-                - Warp
-        - folder: Web & Communication
-          pages:
-            - number: 1
-              items:
-                - Arc
-                - Google Chrome
-                - Microsoft Edge
-                - NetNewsWire
-                - Safari
-                - Spotify
-                - WhatsApp
-        - folder: Games
+                - IINA
+                - TV
+        - folder: Board Games
           pages:
             - number: 1
               items:
                 - Chess
+        - folder: Entertainment
+          pages:
+            - number: 1
+              items:
+                - Photo Booth
+        - folder: Books
+          pages:
+            - number: 1
+              items:
+                - Books
+        - folder: Business
+          pages:
+            - number: 1
+              items:
+                - Windows App
+        - folder: News
+          pages:
+            - number: 1
+              items:
+                - NetNewsWire
+        - folder: Social Networking
+          pages:
+            - number: 1
+              items:
+                - WhatsApp
+                - FaceTime
+                - Messages
+        - folder: Games
+          pages:
+            - number: 1
+              items:
                 - NVIDIA GeForce NOW
-                - GFN Fix
-        - folder: Productivity & Documents
+        - folder: Education
           pages:
             - number: 1
               items:
-                - Anki
-                - ChatGPT
-                - DeepL
-                - Flow
-                - Mathpix Snipping Tool
-                - Notion
-                - PDF Expert
-                - zoom.us
-        - folder: Microsoft
+                - Grapher
+                - Tips
+        - folder: Travel
           pages:
             - number: 1
               items:
+                - Maps
+        - folder: Photography
+          pages:
+            - number: 1
+              items:
+                - Photos
+        - folder: Misc
+          pages:
+            - number: 1
+              items:
+                - Find My
                 - Microsoft Defender
-                - Microsoft Excel
-                - Microsoft OneNote
-                - Microsoft Outlook
-                - Microsoft PowerPoint
-                - Microsoft Remote Desktop
+                - Karabiner-Elements
+                - Karabiner-EventViewer
+                - Weather
+                - Home
+                - coconutBattery
+                - Passwords
+                - Podcasts
+                - Stocks
+                - Microsoft Edge
                 - Microsoft Teams
-                - Microsoft Word
-                - OneDrive
-                - Windows App Preview
-        - folder: Siemens AG
+                - Disk Utility
+                - iPhone Mirroring
+                - Calculator
+                - Clock
+        - folder: Other
           pages:
             - number: 1
               items:
-                - Outlook (PWA)
-                - Planner Siemens
-                - Teams Siemens
-                - Viva Engage Siemens
+                - Shortcuts
+                - Font Book
+                - Screen Sharing
+                - Mission Control
+                - Time Machine
+                - Screenshot
+                - Image Capture
+                - VoiceOver Utility
+                - Print Center
+                - Automator
+                - Script Editor
+                - Audio MIDI Setup
+                - Bluetooth File Exchange
+                - System Information
+                - Activity Monitor
+                - Console
+                - Terminal
+                - AirPort Utility
+                - Migration Assistant
 widgets:
   pages: []
 dock_items:
   apps:
-    - /Applications/Arc.app
     - /System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app
-    - /Applications/ChatGPT.app
-    - /Applications/DeepL.app
-    - /System/Applications/Reminders.app
-    - /System/Applications/Calendar.app
+    - /Applications/WhatsApp.app
     - /System/Applications/Photos.app
-    - /Applications/Cursor.app
+    - /System/Applications/Calendar.app
+    - /System/Applications/Reminders.app
+    - /System/Applications/Notes.app
+    - /Applications/Microsoft OneNote.app
+    - /System/Applications/Passwords.app
+    - /System/Applications/System Settings.app
     - /Applications/Warp.app
-    - /Applications/Spotify.app
   others:
     - path: ~/Downloads
-      sort: 1
+      view: 1
+      sort: 2
   settings:
     autohide: true
     largesize: null
     magnification: false
-    minimize-to-application: true
+    minimize-to-application: false
     mru-spaces: false
-    show-recents: true
-    tilesize: 50
+    show-recents: false
+    tilesize: 53
 desktop: {}

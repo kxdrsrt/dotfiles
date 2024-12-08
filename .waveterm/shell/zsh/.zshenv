@@ -1,2 +1,0 @@
-
-[ -f ~/.zshenv ] && source ~/.zshenv

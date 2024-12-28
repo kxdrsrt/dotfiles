@@ -85,6 +85,7 @@ alias dark='osascript -e "tell app \"System Events\" to tell appearance preferen
 alias myip='echo "Public IP: $(curl -4 -s http://ipecho.net/plain)"; echo "Local IP: $(ipconfig getifaddr en0)"'        # Get public IPv4 and local IP addresses
 alias resetkeyboard='sudo sh ~/Documents/Others/macOS/keys-swapped.sh'                                                  # Reset keyboard plist
 alias spotx='bash <(curl -sSL https://spotx-official.github.io/run.sh) -B -c -f -h'                                     # Install SpotX
+alias cursor-trial='curl -sL dub.sh/cursorreset | python3' #                                                            # Cursor Trial Reset
 
 # Aliases - Scripts
 alias icns2png='sh $HOME/Documents/Others/macOS/Scripts/icns2png.sh'     # Convert icns to png

@@ -3,6 +3,7 @@ export PROMPT='%F{green}🅺 @%m%f:%F{blue}%~%f ' # Customizes the terminal prom
 export PATH=$HOME/bin:/usr/local/bin:$PATH     # Adds custom directories to the PATH environment variable
 export EDITOR=nano                             # Sets nano as the default text editor
 export BROWSER=arc                             # Sets arc as the default web browser
+export HOMEBREW_NO_QUARANTINE=1                # Disable Homebrew quarantine for security
 HISTSIZE=1000                                  # Limits the size of command history to 1000 entries
 SAVEHIST=1000                                  # Limits the size of saved history to 1000 entries
 HISTFILE=~/.zsh_history                        # Specifies the location of the command history file
@@ -153,3 +154,7 @@ alias extract='extract'
 
 # Alias to create zip archives
 alias zip='create_zip'
+
+# Aliases - Miscellaneous Commands
+alias unquarantine='xattr -dr com.apple.quarantine' # Use as: unquarantine /path/to/app
+alias unquarantine-apps='sudo xattr -dr com.apple.quarantine /Applications/*.app' # Remove quarantine from all apps, including those in subdirectories

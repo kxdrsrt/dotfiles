@@ -1,29 +1,31 @@
-   [core]
-       editor = nano
-       autocrlf = input
-   [alias]
-       co = checkout
-       br = branch
-       ci = commit
-       st = status
-       lg = log --oneline --graph --decorate --all
-   [color]
-       ui = auto
-   [push]
-       default = simple
-   [merge]
-       tool = vimdiff
-   [diff]
-       tool = vimdiff
-   [gpg]
-       format = ssh
-   [commit]
-       gpgsign = true
+[core]
+    editor = nano
+    autocrlf = input
+[alias]
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    lg = log --oneline --graph --decorate --all
+[color]
+    ui = auto
+[push]
+    default = simple
+[merge]
+    tool = vimdiff
+[diff]
+    tool = vimdiff
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
 
-   # Include account-specific configurations
-   [includeIf "gitdir:~/Library/CloudStorage/OneDrive-SiemensAG/Dokumente/Coding"]
-       path = ~/.gitconfig-work
-   [includeIf "gitdir:~/"]
-       path = ~/.gitconfig-personal
-   [includeIf "gitdir:~/Developer/xathena/"]
-       path = ~/.gitconfig-ro
+# Include personal config as default
+[include]
+    path = ~/.gitconfig-personal
+
+# Override with specific configurations where needed
+[includeIf "gitdir:~/Library/CloudStorage/OneDrive-SiemensAG/"]
+    path = ~/.gitconfig-work
+[includeIf "gitdir:~/Developer/xathena/"]
+    path = ~/.gitconfig-ro

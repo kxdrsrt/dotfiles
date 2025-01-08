@@ -1,4 +1,7 @@
 [user]
     name = Kadir Sert
     email = kadir.sert@siemens.com
-    signingkey = /Users/k/.ssh/id_ed25519
+    signingkey = /Users/k/.ssh/id_ed25519.pub
+
+[gpg]
+    format = ssh

@@ -62,10 +62,12 @@ alias ga='git add'                                                      # Shortc
 alias ga.='git add .'                                                   # Shortcut for git add (alternative)
 alias gap='git add . && git commit -m "Updated .gitignore" && git push' # Add, commit and push at once.
 alias gc='git clone'                                                    # Shortcut for git clone
+alias gcf='git clean -fv'                                                # Shortcut for forceful removal of untracked files with verbose output
 alias gcm='git commit -m'                                               # Shortcut for git commit with message
 alias gco='git checkout'                                                # Shortcut for git checkout
 alias gp='git pull'                                                     # Shortcut for git pull
 alias gup='git push'                                                    # Shortcut for git push
+alias gr='git restore .'                                                # Shortcut for git restore to discard changes to tracked files
 alias gs='git status'                                                   # Shortcut for git status
 
 # Aliases - Homebrew Commands

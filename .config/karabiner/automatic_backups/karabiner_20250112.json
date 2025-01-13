@@ -21,7 +21,6 @@
                     },
                     {
                         "description": "Map left ctrl + right Option to Emoji Picker and Fn + right Option to right Option",
-                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {
@@ -235,7 +234,7 @@
                     "simple_modifications": [
                         {
                             "from": { "key_code": "end" },
-                            "to": [{ "key_code": "fn" }]
+                            "to": [{ "consumer_key_code": "al_local_machine_browser" }]
                         },
                         {
                             "from": { "key_code": "home" },

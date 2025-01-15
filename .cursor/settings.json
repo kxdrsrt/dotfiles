@@ -1,0 +1,7 @@
+{
+  "files.defaultLanguage": "markdown",
+  "editor.formatOnSave": true,
+  "workbench.editorAssociations": {
+    "*": "default"
+  }
+}

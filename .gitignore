@@ -2,6 +2,8 @@
 .AppleDB/
 .AppleDesktop/
 .AppleDouble
+.android
+.anydesk
 .CFUserTextEncoding
 .DS_Store
 .DocumentRevisions-V100
@@ -28,6 +30,7 @@ Applications/
 Applications (Parallels)/
 CascadeProjects
 Developer/
+Games
 Library/
 Movies/
 Parallels/

@@ -98,8 +98,9 @@ ehthumbs_vista.db
 # Ignore any folder or file containing 'OneDrive' (case-insensitive)
 *[oO][nN][eE][dD][rR][iI][vV][eE]*
 
-# raycast
+# config
 .config/raycast/extensions/40ebc708-964f-473b-8d19-d4e9cbd27ae9/
 .config/raycast/extensions/c0c9423a-7014-481e-8bb9-44c4c6df53be/
 .config/raycast/extensions/320f40ef-a633-415a-ab0e-1e99515478f7/
 .config/raycast/extensions/606e26d8-b3c5-4760-8001-dccce1b872c4/
+.config/qBittorrent/

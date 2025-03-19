@@ -84,12 +84,13 @@ alias bun='brew uninstall'         # Uninstall a Homebrew package
 alias battery="system_profiler SPPowerDataType | grep 'Cycle Count\|Condition\|State of Charge\|Power Source State\|Maximum Capacity' | grep -v 'Health Information' | sed $'s/Cycle Count:/\x1b[1;31mCycle Count:\x1b[0m/g'"
 alias betterdisplay="rm -rf /Users/k/Library/Preferences/pro.betterdisplay.BetterDisplay.plist"
 alias cork="rm -rf /Users/k/Library/Preferences/com.davidbures.Cork.plist"
+alias cursor-trial='curl -sL dub.sh/cursorreset | python3'                                                              # Cursor Trial Reset
 alias dark='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"' # Toggle Dark Mode
+alias dhcp='sudo ifconfig en0 down && sudo ifconfig en0 up'                                                             # Reset DHCP completely
 alias myip='echo "Public IP: $(curl -4 -s http://ipecho.net/plain)"; echo "Local IP: $(ipconfig getifaddr en0)"'        # Get public IPv4 and local IP addresses
 alias resetkeyboard='sudo sh ~/Documents/Others/macOS/keys-swapped.sh'                                                  # Reset keyboard plist
 alias spotx='bash <(curl -sSL https://spotx-official.github.io/run.sh) -B -c -f -h'                                     # Install SpotX
-alias cursor-trial='curl -sL dub.sh/cursorreset | python3'                                                              # Cursor Trial Reset
-alias dhcp='sudo ifconfig en0 down && sudo ifconfig en0 up'                                                             # Reset DHCP completely
+alias wifiinfo='networksetup -listallnetworkservices | grep -i wi-fi | xargs -I {} sh -c '\''echo "Service: {}"; networksetup -getinfo "{}"; echo "MAC Address: $(networksetup -getmacaddress "{}" | awk "{print \$3}")"'\'''
 
 # Aliases - Scripts
 alias icns2png='sh $HOME/Documents/Others/macOS/Scripts/icns2png.sh'     # Convert icns to png

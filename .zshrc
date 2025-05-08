@@ -37,6 +37,7 @@ alias k='cd ~/'                                                                 
 alias wd='cd ~/Documents/Work\ \&\ Career/Work/SIEMENS\ AG/Werkstudent\ Programmierung\ ID-411626/0\ Working\ Directory' # Navigate to SAG Working Directory
 alias xa='cd ~/Developer/xathena'                                                                                        # Navigate to xathena directory
 
+
 # Aliases - Common Commands
 alias c='clear'                  # Clear terminal
 alias cp='cp -I'                 # Confirm before overwriting files with cp
@@ -62,13 +63,16 @@ alias ga='git add'                                                      # Shortc
 alias ga.='git add .'                                                   # Shortcut for git add (alternative)
 alias gap='git add . && git commit -m "Updated .gitignore" && git push' # Add, commit and push at once.
 alias gc='git clone'                                                    # Shortcut for git clone
-alias gcf='git clean -fv'                                                # Shortcut for forceful removal of untracked files with verbose output
+alias gcf='git clean -fv'                                               # Shortcut for forceful removal of untracked files with verbose output
 alias gcm='git commit -m'                                               # Shortcut for git commit with message
 alias gco='git checkout'                                                # Shortcut for git checkout
 alias gp='git pull'                                                     # Shortcut for git pull
 alias gup='git push'                                                    # Shortcut for git push
 alias gr='git restore .'                                                # Shortcut for git restore to discard changes to tracked files
 alias gs='git status'                                                   # Shortcut for git status
+alias gstk='git stash --keep-index'                                     # Shortcut for git status
+alias gstku='git stash --keep-index -u'                                      # Shortcut for git status
+
 
 # Aliases - Homebrew Commands
 alias bar='brew autoremove'        # Remove unused dependencies
@@ -85,6 +89,7 @@ alias battery="system_profiler SPPowerDataType | grep 'Cycle Count\|Condition\|S
 alias betterdisplay="rm -rf /Users/k/Library/Preferences/pro.betterdisplay.BetterDisplay.plist"
 alias cork="rm -rf /Users/k/Library/Preferences/com.davidbures.Cork.plist"
 alias cursor-trial='curl -sL dub.sh/cursorreset | python3'                                                              # Cursor Trial Reset
+alias cursor-reset='curl -fsSL https://aizaozao.com/accelerate.php/https://raw.githubusercontent.com/yuaotian/go-cursor-help/refs/heads/master/scripts/run/cursor_mac_id_modifier.sh -o ./cursor_mac_id_modifier.sh && sudo bash ./cursor_mac_id_modifier.sh && rm ./cursor_mac_id_modifier.sh'
 alias dark='osascript -e "tell app \"System Events\" to tell appearance preferences to set dark mode to not dark mode"' # Toggle Dark Mode
 alias dhcp='sudo ifconfig en0 down && sudo ifconfig en0 up'                                                             # Reset DHCP completely
 alias myip='echo "Public IP: $(curl -4 -s http://ipecho.net/plain)"; echo "Local IP: $(ipconfig getifaddr en0)"'        # Get public IPv4 and local IP addresses

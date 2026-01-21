@@ -37,7 +37,13 @@
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Ks-Mac
     darwinConfigurations."Ks-Mac" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [ 
+        configuration
+        ({ ... }: {
+          # Let Determinate handle Nix installation
+          nix.enable = false;
+        })
+      ];
     };
   };
 }

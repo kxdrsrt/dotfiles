@@ -8,7 +8,7 @@
 
   # GUI Applications via Homebrew Casks
   homebrew.casks = [
-    # "alcove"                               # Dynamic Island for macOS
+    "alcove"                               # Dynamic Island for macOS
     "altserver"                            # Server to sideload iOS apps
     # "android-file-transfer"                # File transfer for Android devices
     # "anki"                                 # Flashcard learning app

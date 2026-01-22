@@ -1,10 +1,16 @@
+# Nix
+.nix-defexpr
+.nix-profile
+
 # macOS
-.AppleDB/
-.AppleDesktop/
+.aws
+.AppleDB
+.AppleDesktop
 .AppleDouble
 .android
 .anydesk
 .CFUserTextEncoding
+.cups
 .DS_Store
 .DocumentRevisions-V100
 .Icon?
@@ -19,6 +25,7 @@
 .com.apple.timemachine.donotpresent
 .lesshst
 .lmstudio/
+.npm/
 .pcr-stats.json
 .pdfbox.cache
 .rest-client/
@@ -38,6 +45,7 @@ Parallels/
 Public
 Virtual Machines/
 Virtual Machines.localized/
+disable_awdl.sh
 
 # macOS Patch
 *.icloud
@@ -90,8 +98,12 @@ ehthumbs_vista.db
 .autom4te.cache/output.0
 .autom4te.cache/requests
 .autom4te.cache/traces.0
+.cursor/ai-tracking/
 .cursor/extensions/
+.cursor/ide_state.json
+.cursor/mcp.json
 .cursor/shouldUpdate
+.kiro/extensions/
 .vscode/extensions/
 .windsurf/extensions/
 .zsh_sessions/
@@ -100,8 +112,5 @@ ehthumbs_vista.db
 *[oO][nN][eE][dD][rR][iI][vV][eE]*
 
 # config
-.config/raycast/extensions/40ebc708-964f-473b-8d19-d4e9cbd27ae9/
-.config/raycast/extensions/c0c9423a-7014-481e-8bb9-44c4c6df53be/
-.config/raycast/extensions/320f40ef-a633-415a-ab0e-1e99515478f7/
-.config/raycast/extensions/606e26d8-b3c5-4760-8001-dccce1b872c4/
+.config/raycast/extensions/
 .config/qBittorrent/

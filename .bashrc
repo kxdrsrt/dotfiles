@@ -145,3 +145,5 @@ alias zip='create_zip'
 # Load completion modules
 autoload -Uz compinit
 compinit
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"

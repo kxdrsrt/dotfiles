@@ -13,7 +13,7 @@
     # Network utilities
     wget
     aria2
-    telnet
+    inetutils
     speedtest-cli
     
     # Media tools
@@ -58,14 +58,6 @@
   # Nix Configuration
   # ============================================================================
   nix.settings.experimental-features = "nix-command flakes";
-
-
-  # Garbage collection - remove old system generations
-  nix.gc = {
-    automatic = true;                    # Enable automatic garbage collection
-    options = "--delete-older-than 7d";  # Delete generations older than 7 days
-  };
-
 
   # Optimize nix store automatically
   nix.settings.auto-optimise-store = true;

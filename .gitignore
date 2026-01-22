@@ -113,4 +113,7 @@ ehthumbs_vista.db
 
 # config
 .config/raycast/extensions/
+.config/raycast/Cache/
+.config/raycast/logs/
+!.config/raycast-backup.rayconfig
 .config/qBittorrent/

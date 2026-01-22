@@ -1,0 +1,113 @@
+# Template for providers.yaml
+#
+# You can add any OpenAI API compatible provider to the "providers" list.
+# For each provider you must also specify a list of models, along with model abilities.
+#
+# All fields are required unless marked as optional.
+#
+# Refer to your provider's API documentation for specific
+# details such as model identifiers, capabilities etc
+#
+# Note: Since the OpenAI API is not a standard we can't guarantee that all
+# providers will work correctly with Raycast AI.
+#
+# To use this template rename as `providers.yaml`
+#
+providers:
+  - id: perplexity
+    name: Perplexity
+    base_url: https://api.perplexity.ai
+    # Specify at least one api key if authentication is required.
+    # Optional if authentication is not required or is provided elsewhere.
+    # If individual models require separate api keys, then specify a separate `key` for each model's `provider`
+    api_keys:
+      perplexity: PERPLEXITY_KEY
+    # Optional additional parameters sent to the `/chat/completions` endpoint
+    additional_parameters:
+      return_images: true
+      web_search_options:
+        search_context_size: medium
+    # Specify all models to use with the current provider
+    models:
+      - id: sonar # `id` must match the identifier used by the provider
+        name: Sonar # name visible in Raycast
+        provider: perplexity # Only required if mapping to a specific api key
+        description: Perplexity AI model for general-purpose queries # optional
+        context: 128000 # refer to provider's API documentation
+        # Optional abilities - all child properties are also optional.
+        # If you specify abilities incorrectly the model may fail to work as expected in Raycast AI.
+        # Refer to provider's API documentation for model abilities.
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: false
+          reasoning_effort:
+            supported: false
+      - id: sonar-pro
+        name: Sonar Pro
+        description: Perplexity AI model for complex queries
+        context: 200000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+  # provider with multiple api keys
+  - id: my_provider
+    name: My Provider
+    base_url: http://localhost:4000
+    api_keys:
+      openai: OPENAI_KEY
+      anthropic: ANTHROPIC_KEY
+    models:
+      - id: gpt-4o
+        name: "GPT-4o"
+        context: 200000
+        provider: openai # matches "openai" in api_keys
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+      - id: claude-sonnet-4
+        name: "Claude Sonnet 4"
+        context: 200000
+        provider: anthropic # matches "anthropic" in api_keys
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+  - id: litellm
+    name: LiteLLM
+    base_url: http://localhost:4000
+    # No `api_keys` - authentication is provided by the LiteLLM config
+    models:
+      - id: anthropic/claude-sonnet-4-20250514
+        name: "Claude Sonnet 4"
+        context: 200000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+

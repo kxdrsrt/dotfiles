@@ -27,6 +27,7 @@
         # ./home.nix # Unused since using dotfiles for home-management
         ./dock-apps.nix
         ./homebrew-mas.nix
+        ./login-items.nix
         ./packages.nix
         ./system-settings.nix
         

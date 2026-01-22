@@ -8,7 +8,7 @@
 
   # GUI Applications via Homebrew Casks
   homebrew.casks = [
-    "alcove"                               # Dynamic Island for macOS
+    # "alcove"                               # Dynamic Island for macOS
     "altserver"                            # Server to sideload iOS apps
     # "android-file-transfer"                # File transfer for Android devices
     # "anki"                                 # Flashcard learning app
@@ -54,7 +54,7 @@
     "mos"                                  # Smooth scrolling utility
     "netnewswire"                          # RSS reader
     #"netspot"                              # WiFi analyzer
-    "nook"                                 # Minimal WebKit browser (beta)
+    # "nook"                                 # Minimal WebKit browser (beta)
     "notion"                               # All-in-one workspace
     "nvidia-geforce-now"                   # Cloud gaming service
     # "obs"                                  # Streaming and recording software
@@ -107,17 +107,16 @@
     # "Motion" = 434290957;                    # Motion graphics
     "Numbers" = 409203825;                   # Apple spreadsheets
     "Pages" = 409201541;                     # Apple word processor
-    "Perplexity" = 6714467650;               # AI search engine
+    # "Perplexity" = 6714467650;               # AI search engine
     # "PiPifier" = 1160374471;                 # Picture-in-Picture
     # "Planmore" = 1613129298;                 # Day planner
     # "Proton Pass" = 6502835663;              # Password manager
-    "Pure Paste" = 1611378436;               # Paste as plain text
     # "Scan Thing" = 1556313108;               # Document scanner
     "Shazam" = 897118787;                    # Music identifier
     # "Shoop" = 1568244961;                    # AI photo editor
     # "SongShift" = 1097974566;                # Playlist transfer
     # "Structured" = 1499198946;               # Visual planner
-    "TestFlight" = 899247664;                # Beta testing
+    # "TestFlight" = 899247664;                # Beta testing
     # "The Unarchiver" = 425424353;            # Archive extractor
     "uBlock Origin Lite" = 6745342698;       # Safari ad blocker
     "Video Converter" = 1518836004;          # Video converter

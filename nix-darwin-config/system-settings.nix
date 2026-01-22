@@ -48,13 +48,9 @@
 
       # Hot corners
       wvous-bl-corner = 1;                   # Bottom left: disabled
-      wvous-bl-modifier = 0;
       wvous-br-corner = 1;                   # Bottom right: disabled
-      wvous-br-modifier = 0;
       wvous-tl-corner = 1;                   # Top left: disabled
-      wvous-tl-modifier = 0;
       wvous-tr-corner = 4;                   # Top right: show desktop
-      wvous-tr-modifier = 0;
     };
 
 
@@ -73,27 +69,10 @@
 
 
 
-    # HiToolbox
+    # HiToolbox 
     hitoolbox = {
-      AppleFnUsageType = 0;                  # Use F1-F12 as standard function keys
+      AppleFnUsageType = "Do Nothing";       # Use F1-F12 as standard function keys
     };
-
-
-
-    # iCal (Calendar)
-    iCal = {
-      "Show time in Month View" = true;      # Show event times in month view
-      "Show Week Numbers" = true;            # Show week numbers
-    };
-
-
-
-    # Keyboard
-    keyboard = {
-      enableKeyMapping = true;               # Enable custom key mapping
-      remapCapsLockToControl = false;        # Remap Caps Lock to Control (optional)
-    };
-
 
 
     # LaunchServices
@@ -136,11 +115,9 @@
       AppleICUForce24HourTime = false;       # Use 12-hour time
       AppleInterfaceStyle = "Dark";          # Use dark mode
       AppleInterfaceStyleSwitchesAutomatically = false;  # Don't auto-switch dark mode
-      AppleLanguages = [ "en-US" ];          # System language
-      AppleLocale = "en_US";                 # System locale
       AppleMeasurementUnits = "Centimeters"; # Metric system
-      AppleMetricUnits = true;               # Use metric
-      AppleShowAllExtensions = true;         # Show all file extensions
+      AppleMetricUnits = 1;               # Use metric
+      AppleShowAllExtensions = true;           # Show all file extensions
       AppleTemperatureUnit = "Celsius";      # Celsius temperature
       AppleWindowTabbingMode = "always";     # Always prefer tabs when opening documents
       InitialKeyRepeat = 15;                 # Fast initial key repeat
@@ -151,7 +128,6 @@
       NSAutomaticQuoteSubstitutionEnabled = false;   # Disable smart quotes
       NSAutomaticSpellingCorrectionEnabled = false;  # Disable auto-correct
       NSAutomaticWindowAnimationsEnabled = false;    # Disable window animations
-      NSCloseAlwaysConfirmsChanges = false;          # Don't ask to save on close if no changes
       NSDocumentSaveNewDocumentsToCloud = false;     # Save to disk by default (not iCloud)
       NSNavPanelExpandedStateForSaveMode = true;     # Expanded save panel
       NSNavPanelExpandedStateForSaveMode2 = true;    # Expanded save panel
@@ -160,8 +136,6 @@
       NSWindowResizeTime = 0.001;                    # Fast window resize
       PMPrintingExpandedStateForPrint = true;        # Expanded print panel
       PMPrintingExpandedStateForPrint2 = true;       # Expanded print panel
-      TSMLanguageIndicatorEnabled = false;           # Hide language indicator
-      WebAutomaticSpellingCorrectionEnabled = false; # Disable auto-correct in web views
     };
 
 
@@ -349,10 +323,6 @@
         springboard-hide-duration = 0;           # Disable springboard hide animation
         springboard-page-duration = 0;           # Disable springboard page animation
         springboard-show-duration = 0;           # Disable springboard show animation
-        wvous-bl-corner = 1;                     # Bottom left: disabled
-        wvous-bl-modifier = 0;
-        wvous-tl-corner = 1;                     # Top left: disabled
-        wvous-tl-modifier = 0;
       };
 
 
@@ -450,6 +420,12 @@
         };
       };
 
+
+      # iCal (Calendar)
+      iCal = {
+        "Show time in Month View" = true;      # Show event times in month view
+        "Show Week Numbers" = true;            # Show week numbers
+      };
 
       # iTunes/Music
       "com.apple.Music" = {
@@ -621,6 +597,8 @@
 
       # Global preferences
       NSGlobalDomain = {
+        AppleLanguages = [ "en-US" ];                        # System language
+        AppleLocale = "en_US";                               # System locale
         AppleMiniaturizeOnDoubleClick = false;               # Don't minimize on title bar double-click (EXPERIMENTAL)
         "com.apple.mouse.scaling" = 2.5;                     # Mouse tracking speed
         "com.apple.sound.beep.flash" = 0;                    # Disable screen flash on alert
@@ -629,10 +607,13 @@
         "com.apple.trackpad.forceClick" = true;              # Enable Force Click
         "com.apple.trackpad.scaling" = 3.0;                  # Trackpad tracking speed
         NSBrowserColumnAnimationSpeedMultiplier = 0;         # Disable Finder column animations (EXPERIMENTAL)
+        NSCloseAlwaysConfirmsChanges = false;                # Don't ask to save on close if no changes
         NSDocumentRevisionsWindowTransformAnimation = 0;     # Disable document revisions animation (EXPERIMENTAL)
         NSScrollViewRubberbanding = false;                   # Disable rubber-band scrolling (EXPERIMENTAL)
         NSToolbarFullScreenAnimationDuration = 0;            # Disable toolbar full screen animation (EXPERIMENTAL)
         QLPanelAnimationDuration = 0;                        # Disable Quick Look animations (EXPERIMENTAL)
+        TSMLanguageIndicatorEnabled = false;                 # Hide language indicator
+        WebAutomaticSpellingCorrectionEnabled = false;       # Disable auto-correct in web views
         WebKitDeveloperExtras = true;                        # Add context menu item for Web Inspector
       };
     };

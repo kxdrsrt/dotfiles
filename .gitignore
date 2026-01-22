@@ -105,6 +105,7 @@ ehthumbs_vista.db
 .cursor/shouldUpdate
 .kiro/extensions/
 .vscode/extensions/
+.vscode/extensions/argv.json
 .windsurf/extensions/
 .zsh_sessions/
 

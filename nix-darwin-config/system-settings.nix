@@ -4,279 +4,693 @@
   # ============================================================================
   system.primaryUser = "k";                  # Required for user-specific settings
 
+
+
   # ============================================================================
   # macOS System Settings
   # ============================================================================
   system.defaults = {
-    
-    # Dock configuration
-    dock = {
-      autohide = true;
-      autohide-delay = 0.0;
-      autohide-time-modifier = 0.0;
-      expose-animation-duration = 0.1;
-      expose-group-apps = true;
-      launchanim = false;
-      minimize-to-application = true;
-      show-recents = false;
-      tilesize = 45;
-      largesize = 75;
-      magnification = false;
-      static-only = true;
-      showhidden = true;
-      show-process-indicators = true;
-      orientation = "bottom";
-      mru-spaces = false;
-      
-      # Hot corners
-      wvous-br-corner = 1;
-      wvous-tr-corner = 4;
+
+    # Activity Monitor
+    ActivityMonitor = {
+      IconType = 5;                          # Show CPU usage in dock icon
+      ShowCategory = 100;                    # Show all processes
     };
 
-
-    # Finder configuration
-    finder = {
-      AppleShowAllExtensions = true;
-      FXPreferredViewStyle = "clmv";
-      ShowPathbar = true;
-      ShowStatusBar = true;
-      FXDefaultSearchScope = "SCcf";
-      FXEnableExtensionChangeWarning = false;
-      _FXSortFoldersFirst = true;
-      _FXShowPosixPathInTitle = true;
-    };
 
 
     # Control Center configuration
     controlcenter = {
-      BatteryShowPercentage = true;
-      NowPlaying = false;
+      BatteryShowPercentage = false;         # Hide battery percentage in menu bar
+      NowPlaying = false;                    # Hide Now Playing in Control Center
     };
 
 
-    # Trackpad settings
-    trackpad = {
-      Clicking = true;
-      TrackpadRightClick = true;
-      TrackpadThreeFingerDrag = false;
+
+    # Dock configuration
+    dock = {
+      autohide = true;                       # Auto-hide dock
+      autohide-delay = 0.0;                  # Remove dock show delay
+      autohide-time-modifier = 0.0;          # Remove dock animation
+      expose-animation-duration = 0.1;       # Fast Mission Control animation
+      expose-group-apps = true;              # Group windows by application
+      largesize = 75;                        # Magnified icon size
+      launchanim = false;                    # Disable launch animation
+      magnification = false;                 # Disable magnification
+      minimize-to-application = true;        # Minimize windows into app icon
+      mru-spaces = false;                    # Don't auto-rearrange spaces by recent use
+      orientation = "bottom";                # Dock position on screen
+      show-process-indicators = true;        # Show indicator lights for open apps
+      show-recents = false;                  # Hide recent applications
+      showhidden = true;                     # Make hidden app icons translucent
+      static-only = false;                   # Show all apps in Dock
+      tilesize = 45;                         # Dock icon size
+
+      # Hot corners
+      wvous-bl-corner = 1;                   # Bottom left: disabled
+      wvous-bl-modifier = 0;
+      wvous-br-corner = 1;                   # Bottom right: disabled
+      wvous-br-modifier = 0;
+      wvous-tl-corner = 1;                   # Top left: disabled
+      wvous-tl-modifier = 0;
+      wvous-tr-corner = 4;                   # Top right: show desktop
+      wvous-tr-modifier = 0;
     };
 
 
-    # Screenshot settings
-    screencapture.location = "~/Desktop";
 
-
-    # Screensaver and security
-    screensaver = {
-      askForPassword = false;
-      askForPasswordDelay = 3600;
+    # Finder configuration
+    finder = {
+      AppleShowAllExtensions = true;         # Show all file extensions
+      FXDefaultSearchScope = "SCcf";         # Search current folder by default
+      FXEnableExtensionChangeWarning = false; # Disable extension change warning
+      FXPreferredViewStyle = "clmv";         # Default to column view
+      ShowPathbar = true;                    # Show path bar at bottom
+      ShowStatusBar = true;                  # Show status bar at bottom
+      _FXShowPosixPathInTitle = true;        # Show full POSIX path in title bar
+      _FXSortFoldersFirst = true;            # Sort folders before files
     };
 
 
-    # Software Update
-    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+
+    # HiToolbox
+    hitoolbox = {
+      AppleFnUsageType = 0;                  # Use F1-F12 as standard function keys
+    };
+
+
+
+    # iCal (Calendar)
+    iCal = {
+      "Show time in Month View" = true;      # Show event times in month view
+      "Show Week Numbers" = true;            # Show week numbers
+    };
+
+
+
+    # Keyboard
+    keyboard = {
+      enableKeyMapping = true;               # Enable custom key mapping
+      remapCapsLockToControl = false;        # Remap Caps Lock to Control (optional)
+    };
+
+
+
+    # LaunchServices
+    LaunchServices = {
+      LSQuarantine = false;                  # Disable "Are you sure you want to open" dialog
+    };
+
 
 
     # Login window
     loginwindow = {
-      GuestEnabled = false;
-      DisableConsoleAccess = true;
-      LoginwindowText = "K's Mac";
+      DisableConsoleAccess = true;           # Disable console login
+      GuestEnabled = false;                  # Disable guest account
+      LoginwindowText = "K's Mac";           # Custom text shown on login screen
     };
 
 
-    # Activity Monitor
-    ActivityMonitor = {
-      ShowCategory = 100;
-      IconType = 5;
+
+    # Magic Mouse
+    magicmouse = {
+      MouseButtonMode = "TwoButton";         # Enable right-click
     };
+
 
 
     # Menu bar clock
     menuExtraClock = {
-      Show24Hour = false;
-      ShowDate = 1;
-      ShowDayOfWeek = true;
-      ShowSeconds = false;
+      IsAnalog = false;                      # Use digital clock
+      Show24Hour = false;                    # Use 12-hour clock
+      ShowDate = 1;                          # Always show date
+      ShowDayOfWeek = true;                  # Show day of week
+      ShowSeconds = false;                   # Don't show seconds
     };
 
-
-    # Spaces
-    spaces.spans-displays = false;
-
-
-    # Universal Access
-    universalaccess = {
-      closeViewScrollWheelToggle = true;
-      reduceMotion = false;
-      reduceTransparency = true;
-    };
 
 
     # Global macOS settings
     NSGlobalDomain = {
-      AppleInterfaceStyle = "Dark";
-      AppleShowAllExtensions = true;
-      InitialKeyRepeat = 15;
-      KeyRepeat = 2;
-      AppleWindowTabbingMode = "always";
+      AppleFontSmoothing = 2;                # Medium font smoothing for non-Apple displays
+      AppleICUForce24HourTime = false;       # Use 12-hour time
+      AppleInterfaceStyle = "Dark";          # Use dark mode
+      AppleInterfaceStyleSwitchesAutomatically = false;  # Don't auto-switch dark mode
+      AppleLanguages = [ "en-US" ];          # System language
+      AppleLocale = "en_US";                 # System locale
+      AppleMeasurementUnits = "Centimeters"; # Metric system
+      AppleMetricUnits = true;               # Use metric
+      AppleShowAllExtensions = true;         # Show all file extensions
+      AppleTemperatureUnit = "Celsius";      # Celsius temperature
+      AppleWindowTabbingMode = "always";     # Always prefer tabs when opening documents
+      InitialKeyRepeat = 15;                 # Fast initial key repeat
+      KeyRepeat = 2;                         # Fast key repeat rate
       NSAutomaticCapitalizationEnabled = true;
+      NSAutomaticDashSubstitutionEnabled = false;    # Disable smart dashes
       NSAutomaticPeriodSubstitutionEnabled = true;
-      NSAutomaticWindowAnimationsEnabled = false;
-      NSScrollAnimationEnabled = false;
-      NSWindowResizeTime = 0.001;
+      NSAutomaticQuoteSubstitutionEnabled = false;   # Disable smart quotes
+      NSAutomaticSpellingCorrectionEnabled = false;  # Disable auto-correct
+      NSAutomaticWindowAnimationsEnabled = false;    # Disable window animations
+      NSCloseAlwaysConfirmsChanges = false;          # Don't ask to save on close if no changes
+      NSDocumentSaveNewDocumentsToCloud = false;     # Save to disk by default (not iCloud)
+      NSNavPanelExpandedStateForSaveMode = true;     # Expanded save panel
+      NSNavPanelExpandedStateForSaveMode2 = true;    # Expanded save panel
+      NSScrollAnimationEnabled = false;              # Disable smooth scrolling
+      NSTableViewDefaultSizeMode = 2;                # Medium sidebar icon size
+      NSWindowResizeTime = 0.001;                    # Fast window resize
+      PMPrintingExpandedStateForPrint = true;        # Expanded print panel
+      PMPrintingExpandedStateForPrint2 = true;       # Expanded print panel
+      TSMLanguageIndicatorEnabled = false;           # Hide language indicator
+      WebAutomaticSpellingCorrectionEnabled = false; # Disable auto-correct in web views
     };
+
+
+
+    # Screenshot settings
+    screencapture.location = "~/Desktop";    # Save screenshots to Desktop
+
+
+
+    # Screensaver and security
+    screensaver = {
+      askForPassword = false;                # Require password after screensaver
+      askForPasswordDelay = 3600;            # Require password immediately
+    };
+
+
+
+    # SMB (Network file sharing)
+    smb = {
+      NetBIOSName = "Ks-Mac";                # NetBIOS name for network
+      ServerDescription = "K's Mac";         # Server description
+    };
+
+
+
+    # Software Update
+    SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;  # Don't auto-install macOS updates
+
+
+
+    # Spaces
+    spaces.spans-displays = false;           # Each display has separate spaces
+
+
+
+    # Trackpad settings
+    trackpad = {
+      Clicking = true;                       # Enable tap to click
+      TrackpadRightClick = true;             # Enable two-finger right click
+      TrackpadThreeFingerDrag = false;       # Disable three-finger drag
+    };
+
+
+
+    # Universal Access
+    universalaccess = {
+      closeViewScrollWheelToggle = true;     # Use scroll gesture with modifier key to zoom
+      reduceMotion = false;                  # Keep motion effects
+      reduceTransparency = true;             # Reduce transparency
+    };
+
+
+
+    # Window Manager (macOS Sequoia/Tahoe)
+    WindowManager = {
+      EnableStandardClickToShowDesktop = false;  # Disable click wallpaper to show desktop
+      HideDesktop = false;                       # Don't hide desktop items
+      StageManagerHideWidgets = false;           # Show widgets in Stage Manager
+      StandardHideDesktopIcons = false;          # Show desktop icons
+      StandardHideWidgets = false;               # Show widgets on desktop
+    };
+
 
 
     # Custom application-specific preferences
+    # Note: Use this only for settings not available in the standard system.defaults options above
     CustomUserPreferences = {
-      # Global preferences
-      NSGlobalDomain = {
-        WebKitDeveloperExtras = true;
-        "com.apple.mouse.scaling" = 2.5;
-        "com.apple.trackpad.scaling" = 3.0;
-        "com.apple.trackpad.forceClick" = true;
-        "com.apple.swipescrolldirection" = true;
+      # Global Preferences (system-wide)
+      ".GlobalPreferences" = {
+        "com.apple.mouse.tapBehavior" = 1;       # Enable tap to click globally
       };
 
-      # Finder
-      "com.apple.finder" = {
-        ShowExternalHardDrivesOnDesktop = true;
-        ShowHardDrivesOnDesktop = false;
-        ShowMountedServersOnDesktop = false;
-        ShowRemovableMediaOnDesktop = true;
-        DisableAllAnimations = true;
-        NewWindowTarget = "PfDe";
-        NewWindowTargetPath = "file:///Users/k/Downloads/";
-        WarnOnEmptyTrash = false;
-      };
 
-      # Dock
-      "com.apple.dock" = {
-        springboard-show-duration = 0;
-        springboard-hide-duration = 0;
-        springboard-page-duration = 0;
-      };
-
-      # Desktop Services
-      "com.apple.desktopservices" = {
-        DSDontWriteNetworkStores = true;
-        DSDontWriteUSBStores = true;
-      };
-
-      # Screensaver
-      "com.apple.screensaver" = {
-        askForPassword = 1;
-        askForPasswordDelay = 0;
-      };
-
-      # Screenshot
-      "com.apple.screencapture" = {
-        location = "~/Desktop";
-        type = "png";
-      };
-
-      # Safari
-      "com.apple.Safari" = {
-        UniversalSearchEnabled = false;
-        SuppressSearchSuggestions = true;
-        WebKitTabToLinksPreferenceKey = true;
-        ShowFullURLInSmartSearchField = true;
-        AutoOpenSafeDownloads = false;
-        ShowFavoritesBar = false;
-        IncludeInternalDebugMenu = true;
-        IncludeDevelopMenu = true;
-        WebKitDeveloperExtrasEnabledPreferenceKey = true;
-        WebContinuousSpellCheckingEnabled = true;
-        WebAutomaticSpellingCorrectionEnabled = false;
-        AutoFillFromAddressBook = false;
-        AutoFillCreditCardData = false;
-        AutoFillMiscellaneousForms = false;
-        WarnAboutFraudulentWebsites = true;
-        WebKitJavaEnabled = false;
-        WebKitJavaScriptCanOpenWindowsAutomatically = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
-      };
-
-      # Mail
-      "com.apple.mail" = {
-        DisableInlineAttachmentViewing = true;
-        ColumnLayoutMessageList = true;
-        ShouldShowSidePreview = false;
-        DisableSendAnimations = true;
-        DisableReplyAnimations = true;
-      };
-
-      # Advertising
+      # Advertising and Privacy
       "com.apple.AdLib" = {
-        allowApplePersonalizedAdvertising = false;
+        allowApplePersonalizedAdvertising = false; # Disable Apple ads
+        allowIdentifierForAdvertising = false;     # Disable ad tracking
       };
 
-      # Print
-      "com.apple.print.PrintingPrefs" = {
-        "Quit When Finished" = true;
+
+      # AirPlay
+      "com.apple.airplay" = {
+        showInMenuBarIfPresent = false;          # Hide AirPlay in menu bar
       };
 
-      # Software Update
-      "com.apple.SoftwareUpdate" = {
-        AutomaticCheckEnabled = true;
-        ScheduleFrequency = 1;
-        AutomaticDownload = 1;
-        CriticalUpdateInstall = 1;
+
+      # App Store
+      "com.apple.appstore" = {
+        ShowDebugMenu = true;                    # Show debug menu
+        WebKitDeveloperExtras = true;            # Enable web inspector
       };
 
-      # Time Machine
-      "com.apple.TimeMachine" = {
-        DoNotOfferNewDisksForBackup = true;
+
+      # Archive Utility
+      "com.apple.archiveutility" = {
+        "dearchive-move-after" = "~/.Trash";     # Move archives to trash after extraction
+        "dearchive-reveal-after" = true;         # Reveal extracted items
       };
+
+
+      # Siri
+      "com.apple.assistant.backedup" = {
+        "Siri Data Sharing Opt-In Status" = 2;   # Opt out of Siri analytics
+      };
+
+
+      # Siri Assistant
+      "com.apple.assistant.support" = {
+        "Assistant Enabled" = false;             # Disable Siri
+      };
+
+
+      # Bluetooth Audio Agent
+      "com.apple.BluetoothAudioAgent" = {
+        "Apple Bitpool Min (editable)" = 40;     # Better audio quality for Bluetooth
+        "Apple Initial Bitpool Min (editable)" = 40;  # Improved Bluetooth audio quality
+        "Apple Initial Bitpool (editable)" = 40;      # Improved Bluetooth audio quality
+        "Negotiated Bitpool" = 58;                    # Improved Bluetooth audio quality
+        "Negotiated Bitpool Max" = 58;                # Improved Bluetooth audio quality
+        "Negotiated Bitpool Min" = 48;                # Improved Bluetooth audio quality
+      };
+
+
+      # App Store automatic updates
+      "com.apple.commerce" = {
+        AutoUpdate = true;                       # Turn on app auto-update
+      };
+
+
+      # Control Center
+      "com.apple.controlcenter" = {
+        "NSStatusItem Visible AirDrop" = false;  # Hide AirDrop
+        "NSStatusItem Visible Battery" = true;   # Show battery in menu bar
+        "NSStatusItem Visible Bluetooth" = false; # Hide Bluetooth in menu bar
+        "NSStatusItem Visible Clock" = true;     # Show clock
+        "NSStatusItem Visible FocusModes" = false; # Hide Focus
+        "NSStatusItem Visible Sound" = true;     # Show volume
+        "NSStatusItem Visible WiFi" = true;      # Show WiFi
+      };
+
+
+      # Handoff
+      "com.apple.coreservices.useractivityd" = {
+        ActivityAdvertisingAllowed = true;       # Allow Handoff
+        ActivityReceivingAllowed = true;         # Receive Handoff
+      };
+
+
+      # Crash Reporter
+      "com.apple.CrashReporter" = {
+        AutoSubmit = false;                      # Don't auto-submit crash reports
+        DialogType = "none";                     # Disable crash reporter dialog
+        UseUNC = 1;                              # Use Notification Center for crash reports
+      };
+
+
+      # Desktop Services and Spring Loading
+      "com.apple.desktopservices" = {
+        DSDontWriteNetworkStores = true;         # No .DS_Store on network volumes
+        DSDontWriteUSBStores = true;             # No .DS_Store on USB volumes
+        "com.apple.springing.delay" = 0.5;       # Spring loading delay
+        "com.apple.springing.enabled" = true;    # Enable spring loading for directories
+      };
+
+
+      # Dictionary
+      "com.apple.Dictionary" = {
+        ProofreadingEnabled = false;             # Disable proofreading popup
+      };
+
+
+      # Disk Utility
+      "com.apple.DiskUtility" = {
+        DUDebugMenuEnabled = true;               # Enable debug menu
+        DUShowEveryPartition = true;             # Show all partitions
+        SidebarShowAllDevices = true;            # Show all devices in sidebar
+        advanced-image-options = true;           # Show advanced options
+      };
+
+
+      # Dock - Additional settings
+      "com.apple.dock" = {
+        "expose-group-apps" = true;              # Group windows by app
+        "mru-spaces" = false;                    # Don't rearrange spaces
+        springboard-hide-duration = 0;           # Disable springboard hide animation
+        springboard-page-duration = 0;           # Disable springboard page animation
+        springboard-show-duration = 0;           # Disable springboard show animation
+        wvous-bl-corner = 1;                     # Bottom left: disabled
+        wvous-bl-modifier = 0;
+        wvous-tl-corner = 1;                     # Top left: disabled
+        wvous-tl-modifier = 0;
+      };
+
+
+      # FaceTime
+      "com.apple.FaceTime" = {
+        CallHistoryEnabled = false;              # Disable call history
+      };
+
+
+      # Finder - Additional settings not available in system.defaults.finder
+      "com.apple.finder" = {
+        DisableAllAnimations = true;             # Disable all Finder animations
+        FXInfoPanesExpanded = {                  # Expand Info panes
+          General = true;
+          OpenWith = true;
+          Privileges = true;
+        };
+        NewWindowTarget = "PfDe";                # New Finder windows open Downloads
+        NewWindowTargetPath = "file:///Users/k/Downloads/";  # Downloads folder path
+        QLEnableTextSelection = true;            # Allow text selection in Quick Look
+        ShowExternalHardDrivesOnDesktop = true;  # Show external drives on desktop
+        ShowHardDrivesOnDesktop = false;         # Hide internal drives on desktop
+        ShowMountedServersOnDesktop = false;     # Hide network drives on desktop
+        ShowRemovableMediaOnDesktop = true;      # Show USB drives on desktop
+        WarnOnEmptyTrash = false;                # Don't warn when emptying trash
+      };
+
+
+      # Disk Image Verification
+      "com.apple.frameworks.diskimages" = {
+        skip-verify = true;                      # Skip disk image verification
+        skip-verify-locked = true;               # Skip locked disk verification
+        skip-verify-remote = true;               # Skip remote disk verification
+      };
+
+
+      # Help Viewer
+      "com.apple.helpviewer" = {
+        DevMode = true;                          # Show Developer Mode
+      };
+
+
+      # Keyboard and Input
+      "com.apple.HIToolbox" = {
+        AppleFnUsageType = 0;                    # F1-F12 as standard function keys
+      };
+
 
       # Image Capture
       "com.apple.ImageCapture" = {
-        disableHotPlug = true;
+        disableHotPlug = true;                   # Prevent Photos from opening when devices plugged in
       };
 
-      # App Store
-      "com.apple.commerce" = {
-        AutoUpdate = true;
+
+      # Location Services
+      "com.apple.locationmenu" = {
+        StatusBarIconEnabled = true;             # Show location icon in menu bar
+      };
+
+
+      # Login Window
+      "com.apple.loginwindow" = {
+        TALLogoutSavesState = false;             # Don't restore windows on restart
+      };
+
+
+      # Mail
+      "com.apple.mail" = {
+        ColumnLayoutMessageList = true;          # Attempt to enable column layout
+        DisableInlineAttachmentViewing = true;   # Show attachment icons only
+        DisableReplyAnimations = true;           # Disable reply animations
+        DisableSendAnimations = true;            # Disable send animations
+        ShouldShowSidePreview = false;           # Disable side preview
+      };
+
+
+      # Battery Menu
+      "com.apple.menuextra.battery" = {
+        ShowPercent = "YES";                     # Show battery percentage
+        ShowTime = "YES";                        # Show time remaining
+      };
+
+
+      # Messages
+      "com.apple.messages" = {
+        SUEnableAutomaticChecks = false;         # Disable auto-update checks
+      };
+
+
+      # Messages Auto-correct
+      "com.apple.messageshelper.MessageController" = {
+        SOInputLineSettings = {
+          automaticQuoteSubstitutionEnabled = false;
+          continuousSpellCheckingEnabled = false;
+        };
+      };
+
+
+      # iTunes/Music
+      "com.apple.Music" = {
+        userWantsPlaybackNotifications = false;  # Disable music notifications
+      };
+
+
+      # AirDrop
+      "com.apple.NetworkBrowser" = {
+        BrowseAllInterfaces = true;              # AirDrop over Ethernet and unsupported interfaces
+      };
+
+
+      # Notification Center
+      "com.apple.notificationcenterui" = {
+        bannerTime = 5;                          # Notification banner display time (seconds)
+      };
+
+
+      # Photos
+      "com.apple.Photos" = {
+        DateCreatedIsEXIFDateCreated = true;     # Use EXIF date for photos
+      };
+
+
+      # Energy (Performance optimization)
+      "com.apple.PowerManagement" = {
+        SleepDisabled = 0;                       # Allow sleep
+      };
+
+
+      # Preview
+      "com.apple.Preview" = {
+        NSQuitAlwaysKeepsWindows = false;        # Don't restore windows
+      };
+
+
+      # Print
+      "com.apple.print.PrintingPrefs" = {
+        "Quit When Finished" = true;             # Quit printer app when done
+      };
+
+
+      # QuickTime
+      "com.apple.QuickTimePlayerX" = {
+        MGPlayMovieOnOpen = false;               # Don't auto-play videos
+      };
+
+
+      # Safari
+      "com.apple.Safari" = {
+        AutoFillCreditCardData = false;          # Don't autofill credit cards
+        AutoFillFromAddressBook = false;         # Don't autofill from contacts
+        AutoFillMiscellaneousForms = false;      # Don't autofill forms
+        AutoOpenSafeDownloads = false;           # Don't open safe files automatically
+        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
+        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
+        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
+        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
+        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
+        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
+        IncludeDevelopMenu = true;               # Show develop menu
+        IncludeInternalDebugMenu = true;         # Show debug menu
+        ShowFavoritesBar = false;                # Hide favorites bar
+        ShowFullURLInSmartSearchField = true;    # Show full URL in search field
+        SuppressSearchSuggestions = true;        # Disable search suggestions
+        UniversalSearchEnabled = false;          # Don't send search queries to Apple
+        WarnAboutFraudulentWebsites = true;      # Warn about fraudulent sites
+        WebAutomaticSpellingCorrectionEnabled = false;  # Disable auto-correction
+        WebContinuousSpellCheckingEnabled = true;  # Enable spell checking
+        WebKitDeveloperExtrasEnabledPreferenceKey = true;  # Enable developer extras
+        WebKitJavaEnabled = false;               # Disable Java
+        WebKitJavaScriptCanOpenWindowsAutomatically = false;  # Disable JS auto-open windows
+        WebKitTabToLinksPreferenceKey = true;    # Press Tab to highlight each item
+      };
+
+
+      # Screenshot - Additional settings
+      "com.apple.screencapture" = {
+        location = "~/Desktop";                  # Screenshot location
+        type = "png";                            # Screenshot format
+      };
+
+
+      # Screensaver - Additional settings
+      "com.apple.screensaver" = {
+        askForPassword = 1;                      # Require password after screensaver
+        askForPasswordDelay = 0;                 # Require password immediately
+      };
+
+
+      # Software Update
+      "com.apple.SoftwareUpdate" = {
+        AutomaticCheckEnabled = true;            # Check for software updates automatically
+        AutomaticDownload = 1;                   # Download updates in background
+        CriticalUpdateInstall = 1;               # Install system data files and security updates
+        ScheduleFrequency = 1;                   # Check for updates daily
+      };
+
+
+      # Spotlight
+      "com.apple.spotlight" = {
+        orderedItems = [
+          { enabled = true; name = "APPLICATIONS"; }
+          { enabled = true; name = "DIRECTORIES"; }
+          { enabled = true; name = "PDF"; }
+          { enabled = true; name = "SYSTEM_PREFS"; }
+          { enabled = false; name = "BOOKMARKS"; }
+          { enabled = false; name = "CONTACT"; }
+          { enabled = false; name = "DOCUMENTS"; }
+          { enabled = false; name = "EVENT_TODO"; }
+          { enabled = false; name = "FONTS"; }
+          { enabled = false; name = "IMAGES"; }
+          { enabled = false; name = "MENU_CONVERSION"; }
+          { enabled = false; name = "MENU_DEFINITION"; }
+          { enabled = false; name = "MENU_EXPRESSION"; }
+          { enabled = false; name = "MENU_OTHER"; }
+          { enabled = false; name = "MENU_SPOTLIGHT_SUGGESTIONS"; }
+          { enabled = false; name = "MENU_WEBSEARCH"; }
+          { enabled = false; name = "MESSAGES"; }
+          { enabled = false; name = "MOVIES"; }
+          { enabled = false; name = "MUSIC"; }
+          { enabled = false; name = "PRESENTATIONS"; }
+          { enabled = false; name = "SOURCE"; }
+          { enabled = false; name = "SPREADSHEETS"; }
+        ];
+      };
+
+
+      # App Store automatic updates
+      "com.apple.storeagent" = {
+        LastUpdateCheck = 1;                     # Enable automatic update checks
+      };
+
+
+      # System Preferences
+      "com.apple.systempreferences" = {
+        NSLanguages = [ "en" ];                  # Set language preferences
+        ShowAllMode = true;                      # Show all preference panes
+      };
+
+
+      # Terminal
+      "com.apple.Terminal" = {
+        SecureKeyboardEntry = false;             # Secure keyboard entry in Terminal
+      };
+
+
+      # TextEdit - Plain text by default
+      "com.apple.TextEdit" = {
+        PlainTextEncoding = 4;                   # UTF-8 encoding
+        PlainTextEncodingForWrite = 4;           # UTF-8 for writing
+        RichText = 0;                            # Use plain text mode
+      };
+
+
+      # Time Machine
+      "com.apple.TimeMachine" = {
+        DoNotOfferNewDisksForBackup = true;      # Don't prompt to use new disks for Time Machine
+        SkipSystemFiles = true;                  # Skip system files in backup
+      };
+
+
+      # Universal Control
+      "com.apple.universalcontrol" = {
+        Enabled = true;                          # Enable Universal Control
+      };
+
+
+      # Global preferences
+      NSGlobalDomain = {
+        AppleMiniaturizeOnDoubleClick = false;               # Don't minimize on title bar double-click (EXPERIMENTAL)
+        "com.apple.mouse.scaling" = 2.5;                     # Mouse tracking speed
+        "com.apple.sound.beep.flash" = 0;                    # Disable screen flash on alert
+        "com.apple.sound.beep.volume" = 0.7;                 # Alert volume level
+        "com.apple.swipescrolldirection" = true;             # Natural scrolling
+        "com.apple.trackpad.forceClick" = true;              # Enable Force Click
+        "com.apple.trackpad.scaling" = 3.0;                  # Trackpad tracking speed
+        NSBrowserColumnAnimationSpeedMultiplier = 0;         # Disable Finder column animations (EXPERIMENTAL)
+        NSDocumentRevisionsWindowTransformAnimation = 0;     # Disable document revisions animation (EXPERIMENTAL)
+        NSScrollViewRubberbanding = false;                   # Disable rubber-band scrolling (EXPERIMENTAL)
+        NSToolbarFullScreenAnimationDuration = 0;            # Disable toolbar full screen animation (EXPERIMENTAL)
+        QLPanelAnimationDuration = 0;                        # Disable Quick Look animations (EXPERIMENTAL)
+        WebKitDeveloperExtras = true;                        # Add context menu item for Web Inspector
       };
     };
   };
+
 
 
   # ============================================================================
   # Firewall Configuration
   # ============================================================================
   networking.applicationFirewall = {
-    enable = true;
-    allowSigned = true;
-    enableStealthMode = true;
+    enable = true;                           # Enable firewall
+    allowSigned = true;                      # Allow signed apps
+    enableStealthMode = true;                # Enable stealth mode
   };
+
+
+
+  # ============================================================================
+  # Networking
+  # ============================================================================
+  networking.hostName = "Ks-Mac";            # Set hostname
+  networking.computerName = "K's Mac";       # Set computer name
+
+
+
+  # ============================================================================
+  # Environment Variables
+  # ============================================================================
+  environment.variables = {
+    EDITOR = "nano";                         # Default editor
+    VISUAL = "code";                         # Visual editor
+  };
+
+
+
+  # ============================================================================
+  # System Startup
+  # ============================================================================
+  system.startup.chime = false;              # Disable startup chime
+
 
 
   # ============================================================================
   # Activation Scripts
   # ============================================================================
   system.activationScripts.postActivation.text = ''
+    # Apply settings without logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
-
-  # ============================================================================
-  # Networking
-  # ============================================================================
-  networking.hostName = "Ks-Mac";
-  networking.computerName = "K's Mac";
 
 
   # ============================================================================
   # Security and Authentication
   # ============================================================================
-  security.pam.services.sudo_local.touchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;  # Enable Touch ID for sudo
+
 
 
   # ============================================================================
@@ -285,12 +699,13 @@
   programs.zsh.enable = true;
 
 
+
   # ============================================================================
   # User Configuration
   # ============================================================================
   users.users.k = {
     name = "k";
     home = "/Users/k";
-    shell = pkgs.zsh;
+    shell = pkgs.zsh;                        # Set default shell to zsh
   };
 }

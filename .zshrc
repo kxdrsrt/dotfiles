@@ -97,12 +97,22 @@ alias resetkeyboard='sudo sh ~/Documents/Others/macOS/keys-swapped.sh'          
 alias spotx='bash <(curl -sSL https://spotx-official.github.io/run.sh) -B -c -f -h'                                     # Install SpotX
 alias wifiinfo='networksetup -listallnetworkservices | grep -i wi-fi | xargs -I {} sh -c '\''echo "Service: {}"; networksetup -getinfo "{}"; echo "MAC Address: $(networksetup -getmacaddress "{}" | awk "{print \$3}")"'\'''
 
+# Nix-darwin aliases
+alias nixup="darwin-rebuild switch --flake ~/nix-darwin-config"
+alias nixedit="code ~/nix-darwin-config"
+alias nixsave="cd ~ && git add nix-darwin-config && git commit -m 'Updated nix configuration' && git push"
+
+
 # Aliases - Scripts
-alias icns2png='sh $HOME/Documents/Others/macOS/Scripts/icns2png.sh'     # Convert icns to png
-alias lpm='$HOME/Documents/Others/macOS/Scripts/toggle-lpm.sh'           # Toggle Low Power Mode
-alias mac-deploy='sh $HOME/Documents/Others/macOS/Scripts/mac-deploy.sh' # Mac deployment script
-alias md2pdf='sh $HOME/Documents/Others/macOS/Scripts/md2pdf.sh'         # Convert Markdown to PDF
-alias png2icns='sh $HOME/Documents/Others/macOS/Scripts/png2icns.sh'     # Convert png to icns
+alias icns2png='sh "$HOME/Documents/6 Others/macOS/Scripts/icns2png.sh"'     # Convert icns to png
+alias lpm='sh "$HOME/Documents/6 Others/macOS/Scripts/toggle-lpm.sh"'           # Toggle Low Power Mode
+alias mac-deploy='sh "$HOME/Documents/6 Others/macOS/Scripts/mac-deploy.sh"' # Mac deployment script
+alias md2pdf='sh "$HOME/Documents/6 Others/macOS/Scripts/md2pdf.sh"'         # Convert Markdown to PDF
+alias png2icns='sh "$HOME/Documents/6 Others/macOS/Scripts/png2icns.sh"'     # Convert png to icns
+alias awdl='bash <(curl -sL https://www.meter.com/awdl.sh)'
+alias awdld='curl -sL https://www.meter.com/awdl-daemon.sh | bash'
+alias awdl-disable='ccurl -s https://raw.githubusercontent.com/meterup/awdl_wifi_scripts/main/cleanup-and-reenable-awdl.sh | bash &> /dev/null'
+
 
 # Aliases - SSH Servers
 # Alias for connecting to RO VPS as user k
@@ -167,3 +177,5 @@ alias zip='create_zip'
 # Aliases - Miscellaneous Commands
 alias unquarantine='xattr -dr com.apple.quarantine' # Use as: unquarantine /path/to/app
 alias unquarantine-apps='sudo xattr -dr com.apple.quarantine /Applications/*.app' # Remove quarantine from all apps, including those in subdirectories
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"

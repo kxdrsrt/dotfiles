@@ -1,38 +1,46 @@
 {
   description = "K's Mac nix-darwin configuration";
 
-
-
   inputs = {
-    # Nix packages and nix-darwin
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-
-
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable }: 
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nix-homebrew }: 
   let
     system = "aarch64-darwin";
+    user = "k"; # Defined once here for consistency
   in
   {
-    # ============================================================================
-    # System Configuration
-    # ============================================================================
     darwinConfigurations."Ks-Mac" = nix-darwin.lib.darwinSystem {
       inherit system;
       modules = [ 
-        # ./home.nix # Unused since using dotfiles for home-management
         ./dock-apps.nix
         ./homebrew-mas.nix
         ./login-items.nix
         ./packages.nix
         ./system-settings.nix
         
+        nix-homebrew.darwinModules.nix-homebrew
+        {
+          nix-homebrew = {
+            enable = true;
+            enableRosetta = false;
+            user = "${user}";
+            autoMigrate = true;
+          };
+        }
+        
         ({ ... }: {
-          # Overlay for accessing unstable packages
+          # 1. AUTOMATED HOMEBREW PASSWORDS
+          # This allows the 'brew' binary to run as root without a password prompt
+          environment.etc."sudoers.d/10-homebrew-nopasswd".text = ''
+            ${user} ALL=(ALL) NOPASSWD: /opt/homebrew/bin/brew, /usr/local/bin/brew
+          '';
+
           nixpkgs.overlays = [
             (final: prev: {
               unstable = import nixpkgs-unstable {
@@ -42,10 +50,8 @@
             })
           ];
           
-          # Let Determinate Systems manage Nix installation
-          nix.enable = false;
+          nix.enable = false; # Managed by Determinate Systems
           
-          # System metadata
           system.configurationRevision = self.rev or self.dirtyRev or null;
           system.stateVersion = 6;
           nixpkgs.hostPlatform = "aarch64-darwin";

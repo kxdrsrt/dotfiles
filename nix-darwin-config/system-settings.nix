@@ -5,6 +5,25 @@
   system.primaryUser = "k";                  # Required for user-specific settings
 
 
+  # ============================================================================
+  # Activation Scripts
+  # ============================================================================
+  system.activationScripts.postActivation.text = ''
+    # Apply settings without logout/login cycle
+    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+    # Set wallpaper
+    /usr/bin/osascript -e 'tell application "System Events" to tell every desktop to set picture to "${./assets/wallpaper.png}"'
+
+    # Unquarantine apps installed by casks/Homebrew/Nix to avoid Gatekeeper prompts.
+    # Use 'xattr -d' to strip quarantine from common app locations.
+    for dir in "/Applications" "/Applications/Nix Apps" "/opt/homebrew/Caskroom"; do
+      if [ -d "$dir" ]; then
+        echo "Unquarantining apps in $dir..."
+        sudo xattr -rd com.apple.quarantine "$dir"/*.app 2>/dev/null || true
+      fi
+    done
+  '';
 
   # ============================================================================
   # macOS System Settings
@@ -22,6 +41,7 @@
     # Control Center configuration
     controlcenter = {
       BatteryShowPercentage = false;         # Hide battery percentage in menu bar
+      Bluetooth = false;                      # Show Bluetooth in menu bar
       NowPlaying = false;                    # Hide Now Playing in Control Center
     };
 
@@ -40,6 +60,7 @@
       minimize-to-application = true;        # Minimize windows into app icon
       mru-spaces = false;                    # Don't auto-rearrange spaces by recent use
       orientation = "bottom";                # Dock position on screen
+      showLaunchpadGestureEnabled = true;    # Enable pinch gesture for Launchpad
       show-process-indicators = true;        # Show indicator lights for open apps
       show-recents = false;                  # Hide recent applications
       showhidden = true;                     # Make hidden app icons translucent
@@ -65,13 +86,6 @@
       ShowStatusBar = true;                  # Show status bar at bottom
       _FXShowPosixPathInTitle = true;        # Show full POSIX path in title bar
       _FXSortFoldersFirst = true;            # Sort folders before files
-    };
-
-
-
-    # HiToolbox 
-    hitoolbox = {
-      AppleFnUsageType = "Do Nothing";       # Use F1-F12 as standard function keys
     };
 
 
@@ -176,6 +190,7 @@
       Clicking = true;                       # Enable tap to click
       TrackpadRightClick = true;             # Enable two-finger right click
       TrackpadThreeFingerDrag = false;       # Disable three-finger drag
+      TrackpadFourFingerPinchGesture = 2;     # Launchpad with four-finger pinch
     };
 
 
@@ -367,7 +382,7 @@
 
       # Keyboard and Input
       "com.apple.HIToolbox" = {
-        AppleFnUsageType = 0;                    # F1-F12 as standard function keys
+        AppleFnUsageType = 2;  # 2 = Show Emoji & Symbols
       };
 
 
@@ -654,17 +669,6 @@
   # System Startup
   # ============================================================================
   system.startup.chime = false;              # Disable startup chime
-
-
-
-  # ============================================================================
-  # Activation Scripts
-  # ============================================================================
-  system.activationScripts.postActivation.text = ''
-    # Apply settings without logout/login cycle
-    /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-  '';
-
 
 
   # ============================================================================

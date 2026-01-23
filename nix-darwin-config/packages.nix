@@ -34,11 +34,11 @@
     cmake
     ninja
     ccache
+    tree
     
     # Documentation and package management
     pandoc
     pipx
-    mas
     
     # Unstable packages (example usage)
     # unstable.package-name

@@ -96,9 +96,8 @@ alias spotx='bash <(curl -sSL https://spotx-official.github.io/run.sh) -B -c -f 
 alias wifiinfo='networksetup -listallnetworkservices | grep -i wi-fi | xargs -I {} sh -c '\''echo "Service: {}"; networksetup -getinfo "{}"; echo "MAC Address: $(networksetup -getmacaddress "{}" | awk "{print \$3}")"'\'''
 
 # Nix-darwin aliases
-alias nixup="sudo darwin-rebuild switch --flake ~/nix-darwin-config"
+alias nixre="sh ~/nix-darwin-config/redeploy.sh"
 alias nixedit="code ~/nix-darwin-config"
-alias nixsave="cd ~ && git add nix-darwin-config && git commit -m 'Updated nix configuration' && git push"
 
 # Aliases - Scripts
 alias icns2png='sh "$HOME/Documents/6 Others/macOS/Scripts/icns2png.sh"'     # Convert icns to png
@@ -108,7 +107,7 @@ alias md2pdf='sh "$HOME/Documents/6 Others/macOS/Scripts/md2pdf.sh"'         # C
 alias png2icns='sh "$HOME/Documents/6 Others/macOS/Scripts/png2icns.sh"'     # Convert png to icns
 alias awdl='bash <(curl -sL https://www.meter.com/awdl.sh)'
 alias awdld='curl -sL https://www.meter.com/awdl-daemon.sh | bash'
-alias awdl-disable='ccurl -s https://raw.githubusercontent.com/meterup/awdl_wifi_scripts/main/cleanup-and-reenable-awdl.sh | bash &> /dev/null'
+alias awdl-restore='ccurl -s https://raw.githubusercontent.com/meterup/awdl_wifi_scripts/main/cleanup-and-reenable-awdl.sh | bash &> /dev/null'
 
 # Aliases - SSH Servers
 # Alias for connecting to RO VPS as user k

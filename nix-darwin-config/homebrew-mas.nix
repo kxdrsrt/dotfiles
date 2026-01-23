@@ -4,7 +4,15 @@
   # ============================================================================
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "zap";  # Remove packages not in flake
-  homebrew.onActivation.upgrade = true;         # Auto-upgrade on rebuild
+  homebrew.onActivation.upgrade = true;   # Auto-upgrade on rebuild
+
+  homebrew.caskArgs = {
+    no_quarantine = true;
+  };
+
+  homebrew.brews = [
+      "mas"                               # Mac App Store CLI, managed outside of Nix          
+    ];
 
   # GUI Applications via Homebrew Casks
   homebrew.casks = [
@@ -13,7 +21,7 @@
     # "android-file-transfer"                # File transfer for Android devices
     # "anki"                                 # Flashcard learning app
     "appcleaner"                           # Thorough uninstaller
-    "arc"                                  # Innovative browser with built-in tools
+    # "arc"                                  # Innovative browser with built-in tools
     # "audiate"                            # Audio transcription and editing with AI
     "betterdisplay"                        # Advanced display management
     # "blender"                            # Open-source 3D creation suite
@@ -29,7 +37,7 @@
     "discord"                              # Voice, video, and text chat
     # "displaylink"                        # Drivers for USB displays
     "figma"                                # Vector graphics editor
-    "framer"                               # Interactive design prototyping tool
+    # "framer"                               # Interactive design prototyping tool
     # "google-chrome"                        # Google's web browser
     # "google-drive"                       # Cloud storage sync
     # "handbrake"                          # Video transcoder
@@ -43,7 +51,7 @@
     "kiro"                                 # Amazon AI IDE
     # "linearmouse"                        # Mouse and trackpad customization
     # "mac-mouse-fix"                        # Mouse customization utility
-    "macwhisper"                           # Audio transcription tool
+    # "macwhisper"                           # Audio transcription tool
     # "malwarebytes"                         # Anti-malware software
     # "mathpix-snipping-tool"                # OCR tool for math equations
     # "mem"                                # AI-powered note-taking
@@ -68,15 +76,15 @@
     "reflex-app"                           # Universal Music Control with buttons
     "rustdesk"                             # Remote desktop software
     "shottr"                               # Screenshot tool
-    "spotify"                              # Music streaming service
-    # "steam"                                # Gaming platform
+    "spotify"  # Music streaming service
+   # "steam"                                # Gaming platform
     "telegram"                             # Messaging app
     "the-unarchiver"                       # Archive extraction utility
     "thebrowsercompany-dia"                # The Browser Company's Dia
     "visual-studio-code"                   # Source code editor
     "warp"                                 # Modern AI-powered terminal
     "whatsapp"                             # Messaging app
-    "zoom"                                 # Video conferencing
+    # "zoom"                                 # Video conferencing
   ];
 
   # Mac App Store Applications
@@ -88,7 +96,7 @@
     # "Auto HD FPS for YouTube" = 1546729687;   # Auto HD YouTube
     # "Bakery" = 1575220747;                   # Icon generator
     "Brother iPrint&Scan" = 1193539993;      # Brother printer app
-    "Compressor" = 424390742;                # Video encoder
+    # "Compressor" = 424390742;                # Video encoder
     # "Developer" = 640199958;                 # Apple dev news
     "Equinox" = 1591510203;                  # Dynamic wallpapers
     # "Final Cut Pro" = 424389933;             # Video editor
@@ -105,8 +113,8 @@
     "Microsoft OneNote" = 784801555;         # Note-taking
     # "Mockview" = 1592728145;                 # Device mockup tool
     # "Motion" = 434290957;                    # Motion graphics
-    "Numbers" = 409203825;                   # Apple spreadsheets
-    "Pages" = 409201541;                     # Apple word processor
+    # "Numbers" = 409203825;                   # Apple spreadsheets
+    # "Pages" = 409201541;                     # Apple word processor
     # "Perplexity" = 6714467650;               # AI search engine
     # "PiPifier" = 1160374471;                 # Picture-in-Picture
     # "Planmore" = 1613129298;                 # Day planner

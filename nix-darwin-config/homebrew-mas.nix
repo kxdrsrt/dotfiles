@@ -107,8 +107,8 @@
     # "HP Smart" = 1474276998;                 # HP printer app
     "Hush" = 1544743900;                     # Block cookie popups
     # "Instapaper" = 288545208;                # Read-it-later
-    "Keynote" = 409183694;                   # Apple presentations
-    "Kompressor" = 6468196574;               # File compressor
+    # "Keynote" = 409183694;                   # Apple presentations
+    # "Kompressor" = 6468196574;               # File compressor
     # "Mactracker" = 430255202;                # Apple hardware database
     "Microsoft OneNote" = 784801555;         # Note-taking
     # "Mockview" = 1592728145;                 # Device mockup tool

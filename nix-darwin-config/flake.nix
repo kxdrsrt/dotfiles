@@ -44,7 +44,17 @@
         # User-level package and utility selections
         ./packages.nix
 
+        # Keyboard shortcuts configuration
+        ./keyboard-shortcuts.nix
+
+        # Home manager configuration (Currently not used due to GitHub Dotfiles management)
+        # ./home.nix
+
+        # SpotX - Spotify adblocker configuration
+        ./spotx.nix
+
         # Central place to include `apps/*.nix` (imports Dia.nix, Safari.nix, ...)
+        # Also includes ./apps/system/default.nix which contains system GUI app configurations
         ./apps/default.nix
 
         # System-wide settings like defaults and preferences

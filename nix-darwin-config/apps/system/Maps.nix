@@ -1,0 +1,7 @@
+{ config, pkgs, ... }:
+
+{
+  # Maps app preferences
+  # (Currently uses default system preferences)
+  system.defaults.CustomUserPreferences = {};
+}

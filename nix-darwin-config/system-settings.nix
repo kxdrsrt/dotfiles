@@ -237,29 +237,10 @@
       };
 
 
-      # App Store
-      "com.apple.appstore" = {
-        ShowDebugMenu = true;                    # Show debug menu
-        WebKitDeveloperExtras = true;            # Enable web inspector
-      };
-
-
       # Archive Utility
       "com.apple.archiveutility" = {
         "dearchive-move-after" = "~/.Trash";     # Move archives to trash after extraction
         "dearchive-reveal-after" = true;         # Reveal extracted items
-      };
-
-
-      # Siri
-      "com.apple.assistant.backedup" = {
-        "Siri Data Sharing Opt-In Status" = 2;   # Opt out of Siri analytics
-      };
-
-
-      # Siri Assistant
-      "com.apple.assistant.support" = {
-        "Assistant Enabled" = false;             # Disable Siri
       };
 
 
@@ -271,12 +252,6 @@
         "Negotiated Bitpool" = 58;                    # Improved Bluetooth audio quality
         "Negotiated Bitpool Max" = 58;                # Improved Bluetooth audio quality
         "Negotiated Bitpool Min" = 48;                # Improved Bluetooth audio quality
-      };
-
-
-      # App Store automatic updates
-      "com.apple.commerce" = {
-        AutoUpdate = true;                       # Turn on app auto-update
       };
 
 
@@ -341,31 +316,6 @@
       };
 
 
-      # FaceTime
-      "com.apple.FaceTime" = {
-        CallHistoryEnabled = false;              # Disable call history
-      };
-
-
-      # Finder - Additional settings not available in system.defaults.finder
-      "com.apple.finder" = {
-        DisableAllAnimations = true;             # Disable all Finder animations
-        FXInfoPanesExpanded = {                  # Expand Info panes
-          General = true;
-          OpenWith = true;
-          Privileges = true;
-        };
-        NewWindowTarget = "PfDe";                # New Finder windows open Downloads
-        NewWindowTargetPath = "file:///Users/k/Downloads/";  # Downloads folder path
-        QLEnableTextSelection = true;            # Allow text selection in Quick Look
-        ShowExternalHardDrivesOnDesktop = true;  # Show external drives on desktop
-        ShowHardDrivesOnDesktop = false;         # Hide internal drives on desktop
-        ShowMountedServersOnDesktop = false;     # Hide network drives on desktop
-        ShowRemovableMediaOnDesktop = true;      # Show USB drives on desktop
-        WarnOnEmptyTrash = false;                # Don't warn when emptying trash
-      };
-
-
       # Disk Image Verification
       "com.apple.frameworks.diskimages" = {
         skip-verify = true;                      # Skip disk image verification
@@ -386,10 +336,8 @@
       };
 
 
-      # Image Capture
-      "com.apple.ImageCapture" = {
-        disableHotPlug = true;                   # Prevent Photos from opening when devices plugged in
-      };
+      # Image Capture - Configured in apps/system/ImageCapture.nix
+      # "com.apple.ImageCapture" = { ... };
 
 
       # Location Services
@@ -404,47 +352,10 @@
       };
 
 
-      # Mail
-      "com.apple.mail" = {
-        ColumnLayoutMessageList = true;          # Attempt to enable column layout
-        DisableInlineAttachmentViewing = true;   # Show attachment icons only
-        DisableReplyAnimations = true;           # Disable reply animations
-        DisableSendAnimations = true;            # Disable send animations
-        ShouldShowSidePreview = false;           # Disable side preview
-      };
-
-
       # Battery Menu
       "com.apple.menuextra.battery" = {
         ShowPercent = "YES";                     # Show battery percentage
         ShowTime = "YES";                        # Show time remaining
-      };
-
-
-      # Messages
-      "com.apple.messages" = {
-        SUEnableAutomaticChecks = false;         # Disable auto-update checks
-      };
-
-
-      # Messages Auto-correct
-      "com.apple.messageshelper.MessageController" = {
-        SOInputLineSettings = {
-          automaticQuoteSubstitutionEnabled = false;
-          continuousSpellCheckingEnabled = false;
-        };
-      };
-
-
-      # iCal (Calendar)
-      iCal = {
-        "Show time in Month View" = true;      # Show event times in month view
-        "Show Week Numbers" = true;            # Show week numbers
-      };
-
-      # iTunes/Music
-      "com.apple.Music" = {
-        userWantsPlaybackNotifications = false;  # Disable music notifications
       };
 
 
@@ -460,61 +371,15 @@
       };
 
 
-      # Photos
-      "com.apple.Photos" = {
-        DateCreatedIsEXIFDateCreated = true;     # Use EXIF date for photos
-      };
-
-
       # Energy (Performance optimization)
       "com.apple.PowerManagement" = {
         SleepDisabled = 0;                       # Allow sleep
       };
 
 
-      # Preview
-      "com.apple.Preview" = {
-        NSQuitAlwaysKeepsWindows = false;        # Don't restore windows
-      };
-
-
       # Print
       "com.apple.print.PrintingPrefs" = {
         "Quit When Finished" = true;             # Quit printer app when done
-      };
-
-
-      # QuickTime
-      "com.apple.QuickTimePlayerX" = {
-        MGPlayMovieOnOpen = false;               # Don't auto-play videos
-      };
-
-
-      # Safari
-      "com.apple.Safari" = {
-        AutoFillCreditCardData = false;          # Don't autofill credit cards
-        AutoFillFromAddressBook = false;         # Don't autofill from contacts
-        AutoFillMiscellaneousForms = false;      # Don't autofill forms
-        AutoOpenSafeDownloads = false;           # Don't open safe files automatically
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = false;
-        "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = true;
-        IncludeDevelopMenu = true;               # Show develop menu
-        IncludeInternalDebugMenu = true;         # Show debug menu
-        ShowFavoritesBar = false;                # Hide favorites bar
-        ShowFullURLInSmartSearchField = true;    # Show full URL in search field
-        SuppressSearchSuggestions = true;        # Disable search suggestions
-        UniversalSearchEnabled = false;          # Don't send search queries to Apple
-        WarnAboutFraudulentWebsites = true;      # Warn about fraudulent sites
-        WebAutomaticSpellingCorrectionEnabled = false;  # Disable auto-correction
-        WebContinuousSpellCheckingEnabled = true;  # Enable spell checking
-        WebKitDeveloperExtrasEnabledPreferenceKey = true;  # Enable developer extras
-        WebKitJavaEnabled = false;               # Disable Java
-        WebKitJavaScriptCanOpenWindowsAutomatically = false;  # Disable JS auto-open windows
-        WebKitTabToLinksPreferenceKey = true;    # Press Tab to highlight each item
       };
 
 
@@ -580,20 +445,6 @@
       "com.apple.systempreferences" = {
         NSLanguages = [ "en" ];                  # Set language preferences
         ShowAllMode = true;                      # Show all preference panes
-      };
-
-
-      # Terminal
-      "com.apple.Terminal" = {
-        SecureKeyboardEntry = false;             # Secure keyboard entry in Terminal
-      };
-
-
-      # TextEdit - Plain text by default
-      "com.apple.TextEdit" = {
-        PlainTextEncoding = 4;                   # UTF-8 encoding
-        PlainTextEncodingForWrite = 4;           # UTF-8 for writing
-        RichText = 0;                            # Use plain text mode
       };
 
 
@@ -681,7 +532,7 @@
   # ============================================================================
   # Shell Configuration
   # ============================================================================
-  programs.zsh.enable = true;
+  programs.zsh.enable = true;                  # Enable zsh
 
 
 

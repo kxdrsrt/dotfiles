@@ -1,7 +1,18 @@
 { config, pkgs, ... }:
 
 {
-  # Finder preferences
+  # Finder preferences - both standard defaults and custom preferences
+  system.defaults.finder = {
+    AppleShowAllExtensions = true;         # Show all file extensions
+    FXDefaultSearchScope = "SCcf";         # Search current folder by default
+    FXEnableExtensionChangeWarning = false; # Disable extension change warning
+    FXPreferredViewStyle = "clmv";         # Default to column view
+    ShowPathbar = true;                    # Show path bar at bottom
+    ShowStatusBar = true;                  # Show status bar at bottom
+    _FXShowPosixPathInTitle = false;        # Show full POSIX path in title bar
+    _FXSortFoldersFirst = true;            # Sort folders before files
+  };
+
   system.defaults.CustomUserPreferences = {
     "com.apple.finder" = {
       # Animations
@@ -9,9 +20,9 @@
       
       # Info Panes
       FXInfoPanesExpanded = {
-        General = true;
-        OpenWith = true;
-        Privileges = true;
+        General = true;                          # Expand General pane
+        OpenWith = true;                         # Expand Open With pane
+        Privileges = true;                       # Expand Privileges pane
       };
       
       # Window Behavior

@@ -1,6 +1,8 @@
 # Nix
 .nix-defexpr
 .nix-profile
+!nix-darwin-config/apps/OneDrive.nix
+
 
 # macOS
 .aws
@@ -104,6 +106,7 @@ ehthumbs_vista.db
 .cursor/mcp.json
 .cursor/shouldUpdate
 .kiro/extensions/
+.vscode/extensions/
 .vscode/extensions/
 .vscode/extensions/argv.json
 .windsurf/extensions/

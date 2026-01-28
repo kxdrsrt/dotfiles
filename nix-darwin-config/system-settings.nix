@@ -75,20 +75,6 @@
     };
 
 
-
-    # Finder configuration
-    finder = {
-      AppleShowAllExtensions = true;         # Show all file extensions
-      FXDefaultSearchScope = "SCcf";         # Search current folder by default
-      FXEnableExtensionChangeWarning = false; # Disable extension change warning
-      FXPreferredViewStyle = "clmv";         # Default to column view
-      ShowPathbar = true;                    # Show path bar at bottom
-      ShowStatusBar = true;                  # Show status bar at bottom
-      _FXShowPosixPathInTitle = true;        # Show full POSIX path in title bar
-      _FXSortFoldersFirst = true;            # Sort folders before files
-    };
-
-
     # LaunchServices
     LaunchServices = {
       LSQuarantine = false;                  # Disable "Are you sure you want to open" dialog
@@ -286,7 +272,7 @@
       "com.apple.desktopservices" = {
         DSDontWriteNetworkStores = true;         # No .DS_Store on network volumes
         DSDontWriteUSBStores = true;             # No .DS_Store on USB volumes
-        "com.apple.springing.delay" = 0.5;       # Spring loading delay
+        "com.apple.springing.delay" = 0.1;       # Spring loading delay
         "com.apple.springing.enabled" = true;    # Enable spring loading for directories
       };
 
@@ -334,10 +320,6 @@
       "com.apple.HIToolbox" = {
         AppleFnUsageType = 2;  # 2 = Show Emoji & Symbols
       };
-
-
-      # Image Capture - Configured in apps/system/ImageCapture.nix
-      # "com.apple.ImageCapture" = { ... };
 
 
       # Location Services

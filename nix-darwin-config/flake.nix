@@ -56,6 +56,7 @@
         # Central place to include `apps/*.nix` (imports Dia.nix, Safari.nix, ...)
         # Also includes ./apps/system/default.nix which contains system GUI app configurations
         ./apps/default.nix
+        ./apps/system/default.nix
 
         # System-wide settings like defaults and preferences
         ./system-settings.nix

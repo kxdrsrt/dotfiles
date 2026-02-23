@@ -1,59 +1,64 @@
 { ... }:
 
+let
+  user = "k";
+  home = "/Users/${user}";
+  safariPlist = "${home}/Library/Containers/com.apple.Safari/Data/Library/Preferences/com.apple.Safari.plist";
+in
 {
-  # Safari preferences applied as CustomUserPreferences
-  system.defaults.CustomUserPreferences = {
-    "com.apple.Safari" = {
-      # Session Restoration
-      AlwaysRestoreSessionAtLaunch = 1;
-      ExcludePrivateWindowWhenRestoringSessionAtLaunch = 1;
-      OpenPrivateWindowWhenNotRestoringSessionAtLaunch = 0;
+  # Safari is sandboxed — its prefs live inside its container, so we must
+  # write directly to the container plist via an activation script.
+  system.activationScripts.postActivation.text = ''
+    # ── Safari Preferences (run as user — sandboxed container) ──
+    # Session Restoration
+    sudo -u ${user} defaults write "${safariPlist}" AlwaysRestoreSessionAtLaunch -int 1
+    sudo -u ${user} defaults write "${safariPlist}" ExcludePrivateWindowWhenRestoringSessionAtLaunch -int 1
+    sudo -u ${user} defaults write "${safariPlist}" OpenPrivateWindowWhenNotRestoringSessionAtLaunch -int 0
 
-      # AutoFill Settings
-      AutoFillFromiCloudKeychain = 1;
-      AutoFillPasswords = 1;
-      AutoFillCreditCardData = 0;                # Don't autofill credit cards
-      AutoFillFromAddressBook = 0;               # Don't autofill from contacts
-      AutoFillMiscellaneousForms = 0;            # Don't autofill forms
+    # AutoFill Settings
+    sudo -u ${user} defaults write "${safariPlist}" AutoFillFromiCloudKeychain -int 1
+    sudo -u ${user} defaults write "${safariPlist}" AutoFillPasswords -int 1
+    sudo -u ${user} defaults write "${safariPlist}" AutoFillCreditCardData -int 0
+    sudo -u ${user} defaults write "${safariPlist}" AutoFillFromAddressBook -int 0
+    sudo -u ${user} defaults write "${safariPlist}" AutoFillMiscellaneousForms -int 0
 
-      # Privacy & Security
-      UniversalSearchEnabled = 0;                # Don't send search queries to Apple
-      SuppressSearchSuggestions = 1;             # Disable search suggestions
-      WarnAboutFraudulentWebsites = 1;          # Warn about fraudulent sites
-      BlockStoragePolicy = 1;
-      EnableEnhancedPrivacyInPrivateBrowsing = 1;
-      EnableEnhancedPrivacyInRegularBrowsing = 1;
+    # Privacy & Security
+    sudo -u ${user} defaults write "${safariPlist}" UniversalSearchEnabled -int 0
+    sudo -u ${user} defaults write "${safariPlist}" SuppressSearchSuggestions -int 1
+    sudo -u ${user} defaults write "${safariPlist}" WarnAboutFraudulentWebsites -int 1
+    sudo -u ${user} defaults write "${safariPlist}" BlockStoragePolicy -int 1
+    sudo -u ${user} defaults write "${safariPlist}" EnableEnhancedPrivacyInPrivateBrowsing -int 1
+    sudo -u ${user} defaults write "${safariPlist}" EnableEnhancedPrivacyInRegularBrowsing -int 1
 
-      # Downloads
-      AutoOpenSafeDownloads = 0;                 # Don't open safe files automatically
+    # Downloads
+    sudo -u ${user} defaults write "${safariPlist}" AutoOpenSafeDownloads -int 0
 
-      # URL / UI Display
-      ShowFullURLInSmartSearchField = 1;         # Show full URL in search field
-      ShowFavoritesBar = 0;                      # Hide favorites bar
-      ShowSidebarInNewWindows = 0;
-      ShowSidebarInTopSites = 0;
-      ShowBackgroundImageInFavorites = 0;
+    # URL / UI Display
+    sudo -u ${user} defaults write "${safariPlist}" ShowFullURLInSmartSearchField -int 1
+    sudo -u ${user} defaults write "${safariPlist}" ShowFavoritesBar -int 0
+    sudo -u ${user} defaults write "${safariPlist}" ShowSidebarInNewWindows -int 0
+    sudo -u ${user} defaults write "${safariPlist}" ShowSidebarInTopSites -int 0
+    sudo -u ${user} defaults write "${safariPlist}" ShowBackgroundImageInFavorites -int 0
 
-      # Developer & Extensions
-      ExtensionsEnabled = 1;
-      IncludeDevelopMenu = 1;                    # Show Develop menu
-      IncludeInternalDebugMenu = 1;              # Show internal debug menu
-      WebKitDeveloperExtrasEnabledPreferenceKey = 1;  # Enable developer extras
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = 1;
+    # Developer & Extensions
+    sudo -u ${user} defaults write "${safariPlist}" ExtensionsEnabled -int 1
+    sudo -u ${user} defaults write "${safariPlist}" IncludeDevelopMenu -int 1
+    sudo -u ${user} defaults write "${safariPlist}" IncludeInternalDebugMenu -int 1
+    sudo -u ${user} defaults write "${safariPlist}" WebKitDeveloperExtrasEnabledPreferenceKey -int 1
+    sudo -u ${user} defaults write "${safariPlist}" "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -int 1
 
-      # Web Content Security & Features
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" = 0;
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" = 0;
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" = 0;
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" = 0;
-      "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" = 1;
-      WebKitJavaEnabled = 0;                     # Disable Java
-      WebKitJavaScriptCanOpenWindowsAutomatically = 0;  # Disable JS auto-open windows
-      WebKitTabToLinksPreferenceKey = 1;         # Press Tab to highlight each item
+    # Web Content Security & Features
+    sudo -u ${user} defaults write "${safariPlist}" "com.apple.Safari.ContentPageGroupIdentifier.WebKit2BackspaceKeyNavigationEnabled" -int 0
+    sudo -u ${user} defaults write "${safariPlist}" "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled" -int 0
+    sudo -u ${user} defaults write "${safariPlist}" "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles" -int 0
+    sudo -u ${user} defaults write "${safariPlist}" "com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically" -int 0
+    sudo -u ${user} defaults write "${safariPlist}" "com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks" -int 1
+    sudo -u ${user} defaults write "${safariPlist}" WebKitJavaEnabled -int 0
+    sudo -u ${user} defaults write "${safariPlist}" WebKitJavaScriptCanOpenWindowsAutomatically -int 0
+    sudo -u ${user} defaults write "${safariPlist}" WebKitTabToLinksPreferenceKey -int 1
 
-      # Text & Spell Checking
-      WebAutomaticSpellingCorrectionEnabled = 0;  # Disable auto-correction
-      WebContinuousSpellCheckingEnabled = 1;    # Enable spell checking
-    };
-  };
+    # Text & Spell Checking
+    sudo -u ${user} defaults write "${safariPlist}" WebAutomaticSpellingCorrectionEnabled -int 0
+    sudo -u ${user} defaults write "${safariPlist}" WebContinuousSpellCheckingEnabled -int 1
+  '';
 }

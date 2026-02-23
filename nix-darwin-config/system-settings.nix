@@ -1,14 +1,30 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+let
+  user = "k";
+  home = "/Users/${user}";
+  containerPrefs = app: "${home}/Library/Containers/${app}/Data/Library/Preferences/${app}.plist";
+in
+{
   # ============================================================================
   # System Configuration
   # ============================================================================
-  system.primaryUser = "k";                  # Required for user-specific settings
+  system.primaryUser = user;                 # Required for user-specific settings
 
 
   # ============================================================================
   # Activation Scripts
   # ============================================================================
   system.activationScripts.postActivation.text = ''
+    # Universal Access (SIP-protected domain, must use sudo)
+    sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+    sudo defaults write com.apple.universalaccess reduceMotion -bool false
+    sudo defaults write com.apple.universalaccess reduceTransparency -bool true
+
+    # Archive Utility (sandboxed — must run as user)
+    sudo -u ${user} defaults write "${containerPrefs "com.apple.archiveutility"}" "dearchive-move-after" -string "$HOME/.Trash"
+    sudo -u ${user} defaults write "${containerPrefs "com.apple.archiveutility"}" "dearchive-reveal-after" -bool true
+
     # Apply settings without logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
@@ -180,12 +196,8 @@
 
 
 
-    # Universal Access
-    universalaccess = {
-      closeViewScrollWheelToggle = true;     # Use scroll gesture with modifier key to zoom
-      reduceMotion = false;                  # Keep motion effects
-      reduceTransparency = true;             # Reduce transparency
-    };
+    # Universal Access — applied via activation script (SIP-protected domain)
+    # Archive Utility — applied via activation script (sandboxed)
 
 
 
@@ -236,11 +248,7 @@
       };
 
 
-      # Archive Utility
-      "com.apple.archiveutility" = {
-        "dearchive-move-after" = "~/.Trash";     # Move archives to trash after extraction
-        "dearchive-reveal-after" = true;         # Reveal extracted items
-      };
+      # Archive Utility — applied via activation script (sandboxed app)
 
 
       # Bluetooth Audio Agent
@@ -512,9 +520,9 @@
   # ============================================================================
   # User Configuration
   # ============================================================================
-  users.users.k = {
-    name = "k";
-    home = "/Users/k";
+  users.users.${user} = {
+    name = user;
+    home = home;
     shell = pkgs.zsh;                        # Set default shell to zsh
   };
 }

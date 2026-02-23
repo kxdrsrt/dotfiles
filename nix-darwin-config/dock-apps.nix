@@ -4,8 +4,8 @@
     persistent-apps = [
       "/System/Applications/Mail.app"
       "/Applications/Dia.app"
-      "/System/Applications/Photos.app"
       "/Applications/WhatsApp.app"
+      "/System/Applications/Photos.app"
       "/System/Applications/Notes.app"
       "/System/Applications/Reminders.app"
       "/Applications/Microsoft OneNote.app"

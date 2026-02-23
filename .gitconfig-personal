@@ -1,4 +1,4 @@
 [user]
     name = Kadir Sert
     email = kadir.sert@pm.me
-    signingkey = /Users/k/.ssh/id_ed25519
+    signingkey = /Users/k/.ssh/k_key.pub

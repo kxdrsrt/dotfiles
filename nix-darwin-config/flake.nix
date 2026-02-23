@@ -3,11 +3,10 @@
 
   # Inputs: external flakes used by this configuration.
   inputs = {
-    # Primary NixOS/Nixpkgs channel used for packages.
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    # Stable channel for reproducible base packages.
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11";
 
-    # An explicit reference to unstable nixpkgs so we can import it
-    # as an overlay later (keeps intent clear).
+    # Unstable channel imported as an overlay for bleeding-edge packages.
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # nix-darwin provides the darwinSystem helper used to build a macOS config
@@ -53,10 +52,9 @@
         # SpotX - Spotify adblocker configuration
         ./spotx.nix
 
-        # Central place to include `apps/*.nix` (imports Dia.nix, Safari.nix, ...)
-        # Also includes ./apps/system/default.nix which contains system GUI app configurations
+        # Central place to include all app configs (third-party and system)
+        # ./apps/default.nix already imports ./apps/system via ./system
         ./apps/default.nix
-        ./apps/system/default.nix
 
         # System-wide settings like defaults and preferences
         ./system-settings.nix

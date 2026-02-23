@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   # Finder preferences - both standard defaults and custom preferences
@@ -7,7 +7,13 @@
     FXDefaultSearchScope = "SCcf";         # Search current folder by default
     FXEnableExtensionChangeWarning = false; # Disable extension change warning
     FXPreferredViewStyle = "clmv";         # Default to column view
+    NewWindowTarget = "Other";             # New Finder windows open custom path
+    NewWindowTargetPath = "file:///Users/k/Downloads/";  # Downloads folder
+    ShowExternalHardDrivesOnDesktop = true; # Show external drives on desktop
+    ShowHardDrivesOnDesktop = false;        # Hide internal drives on desktop
+    ShowMountedServersOnDesktop = false;    # Hide network drives on desktop
     ShowPathbar = true;                    # Show path bar at bottom
+    ShowRemovableMediaOnDesktop = true;    # Show USB drives on desktop
     ShowStatusBar = true;                  # Show status bar at bottom
     _FXShowPosixPathInTitle = false;        # Show full POSIX path in title bar
     _FXSortFoldersFirst = true;            # Sort folders before files
@@ -25,16 +31,8 @@
         Privileges = true;                       # Expand Privileges pane
       };
       
-      # Window Behavior
-      NewWindowTarget = "PfDe";                  # New Finder windows open Downloads
-      NewWindowTargetPath = "file:///Users/k/Downloads/";  # Downloads folder path
+      # Quick Look
       QLEnableTextSelection = true;              # Allow text selection in Quick Look
-      
-      # Desktop Display
-      ShowExternalHardDrivesOnDesktop = true;    # Show external drives on desktop
-      ShowHardDrivesOnDesktop = false;           # Hide internal drives on desktop
-      ShowMountedServersOnDesktop = false;       # Hide network drives on desktop
-      ShowRemovableMediaOnDesktop = true;        # Show USB drives on desktop
       
       # Trash
       WarnOnEmptyTrash = false;                  # Don't warn when emptying trash

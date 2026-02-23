@@ -54,14 +54,6 @@
   ];
 
 
-  # ============================================================================
-  # Nix Configuration
-  # ============================================================================
-  nix.settings.experimental-features = "nix-command flakes";
-
-  # Optimize nix store automatically
-  nix.settings.auto-optimise-store = true;
-
 
   # Allow proprietary packages from nixpkgs
   nixpkgs.config.allowUnfree = true;

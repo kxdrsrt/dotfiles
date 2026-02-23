@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   # Microsoft Office apps preferences (Excel, Word, PowerPoint, Outlook, OneNote, Teams)

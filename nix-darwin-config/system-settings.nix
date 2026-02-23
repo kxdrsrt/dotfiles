@@ -15,14 +15,6 @@
     # Set wallpaper
     /usr/bin/osascript -e 'tell application "System Events" to tell every desktop to set picture to "${./assets/wallpaper.png}"'
 
-    # Unquarantine apps installed by casks/Homebrew/Nix to avoid Gatekeeper prompts.
-    # Use 'xattr -d' to strip quarantine from common app locations.
-    for dir in "/Applications" "/Applications/Nix Apps" "/opt/homebrew/Caskroom"; do
-      if [ -d "$dir" ]; then
-        echo "Unquarantining apps in $dir..."
-        sudo xattr -rd com.apple.quarantine "$dir"/*.app 2>/dev/null || true
-      fi
-    done
   '';
 
   # ============================================================================
@@ -41,7 +33,7 @@
     # Control Center configuration
     controlcenter = {
       BatteryShowPercentage = false;         # Hide battery percentage in menu bar
-      Bluetooth = false;                      # Show Bluetooth in menu bar
+      Bluetooth = false;                      # Hide Bluetooth in menu bar
       NowPlaying = false;                    # Hide Now Playing in Control Center
     };
 
@@ -54,9 +46,7 @@
       autohide-time-modifier = 0.0;          # Remove dock animation
       expose-animation-duration = 0.1;       # Fast Mission Control animation
       expose-group-apps = true;              # Group windows by application
-      largesize = 75;                        # Magnified icon size
       launchanim = false;                    # Disable launch animation
-      magnification = false;                 # Disable magnification
       minimize-to-application = true;        # Minimize windows into app icon
       mru-spaces = false;                    # Don't auto-rearrange spaces by recent use
       orientation = "bottom";                # Dock position on screen
@@ -136,19 +126,28 @@
       NSWindowResizeTime = 0.001;                    # Fast window resize
       PMPrintingExpandedStateForPrint = true;        # Expanded print panel
       PMPrintingExpandedStateForPrint2 = true;       # Expanded print panel
+      "com.apple.sound.beep.volume" = 0.7;             # Alert volume level
+      "com.apple.springing.delay" = 0.1;               # Spring loading delay
+      "com.apple.springing.enabled" = true;            # Enable spring loading for directories
+      "com.apple.swipescrolldirection" = true;         # Natural scrolling
+      "com.apple.trackpad.forceClick" = true;          # Enable Force Click
+      "com.apple.trackpad.scaling" = 3.0;              # Trackpad tracking speed
     };
 
 
 
     # Screenshot settings
-    screencapture.location = "~/Desktop";    # Save screenshots to Desktop
+    screencapture = {
+      location = "~/Desktop";                 # Save screenshots to Desktop
+      type = "png";                            # Screenshot format
+    };
 
 
 
     # Screensaver and security
     screensaver = {
-      askForPassword = false;                # Require password after screensaver
-      askForPasswordDelay = 3600;            # Require password immediately
+      askForPassword = true;                 # Require password after screensaver
+      askForPasswordDelay = 0;               # Require password immediately
     };
 
 
@@ -190,6 +189,11 @@
 
 
 
+    # Globe key behavior
+    hitoolbox.AppleFnUsageType = "Show Emoji & Symbols";
+
+
+
     # Window Manager (macOS Sequoia/Tahoe)
     WindowManager = {
       EnableStandardClickToShowDesktop = false;  # Disable click wallpaper to show desktop
@@ -197,6 +201,15 @@
       StageManagerHideWidgets = false;           # Show widgets in Stage Manager
       StandardHideDesktopIcons = false;          # Show desktop icons
       StandardHideWidgets = false;               # Show widgets on desktop
+    };
+
+
+
+    # Custom system-wide preferences (written to /Library/Preferences/)
+    CustomSystemPreferences = {
+      "com.apple.iokit.AmbientLightSensor" = {
+        "Keyboard Dim Time" = 5;               # Turn off keyboard backlight after 5 seconds of inactivity
+      };
     };
 
 
@@ -272,8 +285,6 @@
       "com.apple.desktopservices" = {
         DSDontWriteNetworkStores = true;         # No .DS_Store on network volumes
         DSDontWriteUSBStores = true;             # No .DS_Store on USB volumes
-        "com.apple.springing.delay" = 0.1;       # Spring loading delay
-        "com.apple.springing.enabled" = true;    # Enable spring loading for directories
       };
 
 
@@ -294,8 +305,6 @@
 
       # Dock - Additional settings
       "com.apple.dock" = {
-        "expose-group-apps" = true;              # Group windows by app
-        "mru-spaces" = false;                    # Don't rearrange spaces
         springboard-hide-duration = 0;           # Disable springboard hide animation
         springboard-page-duration = 0;           # Disable springboard page animation
         springboard-show-duration = 0;           # Disable springboard show animation
@@ -317,9 +326,7 @@
 
 
       # Keyboard and Input
-      "com.apple.HIToolbox" = {
-        AppleFnUsageType = 2;  # 2 = Show Emoji & Symbols
-      };
+      # Globe key → Emoji & Symbols is set via system.defaults.hitoolbox.AppleFnUsageType
 
 
       # Location Services
@@ -334,11 +341,7 @@
       };
 
 
-      # Battery Menu
-      "com.apple.menuextra.battery" = {
-        ShowPercent = "YES";                     # Show battery percentage
-        ShowTime = "YES";                        # Show time remaining
-      };
+      # Battery Menu (percentage controlled via controlcenter.BatteryShowPercentage above)
 
 
       # AirDrop
@@ -365,18 +368,10 @@
       };
 
 
-      # Screenshot - Additional settings
-      "com.apple.screencapture" = {
-        location = "~/Desktop";                  # Screenshot location
-        type = "png";                            # Screenshot format
-      };
+      # Screenshot settings are fully managed via system.defaults.screencapture above
 
 
-      # Screensaver - Additional settings
-      "com.apple.screensaver" = {
-        askForPassword = 1;                      # Require password after screensaver
-        askForPasswordDelay = 0;                 # Require password immediately
-      };
+      # Screensaver settings are managed via system.defaults.screensaver above
 
 
       # Software Update
@@ -446,14 +441,10 @@
       # Global preferences
       NSGlobalDomain = {
         AppleLanguages = [ "en-US" ];                        # System language
-        AppleLocale = "en_US";                               # System locale
+        AppleLocale = "en_DE";                               # English with Germany region (metric, date/number format)
         AppleMiniaturizeOnDoubleClick = false;               # Don't minimize on title bar double-click (EXPERIMENTAL)
         "com.apple.mouse.scaling" = 2.5;                     # Mouse tracking speed
         "com.apple.sound.beep.flash" = 0;                    # Disable screen flash on alert
-        "com.apple.sound.beep.volume" = 0.7;                 # Alert volume level
-        "com.apple.swipescrolldirection" = true;             # Natural scrolling
-        "com.apple.trackpad.forceClick" = true;              # Enable Force Click
-        "com.apple.trackpad.scaling" = 3.0;                  # Trackpad tracking speed
         NSBrowserColumnAnimationSpeedMultiplier = 0;         # Disable Finder column animations (EXPERIMENTAL)
         NSCloseAlwaysConfirmsChanges = false;                # Don't ask to save on close if no changes
         NSDocumentRevisionsWindowTransformAnimation = 0;     # Disable document revisions animation (EXPERIMENTAL)

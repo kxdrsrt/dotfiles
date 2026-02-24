@@ -19,5 +19,8 @@ git add -N .
 echo "❄️  Rebuilding nix-darwin..."
 sudo -H nix run nix-darwin -- switch --flake .#"$TARGET_CONFIG"
 
+echo "🔓 Removing quarantine flags from cask-installed apps..."
+sudo xattr -dr com.apple.quarantine /Applications/ 2>/dev/null || true
+
 echo "✅ Rebuild successful!"
 echo "ℹ️  Changes are active, but NOT committed. Use 'git commit' when ready."

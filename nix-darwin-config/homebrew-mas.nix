@@ -16,7 +16,7 @@
 
   # GUI Applications via Homebrew Casks
   homebrew.casks = [
-    "alcove"                               # Dynamic Island for macOS
+    # "alcove"                               # Dynamic Island for macOS
     "altserver"                            # Server to sideload iOS apps
     # "android-file-transfer"                # File transfer for Android devices
     # "anki"                                 # Flashcard learning app
@@ -66,7 +66,7 @@
     "notion"                               # All-in-one workspace
     "nvidia-geforce-now"                   # Cloud gaming service
     # "obs"                                  # Streaming and recording software
-    # "opencore-patcher"                     # macOS patcher for unsupported Macs
+    "opencore-patcher"                     # macOS patcher for unsupported Macs
     # "openvpn-connect"                      # VPN client
     "pearcleaner"                          # Advanced Mac cleaner
     "qbittorrent"                          # BitTorrent client

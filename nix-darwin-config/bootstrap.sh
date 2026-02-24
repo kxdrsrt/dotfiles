@@ -123,5 +123,8 @@ done
 echo "❄️  Applying system configuration..."
 sudo -H nix run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME"
 
+echo "🔓 Removing quarantine flags from cask-installed apps..."
+sudo xattr -dr com.apple.quarantine /Applications/ 2>/dev/null || true
+
 echo "✅ System bootstrap complete! ❄️"
 echo "👉 Please restart your terminal session to finalize all changes."

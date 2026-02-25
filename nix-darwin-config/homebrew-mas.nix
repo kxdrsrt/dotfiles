@@ -38,7 +38,7 @@
     # "displaylink"                        # Drivers for USB displays
     "figma"                                # Vector graphics editor
     # "framer"                               # Interactive design prototyping tool
-    # "google-chrome"                        # Google's web browser
+    "google-chrome"                        # Google's web browser
     # "google-drive"                       # Cloud storage sync
     # "handbrake"                          # Video transcoder
     "iina"                                 # Modern media player for macOS

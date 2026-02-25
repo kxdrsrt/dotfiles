@@ -127,8 +127,13 @@ git add -N . || true
 # --- 9. PRE-ACTIVATION CLEANUP ---
 # nix-darwin refuses to overwrite unrecognized /etc files.
 # Remove known conflicting files so activation proceeds unattended.
+# This includes *.before-nix backups left behind by a previous (partial) Nix
+# install or a failed bootstrap run — nix-darwin treats those as conflicts too.
 echo "🧹 Removing conflicting /etc files for nix-darwin..."
-for f in /etc/zshenv /etc/zshrc /etc/bashrc /etc/bash.bashrc; do
+for f in \
+    /etc/zshenv /etc/zshrc /etc/bashrc /etc/bash.bashrc \
+    /etc/zshenv.before-nix /etc/zshrc.before-nix \
+    /etc/bashrc.before-nix /etc/bash.bashrc.before-nix; do
     if [ -f "$f" ]; then
         echo "  🗑️  Removing $f"
         sudo rm -f "$f"

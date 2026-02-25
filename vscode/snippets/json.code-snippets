@@ -1,0 +1,107 @@
+{
+  // ═══════════════════════════════════════════════════════════════════════════
+  // JSON SNIPPETS
+  // Custom code snippets for JSON and JSONC files
+  // ═══════════════════════════════════════════════════════════════════════════
+  //
+  // HOW SNIPPETS WORK:
+  // ─────────────────────────────────────────────────────────────────────────
+  // 1. Type the "prefix" text in the editor
+  // 2. Press Tab or select from IntelliSense dropdown
+  // 3. The "body" content is inserted
+  // 4. Use Tab to jump between placeholders ($1, $2, etc.)
+  //
+  // SNIPPET PROPERTIES:
+  // ─────────────────────────────────────────────────────────────────────────
+  // - scope:       Language(s) where snippet is available (comma-separated)
+  // - prefix:      The trigger text you type to activate the snippet
+  // - body:        Array of strings, each string is a line of output
+  // - description: Help text shown in IntelliSense
+  //
+  // PLACEHOLDER VARIABLES:
+  // ─────────────────────────────────────────────────────────────────────────
+  // - $1, $2, $3:        Tab stops (cursor jumps here in order)
+  // - $0:                Final cursor position (after all tab stops)
+  // - ${1:placeholder}:  Tab stop with default text
+  // - ${1|one,two|}:     Tab stop with dropdown choices
+  //
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // BASIC STRUCTURES
+  // ─────────────────────────────────────────────────────────────────────────
+
+  "Empty Object": {
+    "scope": "json,jsonc",
+    "prefix": "obj",
+    "body": ["{", "  $0", "}"],
+    "description": "Insert an empty object"
+  },
+  "Empty Array": {
+    "scope": "json,jsonc",
+    "prefix": "arr",
+    "body": ["[", "  $0", "]"],
+    "description": "Insert an empty array"
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // KEY-VALUE PAIRS
+  // ─────────────────────────────────────────────────────────────────────────
+
+  "Key-Value String": {
+    "scope": "json,jsonc",
+    "prefix": "kv",
+    "body": "\"${1:key}\": \"${2:value}\"$0",
+    "description": "Insert a string key-value pair"
+  },
+  "Key-Value Number": {
+    "scope": "json,jsonc",
+    "prefix": "kvn",
+    "body": "\"${1:key}\": ${2:0}$0",
+    "description": "Insert a number key-value pair"
+  },
+  "Key-Value Boolean": {
+    "scope": "json,jsonc",
+    "prefix": "kvb",
+    "body": "\"${1:key}\": ${2|true,false|}$0",
+    "description": "Insert a boolean key-value pair"
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // COMMENTS (JSONC ONLY)
+  // ─────────────────────────────────────────────────────────────────────────
+
+  "Section Header": {
+    "scope": "jsonc",
+    "prefix": "section",
+    "body": [
+      "// ═══════════════════════════════════════════════════════════════════════════",
+      "// ${1:SECTION TITLE}",
+      "// ═══════════════════════════════════════════════════════════════════════════",
+      "$0"
+    ],
+    "description": "Insert a section header"
+  },
+  "Subsection Header": {
+    "scope": "jsonc",
+    "prefix": "subsection",
+    "body": [
+      "// ─────────────────────────────────────────────────────────────────────────",
+      "// ${1:Subsection Title}",
+      "// ─────────────────────────────────────────────────────────────────────────",
+      "$0"
+    ],
+    "description": "Insert a subsection header"
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // VS CODE SETTINGS
+  // ─────────────────────────────────────────────────────────────────────────
+
+  "VS Code Setting": {
+    "scope": "jsonc",
+    "prefix": "setting",
+    "body": ["// ${1:Description}", "\"${2:setting.name}\": ${3:value}$0"],
+    "description": "Insert a VS Code setting with comment"
+  }
+}

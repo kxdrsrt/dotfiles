@@ -1,0 +1,177 @@
+[
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FILE OPERATIONS
+  // Create new files and folders quickly from the Explorer
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Create a new file in the Explorer panel
+  // Shortcut: Ctrl+Shift+N
+  // Condition: Only when Explorer is focused
+  {
+    "key": "ctrl+shift+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus"
+  },
+
+  // Create a new folder in the Explorer panel
+  // Shortcut: Ctrl+Shift+Alt+N
+  // Condition: Only when Explorer is focused
+  {
+    "key": "ctrl+shift+alt+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CODE EDITING
+  // Essential shortcuts for manipulating lines of code
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Move current line (or selected lines) up by one position
+  // Shortcut: Alt+Up Arrow
+  // Condition: Editor must have focus and not be read-only
+  {
+    "key": "alt+up",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // Move current line (or selected lines) down by one position
+  // Shortcut: Alt+Down Arrow
+  // Condition: Editor must have focus and not be read-only
+  {
+    "key": "alt+down",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // Duplicate current line (or selected lines) below cursor
+  // Shortcut: Ctrl+D
+  // Condition: Editor must have focus and not be read-only
+  {
+    "key": "ctrl+d",
+    "command": "editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // Delete entire current line (or selected lines)
+  // Shortcut: Ctrl+Shift+K
+  // Condition: Editor must have focus and not be read-only
+  {
+    "key": "ctrl+shift+k",
+    "command": "editor.action.deleteLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // NAVIGATION
+  // Quick navigation between editors and panels
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Switch to next open editor tab (cycle right)
+  // Shortcut: Ctrl+Tab
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
+
+  // Switch to previous open editor tab (cycle left)
+  // Shortcut: Ctrl+Shift+Tab
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
+  },
+
+  // Focus/toggle the Explorer sidebar panel
+  // Shortcut: Ctrl+Shift+E
+  {
+    "key": "ctrl+shift+e",
+    "command": "workbench.view.explorer"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // TERMINAL
+  // Quick access to integrated terminal
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Toggle (show/hide) the integrated terminal panel
+  // Shortcut: Ctrl+` (backtick)
+  {
+    "key": "ctrl+`",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+
+  // Create a new terminal instance
+  // Shortcut: Ctrl+Shift+` (backtick)
+  {
+    "key": "ctrl+shift+`",
+    "command": "workbench.action.terminal.new"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // MARKDOWN
+  // Preview shortcuts for markdown files
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Open markdown preview in a new tab (replaces editor)
+  // Shortcut: Ctrl+Shift+V
+  // Condition: Only when editing markdown files
+  {
+    "key": "ctrl+shift+v",
+    "command": "markdown.showPreview",
+    "when": "editorLangId == markdown"
+  },
+
+  // Open markdown preview side-by-side with editor
+  // Shortcut: Ctrl+K, then V (chord/sequence)
+  // Condition: Only when editing markdown files
+  {
+    "key": "ctrl+k v",
+    "command": "markdown.showPreviewToSide",
+    "when": "editorLangId == markdown"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CODE RUNNER
+  // Execute code using the Code Runner extension
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Run current file using Code Runner extension
+  // Shortcut: F5
+  // Condition: Editor must have focus
+  {
+    "key": "f5",
+    "command": "code-runner.run",
+    "when": "editorTextFocus"
+  },
+
+  // Stop the currently running code execution
+  // Shortcut: Ctrl+F5
+  {
+    "key": "ctrl+f5",
+    "command": "code-runner.stop"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // QUICK ACTIONS
+  // Formatting and code fixes
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Format the entire document using the configured formatter
+  // Shortcut: Ctrl+Shift+F
+  // Condition: Editor must have focus and not be read-only
+  {
+    "key": "ctrl+shift+f",
+    "command": "editor.action.formatDocument",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+
+  // Show quick fix suggestions (lightbulb menu) for errors/warnings
+  // Shortcut: Ctrl+. (period)
+  // Condition: Code actions must be available for current position
+  {
+    "key": "ctrl+.",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  }
+]

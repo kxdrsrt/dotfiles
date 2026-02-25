@@ -35,12 +35,25 @@ trap _stop_keepalive EXIT
 _start_keepalive
 
 # --- 3. NIX INSTALLATION ---
-# Install Nix via the Determinate Systems installer if it is not already present.
-# Determinate Nix enables nix-command and flakes by default — no extra flags needed.
+# Determinate Systems does NOT support Intel (x86_64) Macs.
+# Apple Silicon  → Determinate Nix (flakes enabled by default, manages own daemon)
+# Intel x86_64   → official upstream Nix installer (flakes must be enabled manually)
 if ! command -v nix &>/dev/null; then
-    echo "❄️  Nix not found. Installing via Determinate Systems installer..."
-    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
-        sh -s -- install --no-confirm
+    if [[ $(uname -m) == "arm64" ]]; then
+        echo "❄️  Nix not found (Apple Silicon). Installing via Determinate Systems..."
+        curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
+            sh -s -- install --no-confirm
+    else
+        echo "❄️  Nix not found (Intel). Installing via official upstream installer..."
+        # Multi-user install — required for nix-darwin
+        curl --proto '=https' --tlsv1.2 -sSf -L https://nixos.org/nix/install | \
+            sh -s -- --daemon --yes
+        # Enable flakes + nix-command for the current user (nix-darwin will
+        # persist this into /etc/nix/nix.conf on first activation)
+        mkdir -p "$HOME/.config/nix"
+        echo 'experimental-features = nix-command flakes' >> "$HOME/.config/nix/nix.conf"
+        echo "❄️  Flakes enabled in ~/.config/nix/nix.conf"
+    fi
     # Source the Nix daemon environment so subsequent commands can use nix
     # shellcheck source=/dev/null
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh

@@ -76,9 +76,9 @@ git checkout -f master
 # --- 5. SYSTEM IDENTITY SETUP ---
 # Set the system network names to match the configuration attribute
 echo "🔧 Configuring system identity to '$TARGET_HOSTNAME'..."
-sudo scutil --set ComputerName "$TARGET_HOSTNAME"
-sudo scutil --set HostName "$TARGET_HOSTNAME"
-sudo scutil --set LocalHostName "$TARGET_HOSTNAME"
+sudo /usr/sbin/scutil --set ComputerName  "$TARGET_HOSTNAME"
+sudo /usr/sbin/scutil --set HostName      "$TARGET_HOSTNAME"
+sudo /usr/sbin/scutil --set LocalHostName "$TARGET_HOSTNAME"
 
 # --- 6. COMPATIBILITY LAYER INSTALLATION ---
 # Only relevant on Apple Silicon — skipped entirely on Intel.
@@ -89,7 +89,7 @@ if [[ $(uname -m) == "arm64" ]]; then
         echo "🍎 Rosetta 2 is already present."
     else
         echo "🍎 Rosetta 2 not found. Proceeding with installation..."
-        sudo softwareupdate --install-rosetta --agree-to-license
+        sudo /usr/sbin/softwareupdate --install-rosetta --agree-to-license
     fi
 fi
 
@@ -98,7 +98,7 @@ fi
 # The system TCC database is only readable by processes that have FDA granted,
 # making it a direct and Terminal-specific probe (no Safari dependency).
 _check_fda() {
-    sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "" &>/dev/null
+    /usr/bin/sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db "" &>/dev/null
 }
 if ! _check_fda; then
     echo "🔐 Full Disk Access not detected. Requesting permission..."

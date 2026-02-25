@@ -1,0 +1,338 @@
+{
+  // ═══════════════════════════════════════════════════════════════════════════
+  // EDITOR - Core editing experience
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Smooth cursor blinking animation instead of abrupt on/off
+  "editor.cursorBlinking": "smooth",
+
+  // Animate cursor movement for smoother visual feedback
+  "editor.cursorSmoothCaretAnimation": "on",
+
+  // Enable font ligatures (e.g., => becomes arrow, != becomes ≠)
+  "editor.fontLigatures": true,
+
+  // Automatically format code when saving a file
+  "editor.formatOnSave": true,
+
+  // Draw vertical lines connecting matching brackets (only for active pair)
+  "editor.guides.bracketPairs": "active",
+
+  // Enable inline suggestions from AI and other sources
+  "editor.inlineSuggest.enabled": true,
+
+  // Auto-rename matching HTML/XML tags when editing one
+  "editor.linkedEditing": true,
+
+  // Disable minimap to save screen space and improve performance
+  "editor.minimap.enabled": false,
+
+  // Show whitespace characters only when text is selected
+  "editor.renderWhitespace": "selection",
+
+  // Enable smooth scrolling animation in the editor
+  "editor.smoothScrolling": true,
+
+  // Keep function/class headers visible when scrolling through code
+  "editor.stickyScroll.enabled": true,
+
+  // Prioritize suggestions from nearby code (same file/folder)
+  "editor.suggest.localityBonus": true,
+
+  // Auto-select the first suggestion in the autocomplete list
+  "editor.suggestSelection": "first",
+
+  // Disable automatic line wrapping (horizontal scroll instead)
+  "editor.wordWrap": "off",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FILES - Auto-save and file handling
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Automatically save files after a delay
+  "files.autoSave": "afterDelay",
+
+  // Wait 2 seconds of inactivity before auto-saving
+  "files.autoSaveDelay": 2000,
+
+  // Default language for new untitled files
+  "files.defaultLanguage": "markdown",
+
+  // Hide these files/folders from Explorer to reduce clutter
+  "files.exclude": {
+    "**/.DS_Store": true, // macOS metadata files
+    "**/.git": true, // Git repository folder
+    "**/.hg": true, // Mercurial repository folder
+    "**/.svn": true, // Subversion repository folder
+    "**/CVS": true, // CVS repository folder
+    "**/Thumbs.db": true // Windows thumbnail cache
+  },
+
+  // Remove trailing whitespace from lines when saving
+  "files.trimTrailingWhitespace": true,
+
+  // Don't watch these folders for changes (improves performance)
+  "files.watcherExclude": {
+    "**/.git/objects/**": true, // Git object storage
+    "**/.git/subtree-cache/**": true, // Git subtree cache
+    "**/node_modules/**": true // npm dependencies (huge folder)
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // WORKBENCH - UI and layout
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Always open files in a new tab (don't reuse preview tab)
+  "workbench.editor.enablePreview": false,
+
+  // Show a dot on tabs with unsaved changes
+  "workbench.editor.highlightModifiedTabs": true,
+
+  // Smooth scrolling in sidebars and lists
+  "workbench.list.smoothScrolling": true,
+
+  // Don't show welcome page or recent files on startup
+  "workbench.startupEditor": "none",
+
+  // Indent tree items by 16px for better visual hierarchy
+  "workbench.tree.indent": 16,
+
+  // Always show indent guides in tree views
+  "workbench.tree.renderIndentGuides": "always",
+
+  // Use default text editor for git diff views of these file types
+  "workbench.editorAssociations": {
+    "{git,gitlens}:/**/*.{md,csv,svg}": "default"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // EXPLORER - File browser settings
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Don't ask for confirmation when deleting files
+  "explorer.confirmDelete": false,
+
+  // Don't ask for confirmation when dragging and dropping files
+  "explorer.confirmDragAndDrop": false,
+
+  // Sort files by type (folders first, then by extension)
+  "explorer.sortOrder": "type",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SEARCH - Find in files
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Case-sensitive search only when query contains uppercase letters
+  "search.smartCase": true,
+
+  // Exclude these folders from search results
+  "search.exclude": {
+    "**/node_modules": true, // npm dependencies
+    "**/dist": true, // Build output folders
+    "**/build": true // Build output folders
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // TERMINAL - Integrated terminal
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // ── Windows ──
+
+  // Use Git Bash as the default terminal on Windows
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+
+  // Available terminal profiles on Windows
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "args": ["-l", "-i"], // -l: login shell, -i: interactive mode
+      "icon": "terminal-bash"
+    },
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": "C:\\Windows\\System32\\cmd.exe",
+      "icon": "terminal-cmd"
+    }
+  },
+
+  // ── macOS ──
+
+  // Use zsh as the default terminal on macOS
+  "terminal.integrated.defaultProfile.osx": "zsh",
+
+  // Available terminal profiles on macOS
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh",
+      "args": ["-l"],
+      "icon": "terminal"
+    },
+    "bash": {
+      "path": "/bin/bash",
+      "args": ["-l"],
+      "icon": "terminal-bash"
+    }
+  },
+
+  // ── Linux ──
+
+  // Use bash as the default terminal on Linux
+  "terminal.integrated.defaultProfile.linux": "bash",
+
+  // Available terminal profiles on Linux
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "/usr/bin/zsh",
+      "icon": "terminal"
+    }
+  },
+
+  // Enable blinking cursor in terminal
+  "terminal.integrated.cursorBlinking": true,
+
+  // Use thin line cursor instead of block
+  "terminal.integrated.cursorStyle": "line",
+
+  // Font family for terminal text
+  "terminal.integrated.fontFamily": "Consolas, 'Courier New', monospace",
+
+  // Use GPU acceleration when available for better performance
+  "terminal.integrated.gpuAcceleration": "auto",
+
+  // Keep 10,000 lines of terminal history (scrollback buffer)
+  "terminal.integrated.scrollback": 10000,
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // GIT - Version control
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Automatically fetch remote changes periodically
+  "git.autofetch": true,
+
+  // Don't ask for confirmation when syncing (push/pull)
+  "git.confirmSync": false,
+
+  // Commit all staged changes if no specific files selected
+  "git.enableSmartCommit": true,
+
+  // Detect and open git repos in parent folders automatically
+  "git.openRepositoryInParentFolders": "always",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // MARKDOWN - Preview and editing
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Markdown-specific editor settings
+  "[markdown]": {
+    // Use Prettier for markdown formatting (consistent with other file types)
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    // Wrap long lines in markdown files for readability
+    "editor.wordWrap": "on",
+    // Enable suggestions but not in comments/strings
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    }
+  },
+
+  // Update markdown links when files are moved/renamed
+  "markdown.updateLinksOnFileMove.enabled": "always",
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // Markdown All in One extension settings
+  // ─────────────────────────────────────────────────────────────────────────
+
+  // Use ** for bold text (standard markdown)
+  "markdown.extension.bold.indicator": "**",
+
+  // Use * for italic text (standard markdown)
+  "markdown.extension.italic.indicator": "*",
+
+  // Use relative paths for images in exports
+  "markdown.extension.print.absoluteImgPath": false,
+
+  // Auto-format tables when editing
+  "markdown.extension.tableFormatter.enabled": true,
+
+  // Update table of contents automatically when saving
+  "markdown.extension.toc.updateOnSave": true,
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // LANGUAGE-SPECIFIC FORMATTERS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // JSON files: use Prettier for formatting
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // JSONC (JSON with comments): use Prettier for formatting
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Shell scripts (bash, sh): use shell-format extension
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  // Properties files (.properties, .env): use shell-format
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  // Ignore files (.gitignore, .dockerignore): use shell-format
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // EXTENSIONS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "extensions.autoCheckUpdates": true,
+  "extensions.autoUpdate": true,
+  "extensions.ignoreRecommendations": false,
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SECURITY
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "security.workspace.trust.untrustedFiles": "open",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // GITHUB COPILOT
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "github.copilot.nextEditSuggestions.enabled": true,
+
+  "github.copilot.enable": {
+    "markdown": true,
+    "plaintext": true
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // SNOWFLAKE
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "snowflake.connectionsConfigFile": "/Users/k/.snowflake/connections.toml",
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // CHAT / AI TOOLS
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  "chat.tools.urls.autoApprove": {
+    "https://suchen.mobile.de": {
+      "approveRequest": false,
+      "approveResponse": true
+    }
+  }
+}

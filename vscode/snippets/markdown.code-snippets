@@ -1,0 +1,132 @@
+{
+  // ═══════════════════════════════════════════════════════════════════════════
+  // MARKDOWN SNIPPETS
+  // Custom code snippets for Markdown files
+  // ═══════════════════════════════════════════════════════════════════════════
+  //
+  // HOW SNIPPETS WORK:
+  // ─────────────────────────────────────────────────────────────────────────
+  // 1. Type the "prefix" text in the editor
+  // 2. Press Tab or select from IntelliSense dropdown
+  // 3. The "body" content is inserted
+  // 4. Use Tab to jump between placeholders ($1, $2, etc.)
+  //
+  // SNIPPET PROPERTIES:
+  // ─────────────────────────────────────────────────────────────────────────
+  // - scope:       Language(s) where snippet is available (comma-separated)
+  // - prefix:      The trigger text you type to activate the snippet
+  // - body:        Array of strings, each string is a line of output
+  // - description: Help text shown in IntelliSense
+  //
+  // PLACEHOLDER VARIABLES:
+  // ─────────────────────────────────────────────────────────────────────────
+  // - $1, $2, $3:        Tab stops (cursor jumps here in order)
+  // - $0:                Final cursor position (after all tab stops)
+  // - ${1:placeholder}:  Tab stop with default text
+  // - ${1|one,two|}:     Tab stop with dropdown choices
+  //
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  // Fenced code block with syntax highlighting
+  "Code Block": {
+    "scope": "markdown",
+    "prefix": "code",
+    "body": ["```${1:language}", "$2", "```", "$0"],
+    "description": "Insert a fenced code block"
+  },
+
+  // Headings
+  "Heading 1": {
+    "scope": "markdown",
+    "prefix": "h1",
+    "body": "# ${1:Heading}$0",
+    "description": "Insert H1 heading"
+  },
+  "Heading 2": {
+    "scope": "markdown",
+    "prefix": "h2",
+    "body": "## ${1:Heading}$0",
+    "description": "Insert H2 heading"
+  },
+  "Heading 3": {
+    "scope": "markdown",
+    "prefix": "h3",
+    "body": "### ${1:Heading}$0",
+    "description": "Insert H3 heading"
+  },
+
+  // Table with 3 columns
+  "Table": {
+    "scope": "markdown",
+    "prefix": "table",
+    "body": [
+      "| ${1:Header 1} | ${2:Header 2} | ${3:Header 3} |",
+      "|---------------|---------------|---------------|",
+      "| $4            | $5            | $6            |",
+      "$0"
+    ],
+    "description": "Insert a 3-column table"
+  },
+
+  // Links and images
+  "Link": {
+    "scope": "markdown",
+    "prefix": "link",
+    "body": "[${1:text}](${2:url})$0",
+    "description": "Insert a hyperlink"
+  },
+  "Image": {
+    "scope": "markdown",
+    "prefix": "img",
+    "body": "![${1:alt text}](${2:image.png})$0",
+    "description": "Insert an image"
+  },
+
+  // Lists
+  "Unordered List": {
+    "scope": "markdown",
+    "prefix": "ul",
+    "body": ["- ${1:item 1}", "- ${2:item 2}", "- ${3:item 3}", "$0"],
+    "description": "Insert an unordered list"
+  },
+  "Ordered List": {
+    "scope": "markdown",
+    "prefix": "ol",
+    "body": ["1. ${1:item 1}", "2. ${2:item 2}", "3. ${3:item 3}", "$0"],
+    "description": "Insert an ordered list"
+  },
+  "Task List": {
+    "scope": "markdown",
+    "prefix": "todo",
+    "body": ["- [ ] ${1:task 1}", "- [ ] ${2:task 2}", "- [ ] ${3:task 3}", "$0"],
+    "description": "Insert a task list with checkboxes"
+  },
+
+  // Formatting
+  "Bold": {
+    "scope": "markdown",
+    "prefix": "bold",
+    "body": "**${1:text}**$0",
+    "description": "Insert bold text"
+  },
+  "Italic": {
+    "scope": "markdown",
+    "prefix": "italic",
+    "body": "*${1:text}*$0",
+    "description": "Insert italic text"
+  },
+
+  // Other common elements
+  "Blockquote": {
+    "scope": "markdown",
+    "prefix": "quote",
+    "body": ["> ${1:quote text}", "$0"],
+    "description": "Insert a blockquote"
+  },
+  "Horizontal Rule": {
+    "scope": "markdown",
+    "prefix": "hr",
+    "body": ["---", "$0"],
+    "description": "Insert a horizontal rule"
+  }
+}

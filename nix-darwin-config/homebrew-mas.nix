@@ -135,4 +135,4 @@
     # "VPN.lat"               = 1526622816;  # VPN client
     "Windows App"             = 1295203466;  # Remote Desktop / RDP
     # "Xcode"                 = 497799835;   # Apple IDE
-  };
+  };}

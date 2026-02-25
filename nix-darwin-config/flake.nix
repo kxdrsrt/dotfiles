@@ -19,11 +19,12 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nix-homebrew }:
   let
-    # ── Gemeinsame Module ─────────────────────────────────────────────────────
-    # Alle Module, die auf jedem Host gelten. Host-spezifische Abweichungen
-    # (Plattform, Homebrew-Pfad usw.) stehen in hosts/<hostname>.nix.
+    # ── Shared Modules ───────────────────────────────────────────────────────
+    # Modules applied to every host. Host-specific overrides
+    # (platform, Homebrew path, etc.) live in hosts/<hostname>.nix.
     sharedModules = [
-      ./dock-apps.nix
+      # dock-apps.nix is NOT loaded globally —
+      # each host imports it explicitly (or defines its own dock apps)
       ./homebrew-mas.nix
       ./login-items.nix
       ./packages.nix
@@ -32,27 +33,28 @@
       ./apps/default.nix
       ./system-settings.nix
 
-      # nix-homebrew Basismodul – Konfiguration erfolgt pro Host
+      # nix-homebrew base module — per-host configuration in hosts/<hostname>.nix
       nix-homebrew.darwinModules.nix-homebrew
     ];
 
-    # ── mkHost-Helper ─────────────────────────────────────────────────────────
-    # Baut eine darwinSystem-Konfiguration aus:
-    #   system   – "aarch64-darwin" | "x86_64-darwin"
-    #   hostname – Name der Host-Datei unter hosts/<hostname>.nix
-    #   user     – lokaler macOS-Benutzername (wird als specialArg weitergereicht)
-    mkHost = { system, hostname, user }:
+    # ── mkHost Helper ─────────────────────────────────────────────────────────
+    # Builds a darwinSystem configuration from:
+    #   system    – "aarch64-darwin" | "x86_64-darwin"
+    #   hostname  – filename under hosts/<hostname>.nix
+    #   hostLabel – human-readable device name (login screen, SMB, computerName)
+    #   user      – local macOS username (passed through as specialArg)
+    mkHost = { system, hostname, hostLabel, user, extraModules ? [] }:
       nix-darwin.lib.darwinSystem {
         inherit system;
-        specialArgs = { inherit user; };
-        modules = sharedModules ++ [
+        specialArgs = { inherit user hostname hostLabel; };
+        modules = sharedModules ++ extraModules ++ [
 
-          # Host-spezifische Einstellungen (Plattform, Homebrew-Pfad, Rosetta …)
+          # Host-specific settings (platform, Homebrew path, Rosetta …)
           ./hosts/${hostname}.nix
 
-          # Gemeinsame Overlays + System-Metadaten
+          # Shared overlays + system metadata
           ({ ... }: {
-            # nixpkgs-unstable Overlay, damit pkgs.unstable.* überall verfügbar ist
+            # nixpkgs-unstable overlay — makes pkgs.unstable.* available everywhere
             nixpkgs.overlays = [
               (final: prev: {
                 unstable = import nixpkgs-unstable {
@@ -62,9 +64,9 @@
               })
             ];
 
-            # nix.enable wird pro Host gesetzt:
-            #   Ks-Mac (Determinate): false  — Determinate verwaltet den Daemon
-            #   iMac   (vanilla Nix): true   — nix-darwin soll den Daemon verwalten
+            # nix.enable is set per host:
+            #   Ks-Mac (Determinate): false  — Determinate manages the daemon
+            #   iMac   (vanilla Nix): true   — nix-darwin manages the daemon
 
             system.configurationRevision = self.rev or self.dirtyRev or null;
             system.stateVersion = 6;
@@ -78,18 +80,21 @@
 
       # ── Apple-Silicon MacBook ────────────────────────────────────────────────
       "Ks-Mac" = mkHost {
-        system   = "aarch64-darwin";
-        hostname = "Ks-Mac";
-        user     = "k";
+        system       = "aarch64-darwin";
+        hostname     = "Ks-Mac";
+        hostLabel    = "K's Mac";
+        user         = "k";
+        extraModules = [ ./dock-apps.nix ];
       };
 
       # ── Intel iMac ───────────────────────────────────────────────────────────
-      # Für jeden weiteren Intel-Host: Eintrag hier duplizieren und
-      # hosts/<neuer-hostname>.nix von hosts/iMac.nix ableiten.
+      # To add another Intel host: duplicate this entry and
+      # derive hosts/<new-hostname>.nix from hosts/iMac.nix.
       "iMac" = mkHost {
-        system   = "x86_64-darwin";
-        hostname = "iMac";
-        user     = "GRAVITY";
+        system     = "x86_64-darwin";
+        hostname   = "iMac";
+        hostLabel  = "iMac";
+        user       = "GRAVITY";
       };
 
     };

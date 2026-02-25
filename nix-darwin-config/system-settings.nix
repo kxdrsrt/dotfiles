@@ -1,4 +1,4 @@
-{ pkgs, user, ... }:
+{ pkgs, user, hostname, hostLabel, ... }:
 
 let
   home = "/Users/${user}";
@@ -91,7 +91,7 @@ in
     loginwindow = {
       DisableConsoleAccess = true;           # Disable console login
       GuestEnabled = false;                  # Disable guest account
-      LoginwindowText = "K's Mac";           # Custom text shown on login screen
+      LoginwindowText = hostLabel;            # Custom text shown on login screen
     };
 
 
@@ -169,8 +169,8 @@ in
 
     # SMB (Network file sharing)
     smb = {
-      NetBIOSName = "Ks-Mac";                # NetBIOS name for network
-      ServerDescription = "K's Mac";         # Server description
+      NetBIOSName = hostname;                 # NetBIOS name for network
+      ServerDescription = hostLabel;          # Server description
     };
 
 
@@ -481,8 +481,8 @@ in
   # ============================================================================
   # Networking
   # ============================================================================
-  networking.hostName = "Ks-Mac";            # Set hostname
-  networking.computerName = "K's Mac";       # Set computer name
+  networking.hostName = hostname;            # Set hostname
+  networking.computerName = hostLabel;       # Set computer name
 
 
 

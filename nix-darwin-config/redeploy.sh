@@ -7,7 +7,9 @@ trap 'echo "❌ Rebuild failed at line $LINENO. Check the output above for detai
 
 # --- CONFIGURATION ---
 FLAKE_DIR="$HOME/nix-darwin-config"
-TARGET_CONFIG="Ks-Mac"
+# Hostname-Argument optional: ./redeploy.sh iMac
+# Ohne Argument: lokalen Hostnamen verwenden (muss Flake-Key matchen)
+TARGET_CONFIG="${1:-$(scutil --get LocalHostName)}"
 
 cd "$FLAKE_DIR" || exit 1
 

@@ -6,8 +6,14 @@ set -eo pipefail
 trap 'echo "❌ Bootstrap failed at line $LINENO. Check the output above for details." >&2' ERR
 
 # --- 1. GLOBAL CONFIGURATION ---
-# Target identifier for the Nix Flake configuration
-TARGET_HOSTNAME="Ks-Mac"
+# Hostname als erstes Argument übergeben: ./bootstrap.sh iMac
+# Ohne Argument: Skript fragt interaktiv nach
+if [ -n "$1" ]; then
+    TARGET_HOSTNAME="$1"
+else
+    read -rp "Ziel-Hostname eingeben (z.B. Ks-Mac, iMac): " TARGET_HOSTNAME
+    [ -z "$TARGET_HOSTNAME" ] && { echo "❌ Kein Hostname angegeben." >&2; exit 1; }
+fi
 # Source repository for dotfiles and system configuration
 GIT_REPO="https://github.com/kxdrsrt/dotfiles"
 

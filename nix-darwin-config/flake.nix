@@ -11,96 +11,86 @@
 
     # nix-darwin provides the darwinSystem helper used to build a macOS config
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs"; # follow the same nixpkgs input
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     # Optional helper to integrate Homebrew packages via Nix
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  # `outputs` builds the darwin configuration. We capture commonly used
-  # values in `let` so they can be referenced multiple times below.
   outputs = inputs@{ self, nix-darwin, nixpkgs, nixpkgs-unstable, nix-homebrew }:
   let
-    system = "aarch64-darwin"; # target platform (Apple Silicon)
-    user = "k";                # local username used by some modules
+    # ── Gemeinsame Module ─────────────────────────────────────────────────────
+    # Alle Module, die auf jedem Host gelten. Host-spezifische Abweichungen
+    # (Plattform, Homebrew-Pfad usw.) stehen in hosts/<hostname>.nix.
+    sharedModules = [
+      ./dock-apps.nix
+      ./homebrew-mas.nix
+      ./login-items.nix
+      ./packages.nix
+      ./keyboard-shortcuts.nix
+      ./spotx.nix
+      ./apps/default.nix
+      ./system-settings.nix
+
+      # nix-homebrew Basismodul – Konfiguration erfolgt pro Host
+      nix-homebrew.darwinModules.nix-homebrew
+    ];
+
+    # ── mkHost-Helper ─────────────────────────────────────────────────────────
+    # Baut eine darwinSystem-Konfiguration aus:
+    #   system   – "aarch64-darwin" | "x86_64-darwin"
+    #   hostname – Name der Host-Datei unter hosts/<hostname>.nix
+    #   user     – lokaler macOS-Benutzername (wird als specialArg weitergereicht)
+    mkHost = { system, hostname, user }:
+      nix-darwin.lib.darwinSystem {
+        inherit system;
+        specialArgs = { inherit user; };
+        modules = sharedModules ++ [
+
+          # Host-spezifische Einstellungen (Plattform, Homebrew-Pfad, Rosetta …)
+          ./hosts/${hostname}.nix
+
+          # Gemeinsame Overlays + System-Metadaten
+          ({ ... }: {
+            # nixpkgs-unstable Overlay, damit pkgs.unstable.* überall verfügbar ist
+            nixpkgs.overlays = [
+              (final: prev: {
+                unstable = import nixpkgs-unstable {
+                  inherit system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
+
+            # Determinate Systems verwaltet den Nix-Daemon extern
+            nix.enable = false;
+
+            system.configurationRevision = self.rev or self.dirtyRev or null;
+            system.stateVersion = 6;
+          })
+        ];
+      };
+
   in
   {
-    # Top-level darwin configuration for the machine named "Ks-Mac".
-    darwinConfigurations."Ks-Mac" = nix-darwin.lib.darwinSystem {
-      inherit system;
+    darwinConfigurations = {
 
-      # `modules` composes your configuration from small files and expressions.
-      modules = [
-        # UI and dock settings for apps
-        ./dock-apps.nix
+      # ── Apple-Silicon MacBook ────────────────────────────────────────────────
+      "Ks-Mac" = mkHost {
+        system   = "aarch64-darwin";
+        hostname = "Ks-Mac";
+        user     = "k";
+      };
 
-        # Settings for MAS/Homebrew GUI apps
-        ./homebrew-mas.nix
+      # ── Intel iMac ───────────────────────────────────────────────────────────
+      # Für jeden weiteren Intel-Host: Eintrag hier duplizieren und
+      # hosts/<neuer-hostname>.nix von hosts/iMac.nix ableiten.
+      "iMac" = mkHost {
+        system   = "x86_64-darwin";
+        hostname = "iMac";
+        user     = "GRAVITY";
+      };
 
-        # Login items and autostart configuration
-        ./login-items.nix
-
-        # User-level package and utility selections
-        ./packages.nix
-
-        # Keyboard shortcuts configuration
-        ./keyboard-shortcuts.nix
-
-        # Home manager configuration (Currently not used due to GitHub Dotfiles management)
-        # ./home.nix
-
-        # SpotX - Spotify adblocker configuration
-        ./spotx.nix
-
-        # Central place to include all app configs (third-party and system)
-        # ./apps/default.nix already imports ./apps/system via ./system
-        ./apps/default.nix
-
-        # System-wide settings like defaults and preferences
-        ./system-settings.nix
-
-        # Integrate the nix-homebrew module to manage Homebrew via Nix
-        nix-homebrew.darwinModules.nix-homebrew
-
-        # Inline override for nix-homebrew module options
-        {
-          nix-homebrew = {
-            enable = true;
-            enableRosetta = false;      # don't auto-enable Rosetta for brew
-            user = "${user}";         # which user owns the Homebrew setup
-            autoMigrate = true;         # migrate existing brew installs when possible
-          };
-        }
-
-        # Arbitrary inline module for special system tweaks and overlays
-        ({ ... }: {
-          # 1. Allow brew to run without sudo password for the given user.
-          #    This writes a sudoers fragment into /etc via Nix (be cautious).
-          environment.etc."sudoers.d/10-homebrew-nopasswd".text = ''
-            ${user} ALL=(ALL) NOPASSWD: /opt/homebrew/bin/brew, /usr/local/bin/brew
-          '';
-
-          # 2. Add a nixpkgs overlay named `unstable` that imports the
-          #    `nixpkgs-unstable` input; useful to access bleeding-edge packages.
-          nixpkgs.overlays = [
-            (final: prev: {
-              unstable = import nixpkgs-unstable {
-                inherit system;
-                config.allowUnfree = true; # allow unfree packages in this overlay
-              };
-            })
-          ];
-
-          # 3. Disable the Nix service here because it's managed elsewhere
-          #    (Determinate Systems manages Nix on this host).
-          nix.enable = false;
-
-          # Metadata fields used at build/deploy time
-          system.configurationRevision = self.rev or self.dirtyRev or null;
-          system.stateVersion = 6;
-          nixpkgs.hostPlatform = "aarch64-darwin";
-        })
-      ];
     };
   };
 }

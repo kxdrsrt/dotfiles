@@ -1,7 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 
 let
-  user = "k";
   home = "/Users/${user}";
   containerPrefs = app: "${home}/Library/Containers/${app}/Data/Library/Preferences/${app}.plist";
 in

@@ -1,7 +1,6 @@
-{ ... }:
+{ user, ... }:
 
 let
-  user = "k";
   home = "/Users/${user}";
   previewPlist = "${home}/Library/Containers/com.apple.Preview/Data/Library/Preferences/com.apple.Preview.plist";
 in

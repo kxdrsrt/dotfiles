@@ -14,4 +14,7 @@
   environment.etc."sudoers.d/10-homebrew-nopasswd".text = ''
     k ALL=(ALL) NOPASSWD: /opt/homebrew/bin/brew
   '';
+
+  # Determinate Systems verwaltet den Nix-Daemon auf diesem Host extern
+  nix.enable = false;
 }

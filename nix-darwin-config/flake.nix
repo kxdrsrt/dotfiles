@@ -62,8 +62,9 @@
               })
             ];
 
-            # Determinate Systems verwaltet den Nix-Daemon extern
-            nix.enable = false;
+            # nix.enable wird pro Host gesetzt:
+            #   Ks-Mac (Determinate): false  — Determinate verwaltet den Daemon
+            #   iMac   (vanilla Nix): true   — nix-darwin soll den Daemon verwalten
 
             system.configurationRevision = self.rev or self.dirtyRev or null;
             system.stateVersion = 6;

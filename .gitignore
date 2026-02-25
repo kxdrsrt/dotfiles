@@ -111,9 +111,8 @@ argv.json
 .electron/
 .electron-gyp/
 .kiro/extensions/
-.vscode/extensions/
-.vscode/extensions/
-.vscode/extensions/argv.json
+.vscode/extensions/*
+!.vscode/extensions/extensions.json
 .windsurf/extensions/
 .zsh_sessions/
 .yarnrc

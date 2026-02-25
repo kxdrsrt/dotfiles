@@ -136,11 +136,17 @@ for f in /etc/zshenv /etc/zshrc /etc/bashrc /etc/bash.bashrc; do
 done
 
 # --- 10. SYSTEM ACTIVATION ---
-# Execute the nix-darwin build and activation.
-# Determinate Nix enables nix-command + flakes by default, so no extra flags needed.
-# sudo -H ensures the correct home directory for the root user.
+# Determinate Nix (arm64) enables nix-command + flakes by default.
+# Vanilla Nix (x86_64) does not — and the nix.conf written above isn't picked
+# up in the current shell session until a restart. Pass the features inline
+# so this session can bootstrap without needing a restart first.
 echo "❄️  Applying system configuration..."
-sudo -H nix run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME"
+if [[ $(uname -m) == "arm64" ]]; then
+    sudo -H nix run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME"
+else
+    sudo -H nix --extra-experimental-features 'nix-command flakes' \
+        run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME"
+fi
 
 echo "🔓 Removing quarantine flags from cask-installed apps..."
 sudo xattr -dr com.apple.quarantine /Applications/ 2>/dev/null || true

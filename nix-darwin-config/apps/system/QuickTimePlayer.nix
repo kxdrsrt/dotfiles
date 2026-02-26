@@ -5,7 +5,7 @@
   system.defaults.CustomUserPreferences = {
     "com.apple.QuickTimePlayerX" = {
       # Playback
-      MGPlayMovieOnOpen = false;                 # Don't auto-play videos
+      MGPlayMovieOnOpen = false; # Don't auto-play videos
     };
   };
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # ============================================================================
   # System Packages - CLI tools and development packages managed by Nix
   # ============================================================================
@@ -8,25 +9,25 @@
     git
 
     # Nix code formatting in IDE's
-    nixpkgs-fmt
-    
+    nixfmt
+
     # Network utilities
     wget
     aria2
     inetutils
     speedtest-cli
-    
+
     # Media tools
     exiftool
     ffmpeg
     imagemagick
     yt-dlp
     tesseract
-    
+
     # System utilities
     fastfetch
     coreutils
-    
+
     # Development tools
     deno
     nodejs
@@ -35,25 +36,22 @@
     ninja
     ccache
     tree
-    
+
     # Documentation and package management
     pandoc
     pipx
-    
+
     # Unstable packages (example usage)
     # unstable.package-name
   ];
-
 
   # ============================================================================
   # Fonts - Additional fonts beyond macOS defaults
   # ============================================================================
   fonts.packages = [
-    pkgs.nerd-fonts.jetbrains-mono           # JetBrains Mono with icons
-    pkgs.nerd-fonts.fira-code                # Fira Code with icons
+    pkgs.nerd-fonts.jetbrains-mono # JetBrains Mono with icons
+    pkgs.nerd-fonts.fira-code # Fira Code with icons
   ];
-
-
 
   # Allow proprietary packages from nixpkgs
   nixpkgs.config.allowUnfree = true;

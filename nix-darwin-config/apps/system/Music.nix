@@ -5,7 +5,7 @@
   system.defaults.CustomUserPreferences = {
     "com.apple.Music" = {
       # Notifications
-      userWantsPlaybackNotifications = false;    # Disable music notifications
+      userWantsPlaybackNotifications = false; # Disable music notifications
     };
   };
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Basic home-manager settings
   home.stateVersion = "23.11";
   home.username = "k";
@@ -18,12 +19,12 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    
+
     shellAliases = {
       ll = "ls -la";
       update = "darwin-rebuild switch --flake ~/.config/nix-darwin";
     };
-    
+
     initExtra = ''
       # Your custom zsh config here
     '';

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   # ============================================================================
   # Login Items Configuration
   # ============================================================================
@@ -6,7 +7,7 @@
   # - Login Items: Apps that appear in System Settings > General > Login Items
   # - LaunchAgents: Background services managed by launchd
   # This file manages login items declaratively using activation scripts
-  
+
   system.activationScripts.loginItems.text = ''
     # Declaratively managed login items.
     # Only touches apps in this list — manually added login items are left alone.

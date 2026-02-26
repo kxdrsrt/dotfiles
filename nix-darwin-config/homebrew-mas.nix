@@ -68,7 +68,7 @@
     # "notion"                               # All-in-one workspace            → Ks-Mac
     # "nvidia-geforce-now"                   # Cloud gaming service            → Ks-Mac
     # "obs"                                  # Streaming and recording software
-    "opencore-patcher"                       # macOS patcher for unsupported Macs
+    # "opencore-patcher"                       # macOS patcher for unsupported Macs
     # "openvpn-connect"                      # VPN client
     "pearcleaner"                            # Advanced Mac cleaner
     "qbittorrent"                            # BitTorrent client

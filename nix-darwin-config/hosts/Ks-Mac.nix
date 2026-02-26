@@ -21,6 +21,7 @@
   homebrew.casks = [
     "calibre"                              # E-book library management
     "cursor"                               # Code editor with AI assistance
+    "conductor"                            # AI-powered file manager
     "discord"                              # Voice, video, and text chat
     "figma"                                # Vector graphics editor
     "imageoptim"                           # Image optimization tool

@@ -1,8 +1,8 @@
-_Last updated: 2026-01-22_
+# Paid & External Applications
+
+## Last Updated: 2026-01-22
 
 ---
-
-# Paid & External Applications
 
 This document lists all paid, commercial, or external applications installed on the system that are **not managed** through the nix-darwin configuration.
 

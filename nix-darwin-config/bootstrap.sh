@@ -13,31 +13,37 @@ if [ -n "$1" ]; then
     TARGET_HOSTNAME="$1"
 else
     # Build list of hosts from hosts/*.nix filenames (strip path + extension)
+    # The hosts/ dir only exists after the repo is cloned (step 4), so we fall
+    # back to a plain prompt when running on a fresh machine.
     HOST_LIST=()
-    while IFS= read -r name; do
-        HOST_LIST+=("$name")
-    done < <(for f in "$SCRIPT_DIR/hosts/"*.nix; do basename "$f" .nix; done | sort)
-
-    if [ "${#HOST_LIST[@]}" -eq 0 ]; then
-        echo "❌ No host profiles found in hosts/." >&2; exit 1
+    if [ -d "$SCRIPT_DIR/hosts" ]; then
+        for f in "$SCRIPT_DIR/hosts/"*.nix; do
+            [ -f "$f" ] && HOST_LIST+=("$(basename "$f" .nix)")
+        done
     fi
 
-    echo ""
-    echo "Available host profiles:"
-    for i in "${!HOST_LIST[@]}"; do
-        printf "  %d) %s\n" "$((i+1))" "${HOST_LIST[$i]}"
-    done
-    echo ""
-    read -rp "Select a host [1-${#HOST_LIST[@]}]: " HOST_CHOICE
+    if [ "${#HOST_LIST[@]}" -gt 0 ]; then
+        echo ""
+        echo "Available host profiles:"
+        for i in "${!HOST_LIST[@]}"; do
+            printf "  %d) %s\n" "$((i+1))" "${HOST_LIST[$i]}"
+        done
+        echo ""
+        read -rp "Select a host [1-${#HOST_LIST[@]}]: " HOST_CHOICE
 
-    if ! [[ "$HOST_CHOICE" =~ ^[0-9]+$ ]] || \
-       [ "$HOST_CHOICE" -lt 1 ] || [ "$HOST_CHOICE" -gt "${#HOST_LIST[@]}" ]; then
-        echo "❌ Invalid selection." >&2; exit 1
+        if ! [[ "$HOST_CHOICE" =~ ^[0-9]+$ ]] || \
+           [ "$HOST_CHOICE" -lt 1 ] || [ "$HOST_CHOICE" -gt "${#HOST_LIST[@]}" ]; then
+            echo "❌ Invalid selection." >&2; exit 1
+        fi
+
+        TARGET_HOSTNAME="${HOST_LIST[$((HOST_CHOICE-1))]}"
+        echo "→ Selected: $TARGET_HOSTNAME"
+        echo ""
+    else
+        # Repo not yet present — ask for the hostname as plain text
+        read -rp "Enter target hostname (e.g. Ks-Mac, iMac, MacBookPro): " TARGET_HOSTNAME
+        [ -z "$TARGET_HOSTNAME" ] && { echo "❌ No hostname provided." >&2; exit 1; }
     fi
-
-    TARGET_HOSTNAME="${HOST_LIST[$((HOST_CHOICE-1))]}"
-    echo "→ Selected: $TARGET_HOSTNAME"
-    echo ""
 fi
 # Source repository for dotfiles and system configuration
 GIT_REPO="https://github.com/kxdrsrt/dotfiles"

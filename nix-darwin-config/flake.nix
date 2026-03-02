@@ -1,5 +1,5 @@
 {
-  description = "K's Mac nix-darwin configuration";
+  description = "Nix-darwin configuration — fully dynamic";
 
   # Inputs: external flakes used by this configuration.
   inputs = {
@@ -26,66 +26,107 @@
       nix-homebrew,
     }:
     let
+      # ── Runtime detection (requires --impure; set by redeploy.sh / bootstrap.sh) ─
+      currentUser = builtins.getEnv "NIXDARWIN_USER";
+      currentArch = builtins.getEnv "NIXDARWIN_ARCH";
+      currentSystem = if currentArch == "arm64" then "aarch64-darwin" else "x86_64-darwin";
+
+      # ── Derived helpers ────────────────────────────────────────────────────
+      isARM = currentSystem == "aarch64-darwin"; # true on Apple Silicon (M-series), false on Intel
+      brewPath = if isARM then "/opt/homebrew/bin/brew" else "/usr/local/bin/brew";
+      # Determinate Nix (ARM) manages its own daemon → nix.enable = false
+      # Vanilla Nix (Intel) needs nix-darwin to manage it → nix.enable = true
+      nixEnabled = !isARM;
+
       # ── Shared Modules ───────────────────────────────────────────────────────
       # Modules applied to every host. Host-specific overrides
-      # (platform, Homebrew path, etc.) live in hosts/<hostname>.nix.
+      # (dock apps, extra casks, etc.) live in hosts/<hostname>.nix.
       sharedModules = [
-        # dock-apps.nix is NOT loaded globally —
-        # each host imports it explicitly (or defines its own dock apps)
-        ./homebrew-mas.nix
-        ./login-items.nix
-        ./packages.nix
-        ./keyboard-shortcuts.nix
-        ./spotx.nix
-        ./apps/default.nix
-        ./system-settings.nix
+        ./apps/default.nix # Default app set (e.g. browsers, communication, media)
+        #./home.nix # Home Manager config for user-level packages and settings
+        ./homebrew-mas-global.nix # Global Homebrew configuration for GUI apps and Mac App Store
+        ./keyboard-shortcuts.nix # Custom keyboard shortcuts
+        ./packages.nix # System-level packages (e.g. command-line tools, daemons)
+        ./spotx.nix # SpotX — custom Spotify patch with enhanced features
+        ./system-settings.nix # Custom system settings (e.g. trackpad, mouse, display)
 
-        # nix-homebrew base module — per-host configuration in hosts/<hostname>.nix
+        # nix-homebrew base module — per-host configuration is generated below
         nix-homebrew.darwinModules.nix-homebrew
       ];
 
+      # ── Host Profiles ──────────────────────────────────────────────────────
+      # Only host-SPECIFIC knobs live here. User, architecture, Homebrew path,
+      # Rosetta, and nix.enable are detected automatically by the deploy script.
+      #   deviceType   – device model label (e.g. "Mac", "iMac", "MacBook Pro")
+      #                  combined with username → hostLabel = "{user}'s {deviceType}"
+      #   extraModules – optional additional Nix modules
+      hosts = {
+        "Ks-Mac" = {
+          deviceType = "Mac";
+        };
+        "iMac" = {
+          deviceType = "iMac";
+        };
+        "MacBookPro" = {
+          deviceType = "MacBook Pro";
+        };
+      };
+
       # ── mkHost Helper ─────────────────────────────────────────────────────────
-      # Builds a darwinSystem configuration from:
-      #   system    – "aarch64-darwin" | "x86_64-darwin"
-      #   hostname  – filename under hosts/<hostname>.nix
-      #   hostLabel – human-readable device name (login screen, SMB, computerName)
-      #   user      – local macOS username (passed through as specialArg)
       mkHost =
+        hostname:
         {
-          system,
-          hostname,
-          hostLabel,
-          user,
+          deviceType,
           extraModules ? [ ],
         }:
+        let
+          hostLabel = "${currentUser}'s ${deviceType}";
+        in
         nix-darwin.lib.darwinSystem {
-          inherit system;
-          specialArgs = { inherit user hostname hostLabel; };
+          system = currentSystem;
+          specialArgs = {
+            user = currentUser;
+            inherit hostname hostLabel;
+          };
           modules =
             sharedModules
             ++ extraModules
             ++ [
-
-              # Host-specific settings (platform, Homebrew path, Rosetta …)
+              # Host-specific settings (dock apps, extra casks …)
               ./hosts/${hostname}.nix
 
-              # Shared overlays + system metadata
+              # Platform, Homebrew, Nix daemon, overlays — all auto-derived
               (
-                { ... }:
+                { lib, ... }:
                 {
+                  nixpkgs.hostPlatform = currentSystem;
+
+                  nix-homebrew = {
+                    enable = true;
+                    enableRosetta = isARM;
+                    user = currentUser;
+                    autoMigrate = true;
+                  };
+
+                  environment.etc."sudoers.d/10-homebrew-nopasswd".text = ''
+                    ${currentUser} ALL=(ALL) NOPASSWD: ${brewPath}
+                  '';
+
+                  nix.enable = nixEnabled;
+                  nix.settings.experimental-features = lib.mkIf nixEnabled [
+                    "nix-command"
+                    "flakes"
+                  ];
+
                   # nixpkgs-unstable overlay — makes pkgs.unstable.* available everywhere
                   nixpkgs.overlays = [
                     (final: prev: {
                       unstable = import nixpkgs-unstable {
-                        inherit system;
+                        system = currentSystem;
                         config.allowUnfree = true;
                       };
                     })
                   ];
-
-                  # nix.enable is set per host:
-                  #   Ks-Mac (Determinate): false  — Determinate manages the daemon
-                  #   iMac   (vanilla Nix): true   — nix-darwin manages the daemon
 
                   system.configurationRevision = self.rev or self.dirtyRev or null;
                   system.stateVersion = 6;
@@ -96,27 +137,6 @@
 
     in
     {
-      darwinConfigurations = {
-
-        # ── Apple-Silicon MacBook ────────────────────────────────────────────────
-        "Ks-Mac" = mkHost {
-          system = "aarch64-darwin";
-          hostname = "Ks-Mac";
-          hostLabel = "K's Mac";
-          user = "k";
-          extraModules = [ ./dock-apps.nix ];
-        };
-
-        # ── Intel iMac ───────────────────────────────────────────────────────────
-        # To add another Intel host: duplicate this entry and
-        # derive hosts/<new-hostname>.nix from hosts/iMac.nix.
-        "iMac" = mkHost {
-          system = "x86_64-darwin";
-          hostname = "iMac";
-          hostLabel = "iMac";
-          user = "GRAVITY";
-        };
-
-      };
+      darwinConfigurations = builtins.mapAttrs mkHost hosts;
     };
 }

@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, user, ... }:
 {
   # Basic home-manager settings
   home.stateVersion = "23.11";
-  home.username = "k";
-  home.homeDirectory = "/Users/k";
+  home.username = user;
+  home.homeDirectory = "/Users/${user}";
 
   # Let home-manager manage itself
   programs.home-manager.enable = true;

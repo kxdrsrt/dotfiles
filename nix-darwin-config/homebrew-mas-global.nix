@@ -5,7 +5,7 @@
   # Host-specific additions live in hosts/<hostname>.nix
   # ============================================================================
   homebrew.enable = true;
-  homebrew.onActivation.cleanup = "zap"; # Remove packages not in flake
+  homebrew.onActivation.cleanup = "zap"; # Remove packages not in flake. Other options than "zap": "uninstall" (keep user data) or "false" (don't remove old packages at all)
   homebrew.onActivation.upgrade = true; # Auto-upgrade on rebuild
 
   homebrew.caskArgs = {
@@ -77,7 +77,6 @@
     # "1Blocker"              = 1365531024;   # Safari ad blocker
     # "Accelerate"            = 1459809092;   # Download manager
     # "AdGuard for Safari"    = 1440147259;   # Safari ad blocker
-    "Apple Configurator" = 1037126344; # iOS device manager
     # "Auto HD FPS for YouTube" = 1546729687; # Auto HD YouTube
     # "Bakery"                = 1575220747;   # Icon generator
     # "Compressor"            = 424390742;    # Video encoder
@@ -107,7 +106,6 @@
     "uBlock Origin Lite" = 6745342698; # Safari ad blocker
     "Video Speed Controller" = 1588368612; # Video speed control
     # "VPN.lat"               = 1526622816;   # VPN client
-    "Windows App" = 1295203466; # Remote Desktop / RDP
     # "Xcode"                 = 497799835;    # Apple IDE
   };
 }

@@ -1,4 +1,4 @@
-{ ... }:
+{ user, ... }:
 
 {
   # Finder preferences - both standard defaults and custom preferences
@@ -8,7 +8,7 @@
     FXEnableExtensionChangeWarning = false; # Disable extension change warning
     FXPreferredViewStyle = "clmv"; # Default to column view
     NewWindowTarget = "Other"; # New Finder windows open custom path
-    NewWindowTargetPath = "file:///Users/k/Downloads/"; # Downloads folder
+    NewWindowTargetPath = "file:///Users/${user}/Downloads/"; # Downloads folder
     ShowExternalHardDrivesOnDesktop = true; # Show external drives on desktop
     ShowHardDrivesOnDesktop = false; # Hide internal drives on desktop
     ShowMountedServersOnDesktop = false; # Hide network drives on desktop

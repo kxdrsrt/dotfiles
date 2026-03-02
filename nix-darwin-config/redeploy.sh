@@ -5,6 +5,13 @@ set -eo pipefail
 
 trap 'echo "❌ Rebuild failed at line $LINENO. Check the output above for details." >&2' ERR
 
+# --- PRIVILEGE CHECK ---
+if [ "$(id -u)" -eq 0 ]; then
+    echo "❌ Do not run this script as root or with sudo." >&2
+    echo "   Run it as your regular user account: ./redeploy.sh" >&2
+    exit 1
+fi
+
 # --- CONFIGURATION ---
 FLAKE_DIR="$HOME/nix-darwin-config"
 # Hostname-Argument optional: ./redeploy.sh iMac

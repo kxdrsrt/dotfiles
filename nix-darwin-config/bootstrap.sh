@@ -5,6 +5,14 @@ set -eo pipefail
 
 trap 'echo "❌ Bootstrap failed at line $LINENO. Check the output above for details." >&2' ERR
 
+# --- 0. PRIVILEGE CHECK ---
+# Must run as a normal user — sudo escalates internally where needed.
+if [ "$(id -u)" -eq 0 ]; then
+    echo "❌ Do not run this script as root or with sudo." >&2
+    echo "   Run it as your regular user account: ./bootstrap.sh" >&2
+    exit 1
+fi
+
 # --- 1. GLOBAL CONFIGURATION ---
 # Pass hostname as first argument: ./bootstrap.sh iMac
 # Without argument: script presents a numbered menu of available host profiles

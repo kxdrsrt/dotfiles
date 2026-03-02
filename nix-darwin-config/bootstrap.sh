@@ -7,12 +7,38 @@ trap 'echo "❌ Bootstrap failed at line $LINENO. Check the output above for det
 
 # --- 1. GLOBAL CONFIGURATION ---
 # Pass hostname as first argument: ./bootstrap.sh iMac
-# Without argument: script prompts interactively
+# Without argument: script presents a numbered menu of available host profiles
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ -n "$1" ]; then
     TARGET_HOSTNAME="$1"
 else
-    read -rp "Enter target hostname (e.g. Ks-Mac, iMac): " TARGET_HOSTNAME
-    [ -z "$TARGET_HOSTNAME" ] && { echo "❌ No hostname provided." >&2; exit 1; }
+    # Build list of hosts from hosts/*.nix filenames (strip path + extension)
+    mapfile -t HOST_LIST < <(
+        for f in "$SCRIPT_DIR/hosts/"*.nix; do
+            basename "$f" .nix
+        done | sort
+    )
+
+    if [ "${#HOST_LIST[@]}" -eq 0 ]; then
+        echo "❌ No host profiles found in hosts/." >&2; exit 1
+    fi
+
+    echo ""
+    echo "Available host profiles:"
+    for i in "${!HOST_LIST[@]}"; do
+        printf "  %d) %s\n" "$((i+1))" "${HOST_LIST[$i]}"
+    done
+    echo ""
+    read -rp "Select a host [1-${#HOST_LIST[@]}]: " HOST_CHOICE
+
+    if ! [[ "$HOST_CHOICE" =~ ^[0-9]+$ ]] || \
+       [ "$HOST_CHOICE" -lt 1 ] || [ "$HOST_CHOICE" -gt "${#HOST_LIST[@]}" ]; then
+        echo "❌ Invalid selection." >&2; exit 1
+    fi
+
+    TARGET_HOSTNAME="${HOST_LIST[$((HOST_CHOICE-1))]}"
+    echo "→ Selected: $TARGET_HOSTNAME"
+    echo ""
 fi
 # Source repository for dotfiles and system configuration
 GIT_REPO="https://github.com/kxdrsrt/dotfiles"

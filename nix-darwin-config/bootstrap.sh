@@ -141,16 +141,22 @@ for f in \
 done
 
 # --- 10. SYSTEM ACTIVATION ---
-# Determinate Nix (arm64) enables nix-command + flakes by default.
-# Vanilla Nix (x86_64) does not — and the nix.conf written above isn't picked
-# up in the current shell session until a restart. Pass the features inline
-# so this session can bootstrap without needing a restart first.
+# Env vars feed the flake's builtins.getEnv calls (requires --impure).
+DETECTED_USER="$USER"
+DETECTED_ARCH="$(uname -m)"
 echo "❄️  Applying system configuration..."
+echo "   Host: $TARGET_HOSTNAME | User: $DETECTED_USER | Arch: $DETECTED_ARCH"
+
+# Determinate Nix (arm64) enables nix-command + flakes by default.
+# Vanilla Nix (x86_64) does not — pass the features inline so this
+# session can bootstrap without needing a restart first.
 if [[ $(uname -m) == "arm64" ]]; then
-    sudo -H nix run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME"
+    sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
+        nix run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME" --impure
 else
-    sudo -H nix --extra-experimental-features 'nix-command flakes' \
-        run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME"
+    sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
+        nix --extra-experimental-features 'nix-command flakes' \
+        run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME" --impure
 fi
 
 echo "🔓 Removing quarantine flags from cask-installed apps..."

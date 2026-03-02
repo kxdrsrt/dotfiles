@@ -65,7 +65,7 @@
     "**/.hg": true, // Mercurial repository folder
     "**/.svn": true, // Subversion repository folder
     "**/CVS": true, // CVS repository folder
-    "**/Thumbs.db": true // Windows thumbnail cache
+    "**/Thumbs.db": true, // Windows thumbnail cache
   },
 
   // Remove trailing whitespace from lines when saving
@@ -75,7 +75,7 @@
   "files.watcherExclude": {
     "**/.git/objects/**": true, // Git object storage
     "**/.git/subtree-cache/**": true, // Git subtree cache
-    "**/node_modules/**": true // npm dependencies (huge folder)
+    "**/node_modules/**": true, // npm dependencies (huge folder)
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -102,7 +102,7 @@
 
   // Use default text editor for git diff views of these file types
   "workbench.editorAssociations": {
-    "{git,gitlens}:/**/*.{md,csv,svg}": "default"
+    "{git,gitlens}:/**/*.{md,csv,svg}": "default",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -129,7 +129,7 @@
   "search.exclude": {
     "**/node_modules": true, // npm dependencies
     "**/dist": true, // Build output folders
-    "**/build": true // Build output folders
+    "**/build": true, // Build output folders
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -146,16 +146,16 @@
     "Git Bash": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["-l", "-i"], // -l: login shell, -i: interactive mode
-      "icon": "terminal-bash"
+      "icon": "terminal-bash",
     },
     "PowerShell": {
       "source": "PowerShell",
-      "icon": "terminal-powershell"
+      "icon": "terminal-powershell",
     },
     "Command Prompt": {
       "path": "C:\\Windows\\System32\\cmd.exe",
-      "icon": "terminal-cmd"
-    }
+      "icon": "terminal-cmd",
+    },
   },
 
   // ── macOS ──
@@ -168,13 +168,13 @@
     "zsh": {
       "path": "/bin/zsh",
       "args": ["-l"],
-      "icon": "terminal"
+      "icon": "terminal",
     },
     "bash": {
       "path": "/bin/bash",
       "args": ["-l"],
-      "icon": "terminal-bash"
-    }
+      "icon": "terminal-bash",
+    },
   },
 
   // ── Linux ──
@@ -186,12 +186,12 @@
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "/bin/bash",
-      "icon": "terminal-bash"
+      "icon": "terminal-bash",
     },
     "zsh": {
       "path": "/usr/bin/zsh",
-      "icon": "terminal"
-    }
+      "icon": "terminal",
+    },
   },
 
   // Enable blinking cursor in terminal
@@ -239,8 +239,8 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": false
-    }
+      "strings": false,
+    },
   },
 
   // Update markdown links when files are moved/renamed
@@ -271,27 +271,27 @@
 
   // JSON files: use Prettier for formatting
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // JSONC (JSON with comments): use Prettier for formatting
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // Shell scripts (bash, sh): use shell-format extension
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
   // Properties files (.properties, .env): use shell-format
   "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
   // Ignore files (.gitignore, .dockerignore): use shell-format
   "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -316,7 +316,7 @@
 
   "github.copilot.enable": {
     "markdown": true,
-    "plaintext": true
+    "plaintext": true,
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -328,11 +328,9 @@
   // ═══════════════════════════════════════════════════════════════════════════
   // CHAT / AI TOOLS
   // ═══════════════════════════════════════════════════════════════════════════
-
-  "chat.tools.urls.autoApprove": {
-    "https://suchen.mobile.de": {
-      "approveRequest": false,
-      "approveResponse": true
-    }
-  }
+  "chat.viewSessions.orientation": "stacked",
+  "chat.tools.terminal.autoApprove": {
+    "plutil": true,
+  },
+  "chat.editing.confirmEditRequestRemoval": false,
 }

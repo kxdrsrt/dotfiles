@@ -13,11 +13,10 @@ if [ -n "$1" ]; then
     TARGET_HOSTNAME="$1"
 else
     # Build list of hosts from hosts/*.nix filenames (strip path + extension)
-    mapfile -t HOST_LIST < <(
-        for f in "$SCRIPT_DIR/hosts/"*.nix; do
-            basename "$f" .nix
-        done | sort
-    )
+    HOST_LIST=()
+    while IFS= read -r name; do
+        HOST_LIST+=("$name")
+    done < <(for f in "$SCRIPT_DIR/hosts/"*.nix; do basename "$f" .nix; done | sort)
 
     if [ "${#HOST_LIST[@]}" -eq 0 ]; then
         echo "❌ No host profiles found in hosts/." >&2; exit 1

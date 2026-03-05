@@ -202,9 +202,18 @@ if [[ $(uname -m) == "arm64" ]]; then
     sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
         nix run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME" --impure
 else
+    # Intel: `nix run nix-darwin` fetches a nix-darwin binary whose closure
+    # contains nix libs compiled for macOS 14+ — these crash on Ventura (13).
+    # Instead: build the system derivation with the installed nix (2.24.x),
+    # then call activate directly. darwin-rebuild is available afterwards.
+    echo "❄️  Building system derivation (Intel / Ventura-compatible path)..."
+    export NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH"
+    nix --extra-experimental-features 'nix-command flakes' \
+        build ".#darwinConfigurations.$TARGET_HOSTNAME.system" \
+        --impure --out-link /tmp/nix-darwin-first-boot
+    echo "❄️  Activating system configuration..."
     sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
-        nix --extra-experimental-features 'nix-command flakes' \
-        run nix-darwin -- switch --flake .#"$TARGET_HOSTNAME" --impure
+        /tmp/nix-darwin-first-boot/activate
 fi
 
 echo "🔓 Removing quarantine flags from cask-installed apps..."

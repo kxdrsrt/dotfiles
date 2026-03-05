@@ -1,6 +1,20 @@
-{ pkgs, ... }:
+{ ... }:
 {
   # ── Intel MacBook Pro — host-specific settings ─────────────────────────────
+
+  # ── Locale & Language ────────────────────────────────────────────────────────
+  system.defaults.CustomUserPreferences."com.apple.systempreferences".NSLanguages = [ "de" ];
+  system.defaults.NSGlobalDomain.AppleLanguages = [ "de-DE" ]; # German UI
+  system.defaults.NSGlobalDomain.AppleLocale = "de_DE"; # German regional format
+
+  # ── Keyboard Input Sources ───────────────────────────────────────────────────
+  system.defaults.CustomUserPreferences."com.apple.HIToolbox".AppleEnabledInputSources = [
+    {
+      InputSourceKind = "Keyboard Layout";
+      "KeyboardLayout ID" = 3;
+      "KeyboardLayout Name" = "German";
+    }
+  ];
 
   # ── Dock ────────────────────────────────────────────────────────────────
   system.defaults.dock.persistent-apps = [
@@ -13,14 +27,15 @@
     "/System/Applications/Reminders.app"
     "/System/Applications/Notes.app"
     "/System/Applications/Freeform.app"
-    "/System/Applications/Apple TV.app"
+    "/System/Applications/TV.app"
     "/System/Applications/Music.app"
     "/System/Applications/App Store.app"
     "/System/Applications/Passwords.app"
     "/System/Applications/System Settings.app"
+    "/Library/Application Support/Dortania/OpenCore-Patcher.app"
     "/Applications/Spotify.app"
-    "/System/Applications/OpenCore Patcher.app"
     "/Applications/UPDF.app"
+    "/Applications/3uTools.app"
   ];
 
   # ── Intel-specific Casks ─────────────────────────────────────────────────────
@@ -30,10 +45,6 @@
   # ── Intel-specific MAS Apps ─────────────────────────────────────────────────
   homebrew.masApps = {
   };
-
-  # ── Intel-specific Nix packages ──────────────────────────────────────────────
-  environment.systemPackages = with pkgs; [
-  ];
 
   # ── Login Items ───────────────────────────────────────────────────────────────
   # Apps that appear in System Settings > General > Login Items.

@@ -1,7 +1,7 @@
 { pkgs, user, ... }:
 {
   # Basic home-manager settings
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
   home.username = user;
   home.homeDirectory = "/Users/${user}";
 
@@ -22,7 +22,7 @@
 
     shellAliases = {
       ll = "ls -la";
-      update = "darwin-rebuild switch --flake ~/.config/nix-darwin";
+      update = "darwin-rebuild switch --flake ~/nix-darwin-config";
     };
 
     initExtra = ''

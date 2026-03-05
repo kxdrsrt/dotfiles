@@ -6,9 +6,6 @@
     # Unstable channel — matches nix-darwin master branch.
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    # Unstable channel imported as an overlay for bleeding-edge packages.
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-
     # nix-darwin provides the darwinSystem helper used to build a macOS config
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,7 +19,6 @@
       self,
       nix-darwin,
       nixpkgs,
-      nixpkgs-unstable,
       nix-homebrew,
     }:
     let
@@ -116,16 +112,6 @@
                   nix.settings.experimental-features = lib.mkIf nixEnabled [
                     "nix-command"
                     "flakes"
-                  ];
-
-                  # nixpkgs-unstable overlay — makes pkgs.unstable.* available everywhere
-                  nixpkgs.overlays = [
-                    (final: prev: {
-                      unstable = import nixpkgs-unstable {
-                        system = currentSystem;
-                        config.allowUnfree = true;
-                      };
-                    })
                   ];
 
                   system.configurationRevision = self.rev or self.dirtyRev or null;

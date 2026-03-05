@@ -3,17 +3,9 @@
   system.defaults.CustomUserPreferences = {
     "com.apple.symbolichotkeys" = {
       AppleSymbolicHotKeys = {
-        # Spotlight search (Cmd+Space → Cmd+1)
+        # Spotlight search (Cmd+Space — disabled, indexing kept)
         "64" = {
-          enabled = 1;
-          value = {
-            type = "standard";
-            parameters = [
-              65535
-              10
-              1048576
-            ];
-          };
+          enabled = 0;
         };
 
         # ----- Disable default screenshot keybindings -----

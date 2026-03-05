@@ -148,13 +148,23 @@ else
 fi
 
 # Ensure /etc/nix/nix.conf exists — it may be absent after a partial install
-# (the upstream installer has a bug where its own cleanup removes /etc/nix and
-# then fails to recreate nix.conf). The daemon and nix-darwin both need it.
-if [ ! -f /private/etc/nix/nix.conf ]; then
+# (the upstream installer has a known macOS reinstall bug: its cleanup phase
+# removes /etc/nix, then fails to recreate nix.conf). The daemon and
+# nix-darwin both require it.
+if [ ! -f /private/etc/nix/nix.conf ] && [ ! -f /etc/nix/nix.conf ]; then
     echo "   Ensuring /etc/nix/nix.conf exists..."
-    sudo mkdir -p /private/etc/nix
-    sudo sh -c 'printf "build-users-group = nixbld\n" > /private/etc/nix/nix.conf'
-    echo "   Created /etc/nix/nix.conf"
+    # Use sudo install -d (more reliable than mkdir -p via sudo sh -c on macOS)
+    sudo install -d -m 755 /private/etc/nix
+    # Use tee to write as root — avoids shell-redirect permission issues
+    printf 'build-users-group = nixbld\n' | sudo tee /private/etc/nix/nix.conf >/dev/null
+    if [ -f /private/etc/nix/nix.conf ]; then
+        echo "   Created /etc/nix/nix.conf"
+    else
+        echo "❌ Failed to create /etc/nix/nix.conf — filesystem state:" >&2
+        ls -la /private/etc/nix 2>&1 >&2 || echo "   directory not found" >&2
+        echo "   If this system has a partial Nix install, run: sh nuke-nix.sh" >&2
+        exit 1
+    fi
 fi
 
 # --- 4. HOME DIRECTORY INITIALIZATION ---

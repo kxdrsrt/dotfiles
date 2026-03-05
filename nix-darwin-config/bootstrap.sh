@@ -94,21 +94,25 @@ if ! command -v nix &>/dev/null; then
             NIX_INSTALL_URL="https://nixos.org/nix/install"
         fi
         # Multi-user install — required for nix-darwin
-        # Ensure /etc/nix exists — the installer writes nix.conf there but
-        # doesn't always create the directory on repeated install attempts.
-        sudo mkdir -p /etc/nix
-        # The official Nix installer has a known bug on macOS reinstalls:
-        # its cleanup phase may remove /etc/nix, then the final `install`
-        # command that writes nix.conf fails with "No such file or directory".
-        # All critical work (volume, store, users, profiles) finishes before
-        # that step, so we catch the failure and recover.
-        curl --proto '=https' --tlsv1.2 -sSf -L "$NIX_INSTALL_URL" | \
-            sh -s -- --daemon --yes || {
+        # On macOS /etc is a symlink → /private/etc. After the installer's
+        # cleanup phase, creating dirs via the symlink can silently fail.
+        # Always use the canonical /private/etc/nix path.
+        sudo mkdir -p /private/etc/nix
+
+        # Download installer to a file instead of piping through sh.
+        # Piped execution (curl | sh) steals stdin/TTY from the installer,
+        # which causes subtle failures in its cleanup and setup phases.
+        NIX_INSTALL_SCRIPT="$(mktemp)"
+        curl --proto '=https' --tlsv1.2 -sSf -L "$NIX_INSTALL_URL" -o "$NIX_INSTALL_SCRIPT"
+        chmod +x "$NIX_INSTALL_SCRIPT"
+        sh "$NIX_INSTALL_SCRIPT" --daemon --yes || {
             echo "⚠️  Nix installer exited with an error — attempting recovery..."
-            sudo mkdir -p /etc/nix
-            if [ ! -f /etc/nix/nix.conf ]; then
+            # Re-create via canonical path — the installer's cleanup may have
+            # removed it, and the /etc symlink path can fail post-volume-ops.
+            sudo mkdir -p /private/etc/nix
+            if [ ! -f /private/etc/nix/nix.conf ]; then
                 echo "   Creating /etc/nix/nix.conf..."
-                printf 'build-users-group = nixbld\n' | sudo tee /etc/nix/nix.conf >/dev/null
+                sudo sh -c 'printf "build-users-group = nixbld\n" > /private/etc/nix/nix.conf'
             fi
             # Verify Nix actually landed in the store
             if [ ! -d /nix/store ]; then
@@ -117,6 +121,7 @@ if ! command -v nix &>/dev/null; then
             fi
             echo "✅ Recovery successful."
         }
+        rm -f "$NIX_INSTALL_SCRIPT"
         # Enable flakes + nix-command for the current user (nix-darwin will
         # persist this into /etc/nix/nix.conf on first activation)
         mkdir -p "$HOME/.config/nix"

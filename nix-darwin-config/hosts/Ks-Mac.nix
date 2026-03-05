@@ -4,8 +4,8 @@
 
   # ── Locale & Language ────────────────────────────────────────────────────────
   system.defaults.CustomUserPreferences."com.apple.systempreferences".NSLanguages = [ "en" ];
-  system.defaults.NSGlobalDomain.AppleLanguages = [ "en-US" ]; # English UI
-  system.defaults.NSGlobalDomain.AppleLocale = "en_DE"; # German regional format (metric, dates, numbers)
+  system.defaults.CustomUserPreferences.".GlobalPreferences".AppleLanguages = [ "en-US" ]; # English UI
+  system.defaults.CustomUserPreferences.".GlobalPreferences".AppleLocale = "en_DE"; # German regional format (metric, dates, numbers)
 
   # ── Keyboard Input Sources ───────────────────────────────────────────────────
   system.defaults.CustomUserPreferences."com.apple.HIToolbox".AppleEnabledInputSources = [

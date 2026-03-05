@@ -97,8 +97,26 @@ if ! command -v nix &>/dev/null; then
         # Ensure /etc/nix exists — the installer writes nix.conf there but
         # doesn't always create the directory on repeated install attempts.
         sudo mkdir -p /etc/nix
+        # The official Nix installer has a known bug on macOS reinstalls:
+        # its cleanup phase may remove /etc/nix, then the final `install`
+        # command that writes nix.conf fails with "No such file or directory".
+        # All critical work (volume, store, users, profiles) finishes before
+        # that step, so we catch the failure and recover.
         curl --proto '=https' --tlsv1.2 -sSf -L "$NIX_INSTALL_URL" | \
-            sh -s -- --daemon --yes
+            sh -s -- --daemon --yes || {
+            echo "⚠️  Nix installer exited with an error — attempting recovery..."
+            sudo mkdir -p /etc/nix
+            if [ ! -f /etc/nix/nix.conf ]; then
+                echo "   Creating /etc/nix/nix.conf..."
+                printf 'build-users-group = nixbld\n' | sudo tee /etc/nix/nix.conf >/dev/null
+            fi
+            # Verify Nix actually landed in the store
+            if [ ! -d /nix/store ]; then
+                echo "❌ /nix/store missing — installer failed before completing." >&2
+                exit 1
+            fi
+            echo "✅ Recovery successful."
+        }
         # Enable flakes + nix-command for the current user (nix-darwin will
         # persist this into /etc/nix/nix.conf on first activation)
         mkdir -p "$HOME/.config/nix"

@@ -6,6 +6,10 @@
     # Unstable channel — matches nix-darwin master branch.
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    # nixpkgs 24.11 for Intel Macs — modern nixpkgs-unstable packages target
+    # macOS 14+ and crash on Ventura (13) / OCLP installs.
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
+
     # nix-darwin provides the darwinSystem helper used to build a macOS config
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +23,7 @@
       self,
       nix-darwin,
       nixpkgs,
+      nixpkgs-stable,
       nix-homebrew,
     }:
     let
@@ -33,6 +38,8 @@
       # Determinate Nix (ARM) manages its own daemon → nix.enable = false
       # Vanilla Nix (Intel) needs nix-darwin to manage it → nix.enable = true
       nixEnabled = !isARM;
+      # nixpkgs-unstable packages target macOS 14+; Intel hosts on Ventura need 24.11
+      pkgsSource = if isARM then nixpkgs else nixpkgs-stable;
 
       # ── Shared Modules ───────────────────────────────────────────────────────
       # Modules applied to every host. Host-specific overrides
@@ -95,7 +102,11 @@
               (
                 { lib, ... }:
                 {
-                  nixpkgs.hostPlatform = currentSystem;
+                  # ARM → nixpkgs-unstable; Intel → nixpkgs-24.11 (Ventura-compatible)
+                  nixpkgs.pkgs = import pkgsSource {
+                    system = currentSystem;
+                    config.allowUnfree = true;
+                  };
 
                   nix-homebrew = {
                     enable = true;

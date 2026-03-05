@@ -114,24 +114,26 @@ if ! command -v nix &>/dev/null; then
         # which causes subtle failures in its cleanup and setup phases.
         NIX_INSTALL_SCRIPT="$(mktemp)"
         curl --proto '=https' --tlsv1.2 -sSf -L "$NIX_INSTALL_URL" -o "$NIX_INSTALL_SCRIPT"
-        chmod +x "$NIX_INSTALL_SCRIPT"
-        sh "$NIX_INSTALL_SCRIPT" --daemon --yes || {
+        NIX_INSTALL_RESULT=0
+        sh "$NIX_INSTALL_SCRIPT" --daemon --yes || NIX_INSTALL_RESULT=$?
+        rm -f "$NIX_INSTALL_SCRIPT"
+
+        if [ "$NIX_INSTALL_RESULT" -ne 0 ]; then
             echo "⚠️  Nix installer exited with an error — attempting recovery..."
-            # Re-create via canonical path — the installer's cleanup may have
-            # removed it, and the /etc symlink path can fail post-volume-ops.
-            sudo mkdir -p /private/etc/nix
-            if [ ! -f /private/etc/nix/nix.conf ]; then
-                echo "   Creating /etc/nix/nix.conf..."
-                sudo sh -c 'printf "build-users-group = nixbld\n" > /private/etc/nix/nix.conf'
-            fi
-            # Verify Nix actually landed in the store
+            # Verify the store was populated before the failure
             if [ ! -d /nix/store ]; then
                 echo "❌ /nix/store missing — installer failed before completing." >&2
                 exit 1
             fi
+            # The installer has a known macOS reinstall bug: its cleanup phase
+            # removes /etc/nix, then its own config-write step fails because the
+            # directory is gone. Combine mkdir + write in one atomic sudo call so
+            # there is no window for the directory to disappear between commands.
+            echo "   Recreating /etc/nix/nix.conf..."
+            sudo sh -c 'mkdir -p /private/etc/nix && printf "build-users-group = nixbld\n" > /private/etc/nix/nix.conf' || \
+                sudo sh -c 'mkdir -p /etc/nix && printf "build-users-group = nixbld\n" > /etc/nix/nix.conf'
             echo "✅ Recovery successful."
-        }
-        rm -f "$NIX_INSTALL_SCRIPT"
+        fi
         # Enable flakes + nix-command for the current user (nix-darwin will
         # persist this into /etc/nix/nix.conf on first activation)
         mkdir -p "$HOME/.config/nix"

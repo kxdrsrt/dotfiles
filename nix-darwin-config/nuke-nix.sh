@@ -3,6 +3,9 @@
 # Run as your regular user (sudo is invoked internally).
 # After running: REBOOT, then run:  sh bootstrap.sh
 
+# Ensure macOS system tools are in PATH (sh may not include /usr/sbin)
+export PATH="/usr/sbin:/usr/bin:/bin:/sbin:$PATH"
+
 if [ "$(id -u)" -eq 0 ]; then
     echo "❌ Do not run as root. Run as your regular user: sh nuke-nix.sh" >&2
     exit 1

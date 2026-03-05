@@ -214,8 +214,8 @@ else
     sleep 3
 
     echo "❄️  Building system derivation (Intel / Ventura-compatible path)..."
-    export NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH"
-    nix --extra-experimental-features 'nix-command flakes' \
+    sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
+        nix --extra-experimental-features 'nix-command flakes' \
         build ".#darwinConfigurations.$TARGET_HOSTNAME.system" \
         --impure --out-link /tmp/nix-darwin-first-boot
     echo "❄️  Activating system configuration..."

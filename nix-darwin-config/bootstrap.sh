@@ -94,6 +94,9 @@ if ! command -v nix &>/dev/null; then
             NIX_INSTALL_URL="https://nixos.org/nix/install"
         fi
         # Multi-user install — required for nix-darwin
+        # Ensure /etc/nix exists — the installer writes nix.conf there but
+        # doesn't always create the directory on repeated install attempts.
+        sudo mkdir -p /etc/nix
         curl --proto '=https' --tlsv1.2 -sSf -L "$NIX_INSTALL_URL" | \
             sh -s -- --daemon --yes
         # Enable flakes + nix-command for the current user (nix-darwin will

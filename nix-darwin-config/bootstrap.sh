@@ -77,6 +77,16 @@ _start_keepalive
 # Determinate Systems does NOT support Intel (x86_64) Macs.
 # Apple Silicon  → Determinate Nix (flakes enabled by default, manages own daemon)
 # Intel x86_64   → official upstream Nix installer (flakes must be enabled manually)
+
+# Source the Nix environment before the detection check: a previous (partial)
+# bootstrap run may have installed Nix without it being in PATH yet.
+# Doing this first prevents re-running the installer on every retry.
+_NIX_DAEMON_PROFILE='/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+if [ -e "$_NIX_DAEMON_PROFILE" ]; then
+    # shellcheck source=/dev/null
+    . "$_NIX_DAEMON_PROFILE"
+fi
+
 if ! command -v nix &>/dev/null; then
     if [[ $(uname -m) == "arm64" ]]; then
         echo "❄️  Nix not found (Apple Silicon). Installing via Determinate Systems..."
@@ -133,6 +143,16 @@ if ! command -v nix &>/dev/null; then
     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 else
     echo "❄️  Nix is already installed."
+fi
+
+# Ensure /etc/nix/nix.conf exists — it may be absent after a partial install
+# (the upstream installer has a bug where its own cleanup removes /etc/nix and
+# then fails to recreate nix.conf). The daemon and nix-darwin both need it.
+if [ ! -f /private/etc/nix/nix.conf ]; then
+    echo "   Ensuring /etc/nix/nix.conf exists..."
+    sudo mkdir -p /private/etc/nix
+    sudo sh -c 'printf "build-users-group = nixbld\n" > /private/etc/nix/nix.conf'
+    echo "   Created /etc/nix/nix.conf"
 fi
 
 # --- 4. HOME DIRECTORY INITIALIZATION ---

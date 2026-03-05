@@ -29,8 +29,9 @@ in
     sudo -u ${user} defaults write "${containerPrefs "com.apple.archiveutility"}" "dearchive-move-after" -string "$HOME/.Trash"
     sudo -u ${user} defaults write "${containerPrefs "com.apple.archiveutility"}" "dearchive-reveal-after" -bool true
 
-    # Gatekeeper — allow apps from anywhere
-    sudo spctl --master-disable
+    # Gatekeeper — on Sequoia+ requires manual confirmation in System Settings afterward
+    # (Privacy & Security → Allow applications downloaded from → Anywhere)
+    sudo spctl --master-disable || true
 
     # Energy — turn display off after 20 minutes of inactivity
     sudo pmset -a displaysleep 20

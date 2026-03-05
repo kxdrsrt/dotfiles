@@ -84,8 +84,17 @@ if ! command -v nix &>/dev/null; then
             sh -s -- install --no-confirm
     else
         echo "❄️  Nix not found (Intel). Installing via official upstream installer..."
+        # Nix 2.25+ requires macOS 14 (Sonoma). Pin to the last version that
+        # supports Ventura (13) and older for OCLP / older hardware.
+        MACOS_MAJOR=$(sw_vers -productVersion | cut -d. -f1)
+        if [[ "$MACOS_MAJOR" -le 13 ]]; then
+            echo "   macOS $MACOS_MAJOR detected — pinning to Nix 2.24.10 (last Ventura-compatible release)"
+            NIX_INSTALL_URL="https://releases.nixos.org/nix/nix-2.24.10/install"
+        else
+            NIX_INSTALL_URL="https://nixos.org/nix/install"
+        fi
         # Multi-user install — required for nix-darwin
-        curl --proto '=https' --tlsv1.2 -sSf -L https://nixos.org/nix/install | \
+        curl --proto '=https' --tlsv1.2 -sSf -L "$NIX_INSTALL_URL" | \
             sh -s -- --daemon --yes
         # Enable flakes + nix-command for the current user (nix-darwin will
         # persist this into /etc/nix/nix.conf on first activation)

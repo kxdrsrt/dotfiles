@@ -206,6 +206,13 @@ else
     # contains nix libs compiled for macOS 14+ — these crash on Ventura (13).
     # Instead: build the system derivation with the installed nix (2.24.x),
     # then call activate directly. darwin-rebuild is available afterwards.
+
+    # Ensure the nix daemon is running — it may not have started yet after a
+    # fresh install in the same session.
+    echo "❄️  Starting nix daemon..."
+    sudo launchctl load -w /Library/LaunchDaemons/org.nixos.nix-daemon.plist 2>/dev/null || true
+    sleep 3
+
     echo "❄️  Building system derivation (Intel / Ventura-compatible path)..."
     export NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH"
     nix --extra-experimental-features 'nix-command flakes' \

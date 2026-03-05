@@ -4,8 +4,8 @@
 
   # ── Locale & Language ────────────────────────────────────────────────────────
   system.defaults.CustomUserPreferences."com.apple.systempreferences".NSLanguages = [ "de" ];
-  system.defaults.NSGlobalDomain.AppleLanguages = [ "de-DE" ]; # German UI
-  system.defaults.NSGlobalDomain.AppleLocale = "de_DE"; # German regional format
+  system.defaults.CustomUserPreferences.".GlobalPreferences".AppleLanguages = [ "de-DE" ]; # German UI
+  system.defaults.CustomUserPreferences.".GlobalPreferences".AppleLocale = "de_DE"; # German regional format
 
   # ── Keyboard Input Sources ───────────────────────────────────────────────────
   system.defaults.CustomUserPreferences."com.apple.HIToolbox".AppleEnabledInputSources = [

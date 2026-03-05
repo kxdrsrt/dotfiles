@@ -1,6 +1,25 @@
-{ pkgs, ... }:
+{ ... }:
 {
   # ── Apple Silicon MacBook — host-specific settings ─────────────────────────
+
+  # ── Locale & Language ────────────────────────────────────────────────────────
+  system.defaults.CustomUserPreferences."com.apple.systempreferences".NSLanguages = [ "en" ];
+  system.defaults.NSGlobalDomain.AppleLanguages = [ "en-US" ]; # English UI
+  system.defaults.NSGlobalDomain.AppleLocale = "en_DE"; # German regional format (metric, dates, numbers)
+
+  # ── Keyboard Input Sources ───────────────────────────────────────────────────
+  system.defaults.CustomUserPreferences."com.apple.HIToolbox".AppleEnabledInputSources = [
+    {
+      InputSourceKind = "Keyboard Layout";
+      "KeyboardLayout ID" = 3;
+      "KeyboardLayout Name" = "German";
+    }
+    {
+      InputSourceKind = "Keyboard Layout";
+      "KeyboardLayout ID" = 0;
+      "KeyboardLayout Name" = "U.S.";
+    }
+  ];
 
   # ── Dock ─────────────────────────────────────────────────────────────────────
   system.defaults.dock.persistent-apps = [
@@ -55,10 +74,6 @@
     "Video Converter" = 1518836004; # Video converter
     "Windows App" = 1295203466; # Remote Desktop / RDP
   };
-
-  # ── ARM-specific Nix packages ─────────────────────────────────────────────
-  environment.systemPackages = with pkgs; [
-  ];
 
   # ── Login Items ───────────────────────────────────────────────────────────
   # Apps that appear in System Settings > General > Login Items.

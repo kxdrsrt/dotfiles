@@ -29,6 +29,12 @@ in
     sudo -u ${user} defaults write "${containerPrefs "com.apple.archiveutility"}" "dearchive-move-after" -string "$HOME/.Trash"
     sudo -u ${user} defaults write "${containerPrefs "com.apple.archiveutility"}" "dearchive-reveal-after" -bool true
 
+    # Gatekeeper — allow apps from anywhere
+    sudo spctl --master-disable
+
+    # Energy — turn display off after 20 minutes of inactivity
+    sudo pmset -a displaysleep 20
+
     # Apply settings without logout/login cycle
     /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
@@ -150,7 +156,7 @@ in
     # Screensaver and security
     screensaver = {
       askForPassword = true; # Require password after screensaver
-      askForPasswordDelay = 0; # Require password immediately
+      askForPasswordDelay = 3600; # Require password after 1 hour
     };
 
     # SMB (Network file sharing)
@@ -190,8 +196,15 @@ in
 
     # Custom system-wide preferences (written to /Library/Preferences/)
     CustomSystemPreferences = {
+      ".GlobalPreferences" = {
+        AppleInterfaceStyle = "Dark"; # Force dark mode for all users system-wide
+      };
+
       "com.apple.iokit.AmbientLightSensor" = {
         "Keyboard Dim Time" = 5; # Turn off keyboard backlight after 5 seconds of inactivity
+      };
+      "com.apple.security" = {
+        GKAutoRearm = false; # Prevent Gatekeeper from re-enabling after 30 days
       };
     };
 
@@ -325,7 +338,15 @@ in
 
       # Screenshot settings are fully managed via system.defaults.screencapture above
 
-      # Screensaver settings are managed via system.defaults.screensaver above
+      # Screensaver
+      "com.apple.screensaver" = {
+        idleTime = 600; # Start screensaver after 10 minutes of inactivity
+        moduleDict = {
+          moduleName = "Flurry";
+          path = "/System/Library/Screen Savers/Flurry.saver";
+          type = 0;
+        };
+      };
 
       # Software Update
       "com.apple.SoftwareUpdate" = {
@@ -436,7 +457,7 @@ in
 
       # System Preferences
       "com.apple.systempreferences" = {
-        NSLanguages = [ "en" ]; # Set language preferences
+        # NSLanguages is set per-host
         ShowAllMode = true; # Show all preference panes
       };
 
@@ -451,10 +472,16 @@ in
         Enabled = true; # Enable Universal Control
       };
 
+      # Window Manager — disable macOS native window tiling (using Rectangle instead)
+      "com.apple.WindowManager" = {
+        EnableTilingByEdgeDrag = false; # Disable drag-to-edge window snapping
+        EnableTopTilingByEdgeDrag = false; # Disable drag-to-top tiling
+        EnableTilingOptionAccelerator = false; # Disable Option+drag tile zones
+      };
+
       # Global preferences
       NSGlobalDomain = {
-        AppleLanguages = [ "en-US" ]; # System language
-        AppleLocale = "en_DE"; # English with Germany region (metric, date/number format)
+        # AppleLanguages and AppleLocale are set per-host
         AppleMiniaturizeOnDoubleClick = false; # Don't minimize on title bar double-click (EXPERIMENTAL)
         "com.apple.mouse.scaling" = 2.5; # Mouse tracking speed
         "com.apple.sound.beep.flash" = 0; # Disable screen flash on alert

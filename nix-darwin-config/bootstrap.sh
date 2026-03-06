@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Ensure macOS system tools are in PATH (sh/bash may not include /usr/sbin).
+# diskutil, scutil, softwareupdate, launchctl etc. all live in /usr/sbin.
+export PATH="/usr/sbin:/usr/bin:/bin:/sbin:$PATH"
+
 # Terminate execution if any command or pipe segment fails
 set -eo pipefail
 

@@ -78,9 +78,13 @@ sudo rm -rf /private/etc/nix 2>/dev/null || true
 # ── 7. Remove build users and group ──────────────────────────────────────────
 echo "🗑️  Removing nix build users..."
 for i in $(seq 1 32); do
-    sudo dscl . -delete "/Users/_nixbld${i}" 2>/dev/null || true
+    if sudo dscl . -read "/Users/_nixbld${i}" &>/dev/null; then
+        sudo dscl . -delete "/Users/_nixbld${i}" 2>/dev/null || true
+    fi
 done
-sudo dscl . -delete /Groups/nixbld 2>/dev/null || true
+if sudo dscl . -read /Groups/nixbld &>/dev/null; then
+    sudo dscl . -delete /Groups/nixbld 2>/dev/null || true
+fi
 
 # ── 8. Remove root's nix state ───────────────────────────────────────────────
 echo "🗑️  Removing root nix state..."
@@ -95,15 +99,21 @@ for HOME_DIR in /Users/*/; do
            "${HOME_DIR}.local/state/nix" 2>/dev/null || true
 done
 
-# ── 10. Remove /nix contents (mount point; volume deleted above) ──────────────
-# /nix itself is a synthetic firmlink — macOS will remove it after reboot
-# once the /etc/synthetic.conf entry is gone. Contents may already be gone
-# since the volume was unmounted.
-echo "🗑️  Clearing any remaining /nix contents..."
+# ── 10. Remove /nix firmlink ─────────────────────────────────────────────────
+# /nix is a synthetic firmlink. macOS processes synthetic.conf at boot, but
+# apfs.util -t can apply the removal immediately without a reboot.
+echo "🗑️  Removing /nix firmlink..."
+sudo /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t 2>/dev/null || true
+# Fall back to rm in case the firmlink is a plain directory (e.g. on a VM)
 sudo rm -rf /nix 2>/dev/null || true
 
 echo ""
 echo "✅ Nix has been removed from this system."
 echo ""
-echo "👉 REBOOT NOW, then run:  sh ~/nix-darwin-config/bootstrap.sh"
+if [ -e /nix ]; then
+    echo "👉 The /nix firmlink is still present — REBOOT, then run:  sh ~/nix-darwin-config/bootstrap.sh"
+else
+    echo "👉 /nix firmlink removed. You can now run:  sh ~/nix-darwin-config/bootstrap.sh"
+    echo "   (Reboot is still recommended if you encounter issues.)"
+fi
 echo ""

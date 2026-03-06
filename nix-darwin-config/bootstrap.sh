@@ -176,18 +176,54 @@ if ! command -v nix &>/dev/null; then
 
         if [ "$NIX_INSTALL_RESULT" -ne 0 ]; then
             echo "⚠️  Nix installer exited non-zero ($NIX_INSTALL_RESULT) — checking state..."
-            # Even with the lock, the installer may fail for other reasons.
+            # On Ventura + Intel, the installer often fails with:
+            #   "Bootstrap failed: 5: Input/output error"
+            #   "Could not find service org.nixos.darwin-store"
+            # This happens because launchd has a stale kernel registration for
+            # the darwin-store service from a previous install, even after
+            # bootout/unload.  The fix: force another bootout, then re-bootstrap
+            # the plist the installer already wrote.
+            if [ -f /Library/LaunchDaemons/org.nixos.darwin-store.plist ]; then
+                echo "   Attempting to recover darwin-store LaunchDaemon..."
+                sudo launchctl bootout system/org.nixos.darwin-store 2>/dev/null || true
+                sleep 1
+                sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.darwin-store.plist 2>/dev/null || true
+                sleep 3
+            fi
             # Check whether the essential pieces landed.
             if [ -d /nix/store ] && [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
                 echo "   /nix/store and daemon profile present — install likely succeeded despite error."
                 # Ensure nix.conf is correct
                 printf 'build-users-group = nixbld\n' | sudo tee /private/etc/nix/nix.conf >/dev/null
                 echo "✅ Recovery successful."
+            elif [ -f /Library/LaunchDaemons/org.nixos.darwin-store.plist ] && \
+                 [ -f /Library/LaunchDaemons/org.nixos.nix-daemon.plist ]; then
+                # Plists exist but /nix isn't mounted yet — start the daemon
+                # chain and wait for the store to appear.
+                echo "   Plists present but store not mounted — starting daemon chain..."
+                sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.darwin-store.plist 2>/dev/null || true
+                sudo launchctl bootstrap system /Library/LaunchDaemons/org.nixos.nix-daemon.plist   2>/dev/null || true
+                echo "   Waiting for /nix/store to appear (up to 30s)..."
+                for _i in $(seq 1 30); do
+                    [ -d /nix/store ] && break || sleep 1
+                done
+                if [ -d /nix/store ] && [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+                    printf 'build-users-group = nixbld\n' | sudo tee /private/etc/nix/nix.conf >/dev/null
+                    echo "✅ Recovery successful."
+                else
+                    echo "❌ Nix installation incomplete. Dumping state for debugging:" >&2
+                    echo "   /nix/store exists: $([ -d /nix/store ] && echo yes || echo NO)" >&2
+                    echo "   /nix mount: $(/sbin/mount | grep '/nix' || echo 'not mounted')" >&2
+                    echo "   /etc/nix/nix.conf exists: $([ -f /etc/nix/nix.conf ] && echo yes || echo NO)" >&2
+                    echo "   💡 Try rebooting and running bootstrap.sh again." >&2
+                    exit 1
+                fi
             else
                 echo "❌ Nix installation incomplete. Dumping state for debugging:" >&2
                 echo "   /nix/store exists: $([ -d /nix/store ] && echo yes || echo NO)" >&2
                 echo "   /nix mount: $(/sbin/mount | grep '/nix' || echo 'not mounted')" >&2
                 echo "   /etc/nix/nix.conf exists: $([ -f /etc/nix/nix.conf ] && echo yes || echo NO)" >&2
+                echo "   💡 Try rebooting and running bootstrap.sh again." >&2
                 exit 1
             fi
         fi

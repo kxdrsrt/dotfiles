@@ -104,10 +104,17 @@ if ! command -v nix &>/dev/null; then
             NIX_INSTALL_URL="https://nixos.org/nix/install"
         fi
         # Multi-user install — required for nix-darwin
-        # On macOS /etc is a symlink → /private/etc. After the installer's
-        # cleanup phase, creating dirs via the symlink can silently fail.
-        # Always use the canonical /private/etc/nix path.
+        # The official Nix installer has a known macOS reinstall bug:
+        # its cleanup phase (when it finds a previous install) removes
+        # /etc/nix, then later tries to `install` nix.conf into it — and
+        # fails.  Even on a clean install, race conditions can occur.
+        #
+        # Fix: pre-create /etc/nix/nix.conf with the content the installer
+        # would write, then lock the directory with macOS's immutable flag
+        # so the installer's cleanup can't delete it.  Unlock after.
         sudo mkdir -p /private/etc/nix
+        printf 'build-users-group = nixbld\n' | sudo tee /private/etc/nix/nix.conf >/dev/null
+        sudo chflags schg /private/etc/nix
 
         # Download installer to a file instead of piping through sh.
         # Piped execution (curl | sh) steals stdin/TTY from the installer,
@@ -118,21 +125,25 @@ if ! command -v nix &>/dev/null; then
         sh "$NIX_INSTALL_SCRIPT" --daemon --yes || NIX_INSTALL_RESULT=$?
         rm -f "$NIX_INSTALL_SCRIPT"
 
+        # Unlock the directory now that the installer is done
+        sudo chflags noschg /private/etc/nix
+
         if [ "$NIX_INSTALL_RESULT" -ne 0 ]; then
-            echo "⚠️  Nix installer exited with an error — attempting recovery..."
-            # Verify the store was populated before the failure
-            if [ ! -d /nix/store ]; then
-                echo "❌ /nix/store missing — installer failed before completing." >&2
+            echo "⚠️  Nix installer exited non-zero ($NIX_INSTALL_RESULT) — checking state..."
+            # Even with the lock, the installer may fail for other reasons.
+            # Check whether the essential pieces landed.
+            if [ -d /nix/store ] && [ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]; then
+                echo "   /nix/store and daemon profile present — install likely succeeded despite error."
+                # Ensure nix.conf is correct
+                printf 'build-users-group = nixbld\n' | sudo tee /private/etc/nix/nix.conf >/dev/null
+                echo "✅ Recovery successful."
+            else
+                echo "❌ Nix installation incomplete. Dumping state for debugging:" >&2
+                echo "   /nix/store exists: $([ -d /nix/store ] && echo yes || echo NO)" >&2
+                echo "   /nix mount: $(mount | grep '/nix' || echo 'not mounted')" >&2
+                echo "   /etc/nix/nix.conf exists: $([ -f /etc/nix/nix.conf ] && echo yes || echo NO)" >&2
                 exit 1
             fi
-            # The installer has a known macOS reinstall bug: its cleanup phase
-            # removes /etc/nix, then its own config-write step fails because the
-            # directory is gone. Combine mkdir + write in one atomic sudo call so
-            # there is no window for the directory to disappear between commands.
-            echo "   Recreating /etc/nix/nix.conf..."
-            sudo sh -c 'mkdir -p /private/etc/nix && printf "build-users-group = nixbld\n" > /private/etc/nix/nix.conf' || \
-                sudo sh -c 'mkdir -p /etc/nix && printf "build-users-group = nixbld\n" > /etc/nix/nix.conf'
-            echo "✅ Recovery successful."
         fi
         # Enable flakes + nix-command for the current user (nix-darwin will
         # persist this into /etc/nix/nix.conf on first activation)

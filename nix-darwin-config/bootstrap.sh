@@ -104,6 +104,48 @@ if ! command -v nix &>/dev/null; then
             NIX_INSTALL_URL="https://nixos.org/nix/install"
         fi
         # Multi-user install — required for nix-darwin
+        #
+        # Intel pre-flight: remove any stale Nix LaunchDaemon / APFS volume
+        # state that causes "Bootstrap failed: 5: Input/output error" for
+        # org.nixos.darwin-store on reinstalls (even after nuke-nix.sh).
+        echo "🧹 Intel pre-flight: clearing stale Nix installation state..."
+
+        # 1. Evict any lingering launchd service entries (clears the in-memory
+        #    database even when plists have already been deleted).
+        sudo launchctl bootout system/org.nixos.darwin-store 2>/dev/null || true
+        sudo launchctl bootout system/org.nixos.nix-daemon   2>/dev/null || true
+        sudo launchctl unload -w /Library/LaunchDaemons/org.nixos.darwin-store.plist 2>/dev/null || true
+        sudo launchctl unload -w /Library/LaunchDaemons/org.nixos.nix-daemon.plist   2>/dev/null || true
+        sudo rm -f /Library/LaunchDaemons/org.nixos.darwin-store.plist
+        sudo rm -f /Library/LaunchDaemons/org.nixos.nix-daemon.plist
+
+        # 2. Delete any leftover Nix APFS volume (a stale volume is the most
+        #    common reason the installer fails with EIO on the darwin-store step).
+        _PREFLIGHT_NIX_VOL=$(diskutil list | awk '/Nix Store/ {print $NF}')
+        if [ -n "$_PREFLIGHT_NIX_VOL" ]; then
+            echo "   Found stale Nix volume: $_PREFLIGHT_NIX_VOL — removing..."
+            sudo diskutil unmount force "$_PREFLIGHT_NIX_VOL" 2>/dev/null || true
+            if sudo diskutil apfs deleteVolume "$_PREFLIGHT_NIX_VOL" 2>/dev/null; then
+                echo "   Volume removed."
+            else
+                echo "❌ Could not delete Nix APFS volume $_PREFLIGHT_NIX_VOL." >&2
+                echo "   Please reboot and run bootstrap.sh again." >&2
+                exit 1
+            fi
+        fi
+
+        # 3. Remove stale /etc/fstab Nix entries.
+        sudo sed -i '.bak' '/[Nn]ix/d' /private/etc/fstab 2>/dev/null || true
+
+        # 4. Ensure the /nix firmlink exists — synthetic.conf entry + apply
+        #    without reboot via apfs.util.  Without this the installer's
+        #    darwin-store LaunchDaemon can fail to mount at boot time.
+        if ! grep -q '^nix' /private/etc/synthetic.conf 2>/dev/null; then
+            printf 'nix\n' | sudo tee -a /private/etc/synthetic.conf >/dev/null
+        fi
+        sudo /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t 2>/dev/null || true
+        sleep 1  # allow firmlink to materialise
+
         # The official Nix installer has a known macOS reinstall bug:
         # its cleanup phase (when it finds a previous install) removes
         # /etc/nix, then later tries to `install` nix.conf into it — and
@@ -140,7 +182,7 @@ if ! command -v nix &>/dev/null; then
             else
                 echo "❌ Nix installation incomplete. Dumping state for debugging:" >&2
                 echo "   /nix/store exists: $([ -d /nix/store ] && echo yes || echo NO)" >&2
-                echo "   /nix mount: $(mount | grep '/nix' || echo 'not mounted')" >&2
+                echo "   /nix mount: $(/sbin/mount | grep '/nix' || echo 'not mounted')" >&2
                 echo "   /etc/nix/nix.conf exists: $([ -f /etc/nix/nix.conf ] && echo yes || echo NO)" >&2
                 exit 1
             fi

@@ -16,6 +16,7 @@
     aria2
     inetutils
     speedtest-cli
+    tailscale
 
     # Media tools
     exiftool

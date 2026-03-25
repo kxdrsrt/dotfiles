@@ -41,7 +41,9 @@
 
   # ── ARM-specific Casks ──────────────────────────────────────────────────────
   homebrew.casks = [
+    #"alcove" # Dynamic Island for macOS
     "calibre" # E-book library management
+    "claude" # AI assistant by Anthropic
     "claude-code" # AI-powered code assistant
     "conductor" # AI-powered file manager
     "cursor" # Code editor with AI assistance
@@ -50,11 +52,16 @@
     "imageoptim" # Image optimization tool
     "karabiner-elements" # Keyboard customization tool
     "kiro" # Amazon AI IDE
+    "lg-onscreen-control" # LG display management
     "microsoft-edge" # Microsoft's Chromium browser
     "microsoft-teams" # Communication platform
+    "moonlight" # NVIDIA GameStream client
     "netnewswire" # RSS reader
     "notion" # All-in-one workspace
+    "notion-calendar" # Calendar companion for Notion
     "nvidia-geforce-now" # Cloud gaming service
+    "protonvpn" # ProtonVPN client
+    "tailscale" # VPN and zero-config networking
     "reflex-app" # Universal Music Control
     "telegram" # Messaging app
     "thebrowsercompany-dia" # The Browser Company's Dia
@@ -72,6 +79,7 @@
     "Microsoft OneNote" = 784801555; # Note-taking
     "Shazam" = 897118787; # Music identifier
     "Video Converter" = 1518836004; # Video converter
+    "LG Screen Manager" = 1142051783; # LG display management App
     "Windows App" = 1295203466; # Remote Desktop / RDP
   };
 

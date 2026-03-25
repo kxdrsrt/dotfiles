@@ -16,7 +16,6 @@
     aria2
     inetutils
     speedtest-cli
-    tailscale
 
     # Media tools
     exiftool
@@ -54,6 +53,4 @@
     pkgs.nerd-fonts.fira-code # Fira Code with icons
   ];
 
-  # Allow proprietary packages from nixpkgs
-  nixpkgs.config.allowUnfree = true;
 }

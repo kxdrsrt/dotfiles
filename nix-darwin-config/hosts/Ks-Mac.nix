@@ -60,6 +60,7 @@
     "notion" # All-in-one workspace
     "notion-calendar" # Calendar companion for Notion
     "nvidia-geforce-now" # Cloud gaming service
+    "obsidian" # Knowledge base and note-taking app
     "protonvpn" # ProtonVPN client
     "tailscale" # VPN and zero-config networking
     "reflex-app" # Universal Music Control

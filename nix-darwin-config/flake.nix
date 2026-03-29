@@ -110,7 +110,7 @@
 
                   nix-homebrew = {
                     enable = true;
-                    enableRosetta = isARM;
+                    enableRosetta = false;
                     user = currentUser;
                     autoMigrate = true;
                   };

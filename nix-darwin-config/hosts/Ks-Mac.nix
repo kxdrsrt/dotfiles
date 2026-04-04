@@ -1,9 +1,9 @@
-{ ... }:
+{ lib, ... }:
 {
   # ── Apple Silicon MacBook — host-specific settings ─────────────────────────
 
   # ── Login Window ─────────────────────────────────────────────────────────────
-  system.defaults.loginwindow.LoginwindowText = "🅺's Mac";
+  system.defaults.loginwindow.LoginwindowText = lib.mkForce "🅺's Mac";
 
   # ── Locale & Language ────────────────────────────────────────────────────────
   system.defaults.CustomUserPreferences."com.apple.systempreferences".NSLanguages = [ "en" ];

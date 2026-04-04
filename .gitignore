@@ -101,6 +101,7 @@ argv.json
 .autom4te.cache/output.0
 .autom4te.cache/requests
 .autom4te.cache/traces.0
+.codex/
 .copilot/
 .cursor/ai-tracking/
 .cursor/extensions/

@@ -230,6 +230,12 @@ in
 
       # Archive Utility — applied via activation script (sandboxed app)
 
+      # Keyboard Backlight
+      "com.apple.BezelServices" = {
+        dAuto = false; # Disable automatic keyboard brightness
+        dLevel = 0.01; # Keyboard brightness at 1%
+      };
+
       # Bluetooth Audio Agent
       "com.apple.BluetoothAudioAgent" = {
         "Apple Bitpool Min (editable)" = 40; # Better audio quality for Bluetooth

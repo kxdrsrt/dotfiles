@@ -2,6 +2,9 @@
 {
   # ── Apple Silicon MacBook — host-specific settings ─────────────────────────
 
+  # ── Login Window ─────────────────────────────────────────────────────────────
+  system.defaults.loginwindow.LoginwindowText = "🅺's Mac";
+
   # ── Locale & Language ────────────────────────────────────────────────────────
   system.defaults.CustomUserPreferences."com.apple.systempreferences".NSLanguages = [ "en" ];
   system.defaults.CustomUserPreferences.".GlobalPreferences".AppleLanguages = [ "en-US" ]; # English UI
@@ -36,7 +39,8 @@
     "/Applications/Spotify.app"
     "/System/Applications/System Settings.app"
     "/Applications/Visual Studio Code.app"
-    "/Applications/Warp.app"
+    "/Applications/Obsidian.app"
+    "/System/Applications/Utilities/Terminal.app"
   ];
 
   # ── ARM-specific Casks ──────────────────────────────────────────────────────

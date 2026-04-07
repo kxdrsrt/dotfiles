@@ -83,7 +83,7 @@ in
       # Hot corners
       wvous-bl-corner = 1; # Bottom left: disabled
       wvous-br-corner = 1; # Bottom right: disabled
-      wvous-tl-corner = 1; # Top left: disabled
+      wvous-tl-corner = 5; # Top left: start screen saver
       wvous-tr-corner = 4; # Top right: show desktop
     };
 

@@ -333,4 +333,7 @@
     "plutil": true,
   },
   "chat.editing.confirmEditRequestRemoval": false,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+  },
 }

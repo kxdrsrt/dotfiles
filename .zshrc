@@ -174,3 +174,6 @@ alias unquarantine='xattr -dr com.apple.quarantine' # Use as: unquarantine /path
 alias unquarantine-apps='sudo xattr -dr com.apple.quarantine /Applications/*.app' # Remove quarantine from all apps, including those in subdirectories
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# Added by Antigravity
+export PATH="/Users/k/.antigravity/antigravity/bin:$PATH"

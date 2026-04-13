@@ -119,6 +119,13 @@
                     ${currentUser} ALL=(ALL) NOPASSWD: ${brewPath}
                   '';
 
+                  # Ensure ARM Homebrew (/opt/homebrew) takes precedence over any
+                  # residual Intel Homebrew installation at /usr/local.
+                  environment.systemPath = lib.optionals isARM [
+                    "/opt/homebrew/bin"
+                    "/opt/homebrew/sbin"
+                  ];
+
                   nix.enable = nixEnabled;
                   nix.settings.experimental-features = lib.mkIf nixEnabled [
                     "nix-command"

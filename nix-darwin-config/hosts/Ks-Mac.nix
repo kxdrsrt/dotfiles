@@ -46,6 +46,7 @@
   # ── ARM-specific Casks ──────────────────────────────────────────────────────
   homebrew.casks = [
     #"alcove" # Dynamic Island for macOS
+    "antigravity" # Google Antigravity AI Coding Agent IDE
     "calibre" # E-book library management
     "claude" # AI assistant by Anthropic
     "claude-code" # AI-powered code assistant

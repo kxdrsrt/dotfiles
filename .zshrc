@@ -1,6 +1,6 @@
 # Environment Variables
 export PROMPT='%F{green}🅺 @%m%f:%F{blue}%~%f ' # Customizes the terminal prompt format
-export PATH=$HOME/bin:/usr/local/bin:$PATH     # Adds custom directories to the PATH environment variable
+export PATH=$HOME/bin:$PATH                      # Adds custom directories to the PATH environment variable
 export EDITOR=nano                             # Sets nano as the default text editor
 export BROWSER=arc                             # Sets arc as the default web browser
 export HOMEBREW_NO_QUARANTINE=1                # Disable Homebrew quarantine for security
@@ -10,7 +10,6 @@ HISTFILE=~/.zsh_history                        # Specifies the location of the c
 
 # Python Variables
 export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 

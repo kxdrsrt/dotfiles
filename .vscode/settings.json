@@ -331,6 +331,7 @@
   "chat.viewSessions.orientation": "stacked",
   "chat.tools.terminal.autoApprove": {
     "plutil": true,
+    "brew": true,
   },
   "chat.editing.confirmEditRequestRemoval": false,
   "[yaml]": {

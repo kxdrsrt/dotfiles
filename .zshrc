@@ -8,10 +8,9 @@ HISTSIZE=1000                                  # Limits the size of command hist
 SAVEHIST=1000                                  # Limits the size of saved history to 1000 entries
 HISTFILE=~/.zsh_history                        # Specifies the location of the command history file
 
-# Python Variables
-export PATH="/opt/homebrew/opt/python@3.12/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/openssl/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl/include"
+# Compiler flags for openssl (ARM Homebrew)
+export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 
 # Options
 setopt autocd          # Allow switching to a directory by typing its name without cd command
@@ -38,7 +37,7 @@ alias xa='cd ~/Developer/xathena'                                               
 
 # Aliases - Common Commands
 alias c='clear'                  # Clear terminal
-alias cp='cp -I'                 # Confirm before overwriting files with cp
+alias cp='cp -i'                 # Confirm before overwriting files with cp
 alias df='df -h'                 # Display human-readable disk space usage
 alias grep='grep --color=auto'   # Colorful grep
 alias h='history -10'            # Show last 10 history commands
@@ -49,7 +48,7 @@ alias ll='ls -alF'               # List all files with detailed view
 alias ls='ls --color -h'         # List with color and human-readable sizes
 alias more='less'                # Use less instead of more
 alias o='open .'                 # Open the current directory in Finder
-alias mv='mv -I'                 # Confirm before overwriting files with mv
+alias mv='mv -i'                 # Confirm before overwriting files with mv
 alias rm='rm -rf'                # Remove files and directories without confirmation
 alias rs='source ~/.zshrc'       # Refresh .zshrc
 alias shutdown='shutdown -h now' # Shutdown the system
@@ -106,7 +105,7 @@ alias md2pdf='sh "$HOME/Documents/6 Others/macOS/Scripts/md2pdf.sh"'         # C
 alias png2icns='sh "$HOME/Documents/6 Others/macOS/Scripts/png2icns.sh"'     # Convert png to icns
 alias awdl='bash <(curl -sL https://www.meter.com/awdl.sh)'
 alias awdld='curl -sL https://www.meter.com/awdl-daemon.sh | bash'
-alias awdl-restore='ccurl -s https://raw.githubusercontent.com/meterup/awdl_wifi_scripts/main/cleanup-and-reenable-awdl.sh | bash &> /dev/null'
+alias awdl-restore='curl -s https://raw.githubusercontent.com/meterup/awdl_wifi_scripts/main/cleanup-and-reenable-awdl.sh | bash &> /dev/null'
 
 # Aliases - SSH Servers
 # Alias for connecting to RO VPS as user k

@@ -337,4 +337,5 @@
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml",
   },
+  "python.analysis.typeCheckingMode": "basic",
 }

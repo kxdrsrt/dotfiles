@@ -175,3 +175,11 @@ alias unquarantine-apps='sudo xattr -dr com.apple.quarantine /Applications/*.app
 
 # Added by Antigravity
 export PATH="/Users/k/.antigravity/antigravity/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/k/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

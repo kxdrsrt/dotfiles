@@ -78,13 +78,6 @@
     "**/node_modules/**": true, // npm dependencies (huge folder)
   },
 
-  // ═══════════════════════════════════════════════════════════════════════════
-  // WORKBENCH - UI and layout
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  // Always open files in a new tab (don't reuse preview tab)
-  "workbench.editor.enablePreview": false,
-
   // Show a dot on tabs with unsaved changes
   "workbench.editor.highlightModifiedTabs": true,
 
@@ -338,4 +331,16 @@
     "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "python.analysis.typeCheckingMode": "basic",
+  "markdown-preview-enhanced.previewTheme": "vscode.css",
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
+    "https://developer.sumup.com/online-payments/checkouts/card-widget": true,
+    "https://developer.sumup.com/online-payments/checkouts": true,
+    "https://developer.sumup.com/online-payments": true,
+    "https://developer.sumup.com": true,
+    "https://*.sumup.com": true,
+    "https://developer.sumup.com/online-payments/guides/single-payment": true,
+    "https://developer.sumup.com/online-payments/guides": true,
+  },
 }

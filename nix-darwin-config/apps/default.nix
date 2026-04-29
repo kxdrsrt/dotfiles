@@ -5,12 +5,16 @@
     # Third-party applications
     ./Alcove.nix
     ./AltServer.nix
+    ./Antigravity.nix
     ./AppCleaner.nix
     ./AppleConfigurator.nix
     ./BetterDisplay.nix
     ./BrotherPrintScan.nix
     ./Calibre.nix
+    ./Claude.nix
+    ./ClaudeCode.nix
     ./CoconutBattery.nix
+    ./Conductor.nix
     ./Cursor.nix
     ./DeepL.nix
     ./Dia.nix
@@ -30,11 +34,16 @@
     ./MicrosoftDefenderShim.nix
     ./MicrosoftEdge.nix
     ./MicrosoftOffice.nix
+    ./MicrosoftTeams.nix
+    ./Moonlight.nix
     ./Mos.nix
     ./NetNewsWire.nix
     ./Notion.nix
+    ./NotionCalendar.nix
+    ./Obsidian.nix
     ./OneDrive.nix
     ./Pearcleaner.nix
+    ./ProtonVPN.nix
     ./QBittorrent.nix
     ./Raycast.nix
     ./Rectangle.nix
@@ -43,6 +52,7 @@
     ./Shazam.nix
     ./Shottr.nix
     ./Spotify.nix
+    ./Tailscale.nix
     ./Telegram.nix
     ./TheUnarchiver.nix
     ./UBlockOriginLite.nix

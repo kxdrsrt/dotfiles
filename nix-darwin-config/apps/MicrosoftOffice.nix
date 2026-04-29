@@ -1,7 +1,8 @@
 { ... }:
 
 {
-  # Microsoft Office apps preferences (Excel, Word, PowerPoint, Outlook, OneNote, Teams)
+  # Microsoft Office apps preferences (Excel, Word, PowerPoint, Outlook, OneNote)
+  # Teams has its own module: MicrosoftTeams.nix
   system.defaults.CustomUserPreferences = {
     "com.microsoft.Excel" = {
       # Add Excel-specific settings here
@@ -15,11 +16,8 @@
     "com.microsoft.Outlook" = {
       # Add Outlook-specific settings here
     };
-    "com.microsoft.OneNote-mac" = {
+    "com.microsoft.onenote.mac" = {
       # Add OneNote-specific settings here
-    };
-    "com.microsoft.teams" = {
-      # Add Teams-specific settings here
     };
   };
 }

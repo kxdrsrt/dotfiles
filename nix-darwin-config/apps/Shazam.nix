@@ -3,7 +3,7 @@
 {
   # Shazam app preferences
   system.defaults.CustomUserPreferences = {
-    "com.shazam.shazam" = {
+    "com.shazam.mac.Shazam" = {
       # Add Shazam-specific settings here
     };
   };

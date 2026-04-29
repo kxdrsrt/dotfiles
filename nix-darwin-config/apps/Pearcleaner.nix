@@ -3,7 +3,7 @@
 {
   # Pearcleaner app preferences
   system.defaults.CustomUserPreferences = {
-    "com.silverstorm.Pearcleaner" = {
+    "com.alienator88.Pearcleaner" = {
       # Add Pearcleaner-specific settings here
     };
   };

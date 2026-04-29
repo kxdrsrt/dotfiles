@@ -3,7 +3,7 @@
 {
   # Reflex app preferences
   system.defaults.CustomUserPreferences = {
-    "com.reflexapp.Reflex" = {
+    "com.stuntsoftware.Reflex" = {
       # Add Reflex-specific settings here
     };
   };

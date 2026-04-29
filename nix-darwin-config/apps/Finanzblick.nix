@@ -3,7 +3,7 @@
 {
   # Finanzblick app preferences
   system.defaults.CustomUserPreferences = {
-    "de.buhl.finanzblick" = {
+    "com.BuhlData.FinanzblickMac" = {
       # Add Finanzblick-specific settings here
     };
   };

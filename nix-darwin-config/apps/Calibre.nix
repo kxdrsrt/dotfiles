@@ -3,7 +3,7 @@
 {
   # calibre app preferences
   system.defaults.CustomUserPreferences = {
-    "com.calibre" = {
+    "net.kovidgoyal.calibre" = {
       # Add calibre-specific settings here
     };
   };

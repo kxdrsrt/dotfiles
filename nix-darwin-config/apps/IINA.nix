@@ -3,7 +3,7 @@
 {
   # IINA app preferences
   system.defaults.CustomUserPreferences = {
-    "com.colloquial.iina" = {
+    "com.colliderli.iina" = {
       # Add IINA-specific settings here
     };
   };

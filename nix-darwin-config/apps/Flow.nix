@@ -3,7 +3,7 @@
 {
   # Flow app preferences
   system.defaults.CustomUserPreferences = {
-    "io.github.lynbryan.Flow" = {
+    "design.yugen.Flow" = {
       # Add Flow-specific settings here
     };
   };

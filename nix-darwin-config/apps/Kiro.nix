@@ -3,7 +3,7 @@
 {
   # Kiro app preferences
   system.defaults.CustomUserPreferences = {
-    "com.kiro" = {
+    "dev.kiro.desktop" = {
       # Add Kiro-specific settings here
     };
   };

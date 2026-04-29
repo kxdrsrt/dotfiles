@@ -3,7 +3,7 @@
 {
   # Goodnotes app preferences
   system.defaults.CustomUserPreferences = {
-    "com.goodnotes.macapp" = {
+    "com.goodnotesapp.x" = {
       # Add Goodnotes-specific settings here
     };
   };

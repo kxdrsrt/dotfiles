@@ -3,7 +3,7 @@
 {
   # BetterDisplay app preferences
   system.defaults.CustomUserPreferences = {
-    "com.amiralikhani.BetterDisplay" = {
+    "pro.betterdisplay.BetterDisplay" = {
       # Add BetterDisplay-specific settings here
     };
   };

@@ -3,7 +3,7 @@
 {
   # Antigravity app preferences
   system.defaults.CustomUserPreferences = {
-    "com.antigravity.app" = {
+    "com.google.antigravity" = {
       # Add Antigravity-specific settings here
     };
   };

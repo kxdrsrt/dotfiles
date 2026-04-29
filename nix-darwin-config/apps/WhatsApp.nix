@@ -3,7 +3,7 @@
 {
   # WhatsApp app preferences
   system.defaults.CustomUserPreferences = {
-    "com.whatsapp.WhatsApp" = {
+    "net.whatsapp.WhatsApp" = {
       # Add WhatsApp-specific settings here
     };
   };

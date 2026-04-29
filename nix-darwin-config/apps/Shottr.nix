@@ -3,7 +3,7 @@
 {
   # Shottr app preferences
   system.defaults.CustomUserPreferences = {
-    "cc.htSweet.shottr" = {
+    "cc.ffitch.shottr" = {
       # Add Shottr-specific settings here
     };
   };

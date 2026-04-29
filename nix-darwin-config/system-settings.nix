@@ -124,8 +124,8 @@ in
       AppleShowAllExtensions = true; # Show all file extensions
       AppleTemperatureUnit = "Celsius"; # Celsius temperature
       AppleWindowTabbingMode = "always"; # Always prefer tabs when opening documents
-      InitialKeyRepeat = 15; # Fast initial key repeat
-      KeyRepeat = 2; # Fast key repeat rate
+      InitialKeyRepeat = 15; # Shortest delay until repeat
+      KeyRepeat = 1; # Max fast key repeat rate
       NSAutomaticCapitalizationEnabled = true;
       NSAutomaticDashSubstitutionEnabled = false; # Disable smart dashes
       NSAutomaticPeriodSubstitutionEnabled = true;
@@ -175,6 +175,7 @@ in
     # Trackpad settings
     trackpad = {
       Clicking = true; # Enable tap to click
+      FirstClickThreshold = 0; # Light click pressure (0=light, 1=medium, 2=firm)
       TrackpadRightClick = true; # Enable two-finger right click
       TrackpadThreeFingerDrag = false; # Disable three-finger drag
       TrackpadFourFingerPinchGesture = 2; # Launchpad with four-finger pinch
@@ -203,6 +204,10 @@ in
 
       "com.apple.iokit.AmbientLightSensor" = {
         "Keyboard Dim Time" = 5; # Turn off keyboard backlight after 5 seconds of inactivity
+      };
+
+      "com.apple.keyboard" = {
+        KeyboardBrightness = 0.0625; # Lowest non-zero keyboard brightness
       };
       "com.apple.security" = {
         GKAutoRearm = false; # Prevent Gatekeeper from re-enabling after 30 days

@@ -55,26 +55,19 @@
           # "/Applications/Example.app"
         )
 
-      add_login_item() {
-        local app_path="$1"
-        local app_name=$(basename "$app_path" .app)
-        if ! osascript -e "tell application \"System Events\" to get the name of every login item" | grep -q "$app_name"; then
-          osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"$app_path\", hidden:false}" 2>/dev/null || true
-          echo "Added login item: $app_name"
-        fi
-      }
-
-      remove_login_item() {
-        local app_name=$(basename "$1" .app)
-        osascript -e "tell application \"System Events\" to delete login item \"$app_name\"" 2>/dev/null || true
-      }
+      # Fetch existing login items once (avoids repeated osascript calls)
+      EXISTING_ITEMS=$(osascript -e 'tell application "System Events" to get the name of every login item' 2>/dev/null || echo "")
 
       for app in "''${MANAGED_APPS[@]}"; do
+        app_name=$(basename "$app" .app)
         if [ -d "$app" ]; then
-          add_login_item "$app"
+          if ! echo "$EXISTING_ITEMS" | grep -q "$app_name"; then
+            osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"$app\", hidden:false}" 2>/dev/null || true
+            echo "Added login item: $app_name"
+          fi
         else
           # App not installed — ensure its login item is removed
-          remove_login_item "$app"
+          osascript -e "tell application \"System Events\" to delete login item \"$app_name\"" 2>/dev/null || true
         fi
       done
     '';

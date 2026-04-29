@@ -40,7 +40,7 @@ sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
   darwin-rebuild switch --flake .#"$TARGET_CONFIG" --impure
 
 echo "🔓 Removing quarantine flags from cask-installed apps..."
-sudo xattr -dr com.apple.quarantine /Applications/ 2>/dev/null || true
+find /Applications -maxdepth 1 -name '*.app' -exec sudo xattr -dr com.apple.quarantine {} + 2>/dev/null || true
 
 echo "✅ Rebuild successful!"
 echo "ℹ️  Changes are active, but NOT committed. Use 'git commit' when ready."

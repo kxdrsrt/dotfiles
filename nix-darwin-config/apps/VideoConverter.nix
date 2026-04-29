@@ -3,7 +3,7 @@
 {
   # Video Converter app preferences
   system.defaults.CustomUserPreferences = {
-    "com.videoconverter" = {
+    "io.airtv.Converter" = {
       # Add Video Converter-specific settings here
     };
   };

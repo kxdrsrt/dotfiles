@@ -3,7 +3,7 @@
 {
   # Hush app preferences
   system.defaults.CustomUserPreferences = {
-    "com.codeupclose.macOS.Hush" = {
+    "se.oblador.Hush" = {
       # Add Hush-specific settings here
     };
   };

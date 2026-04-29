@@ -3,7 +3,7 @@
 {
   # uBlock Origin Lite app preferences
   system.defaults.CustomUserPreferences = {
-    "org.ublockorigin.lite" = {
+    "net.raymondhill.uBlock-Origin-Lite" = {
       # Add uBlock Origin Lite-specific settings here
     };
   };

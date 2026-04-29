@@ -3,7 +3,7 @@
 {
   # RustDesk app preferences
   system.defaults.CustomUserPreferences = {
-    "rustdesk.rustdesk" = {
+    "com.carriez.rustdesk" = {
       # Add RustDesk-specific settings here
     };
   };

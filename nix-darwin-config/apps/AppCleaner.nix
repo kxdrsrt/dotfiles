@@ -3,7 +3,7 @@
 {
   # AppCleaner app preferences
   system.defaults.CustomUserPreferences = {
-    "com.freemacsoft.AppCleaner" = {
+    "net.freemacsoft.AppCleaner" = {
       # Add AppCleaner-specific settings here
     };
   };

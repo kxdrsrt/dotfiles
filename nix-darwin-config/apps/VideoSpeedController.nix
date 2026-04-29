@@ -3,7 +3,7 @@
 {
   # Video Speed Controller app preferences
   system.defaults.CustomUserPreferences = {
-    "com.videospeedcontroller" = {
+    "top.kyleye.videospeedcontroller" = {
       # Add Video Speed Controller-specific settings here
     };
   };

@@ -3,7 +3,7 @@
 {
   # Equinox app preferences
   system.defaults.CustomUserPreferences = {
-    "com.equinoxmac.Equinox" = {
+    "com.rlxone.equinox" = {
       # Add Equinox-specific settings here
     };
   };

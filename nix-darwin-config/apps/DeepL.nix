@@ -3,7 +3,7 @@
 {
   # DeepL app preferences
   system.defaults.CustomUserPreferences = {
-    "com.deepl.DeepL" = {
+    "com.linguee.DeepLCopyTranslator" = {
       # Add DeepL-specific settings here
     };
   };

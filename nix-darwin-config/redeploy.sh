@@ -24,6 +24,10 @@ DETECTED_ARCH="$(uname -m)"
 
 cd "$FLAKE_DIR" || exit 1
 
+# Keep nix-homebrew (and its bundled brew) up to date
+echo "🍺 Updating nix-homebrew input..."
+nix flake update nix-homebrew 2>&1 || true
+
 # Make new untracked files visible to the Nix evaluator without fully staging them
 echo "🔍 Making new files visible to Nix..."
 git add -N .

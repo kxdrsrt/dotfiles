@@ -323,6 +323,11 @@ cd "$HOME/nix-darwin-config" || exit 1
 # Make untracked files visible to the Nix evaluator without fully staging them
 git add -N . || true
 
+# --- 8b. FLAKE INPUT UPDATES ---
+# Keep nix-homebrew (and its bundled brew) up to date
+echo "🍺 Updating nix-homebrew input..."
+nix flake update nix-homebrew 2>&1 || true
+
 # --- 9. PRE-ACTIVATION CLEANUP ---
 # nix-darwin refuses to overwrite unrecognized /etc files.
 # Remove known conflicting files so activation proceeds unattended.

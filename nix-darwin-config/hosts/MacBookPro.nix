@@ -49,10 +49,11 @@
   # ── Login Items ───────────────────────────────────────────────────────────────
   # Apps that appear in System Settings > General > Login Items.
   # Only touches apps in this list — manually added login items are left alone.
-  system.activationScripts.loginItems.text = ''
-    MANAGED_APPS=(
-      # "/Applications/Example.app"
-    )
+  system.activationScripts.loginItems = {
+    text = ''
+      MANAGED_APPS=(
+        # "/Applications/Example.app"
+      )
 
     add_login_item() {
       local app_path="$1"
@@ -77,4 +78,6 @@
       fi
     done
   '';
+    deps = [ "homebrew" ];
+  };
 }

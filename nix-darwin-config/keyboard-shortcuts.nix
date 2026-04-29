@@ -9,7 +9,7 @@
         };
 
         # ----- Disable default screenshot keybindings -----
-        # (screenshots are handled by CleanShot X or similar)
+        # (screenshots are handled by Shottr)
 
         # Save picture of screen as file (Cmd+Shift+3)
         "28" = {

@@ -380,7 +380,7 @@ else
 fi
 
 echo "🔓 Removing quarantine flags from cask-installed apps..."
-sudo xattr -dr com.apple.quarantine /Applications/ 2>/dev/null || true
+find /Applications -maxdepth 1 -name '*.app' -exec sudo xattr -dr com.apple.quarantine {} + 2>/dev/null || true
 
 echo "✅ System bootstrap complete! ❄️"
 echo "👉 Please restart your terminal session to finalize all changes."

@@ -3,6 +3,7 @@
 {
   imports = [
     # Third-party applications
+    ./Amphetamine.nix
     ./Alcove.nix
     ./AltServer.nix
     ./Antigravity.nix

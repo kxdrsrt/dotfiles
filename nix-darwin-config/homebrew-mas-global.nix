@@ -76,6 +76,7 @@
   homebrew.masApps = {
     # "1Blocker"              = 1365531024;   # Safari ad blocker
     # "Accelerate"            = 1459809092;   # Download manager
+    "Amphetamine" = 937984704; # Keep Mac awake
     # "AdGuard for Safari"    = 1440147259;   # Safari ad blocker
     # "Auto HD FPS for YouTube" = 1546729687; # Auto HD YouTube
     # "Bakery"                = 1575220747;   # Icon generator

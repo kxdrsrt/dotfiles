@@ -24,6 +24,7 @@
 .VolumeIcon.icns
 .cache/
 .chromium-browser-snapshots/
+.gem/
 .com.apple.timemachine.donotpresent
 .lesshst
 .lmstudio/

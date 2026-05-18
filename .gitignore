@@ -129,6 +129,7 @@ parallels_for_mac.txt
 .config/raycast/extensions/
 .config/raycast/Cache/
 .config/raycast/logs/
+.config/raycast/config.json
 !.config/raycast-backup.rayconfig
 .config/qBittorrent/
 .vscode-shared/

@@ -8,6 +8,11 @@
           enabled = 0;
         };
 
+        # Show Finder search window (Opt+Cmd+Space — disabled, conflicts with Raycast)
+        "65" = {
+          enabled = 0;
+        };
+
         # ----- Disable default screenshot keybindings -----
         # (screenshots are handled by Shottr)
 

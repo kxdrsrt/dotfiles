@@ -37,6 +37,7 @@
 .zcompdump
 .zprofile
 .zsh_history
+.rayignore
 Applications/
 Applications (Parallels)/
 CascadeProjects
@@ -131,5 +132,7 @@ parallels_for_mac.txt
 .config/raycast/logs/
 .config/raycast/config.json
 !.config/raycast-backup.rayconfig
+.config/raycast-x/extensions/
+.config/gh/hosts.yml
 .config/qBittorrent/
 .vscode-shared/

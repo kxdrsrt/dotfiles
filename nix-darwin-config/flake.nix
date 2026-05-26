@@ -106,6 +106,15 @@
                   nixpkgs.pkgs = import pkgsSource {
                     system = currentSystem;
                     config.allowUnfree = true;
+                    overlays = [
+                      (final: prev: {
+                        # pipx 1.8.0 has broken tests in nixpkgs-unstable (2026-05-24)
+                        pipx = prev.pipx.overrideAttrs {
+                          doCheck = false;
+                          doInstallCheck = false;
+                        };
+                      })
+                    ];
                   };
 
                   nix-homebrew = {

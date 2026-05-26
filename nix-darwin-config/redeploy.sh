@@ -24,9 +24,9 @@ DETECTED_ARCH="$(uname -m)"
 
 cd "$FLAKE_DIR" || exit 1
 
-# Keep nix-homebrew (and its bundled brew) up to date
-echo "🍺 Updating nix-homebrew input..."
-nix flake update nix-homebrew 2>&1 || true
+# Update all flake inputs and lock file
+echo "🔒 Updating all flake inputs..."
+nix flake update 2>&1 || true
 
 # Make new untracked files visible to the Nix evaluator without fully staging them
 echo "🔍 Making new files visible to Nix..."
@@ -39,8 +39,9 @@ echo "   Host: $TARGET_CONFIG | User: $DETECTED_USER | Arch: $DETECTED_ARCH"
 sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
   darwin-rebuild switch --flake .#"$TARGET_CONFIG" --impure
 
-echo "🔓 Removing quarantine flags from cask-installed apps..."
+echo "🔓 Removing quarantine flags from all apps..."
 find /Applications -maxdepth 1 -name '*.app' -exec sudo xattr -dr com.apple.quarantine {} + 2>/dev/null || true
+find "$HOME/Applications" -maxdepth 1 -name '*.app' -exec xattr -dr com.apple.quarantine {} + 2>/dev/null || true
 
 echo "✅ Rebuild successful!"
 echo "ℹ️  Changes are active, but NOT committed. Use 'git commit' when ready."

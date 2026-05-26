@@ -9,7 +9,7 @@
   homebrew.onActivation.upgrade = true; # Auto-upgrade on rebuild
 
   homebrew.caskArgs = {
-    no_quarantine = true; # Avoid "damaged app" warnings for unsigned apps
+    # no_quarantine removed in brew 5.1.11 — quarantine flags stripped post-install instead
   };
 
   homebrew.brews = [
@@ -33,7 +33,7 @@
     "coconutbattery" # Battery monitoring tool
     "deepl" # AI-powered translation tool
     # "diffusionbee"                          # GUI for Stable Diffusion on Apple Silicon
-    # "displaylink"                           # Drivers for USB displays
+    "displaylink" # Drivers for USB displays
     # "framer"                                # Interactive design prototyping tool
     "google-chrome" # Google's web browser
     # "google-drive"                          # Cloud storage sync
@@ -59,7 +59,7 @@
     "pearcleaner" # Advanced Mac cleaner
     "qbittorrent" # BitTorrent client
     # "quickwhisper"                          # Quick voice transcription
-    "raycast" # Productivity launcher
+    # "raycast"                               # Replaced by Raycast Beta (installed manually)
     "rectangle" # Window management tool
     "rustdesk" # Remote desktop software
     "shottr" # Screenshot tool

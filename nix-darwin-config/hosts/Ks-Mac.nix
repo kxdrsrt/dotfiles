@@ -68,7 +68,6 @@
     "obsidian" # Knowledge base and note-taking app
     "protonvpn" # ProtonVPN client
     "tailscale-app" # VPN and zero-config networking
-    "reflex-app" # Universal Music Control
     "telegram" # Messaging app
     "thebrowsercompany-dia" # The Browser Company's Dia
     "warp" # Modern AI-powered terminal
@@ -97,9 +96,9 @@
         MANAGED_APPS=(
           "/Applications/BetterDisplay.app"
           "/Applications/Mos.app"
-          "/Applications/Raycast.app"
+          "/Applications/Raycast Beta.app"
           "/Applications/Rectangle.app"
-          "/Applications/Reflex.app"
+          "/Applications/Conduct.app"
           "/Applications/Shottr.app"
         )
 

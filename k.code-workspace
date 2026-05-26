@@ -1,8 +1,46 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "files.exclude": {
+      "Library/**": true,
+      "Movies/**": true,
+      "Music/**": true,
+      "Pictures/**": true,
+      "Public/**": true,
+      "Parallels/**": true,
+      ".Trash/**": true,
+      ".cache/**": true,
+      ".local/**": true,
+      ".npm/**": true,
+      ".nix-defexpr/**": true,
+      ".nix-profile/**": true,
+      "Applications (Parallels)/**": true,
+    },
+    "search.exclude": {
+      "Library/**": true,
+      "Downloads/**": true,
+      "Movies/**": true,
+      "Music/**": true,
+      "Pictures/**": true,
+      "Parallels/**": true,
+      ".Trash/**": true,
+      ".cache/**": true,
+      ".local/**": true,
+    },
+    "files.watcherExclude": {
+      "Library/**": true,
+      "Downloads/**": true,
+      "Movies/**": true,
+      "Music/**": true,
+      "Pictures/**": true,
+      "Parallels/**": true,
+      ".Trash/**": true,
+      ".cache/**": true,
+      ".local/**": true,
+    },
+  },
 }

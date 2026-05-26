@@ -42,6 +42,12 @@ in
     # Set wallpaper
     /usr/bin/osascript -e 'tell application "System Events" to tell every desktop to set picture to "${./assets/wallpaper.png}"'
 
+    # Remove quarantine flags from all installed apps (one-time cleanup on rebuild)
+    find /Applications -maxdepth 1 -name '*.app' -exec xattr -dr com.apple.quarantine {} + 2>/dev/null || true
+
+    # Set Dia as default browser (may prompt for confirmation on first run)
+    sudo -u ${user} open -a "Dia" --args --make-default-browser 2>/dev/null || true
+
   '';
 
   # ============================================================================

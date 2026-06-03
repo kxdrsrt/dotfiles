@@ -14,6 +14,8 @@
 
   homebrew.brews = [
     "mas" # Mac App Store CLI
+    "gh" # GitHub CLI
+    "smartmontools" # Disk health monitoring
   ];
 
   # ── Global Casks ─ only uncommented entries are active on every host ────────────────────────────────

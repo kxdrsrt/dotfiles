@@ -1,0 +1,145 @@
+# ─── Build outputs ────────────────────────────────────────────────────────────
+dist/
+build/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+.output/
+coverage/
+*.min.js
+*.min.css
+*.map
+
+# ─── Dependencies ─────────────────────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+.yarn/
+vendor/
+
+# ─── Compiled / bytecode ──────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.class
+*.o
+*.a
+*.so
+*.dylib
+
+# ─── Lock files (large, machine-generated) ────────────────────────────────────
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+Cargo.lock
+poetry.lock
+Gemfile.lock
+composer.lock
+
+# ─── Large / generated JSON & data ────────────────────────────────────────────
+*.mock.json
+*.fixture.json
+*.seed.json
+*.snap
+__snapshots__/
+
+# ─── Binaries, media & archives ───────────────────────────────────────────────
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.svg
+*.ico
+*.mp4
+*.mov
+*.mp3
+*.wav
+*.pdf
+*.dmg
+*.pkg
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.exe
+*.bin
+*.iso
+
+# ─── Fonts ────────────────────────────────────────────────────────────────────
+*.woff
+*.woff2
+*.ttf
+*.otf
+*.eot
+
+# ─── Secrets & credentials ────────────────────────────────────────────────────
+.env
+.env.*
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+
+# ─── IDE & OS noise ───────────────────────────────────────────────────────────
+.DS_Store
+.git/
+.vscode/extensions/
+*.icloud
+
+# ─── Logs & temp ──────────────────────────────────────────────────────────────
+*.log
+*.logs
+logs/
+tmp/
+temp/
+.cache/
+
+# ─── AI tool caches ──────────────────────────────────────────────────────────
+.conductor/
+.context/
+.bolt/
+.cursor/
+.claude/
+
+# ─── Parallels & VMs ──────────────────────────────────────────────────────────
+Parallels/
+Applications (Parallels)/
+Virtual Machines/
+*.pvm/
+*.hdd/
+
+# ─── macOS system folders ─────────────────────────────────────────────────────
+Library/
+
+# ─── Security & privacy ───────────────────────────────────────────────────────
+.ssh/
+.aws/
+.anydesk/
+.zsh_history
+.zprofile
+.zcompdump
+.CFUserTextEncoding
+
+# ─── Tool caches ──────────────────────────────────────────────────────────────
+.npm/
+.gem/
+.lmstudio/
+.chromium-browser-snapshots/
+.pcr-stats.json
+.pdfbox.cache
+.rest-client/
+
+# ─── Windows noise ────────────────────────────────────────────────────────────
+$RECYCLE.BIN/
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+*.cab
+*.lnk
+*.msi
+*.msix
+*.msp

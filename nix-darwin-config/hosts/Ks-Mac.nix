@@ -11,6 +11,8 @@
   system.defaults.CustomUserPreferences.".GlobalPreferences".AppleLocale = "en_DE"; # German regional format (metric, dates, numbers)
 
   # ── Keyboard Input Sources ───────────────────────────────────────────────────
+  system.defaults.CustomUserPreferences."com.apple.TextInputMenu".visible = false; # Hide language switcher from menu bar
+
   system.defaults.CustomUserPreferences."com.apple.HIToolbox".AppleEnabledInputSources = [
     {
       InputSourceKind = "Keyboard Layout";
@@ -53,6 +55,7 @@
     "conductor" # AI-powered file manager
     "cursor" # Code editor with AI assistance
     "discord" # Voice, video, and text chat
+    "drivedx" # Drive health monitoring
     "figma" # Vector graphics editor
     "imageoptim" # Image optimization tool
     "karabiner-elements" # Keyboard customization tool

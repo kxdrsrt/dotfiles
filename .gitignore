@@ -1,3 +1,6 @@
+# AI tools
+.claude/
+
 # Nix
 .nix-defexpr
 .nix-profile

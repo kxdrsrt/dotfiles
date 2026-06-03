@@ -65,7 +65,7 @@
     "**/.hg": true, // Mercurial repository folder
     "**/.svn": true, // Subversion repository folder
     "**/CVS": true, // CVS repository folder
-    "**/Thumbs.db": true // Windows thumbnail cache
+    "**/Thumbs.db": true, // Windows thumbnail cache
   },
 
   // Remove trailing whitespace from lines when saving
@@ -75,7 +75,7 @@
   "files.watcherExclude": {
     "**/.git/objects/**": true, // Git object storage
     "**/.git/subtree-cache/**": true, // Git subtree cache
-    "**/node_modules/**": true // npm dependencies (huge folder)
+    "**/node_modules/**": true, // npm dependencies (huge folder)
   },
 
   // Show a dot on tabs with unsaved changes
@@ -95,7 +95,7 @@
 
   // Use default text editor for git diff views of these file types
   "workbench.editorAssociations": {
-    "{git,gitlens}:/**/*.{md,csv,svg}": "default"
+    "{git,gitlens}:/**/*.{md,csv,svg}": "default",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -122,7 +122,7 @@
   "search.exclude": {
     "**/node_modules": true, // npm dependencies
     "**/dist": true, // Build output folders
-    "**/build": true // Build output folders
+    "**/build": true, // Build output folders
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -139,16 +139,16 @@
     "Git Bash": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["-l", "-i"], // -l: login shell, -i: interactive mode
-      "icon": "terminal-bash"
+      "icon": "terminal-bash",
     },
     "PowerShell": {
       "source": "PowerShell",
-      "icon": "terminal-powershell"
+      "icon": "terminal-powershell",
     },
     "Command Prompt": {
       "path": "C:\\Windows\\System32\\cmd.exe",
-      "icon": "terminal-cmd"
-    }
+      "icon": "terminal-cmd",
+    },
   },
 
   // ── macOS ──
@@ -161,13 +161,13 @@
     "zsh": {
       "path": "/bin/zsh",
       "args": ["-l"],
-      "icon": "terminal"
+      "icon": "terminal",
     },
     "bash": {
       "path": "/bin/bash",
       "args": ["-l"],
-      "icon": "terminal-bash"
-    }
+      "icon": "terminal-bash",
+    },
   },
 
   // ── Linux ──
@@ -179,12 +179,12 @@
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "/bin/bash",
-      "icon": "terminal-bash"
+      "icon": "terminal-bash",
     },
     "zsh": {
       "path": "/usr/bin/zsh",
-      "icon": "terminal"
-    }
+      "icon": "terminal",
+    },
   },
 
   // Enable blinking cursor in terminal
@@ -232,8 +232,8 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": false
-    }
+      "strings": false,
+    },
   },
 
   // Update markdown links when files are moved/renamed
@@ -264,77 +264,186 @@
 
   // JSON files: use Prettier for formatting
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // JSONC (JSON with comments): use Prettier for formatting
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
 
   // Shell scripts (bash, sh): use shell-format extension
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
   // Properties files (.properties, .env): use shell-format
   "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
   // Ignore files (.gitignore, .dockerignore): use shell-format
   "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
+    "editor.defaultFormatter": "foxundermoon.shell-format",
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // EXTENSIONS
+  // EXTENSIONS & SECURITY
   // ═══════════════════════════════════════════════════════════════════════════
 
   "extensions.autoCheckUpdates": true,
   "extensions.autoUpdate": true,
   "extensions.ignoreRecommendations": false,
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // SECURITY
-  // ═══════════════════════════════════════════════════════════════════════════
-
   "security.workspace.trust.untrustedFiles": "open",
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // GITHUB COPILOT
-  // ═══════════════════════════════════════════════════════════════════════════
-
-  "github.copilot.nextEditSuggestions.enabled": true,
-
-  "github.copilot.enable": {
-    "markdown": true,
-    "plaintext": true
-  },
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // SNOWFLAKE
+  // SNOWFLAKE & MISC
   // ═══════════════════════════════════════════════════════════════════════════
 
   "snowflake.connectionsConfigFile": "/Users/k/.snowflake/connections.toml",
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // CHAT / AI TOOLS
-  // ═══════════════════════════════════════════════════════════════════════════
-  "chat.viewSessions.orientation": "stacked",
-  "chat.tools.terminal.autoApprove": {
-  
-    "plutil": true,
-    "brew": true
-  },
-  "chat.editing.confirmEditRequestRemoval": false,
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "python.analysis.typeCheckingMode": "basic",
-  "markdown-preview-enhanced.previewTheme": "github-light.css",
-  "chat.tools.urls.autoApprove": {
-    "*": true
+  "markdown-preview-enhanced.previewTheme": "github-dark.css",
+  "markdown-preview-enhanced.codeBlockTheme": "auto.css",
+  "github-authentication.gitHubMatches": [],
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "chat.viewSessions.orientation": "stacked",
+  "chat.editing.confirmEditRequestRemoval": false,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
   },
-  "markdown-preview-enhanced.codeBlockTheme": "auto.css"
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // GITHUB ENTERPRISE
+  // ═══════════════════════════════════════════════════════════════════════════
+  "github-enterprise.uri": "https://shs.ghe.com",
+  "github.copilot.advanced": {
+    "authProvider": "github-enterprise",
+  },
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
+    "https://www.bmw.de/de/topics/service-zubehoer/bmw-connected-drive/my-bmw-app.html": true,
+    "https://www.bmw.de/de/topics/service-zubehoer/bmw-connected-drive": true,
+    "https://www.bmw.de/de/topics/service-zubehoer": true,
+    "https://www.bmw.de/de/topics": true,
+    "https://www.bmw.de/de": true,
+    "https://www.bmw.de": true,
+    "https://*.bmw.de": true,
+    "https://www.google.de/search": true,
+    "https://www.google.de": true,
+    "https://*.google.de": true,
+    "https://www.anwalt.de/rechtstipps/parkdepot": true,
+    "https://www.anwalt.de/rechtstipps": true,
+    "https://www.anwalt.de": true,
+    "https://*.anwalt.de": true,
+    "https://www.reclabox.com/beschwerde/liste/ParkDepot": true,
+    "https://www.reclabox.com/beschwerde/liste": true,
+    "https://www.reclabox.com/beschwerde": true,
+    "https://www.reclabox.com": true,
+    "https://*.reclabox.com": true,
+    "https://de.trustpilot.com/review/park-depot.de": true,
+    "https://de.trustpilot.com/review": true,
+    "https://de.trustpilot.com": true,
+    "https://*.trustpilot.com": true,
+    "https://www.verbraucherzentrale.de/wissen/vertraege-reklamation/kundenrechte/privatparkplaetze-welche-rechte-haben-verbraucher-89974": true,
+    "https://www.verbraucherzentrale.de/wissen/vertraege-reklamation/kundenrechte": true,
+    "https://www.verbraucherzentrale.de/wissen/vertraege-reklamation": true,
+    "https://www.verbraucherzentrale.de/wissen": true,
+    "https://www.verbraucherzentrale.de": true,
+    "https://*.verbraucherzentrale.de": true,
+    "https://www.reclabox.com/suche": true,
+    "https://kununu.com/de/parkdepot": true,
+    "https://kununu.com/de": true,
+    "https://kununu.com": true,
+    "https://www.trustpilot.com/review/park-depot.de": true,
+    "https://www.trustpilot.com/review": true,
+    "https://www.trustpilot.com": true,
+    "https://www.kununu.com/de/parkdepot-gmbh": true,
+    "https://www.kununu.com/de": true,
+    "https://www.kununu.com": true,
+    "https://*.kununu.com": true,
+    "https://www.google.com/maps/place/ParkDepot+GmbH": true,
+    "https://www.google.com/maps/place": true,
+    "https://www.google.com/maps": true,
+    "https://www.google.com": true,
+    "https://*.google.com": true,
+    "https://juris.bundesgerichtshof.de/cgi-bin/rechtsprechung/document.py": true,
+    "https://juris.bundesgerichtshof.de/cgi-bin/rechtsprechung": true,
+    "https://juris.bundesgerichtshof.de/cgi-bin": true,
+    "https://juris.bundesgerichtshof.de": true,
+    "https://*.bundesgerichtshof.de": true,
+    "https://www.jurion.de/urteile/bgh/2019-12-18/xii-zr-13_19": true,
+    "https://www.jurion.de/urteile/bgh/2019-12-18": true,
+    "https://www.jurion.de/urteile/bgh": true,
+    "https://www.jurion.de/urteile": true,
+    "https://www.jurion.de": true,
+    "https://*.jurion.de": true,
+    "https://openjur.de/u/2191822.html": true,
+    "https://openjur.de/u": true,
+    "https://openjur.de": true,
+    "https://www.iww.de/va/archiv/parkplatzueberwachung-bgh-klaert-halterhaftung-bei-parkverstoessen-f135082": true,
+    "https://www.iww.de/va/archiv": true,
+    "https://www.iww.de/va": true,
+    "https://www.iww.de": true,
+    "https://*.iww.de": true,
+    "https://www.lto.de/recht/nachrichten/n/bgh-xii-zr-13-19-parkverstoesse-halterhaftung-parkplatz-vertragsstrafe": true,
+    "https://www.lto.de/recht/nachrichten/n": true,
+    "https://www.lto.de/recht/nachrichten": true,
+    "https://www.lto.de/recht": true,
+    "https://www.lto.de": true,
+    "https://*.lto.de": true,
+    "https://www.kostenlose-urteile.de/BGH_XII-ZR-13-19_BGH-zur-Halterhaftung-bei-Parkverstoessen-auf-privaten-Parkplaetzen.news28589.htm": true,
+    "https://www.kostenlose-urteile.de": true,
+    "https://*.kostenlose-urteile.de": true,
+    "https://refrago.de/Sekundaere_Darlegungslast_des_Fahrzeughalters_bei_privater_Parkraumueberwachung": true,
+    "https://refrago.de": true,
+    "https://www.juraforum.de/urteile/bgh/2019-12-18/xii-zr-13-19": true,
+    "https://www.juraforum.de/urteile/bgh/2019-12-18": true,
+    "https://www.juraforum.de/urteile/bgh": true,
+    "https://www.juraforum.de/urteile": true,
+    "https://www.juraforum.de": true,
+    "https://*.juraforum.de": true,
+    "https://www.ra-kotz.de/haftung-des-kfz-halters-bei-parkverstoessen-auf-privaten-parkplaetzen.htm": true,
+    "https://www.ra-kotz.de": true,
+    "https://*.ra-kotz.de": true,
+    "https://www.rechtsanwalt.com/urteile/bundesgerichtshof-urteil-vom-18-12-2019-xii-zr-13-19": true,
+    "https://www.rechtsanwalt.com/urteile": true,
+    "https://www.rechtsanwalt.com": true,
+    "https://*.rechtsanwalt.com": true,
+    "https://www.parkrechtler.de/bgh-parkverstoesse": true,
+    "https://www.parkrechtler.de": true,
+    "https://*.parkrechtler.de": true,
+    "https://www.frag-einen-anwalt.de/BGH-XII-ZR-13-19-Parkverstoesse--f345678.html": true,
+    "https://www.frag-einen-anwalt.de": true,
+    "https://*.frag-einen-anwalt.de": true,
+    "https://www.anwalt24.de/bgh-xii-zr-13-19": true,
+    "https://www.anwalt24.de": true,
+    "https://*.anwalt24.de": true,
+    "https://lexetius.com/2019,4352": true,
+    "https://lexetius.com": true,
+    "https://www.rechtsindex.de/mietrecht/6652-bgh-xii-zr-13-19-parkplatz-vertragsstrafe": true,
+    "https://www.rechtsindex.de/mietrecht": true,
+    "https://www.rechtsindex.de": true,
+    "https://*.rechtsindex.de": true,
+    "https://www.mietrecht.com/bgh-parkplatz-halter": true,
+    "https://www.mietrecht.com": true,
+    "https://*.mietrecht.com": true,
+    "https://de.wikipedia.org/wiki/Parkraumbewirtschaftung": true,
+    "https://de.wikipedia.org/wiki": true,
+    "https://de.wikipedia.org": true,
+    "https://*.wikipedia.org": true,
+    "https://github.com/microsoft/markitdown": true,
+    "https://github.com/microsoft": true,
+    "https://github.com": true,
+    "https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp": true,
+    "https://github.com/microsoft/markitdown/tree/main/packages": true,
+    "https://github.com/microsoft/markitdown/tree/main": true,
+    "https://github.com/microsoft/markitdown/tree": true,
+  },
 }

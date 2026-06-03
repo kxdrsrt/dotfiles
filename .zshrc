@@ -8,7 +8,11 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 
 # PATH (deduplicated via typeset -U)
 typeset -U PATH
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.venv/bin:$HOME/bin:$PATH"
+
+# ─── markitdown ───────────────────────────────────────────────────────────────
+alias pdf2md='markitdown'
+alias md2='markitdown'
 
 # ─── History ──────────────────────────────────────────────────────────────────
 HISTFILE=~/.zsh_history
@@ -167,3 +171,6 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+. "$HOME/.local/bin/env"
+export PATH="$HOME/.local/bin:$PATH"

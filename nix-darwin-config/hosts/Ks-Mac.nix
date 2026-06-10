@@ -45,6 +45,11 @@
     "/System/Applications/Utilities/Terminal.app"
   ];
 
+  # ── ARM-specific Taps ───────────────────────────────────────────────────────
+  homebrew.taps = [
+    "majd/repo" # PlayCover — iOS app sideloader for Apple Silicon
+  ];
+
   # ── ARM-specific Casks ──────────────────────────────────────────────────────
   homebrew.casks = [
     #"alcove" # Dynamic Island for macOS
@@ -69,6 +74,7 @@
     "notion-calendar" # Calendar companion for Notion
     "nvidia-geforce-now" # Cloud gaming service
     "obsidian" # Knowledge base and note-taking app
+    "playcover-community" # iOS app sideloader for Apple Silicon
     "protonvpn" # ProtonVPN client
     "tailscale-app" # VPN and zero-config networking
     "telegram" # Messaging app
@@ -88,6 +94,7 @@
     "Shazam" = 897118787; # Music identifier
     "Video Converter" = 1518836004; # Video converter
     "LG Screen Manager" = 1142051783; # LG display management App
+    "TestFlight" = 899247664; # Apple beta testing platform
     "Windows App" = 1295203466; # Remote Desktop / RDP
   };
 

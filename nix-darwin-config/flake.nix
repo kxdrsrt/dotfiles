@@ -16,6 +16,15 @@
 
     # Optional helper to integrate Homebrew packages via Nix
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # Expose brew-src as a direct input so we can update it independently
+    # with `nix flake update brew-src` when a new macOS version is released
+    # and nix-homebrew's own pinned copy is too old to recognise it.
+    brew-src = {
+      url = "github:Homebrew/brew";
+      flake = false;
+    };
+    nix-homebrew.inputs.brew-src.follows = "brew-src";
   };
 
   outputs =
@@ -25,6 +34,7 @@
       nixpkgs,
       nixpkgs-stable,
       nix-homebrew,
+      brew-src,
     }:
     let
       # ── Runtime detection (requires --impure; set by redeploy.sh / bootstrap.sh) ─

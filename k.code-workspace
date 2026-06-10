@@ -42,5 +42,6 @@
       ".cache/**": true,
       ".local/**": true,
     },
+    "git.ignoreLimitWarning": true,
   },
 }

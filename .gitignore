@@ -28,6 +28,7 @@
 .cache/
 .chromium-browser-snapshots/
 .gem/
+.homebrew/
 .com.apple.timemachine.donotpresent
 .lesshst
 .lmstudio/
@@ -38,6 +39,7 @@
 .ssh/
 .viminfo
 .zcompdump
+.zcompdump.*
 .zprofile
 .zsh_history
 .rayignore

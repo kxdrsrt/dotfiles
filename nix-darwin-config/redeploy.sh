@@ -26,6 +26,7 @@ cd "$FLAKE_DIR" || exit 1
 
 # Update all flake inputs and lock file
 echo "🔒 Updating all flake inputs..."
+nix flake update brew-src 2>&1 || true
 nix flake update 2>&1 || true
 
 # Make new untracked files visible to the Nix evaluator without fully staging them

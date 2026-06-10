@@ -324,8 +324,13 @@ cd "$HOME/nix-darwin-config" || exit 1
 git add -N . || true
 
 # --- 8b. FLAKE INPUT UPDATES ---
-# Keep nix-homebrew (and its bundled brew) up to date
+# Keep nix-homebrew (and its bundled brew) up to date.
+# brew-src is updated first — it is our direct override for the Homebrew git
+# snapshot that nix-homebrew installs; keeping it current ensures nix-darwin
+# activation does not reset Homebrew to a version that does not recognise the
+# running macOS release (e.g. a newly released major version like macOS 27).
 echo "🍺 Updating nix-homebrew input..."
+nix flake update brew-src 2>&1 || true
 nix flake update nix-homebrew 2>&1 || true
 
 # --- 9. PRE-ACTIVATION CLEANUP ---

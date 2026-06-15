@@ -88,7 +88,8 @@ alias bre='brew reinstall'
 alias bu='brew update'
 alias bug='brew upgrade'
 alias bugg='brew upgrade --greedy'
-alias brm='brew uninstall'       # Renamed from bun to avoid conflict with Bun runtime
+alias bun='brew uninstall'
+alias brm='brew uninstall'
 
 # ─── Nix ──────────────────────────────────────────────────────────────────────
 alias nixre="sh ~/nix-darwin-config/redeploy.sh"

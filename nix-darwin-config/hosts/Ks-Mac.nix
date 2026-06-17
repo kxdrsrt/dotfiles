@@ -112,6 +112,7 @@
   # keys, so the previous `loginItems` key did nothing.
   system.activationScripts.postActivation.text = ''
       MANAGED_APPS=(
+        "/Applications/Alcove.app"
         "/Applications/BetterDisplay.app"
         "/Applications/Mos.app"
         "/Applications/Raycast Beta.app"

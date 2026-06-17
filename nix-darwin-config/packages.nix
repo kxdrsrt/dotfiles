@@ -41,9 +41,28 @@
     pandoc
     pipx
 
+    # Zsh plugins
+    zsh-autosuggestions # Fish-style ghost-text history suggestions
+    zsh-syntax-highlighting # Live command coloring (green/red as you type)
+
     # Unstable packages (example usage)
     # unstable.package-name
   ];
+
+  # ============================================================================
+  # Zsh — enable with compinit + plugins
+  # ============================================================================
+  programs.zsh = {
+    enable = true; # activates compinit and sets zsh as default shell
+    enableCompletion = true; # initialises compinit (tab-completion)
+    # Source plugins installed via Nix into every zsh session
+    interactiveShellInit = ''
+      source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+      source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+      # Accept ghost-text suggestion with → arrow key
+      bindkey '^[[C' autosuggest-accept
+    '';
+  };
 
   # ============================================================================
   # Fonts - Additional fonts beyond macOS defaults

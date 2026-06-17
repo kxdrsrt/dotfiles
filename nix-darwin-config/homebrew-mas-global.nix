@@ -8,10 +8,6 @@
   homebrew.onActivation.cleanup = "zap"; # Remove packages not in flake. Other options than "zap": "uninstall" (keep user data) or "false" (don't remove old packages at all)
   homebrew.onActivation.upgrade = true; # Auto-upgrade on rebuild
 
-  homebrew.caskArgs = {
-    # no_quarantine removed in brew 5.1.11 — quarantine flags stripped post-install instead
-  };
-
   homebrew.brews = [
     "mas" # Mac App Store CLI
     "gh" # GitHub CLI

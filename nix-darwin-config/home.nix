@@ -1,7 +1,7 @@
 { pkgs, user, ... }:
 {
   # Basic home-manager settings
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.11";
   home.username = user;
   home.homeDirectory = "/Users/${user}";
 

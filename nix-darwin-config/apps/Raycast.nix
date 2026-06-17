@@ -1,7 +1,9 @@
 { user, ... }:
 
 {
-  system.activationScripts.raycastConfig.text = ''
+  # NOTE: merged into postActivation — nix-darwin never runs custom activation
+  # keys, so the previous `raycastConfig` key did nothing.
+  system.activationScripts.postActivation.text = ''
     # Set Raycast Beta global hotkey to Cmd+Space natively via plist (takes effect before first launch)
     sudo -u ${user} defaults write com.raycast-x.macos raycastGlobalHotkey "Command-49"
 

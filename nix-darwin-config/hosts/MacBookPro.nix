@@ -1,4 +1,4 @@
-{ ... }:
+{ user, ... }:
 {
   # ── Intel MacBook Pro — host-specific settings ─────────────────────────────
 
@@ -38,6 +38,18 @@
     "/Applications/3uTools.app"
   ];
 
+  # Right side of the Dock: show Downloads as a plain folder icon (not a stack).
+  system.defaults.dock.persistent-others = [
+    {
+      folder = {
+        path = "/Users/${user}/Downloads";
+        displayas = "folder"; # folder icon instead of a stack of file previews
+        showas = "grid"; # open as a grid when clicked
+        arrangement = "date-added"; # sort newest first
+      };
+    }
+  ];
+
   # ── Intel-specific Casks ─────────────────────────────────────────────────────
   homebrew.casks = [
   ];
@@ -49,28 +61,27 @@
   # ── Login Items ───────────────────────────────────────────────────────────────
   # Apps that appear in System Settings > General > Login Items.
   # Only touches apps in this list — manually added login items are left alone.
-  system.activationScripts.loginItems = {
-    text = ''
-        MANAGED_APPS=(
-          # "/Applications/Example.app"
-        )
+  # NOTE: merged into postActivation — nix-darwin never runs custom activation
+  # keys, so the previous `loginItems` key did nothing.
+  system.activationScripts.postActivation.text = ''
+      MANAGED_APPS=(
+        # "/Applications/Example.app"
+      )
 
-      # Fetch existing login items once (avoids repeated osascript calls)
-      EXISTING_ITEMS=$(osascript -e 'tell application "System Events" to get the name of every login item' 2>/dev/null || echo "")
+    # Fetch existing login items once (avoids repeated osascript calls)
+    EXISTING_ITEMS=$(osascript -e 'tell application "System Events" to get the name of every login item' 2>/dev/null || echo "")
 
-      for app in "''${MANAGED_APPS[@]}"; do
-        app_name=$(basename "$app" .app)
-        if [ -d "$app" ]; then
-          if ! echo "$EXISTING_ITEMS" | grep -q "$app_name"; then
-            osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"$app\", hidden:false}" 2>/dev/null || true
-            echo "Added login item: $app_name"
-          fi
-        else
-          # App not installed — ensure its login item is removed
-          osascript -e "tell application \"System Events\" to delete login item \"$app_name\"" 2>/dev/null || true
+    for app in "''${MANAGED_APPS[@]}"; do
+      app_name=$(basename "$app" .app)
+      if [ -d "$app" ]; then
+        if ! echo "$EXISTING_ITEMS" | grep -q "$app_name"; then
+          osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"$app\", hidden:false}" 2>/dev/null || true
+          echo "Added login item: $app_name"
         fi
-      done
-    '';
-    deps = [ "homebrew" ];
-  };
+      else
+        # App not installed — ensure its login item is removed
+        osascript -e "tell application \"System Events\" to delete login item \"$app_name\"" 2>/dev/null || true
+      fi
+    done
+  '';
 }

@@ -71,14 +71,14 @@ let
   );
 in
 {
-  system.activationScripts.vscodeExtensions = {
-    text = ''
-      if [ -x "/opt/homebrew/bin/code" ]; then
-        echo "Installing core VS Code extensions..."
-        ${installCmds}
-      fi
-    '';
-  };
+  # NOTE: merged into postActivation — nix-darwin never runs custom activation
+  # keys, so the previous `vscodeExtensions` key did nothing.
+  system.activationScripts.postActivation.text = ''
+    if [ -x "/opt/homebrew/bin/code" ]; then
+      echo "Installing core VS Code extensions..."
+      ${installCmds}
+    fi
+  '';
 
   system.defaults.CustomUserPreferences = {
     "com.microsoft.VSCode" = {

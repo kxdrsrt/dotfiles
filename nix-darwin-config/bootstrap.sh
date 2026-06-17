@@ -385,7 +385,15 @@ else
 fi
 
 echo "🔓 Removing quarantine flags from cask-installed apps..."
-find /Applications -maxdepth 1 -name '*.app' -exec sudo xattr -dr com.apple.quarantine {} + 2>/dev/null || true
+# Per-app loop so a single failure cannot abort the rest; covers system and
+# user app folders.
+for appsDir in /Applications /Applications/Utilities "$HOME/Applications"; do
+    [ -d "$appsDir" ] || continue
+    for app in "$appsDir"/*.app; do
+        [ -e "$app" ] || continue
+        sudo xattr -dr com.apple.quarantine "$app" 2>/dev/null || true
+    done
+done
 
 echo "✅ System bootstrap complete! ❄️"
 echo "👉 Please restart your terminal session to finalize all changes."

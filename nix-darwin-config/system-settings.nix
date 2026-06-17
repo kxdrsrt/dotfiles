@@ -42,8 +42,22 @@ in
     # Set wallpaper
     /usr/bin/osascript -e 'tell application "System Events" to tell every desktop to set picture to "${./assets/wallpaper.png}"'
 
-    # Remove quarantine flags from all installed apps (one-time cleanup on rebuild)
-    find /Applications -maxdepth 1 -name '*.app' -exec xattr -dr com.apple.quarantine {} + 2>/dev/null || true
+    # Remove the com.apple.quarantine flag from installed apps. postActivation
+    # runs immediately AFTER the Homebrew activation step (see nix-darwin
+    # system/activation-scripts.nix), so freshly installed/upgraded casks are
+    # covered even though `homebrew.onActivation.upgrade = true` re-quarantines
+    # on upgrade. Iterate per-app (a single failure cannot abort the batch) and
+    # cover system + user app folders. NOTE: activation runs as root with
+    # HOME=~root, so the user's app folder is referenced via the build-time
+    # ${home} path, not $HOME.
+    echo "Removing com.apple.quarantine from installed apps..."
+    for appsDir in /Applications /Applications/Utilities "${home}/Applications"; do
+      [ -d "$appsDir" ] || continue
+      for app in "$appsDir"/*.app; do
+        [ -e "$app" ] || continue
+        /usr/bin/xattr -dr com.apple.quarantine "$app" 2>/dev/null || true
+      done
+    done
 
     # Set Dia as default browser (may prompt for confirmation on first run)
     sudo -u ${user} open -a "Dia" --args --make-default-browser 2>/dev/null || true
@@ -130,8 +144,8 @@ in
       AppleShowAllExtensions = true; # Show all file extensions
       AppleTemperatureUnit = "Celsius"; # Celsius temperature
       AppleWindowTabbingMode = "always"; # Always prefer tabs when opening documents
-      InitialKeyRepeat = 15; # Shortest delay until repeat
-      KeyRepeat = 1; # Max fast key repeat rate
+      InitialKeyRepeat = 10; # Shortest possible delay until repeat (GUI min is 15; 10 is faster)
+      KeyRepeat = 1; # Fastest possible key repeat rate (GUI min is 2; 1 is faster)
       NSAutomaticCapitalizationEnabled = true;
       NSAutomaticDashSubstitutionEnabled = false; # Disable smart dashes
       NSAutomaticPeriodSubstitutionEnabled = true;

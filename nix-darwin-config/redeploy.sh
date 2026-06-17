@@ -40,9 +40,17 @@ echo "   Host: $TARGET_CONFIG | User: $DETECTED_USER | Arch: $DETECTED_ARCH"
 sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
   darwin-rebuild switch --flake .#"$TARGET_CONFIG" --impure
 
-echo "🔓 Removing quarantine flags from all apps..."
-find /Applications -maxdepth 1 -name '*.app' -exec sudo xattr -dr com.apple.quarantine {} + 2>/dev/null || true
-find "$HOME/Applications" -maxdepth 1 -name '*.app' -exec xattr -dr com.apple.quarantine {} + 2>/dev/null || true
+echo "🔓 Removing quarantine flags from installed apps..."
+# Per-app loop so a single failure cannot abort the rest; covers system and
+# user app folders. nix-darwin's activation already does this after Homebrew —
+# this is a belt-and-suspenders pass for anything installed outside activation.
+for appsDir in /Applications /Applications/Utilities "$HOME/Applications"; do
+    [ -d "$appsDir" ] || continue
+    for app in "$appsDir"/*.app; do
+        [ -e "$app" ] || continue
+        sudo xattr -dr com.apple.quarantine "$app" 2>/dev/null || true
+    done
+done
 
 echo "✅ Rebuild successful!"
 echo "ℹ️  Changes are active, but NOT committed. Use 'git commit' when ready."

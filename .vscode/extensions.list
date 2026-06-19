@@ -12,6 +12,7 @@ grapecity.gc-excelviewer
 hediet.vscode-drawio
 inferrinizzard.prettier-sql-vscode
 jnoortheen.nix-ide
+llvm-vs-code-extensions.lldb-dap
 mathematic.vscode-pdf
 mcu-debug.debug-tracker-vscode
 mechatroner.rainbow-csv
@@ -34,5 +35,6 @@ ms-vscode.vscode-speech
 ms-vsliveshare.vsliveshare
 redhat.vscode-yaml
 shd101wyy.markdown-preview-enhanced
+swiftlang.swift-vscode
 wholroyd.jinja
 yzhang.markdown-all-in-one

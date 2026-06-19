@@ -29,6 +29,7 @@
     ./Hush.nix
     ./IINA.nix
     ./ImageOptim.nix
+    ./Jellyfin.nix
     ./KarabinerElements.nix
     ./KarabinerEventViewer.nix
     ./Kiro.nix

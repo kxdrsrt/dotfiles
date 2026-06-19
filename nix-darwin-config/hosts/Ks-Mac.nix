@@ -70,6 +70,7 @@
     "drivedx" # Drive health monitoring
     "figma" # Vector graphics editor
     "imageoptim" # Image optimization tool
+    "jellyfin" # Self-hosted media server (Apple Silicon VideoToolbox HWA)
     "karabiner-elements" # Keyboard customization tool
     "kiro" # Amazon AI IDE
     "lg-onscreen-control" # LG display management

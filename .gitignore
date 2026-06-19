@@ -142,3 +142,9 @@ parallels_for_mac.txt
 .config/gh/hosts.yml
 .config/qBittorrent/
 .vscode-shared/
+
+# ASP.NET Core data protection keys (auto-generated, not for VCS)
+.aspnet/
+
+# Conductor app data
+.conductor/

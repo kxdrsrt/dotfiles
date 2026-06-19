@@ -51,7 +51,7 @@
       folder = {
         path = "/Users/${user}/Downloads";
         displayas = "folder"; # folder icon instead of a stack of file previews
-        showas = "grid"; # open as a grid when clicked
+        showas = "fan"; # open as a fan when clicked
         arrangement = "date-added"; # sort newest first
       };
     }

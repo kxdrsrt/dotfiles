@@ -36,6 +36,19 @@
         "184" = {
           enabled = 0;
         };
+
+        # Launchpad (Cmd+^)
+        "160" = {
+          enabled = 1;
+          value = {
+            parameters = [
+              94
+              50
+              1048576
+            ]; # ^ (ASCII 94), key code 50 (^ key on German = ` on US), Command
+            type = "standard";
+          };
+        };
       };
     };
   };

@@ -144,8 +144,8 @@ in
       AppleShowAllExtensions = true; # Show all file extensions
       AppleTemperatureUnit = "Celsius"; # Celsius temperature
       AppleWindowTabbingMode = "always"; # Always prefer tabs when opening documents
-      InitialKeyRepeat = 10; # Shortest possible delay until repeat (GUI min is 15; 10 is faster)
-      KeyRepeat = 1; # Fastest possible key repeat rate (GUI min is 2; 1 is faster)
+      InitialKeyRepeat = 25; # Delay until key starts repeating (GUI min is 15; lower = faster start)
+      KeyRepeat = 5; # Key repeat rate (GUI min is 2; lower = faster)
       NSAutomaticCapitalizationEnabled = true;
       NSAutomaticDashSubstitutionEnabled = false; # Disable smart dashes
       NSAutomaticPeriodSubstitutionEnabled = true;

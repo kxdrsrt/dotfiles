@@ -8,6 +8,7 @@ davidanson.vscode-markdownlint
 esbenp.prettier-vscode
 formulahendry.code-runner
 foxundermoon.shell-format
+github.vscode-github-actions
 grapecity.gc-excelviewer
 hediet.vscode-drawio
 inferrinizzard.prettier-sql-vscode

@@ -13,9 +13,25 @@
           enabled = 0;
         };
 
+        # ----- Window cycling (German QWERTZ layout) -----
+        # Default Cmd+` conflicts with German keyboard; remapped to Cmd+´
+        # Reverse direction (Cmd+Shift+´) works automatically via the Shift modifier on ID 27
+
+        # Move focus to next window (Cmd+´)
+        "27" = {
+          enabled = 1;
+          value = {
+            parameters = [
+              180 # ´ (U+00B4, acute accent)
+              24 # kVK_ANSI_Equal - key right of ß on German QWERTZ
+              1048576 # Command
+            ];
+            type = "standard";
+          };
+        };
+
         # ----- Disable default screenshot keybindings -----
         # (screenshots are handled by Shottr)
-
         # Save picture of screen as file (Cmd+Shift+3)
         "28" = {
           enabled = 0;

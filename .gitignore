@@ -148,3 +148,4 @@ parallels_for_mac.txt
 
 # Conductor app data
 .conductor/
+.config/nix/nix.conf

@@ -36,7 +36,7 @@ git add -N .
 # darwin-rebuild uses the nix-darwin version pinned in flake.lock (unlike `nix run nix-darwin`)
 echo "❄️  Rebuilding nix-darwin..."
 echo "   Host: $TARGET_CONFIG | User: $DETECTED_USER | Arch: $DETECTED_ARCH"
-sudo -H env NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
+sudo -H env PATH="$PATH:/nix/var/nix/profiles/system/sw/bin:/nix/var/nix/profiles/default/bin" NIXDARWIN_USER="$DETECTED_USER" NIXDARWIN_ARCH="$DETECTED_ARCH" \
   darwin-rebuild switch --flake .#"$TARGET_CONFIG" --impure
 
 echo "🔓 Removing quarantine flags from installed apps..."

@@ -124,7 +124,6 @@ parallels_for_mac.txt
 .gemini/
 .kiro/extensions/
 .vscode/extensions/*
-!.vscode/extensions/extensions.json
 .windsurf/extensions/
 .zsh_sessions/
 .yarnrc

@@ -1,5 +1,10 @@
 # AI tools
 .claude/
+.claude.json
+
+# Personal / work identifiers
+.gitconfig-work
+.kiro/argv.json
 
 # Nix
 .nix-defexpr
@@ -136,6 +141,7 @@ parallels_for_mac.txt
 .config/raycast/Cache/
 .config/raycast/logs/
 .config/raycast/config.json
+.config/raycast/*.rayconfig
 !.config/raycast-backup.rayconfig
 .config/raycast-x/extensions/
 .config/gh/hosts.yml

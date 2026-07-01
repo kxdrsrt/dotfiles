@@ -608,6 +608,15 @@
     "https://www.gdl.de/Mitgliedschaft": true,
     "https://www.gdl.de": true,
     "https://*.gdl.de": true,
+    "https://docs.21st.dev": {
+      "approveRequest": true,
+      "approveResponse": false,
+    },
+    "https://21st.dev/magic": true,
+    "https://21st.dev": true,
+    "https://github.com/21st-dev/magic-mcp": true,
+    "https://github.com/21st-dev": true,
   },
   "git.ignoreRebaseWarning": true,
+  "update.showReleaseNotes": false,
 }

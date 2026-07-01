@@ -1,0 +1,7 @@
+[user]
+    name = Kadir Sert
+    email = kadir.sert@siemens-healthineers.com
+    signingkey = /Users/k/.ssh/shs_azure_key.pub
+
+[gpg]
+    format = ssh

@@ -140,6 +140,8 @@ parallels_for_mac.txt
 .config/raycast-x/extensions/
 .config/gh/hosts.yml
 .config/qBittorrent/
+.config/configstore/
+.config/fritzbox-mcp-server/
 .vscode-shared/
 
 # ASP.NET Core data protection keys (auto-generated, not for VCS)

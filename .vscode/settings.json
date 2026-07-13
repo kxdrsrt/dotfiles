@@ -647,4 +647,14 @@
   },
   "git.ignoreRebaseWarning": true,
   "update.showReleaseNotes": false,
+  "yaml.disableSchemaDetection": [
+    "**/.github/workflows/*.yml",
+    "**/.github/workflows/*.yaml",
+    "**/.gitea/workflows/*.yml",
+    "**/.gitea/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yml",
+    "**/.forgejo/workflows/*.yaml",
+    "azure-pipelines.yml",
+    "azure-pipelines.yaml",
+  ],
 }

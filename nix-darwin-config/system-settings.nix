@@ -210,6 +210,8 @@ in
     # Window Manager (macOS Sequoia/Tahoe)
     WindowManager = {
       EnableStandardClickToShowDesktop = false; # Disable click wallpaper to show desktop
+      EnableTiledWindowMargins = true; # Tiled windows have margins
+      EnableTilingOptionAccelerator = true; # Hold key (Option) while dragging windows to tile
       HideDesktop = false; # Don't hide desktop items
       StageManagerHideWidgets = false; # Show widgets in Stage Manager
       StandardHideDesktopIcons = false; # Show desktop icons

@@ -178,3 +178,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Jellyfin: launch app + keep Mac awake while server runs
 alias jf='open -a Jellyfin && sleep 4 && caffeinate -s -w $(pgrep -x jellyfin) &'
+
+# YE - PC-YY (Yasin) via SSH
+alias ye-pc='ssh -p 2222 YY@y-engineering.tplinkdns.com'

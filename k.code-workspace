@@ -43,5 +43,7 @@
       ".local/**": true,
     },
     "git.ignoreLimitWarning": true,
+    "git.repositoryScanMaxDepth": 3,
+    "git.autoRepositoryDetection": true,
   },
 }

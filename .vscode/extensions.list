@@ -4,6 +4,9 @@ bbenoist.nix
 bpruitt-goddard.mermaid-markdown-syntax-highlighting
 chaunceykiwi.json-tree-view
 christian-kohler.npm-intellisense
+cweijan.vscode-office
+dart-code.dart-code
+dart-code.flutter
 davidanson.vscode-markdownlint
 esbenp.prettier-vscode
 formulahendry.code-runner
@@ -15,6 +18,7 @@ inferrinizzard.prettier-sql-vscode
 jnoortheen.nix-ide
 llvm-vs-code-extensions.lldb-dap
 mathematic.vscode-pdf
+mcagampan.dark-horizon
 mcu-debug.debug-tracker-vscode
 mechatroner.rainbow-csv
 ms-azure-devops.azure-pipelines
@@ -31,10 +35,12 @@ ms-toolsai.vscode-jupyter-slideshow
 ms-vscode-remote.remote-wsl
 ms-vscode.cpptools-themes
 ms-vscode.makefile-tools
+ms-vscode.powershell
 ms-vscode.vscode-chat-customizations-evaluations
 ms-vscode.vscode-speech
 ms-vsliveshare.vsliveshare
 redhat.vscode-yaml
+reuben.root-bear
 shd101wyy.markdown-preview-enhanced
 swiftlang.swift-vscode
 tomoki1207.pdf

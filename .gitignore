@@ -147,6 +147,8 @@ parallels_for_mac.txt
 .config/qBittorrent/
 .config/configstore/
 .config/fritzbox-mcp-server/
+.config/flutter/
+.config/higgsfield/
 .vscode-shared/
 
 # ASP.NET Core data protection keys (auto-generated, not for VCS)
@@ -155,3 +157,23 @@ parallels_for_mac.txt
 # Conductor app data
 .conductor/
 .config/nix/nix.conf
+
+# Flutter / Dart tooling (global caches, generated in home dir)
+.flutter
+.flutter-devtools/
+.dart-tool/
+.dart_tool/
+.dartServer/
+.pub-cache/
+.pub/
+
+# CocoaPods / Swift Package Manager (local caches, generated in home dir)
+.cocoapods/
+.swiftpm/
+
+# Figma console MCP (local plugin cache + secrets, never commit)
+.figma-console-mcp/
+.figma-console-mcp.env
+
+# Editor extension local state
+.vscode-office-viewer.json

@@ -71,6 +71,17 @@
   // Remove trailing whitespace from lines when saving
   "files.trimTrailingWhitespace": true,
 
+  // Office files: open in view mode (read-only) in Office Viewer by default
+  "files.readonlyInclude": {
+    "**/*.docx": true,
+    "**/*.dotx": true,
+    "**/*.xlsx": true,
+    "**/*.xls": true,
+    "**/*.xlsm": true,
+    "**/*.pptx": true,
+    "**/*.pptm": true,
+  },
+
   // Don't watch these folders for changes (improves performance)
   "files.watcherExclude": {
     "**/.git/objects/**": true, // Git object storage
@@ -305,7 +316,7 @@
     "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "python.analysis.typeCheckingMode": "basic",
-  "markdown-preview-enhanced.previewTheme": "github-dark.css",
+  "markdown-preview-enhanced.previewTheme": "github-light.css",
   "markdown-preview-enhanced.codeBlockTheme": "auto.css",
   "github-authentication.gitHubMatches": [],
   "github.copilot.nextEditSuggestions.enabled": false,
@@ -616,6 +627,23 @@
     "https://21st.dev": true,
     "https://github.com/21st-dev/magic-mcp": true,
     "https://github.com/21st-dev": true,
+    "https://immowert-xperts.de/wp-content/themes/gkisolution/css/fonts.css": true,
+    "https://immowert-xperts.de/wp-content/themes/gkisolution/css": true,
+    "https://immowert-xperts.de/wp-content/themes/gkisolution": true,
+    "https://immowert-xperts.de/wp-content/themes": true,
+    "https://immowert-xperts.de/wp-content": true,
+    "https://immowert-xperts.de": true,
+    "https://higgsfield.ai/cli": true,
+    "https://higgsfield.ai": true,
+    "https://telekomhilft.telekom.de/t5/Festnetz-Internet/Speedport-Smart-4-5G-Ausseneinheit-entfernen/td-p/5000000": true,
+    "https://telekomhilft.telekom.de/t5/Festnetz-Internet/Speedport-Smart-4-5G-Ausseneinheit-entfernen/td-p": true,
+    "https://telekomhilft.telekom.de/t5/Festnetz-Internet/Speedport-Smart-4-5G-Ausseneinheit-entfernen": true,
+    "https://telekomhilft.telekom.de/t5/Festnetz-Internet": true,
+    "https://telekomhilft.telekom.de/t5": true,
+    "https://telekomhilft.telekom.de": true,
+    "https://*.telekom.de": true,
+    "https://massgrave.dev/fix_service": true,
+    "https://massgrave.dev": true,
   },
   "git.ignoreRebaseWarning": true,
   "update.showReleaseNotes": false,

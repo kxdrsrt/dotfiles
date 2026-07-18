@@ -142,7 +142,7 @@ parallels_for_mac.txt
 .config/raycast/config.json
 .config/raycast/*.rayconfig
 !.config/raycast-backup.rayconfig
-.config/raycast-x/extensions/
+.config/raycast-x/
 .config/gh/hosts.yml
 .config/qBittorrent/
 .config/configstore/
@@ -170,6 +170,9 @@ parallels_for_mac.txt
 # CocoaPods / Swift Package Manager (local caches, generated in home dir)
 .cocoapods/
 .swiftpm/
+
+# Supabase CLI (telemetry + local state, never commit)
+.supabase/
 
 # Figma console MCP (local plugin cache + secrets, never commit)
 .figma-console-mcp/

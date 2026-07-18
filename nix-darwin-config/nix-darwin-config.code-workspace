@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": ".",
+    },
+  ],
+  "settings": {
+    "nix.enableLanguageServer": true,
+    "nix.serverPath": "nixd",
+    "files.exclude": {
+      ".DS_Store": true,
+    },
+  },
+}

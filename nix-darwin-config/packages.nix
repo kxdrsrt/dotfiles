@@ -8,8 +8,9 @@
     vim
     git
 
-    # Nix code formatting in IDE's
+    # Nix code formatting and language server for IDE's
     nixfmt
+    nixd
 
     # Network utilities
     wget

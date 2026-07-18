@@ -60,7 +60,7 @@ in
     done
 
     # Set Dia as default browser (may prompt for confirmation on first run)
-    sudo -u ${user} open -a "Dia" --args --make-default-browser 2>/dev/null || true
+    # sudo -u ${user} open -a "Dia" --args --make-default-browser 2>/dev/null || true  # excluded: running earlybirds
 
   '';
 

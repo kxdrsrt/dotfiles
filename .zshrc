@@ -3,6 +3,8 @@ export PROMPT='%F{green}🅺 @%m%f:%F{blue}%~%f '
 export EDITOR=nano
 export BROWSER="open -a Dia"
 export HOMEBREW_NO_QUARANTINE=1
+export HOMEBREW_NO_ASK=1
+export SUPABASE_NO_TELEMETRY=1
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 

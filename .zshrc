@@ -4,7 +4,13 @@ export EDITOR=nano
 export BROWSER="open -a Dia"
 export HOMEBREW_NO_QUARANTINE=1
 export HOMEBREW_NO_ASK=1
+export HOMEBREW_NO_ANALYTICS=1
 export SUPABASE_NO_TELEMETRY=1
+export DETSYS_TELEMETRY_OPT_OUT=1
+export FLUTTER_SUPPRESS_ANALYTICS=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export NEXT_TELEMETRY_DISABLED=1
+export GATSBY_TELEMETRY_DISABLED=1
 export LDFLAGS="-L/opt/homebrew/opt/openssl@3/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/openssl@3/include"
 

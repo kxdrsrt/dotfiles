@@ -18,7 +18,7 @@
     ./Conductor.nix
     ./Cursor.nix
     ./DeepL.nix
-    ./Dia.nix
+    # ./Dia.nix  # excluded: running earlybirds
     ./Discord.nix
     ./Equinox.nix
     ./Figma.nix
@@ -33,6 +33,7 @@
     ./KarabinerElements.nix
     ./KarabinerEventViewer.nix
     ./Kiro.nix
+    ./LocalSend.nix
     ./MicrosoftDefenderShim.nix
     ./MicrosoftEdge.nix
     ./MicrosoftOffice.nix

@@ -33,6 +33,7 @@
     # "diffusionbee"                          # GUI for Stable Diffusion on Apple Silicon
     "displaylink" # Drivers for USB displays
     # "framer"                                # Interactive design prototyping tool
+    "flutter" # Flutter SDK
     "google-chrome" # Google's web browser
     # "google-drive"                          # Cloud storage sync
     # "handbrake"                             # Video transcoder
@@ -41,6 +42,7 @@
     # "jan"                                   # Local AI assistant
     # "kap"                                   # Minimal Screen recorder
     # "linearmouse"                           # Mouse and trackpad customization
+    "localsend" # Cross-platform local file sharing
     # "mac-mouse-fix"                          # Mouse customization utility
     # "macwhisper"                            # Audio transcription tool
     # "malwarebytes"                          # Anti-malware software

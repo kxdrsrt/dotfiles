@@ -127,6 +127,9 @@ parallels_for_mac.txt
 .electron-gyp/
 .gemini/
 .kiro/extensions/
+.kiro/logs/
+.kiro/.trust-migration.json
+.kiro/powers/*.backup
 .vscode/extensions/*
 .windsurf/extensions/
 .zsh_sessions/

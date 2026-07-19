@@ -65,7 +65,7 @@
     "**/.hg": true, // Mercurial repository folder
     "**/.svn": true, // Subversion repository folder
     "**/CVS": true, // CVS repository folder
-    "**/Thumbs.db": true, // Windows thumbnail cache
+    "**/Thumbs.db": true // Windows thumbnail cache
   },
 
   // Remove trailing whitespace from lines when saving
@@ -79,14 +79,14 @@
     "**/*.xls": true,
     "**/*.xlsm": true,
     "**/*.pptx": true,
-    "**/*.pptm": true,
+    "**/*.pptm": true
   },
 
   // Don't watch these folders for changes (improves performance)
   "files.watcherExclude": {
     "**/.git/objects/**": true, // Git object storage
     "**/.git/subtree-cache/**": true, // Git subtree cache
-    "**/node_modules/**": true, // npm dependencies (huge folder)
+    "**/node_modules/**": true // npm dependencies (huge folder)
   },
 
   // Show a dot on tabs with unsaved changes
@@ -106,7 +106,7 @@
 
   // Use default text editor for git diff views of these file types
   "workbench.editorAssociations": {
-    "{git,gitlens}:/**/*.{md,csv,svg}": "default",
+    "{git,gitlens}:/**/*.{md,csv,svg}": "default"
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -133,7 +133,7 @@
   "search.exclude": {
     "**/node_modules": true, // npm dependencies
     "**/dist": true, // Build output folders
-    "**/build": true, // Build output folders
+    "**/build": true // Build output folders
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -150,16 +150,16 @@
     "Git Bash": {
       "path": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["-l", "-i"], // -l: login shell, -i: interactive mode
-      "icon": "terminal-bash",
+      "icon": "terminal-bash"
     },
     "PowerShell": {
       "source": "PowerShell",
-      "icon": "terminal-powershell",
+      "icon": "terminal-powershell"
     },
     "Command Prompt": {
       "path": "C:\\Windows\\System32\\cmd.exe",
-      "icon": "terminal-cmd",
-    },
+      "icon": "terminal-cmd"
+    }
   },
 
   // ── macOS ──
@@ -172,13 +172,13 @@
     "zsh": {
       "path": "/bin/zsh",
       "args": ["-l"],
-      "icon": "terminal",
+      "icon": "terminal"
     },
     "bash": {
       "path": "/bin/bash",
       "args": ["-l"],
-      "icon": "terminal-bash",
-    },
+      "icon": "terminal-bash"
+    }
   },
 
   // ── Linux ──
@@ -190,12 +190,12 @@
   "terminal.integrated.profiles.linux": {
     "bash": {
       "path": "/bin/bash",
-      "icon": "terminal-bash",
+      "icon": "terminal-bash"
     },
     "zsh": {
       "path": "/usr/bin/zsh",
-      "icon": "terminal",
-    },
+      "icon": "terminal"
+    }
   },
 
   // Enable blinking cursor in terminal
@@ -243,8 +243,8 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": false,
-    },
+      "strings": false
+    }
   },
 
   // Update markdown links when files are moved/renamed
@@ -275,27 +275,27 @@
 
   // JSON files: use Prettier for formatting
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // JSONC (JSON with comments): use Prettier for formatting
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // Shell scripts (bash, sh): use shell-format extension
   "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
 
   // Properties files (.properties, .env): use shell-format
   "[properties]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
 
   // Ignore files (.gitignore, .dockerignore): use shell-format
   "[ignore]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format",
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -313,7 +313,7 @@
 
   "snowflake.connectionsConfigFile": "/Users/k/.snowflake/connections.toml",
   "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "python.analysis.typeCheckingMode": "basic",
   "markdown-preview-enhanced.previewTheme": "github-light.css",
@@ -326,7 +326,7 @@
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false,
+    "scminput": false
   },
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -334,7 +334,7 @@
   // ═══════════════════════════════════════════════════════════════════════════
   "github-enterprise.uri": "https://shs.ghe.com",
   "github.copilot.advanced": {
-    "authProvider": "github-enterprise",
+    "authProvider": "github-enterprise"
   },
   "chat.tools.urls.autoApprove": {
     "https://code.visualstudio.com": true,
@@ -621,7 +621,7 @@
     "https://*.gdl.de": true,
     "https://docs.21st.dev": {
       "approveRequest": true,
-      "approveResponse": false,
+      "approveResponse": false
     },
     "https://21st.dev/magic": true,
     "https://21st.dev": true,
@@ -671,10 +671,11 @@
     "https://developer.apple.com/design/human-interface-guidelines": true,
     "https://developer.apple.com/design": true,
     "https://developer.apple.com": true,
-    "https://*.apple.com": true,
+    "https://*.apple.com": true
   },
   "git.ignoreRebaseWarning": true,
   "update.showReleaseNotes": false,
+  "telemetry.telemetryLevel": "off",
   "yaml.disableSchemaDetection": [
     "**/.github/workflows/*.yml",
     "**/.github/workflows/*.yaml",
@@ -683,6 +684,6 @@
     "**/.forgejo/workflows/*.yml",
     "**/.forgejo/workflows/*.yaml",
     "azure-pipelines.yml",
-    "azure-pipelines.yaml",
-  ],
+    "azure-pipelines.yaml"
+  ]
 }

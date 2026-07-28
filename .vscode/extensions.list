@@ -1,9 +1,11 @@
+anthropic.claude-code
 arcanis.vscode-zipfs
 asciidoctor.asciidoctor-vscode
 bbenoist.nix
 bpruitt-goddard.mermaid-markdown-syntax-highlighting
 chaunceykiwi.json-tree-view
 christian-kohler.npm-intellisense
+continue.continue
 cweijan.vscode-office
 dart-code.dart-code
 dart-code.flutter
@@ -46,3 +48,4 @@ swiftlang.swift-vscode
 tomoki1207.pdf
 wholroyd.jinja
 yzhang.markdown-all-in-one
+zoocodeorganization.zoo-code

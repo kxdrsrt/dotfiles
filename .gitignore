@@ -1,9 +1,17 @@
 # AI tools
 .claude/
 .claude.json
+.claude.json.tmp*
+.continue/
+.figma
+.zai/
 
 # Personal / work identifiers
 .kiro/argv.json
+.kiro/extensions/
+.kiro/logs/
+.kiro/.trust-migration.json
+.kiro/powers/
 
 # Nix
 .nix-defexpr
@@ -122,15 +130,12 @@ parallels_for_mac.txt
 .cursor/extensions/
 .cursor/ide_state.json
 .cursor/mcp.json
+.cursor/projects/
 .cursor/shouldUpdate
 .cursor/skills-cursor/
 .electron/
 .electron-gyp/
 .gemini/
-.kiro/extensions/
-.kiro/logs/
-.kiro/.trust-migration.json
-.kiro/powers/*.backup
 .vscode/extensions/*
 .windsurf/extensions/
 .zsh_sessions/

@@ -69,9 +69,9 @@
     # "opencore-patcher"                      # macOS patcher for unsupported Macs
     # "openvpn-connect"                       # VPN client
     "pearcleaner" # Advanced Mac cleaner
-    "qbittorrent" # BitTorrent client
+    # "qbittorrent"                              # Deprecated 2026-09-01 (fails_gatekeeper_check) — managed via activation script in apps/QBittorrent.nix
     # "quickwhisper"                          # Quick voice transcription
-    # "raycast"                               # Replaced by Raycast Beta (installed manually)
+    # "raycast"                               # Replaced by Raycast (installed manually)
     "rectangle" # Window management tool
     "rustdesk" # Remote desktop software
     "shottr" # Screenshot tool

@@ -1,4 +1,5 @@
 { pkgs, user, ... }:
+# home-manager is configured but not yet activated — run `darwin-rebuild switch` to enable
 {
   # Basic home-manager settings
   home.stateVersion = "25.11";
@@ -37,11 +38,14 @@
     # fzf
   ];
 
-  # Manage dotfiles directly
   home.file = {
-    # Example: Copy a config file
-    # ".config/myapp/config.toml".text = ''
-    #   key = "value"
-    # '';
+    # watermarks-remover LaunchAgent — auto-starts service on port 8765 at login
+    "Library/LaunchAgents/com.watermarks-remover.server.plist".source =
+      ./vscode-prompts/com.watermarks-remover.server.plist;
+
+    # VS Code settings (chat.promptFilesLocations points at ./vscode-prompts/)
+    # Uncomment when you activate home-manager:
+    # "Library/Application Support/Code/User/settings.json".source =
+    #   ./vscode-prompts/vscode-settings.json;
   };
 }

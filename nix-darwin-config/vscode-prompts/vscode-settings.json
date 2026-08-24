@@ -1,0 +1,40 @@
+{
+  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.indexing": false,
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/build/**": true,
+    "**/dist/**": true,
+    "**/.dart_tool/**": true,
+    "**/__pycache__/**": true,
+    "**/.gradle/**": true,
+    "**/ios/Pods/**": true,
+    "**/macos/Pods/**": true
+  },
+  "github-enterprise.uri": "https://shs.ghe.com",
+  "github.copilot.advanced": {
+    "authProvider": "github-enterprise"
+  },
+  "chat.viewSessions.orientation": "stacked",
+  "yaml.disableSchemaDetection": [
+    "**/.github/workflows/*.yml",
+    "**/.github/workflows/*.yaml",
+    "**/.gitea/workflows/*.yml",
+    "**/.gitea/workflows/*.yaml",
+    "**/.forgejo/workflows/*.yml",
+    "**/.forgejo/workflows/*.yaml",
+    "azure-pipelines.yml",
+    "azure-pipelines.yaml"
+  ],
+  "chat.promptFilesLocations": {
+    "~/nix-darwin-config/vscode-prompts": true
+  },
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  }
+}

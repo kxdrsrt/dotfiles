@@ -42,6 +42,7 @@
     # "chatgpt"                               # Desktop client for ChatGPT
     "coconutbattery" # Battery monitoring tool
     "deepl" # AI-powered translation tool
+    "docker-desktop" # Docker Desktop container runtime and CLI
     # "diffusionbee"                          # GUI for Stable Diffusion on Apple Silicon
     "displaylink" # Drivers for USB displays
     # "framer"                                # Interactive design prototyping tool

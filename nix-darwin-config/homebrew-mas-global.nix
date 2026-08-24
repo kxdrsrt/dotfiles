@@ -8,10 +8,22 @@
   homebrew.onActivation.cleanup = "zap"; # Remove packages not in flake. Other options than "zap": "uninstall" (keep user data) or "false" (don't remove old packages at all)
   homebrew.onActivation.upgrade = true; # Auto-upgrade on rebuild
 
+  # Taps. Non-official taps must be marked `trusted = true` so `brew bundle`
+  # loads their formulae/casks — Homebrew 6.0.0 enabled HOMEBREW_REQUIRE_TAP_TRUST
+  # by default, which otherwise refuses untrusted taps and aborts activation.
+  homebrew.taps = [
+    {
+      name = "supabase/tap";
+      trusted = true;
+    }
+  ];
+
   homebrew.brews = [
     "mas" # Mac App Store CLI
     "gh" # GitHub CLI
+    "jackett" # Torrent indexer proxy for qBittorrent search (port 9117)
     "smartmontools" # Disk health monitoring
+    "wakeonlan" # Send magic packets to wake network devices
   ];
 
   # ── Global Casks ─ only uncommented entries are active on every host ────────────────────────────────

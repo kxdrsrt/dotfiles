@@ -115,7 +115,7 @@
         "/Applications/Alcove.app"
         "/Applications/BetterDisplay.app"
         "/Applications/Mos.app"
-        "/Applications/Raycast Beta.app"
+        "/Applications/Raycast.app"
         "/Applications/Rectangle.app"
         "/Applications/Conduct.app"
         "/Applications/Shottr.app"

@@ -15,13 +15,6 @@ let
     "ms-python.debugpy"
     "ms-python.vscode-python-envs"
 
-    # Jupyter
-    "ms-toolsai.jupyter"
-    "ms-toolsai.jupyter-keymap"
-    "ms-toolsai.jupyter-renderers"
-    "ms-toolsai.vscode-jupyter-cell-tags"
-    "ms-toolsai.vscode-jupyter-slideshow"
-
     # Markdown
     "yzhang.markdown-all-in-one"
     "davidanson.vscode-markdownlint"
@@ -51,10 +44,6 @@ let
     "formulahendry.code-runner"
     "mcu-debug.debug-tracker-vscode"
     "ms-vscode.cpptools-themes"
-
-    # Remote & Collaboration
-    "ms-vscode-remote.remote-wsl"
-    "ms-vsliveshare.vsliveshare"
 
     # AI
     "github.copilot-chat"

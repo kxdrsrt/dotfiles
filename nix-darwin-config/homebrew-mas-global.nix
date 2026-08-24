@@ -112,6 +112,7 @@
     # "Planmore"              = 1613129298;   # Day planner
     # "Proton Pass"           = 6502835663;   # Password manager
     # "Scan Thing"            = 1556313108;   # Document scanner
+    # "QuickScan - PDF Scanner & OCR" = 1513790291; # removed from App Store
     # "Shoop"                 = 1568244961;   # AI photo editor
     # "SongShift"             = 1097974566;   # Playlist transfer
     # "Structured"            = 1499198946;   # Visual planner
@@ -119,6 +120,7 @@
     # "The Unarchiver"        = 425424353;    # Archive extractor
     "uBlock Origin Lite" = 6745342698; # Safari ad blocker
     "Video Speed Controller" = 1588368612; # Video speed control
+    # "Wake Me Up - Wake on LAN" = 1465416032; # removed from App Store
     # "VPN.lat"               = 1526622816;   # VPN client
     # "Xcode"                 = 497799835;    # Apple IDE
   };

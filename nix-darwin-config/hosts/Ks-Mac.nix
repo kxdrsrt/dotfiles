@@ -60,7 +60,7 @@
   homebrew.casks = [
     #"alcove" # Dynamic Island for macOS
     "antigravity" # Google Antigravity AI Coding Agent IDE
-    "calibre" # E-book library management
+    # "calibre"                             # temporarily skipped — re-enable on WiFi
     "claude" # AI assistant by Anthropic
     "claude-code" # AI-powered code assistant
     "conductor" # AI-powered file manager
@@ -100,7 +100,6 @@
     "Microsoft OneNote" = 784801555; # Note-taking
     "Shazam" = 897118787; # Music identifier
     "Video Converter" = 1518836004; # Video converter
-    "LG Screen Manager" = 1142051783; # LG display management App
     "TestFlight" = 899247664; # Apple beta testing platform
     "Windows App" = 1295203466; # Remote Desktop / RDP
   };

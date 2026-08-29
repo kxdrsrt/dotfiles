@@ -181,7 +181,10 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-. "$HOME/.local/bin/env"
+mkdir -p "$HOME/.local/bin"
+if [ -f "$HOME/.local/bin/env" ]; then
+  . "$HOME/.local/bin/env"
+fi
 export PATH="$HOME/.local/bin:$PATH"
 
 # Jellyfin: launch app + keep Mac awake while server runs

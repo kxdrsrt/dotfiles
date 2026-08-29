@@ -93,6 +93,15 @@ fi
 
 if ! command -v nix &>/dev/null; then
     if [[ $(uname -m) == "arm64" ]]; then
+        # A stale, partially-created APFS volume can leave the Determinate
+        # installer with a read-only /nix mount during reinstall attempts.
+        _STALE_NIX_VOL=$(diskutil list | awk '/Nix Store/ {print $NF}')
+        if [ -n "$_STALE_NIX_VOL" ]; then
+            echo "🧹 Cleaning stale Nix Store volume before reinstall..."
+            sudo diskutil unmount force "$_STALE_NIX_VOL" 2>/dev/null || true
+            sudo diskutil apfs deleteVolume "$_STALE_NIX_VOL" 2>/dev/null || true
+        fi
+
         echo "❄️  Nix not found (Apple Silicon). Installing via Determinate Systems..."
         curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
             sh -s -- install --no-confirm
@@ -270,7 +279,26 @@ if [ ! -d ".git" ]; then
     git remote add origin "$GIT_REPO"
 fi
 git fetch origin
-git checkout -f master
+
+# Never silently discard uncommitted local changes with a force checkout —
+# stash them first so re-running bootstrap can't quietly wipe out in-progress
+# edits to tracked files (e.g. this script, .zshrc).
+if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+    echo "📦 Stashing uncommitted local changes before syncing dotfiles..."
+    git stash push -m "bootstrap.sh auto-stash $(date '+%Y-%m-%d %H:%M:%S')"
+    _BOOTSTRAP_STASHED=1
+fi
+
+git checkout master
+git merge --ff-only origin/master
+
+if [ -n "${_BOOTSTRAP_STASHED:-}" ]; then
+    echo "📦 Restoring stashed local changes..."
+    if ! git stash pop; then
+        echo "⚠️  Could not auto-restore stashed changes (conflict)." >&2
+        echo "   Your edits are safe in the stash — run 'git stash list' / 'git stash pop' manually." >&2
+    fi
+fi
 
 # --- 5. SYSTEM IDENTITY SETUP ---
 # Set the system network names to match the configuration attribute
@@ -348,6 +376,13 @@ for f in \
         sudo rm -f "$f"
     fi
 done
+
+# Fix Homebrew directory ownership before the nix-darwin bundle tries to
+# install casks; otherwise the macOS brew migration leaves /opt/homebrew as
+# root-owned and every package install fails with "not writable by your user".
+echo "🔧 Fixing Homebrew ownership for the current user..."
+sudo chown -R "$USER":"$(id -gn)" /opt/homebrew 2>/dev/null || true
+sudo chmod -R u+rwX /opt/homebrew 2>/dev/null || true
 
 # --- 10. SYSTEM ACTIVATION ---
 # Env vars feed the flake's builtins.getEnv calls (requires --impure).

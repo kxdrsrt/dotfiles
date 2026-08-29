@@ -59,20 +59,16 @@
   # ── ARM-specific Casks ──────────────────────────────────────────────────────
   homebrew.casks = [
     #"alcove" # Dynamic Island for macOS
-    "antigravity" # Google Antigravity AI Coding Agent IDE
     # "calibre"                             # temporarily skipped — re-enable on WiFi
     "claude" # AI assistant by Anthropic
     "claude-code" # AI-powered code assistant
     "conductor" # AI-powered file manager
     "cursor" # Code editor with AI assistance
     "discord" # Voice, video, and text chat
-    "drivedx" # Drive health monitoring
     "figma" # Vector graphics editor
     "imageoptim" # Image optimization tool
     "jellyfin" # Self-hosted media server (Apple Silicon VideoToolbox HWA)
     "karabiner-elements" # Keyboard customization tool
-    "kiro" # Amazon AI IDE
-    "lg-onscreen-control" # LG display management
     "microsoft-edge" # Microsoft's Chromium browser
     "microsoft-teams" # Communication platform
     "moonlight" # NVIDIA GameStream client

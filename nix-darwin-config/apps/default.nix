@@ -6,7 +6,6 @@
     ./Amphetamine.nix
     ./Alcove.nix
     ./AltServer.nix
-    ./Antigravity.nix
     ./AppCleaner.nix
     ./AppleConfigurator.nix
     ./BetterDisplay.nix
@@ -33,7 +32,6 @@
     ./Jellyfin.nix
     ./KarabinerElements.nix
     ./KarabinerEventViewer.nix
-    ./Kiro.nix
     ./LocalSend.nix
     ./MicrosoftDefenderShim.nix
     ./MicrosoftEdge.nix

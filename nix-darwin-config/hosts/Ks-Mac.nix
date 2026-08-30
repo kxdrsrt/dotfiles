@@ -61,7 +61,7 @@
     #"alcove" # Dynamic Island for macOS
     # "calibre"                             # temporarily skipped — re-enable on WiFi
     "claude" # AI assistant by Anthropic
-    "claude-code" # AI-powered code assistant
+    "claude-code@latest" # AI-powered code assistant (rolling release channel)
     "conductor" # AI-powered file manager
     "cursor" # Code editor with AI assistance
     "discord" # Voice, video, and text chat
